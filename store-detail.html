@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/store-detail.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
@@ -57,31 +58,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-page">
-                        <div class="sub-card">
-                            <img src="assets/img/캐릭터한복.jpg" alt="">
-                            <div class="sub-card-txt">
-                                <h3 class="title">캐릭터 한복</h3>
-                                <p class="event-price">15,000원 ~</p>
-                                <button type="button">예약하기</button>
+                    <div class="swiper mySwiper">
+                        <div class="card-page swiper-wrapper">
+                            <div class="sub-card swiper-slide">
+                                <img src="assets/img/캐릭터한복.jpg" alt="">
+                                <div class="sub-card-txt">
+                                    <h3 class="title">캐릭터 한복</h3>
+                                    <p class="event-price">15,000원 ~</p>
+                                    <button type="button">예약하기</button>
+                                </div>
+                            </div>
+                            <div class="sub-card swiper-slide">
+                                <img src="assets/img/전통한복.jpg" alt="">
+                                <div class="sub-card-txt">
+                                    <h3 class="title">전통 한복</h3>
+                                    <p class="event-price">25,000원 ~</p>
+                                    <button type="button">예약하기</button>
+                                </div>
+                            </div>
+                            <div class="sub-card swiper-slide">
+                                <img src="assets/img/프리미엄한복.jpg" alt="">
+                                <div class="sub-card-txt">
+                                    <h3 class="title">프리미엄 한복</h3>
+                                    <p class="event-price">55,000원 ~</p>
+                                    <button type="button">예약하기</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="sub-card">
-                            <img src="assets/img/전통한복.jpg" alt="">
-                            <div class="sub-card-txt">
-                                <h3 class="title">전통 한복</h3>
-                                <p class="event-price">25,000원 ~</p>
-                                <button type="button">예약하기</button>
-                            </div>
-                        </div>
-                        <div class="sub-card">
-                            <img src="assets/img/프리미엄한복.jpg" alt="">
-                            <div class="sub-card-txt">
-                                <h3 class="title">프리미엄 한복</h3>
-                                <p class="event-price">55,000원 ~</p>
-                                <button type="button">예약하기</button>
-                            </div>
-                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                     <div class="review">
                         <p class="review-title">한복 예약 후기</p>
@@ -130,6 +134,8 @@
 
 
     <script src="assets/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="assets/js/store-detail.js"></script>
 </body>
 
 </html>
