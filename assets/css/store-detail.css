@@ -47,10 +47,6 @@
 
 /* 스토어 리뷰 */
 
-.review {
-    border-top: 1px solid rgb(51, 51, 51, 0.1);
-}
-
 .review-title {
     font-size: 21px;
     font-weight: 500;
@@ -87,24 +83,27 @@
     flex-direction: row;
 }
 
-
-
 /* 스토어 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
+ 
+.swiper {
+    width: 100%;
+    height: 100%;
+    margin: 0 0 0 30px;
+}
 
 .card-page {
     display: flex;
     flex-direction: row;
     z-index: -1;
-    margin-bottom: 30px;
+    margin: 0 0 30px 0;
 }
 
 .card-page .sub-card{
     position: relative;
-    margin: 0 0 0 30px;
 }
 
 .card-page .sub-card img{
-    width: 200px;
+    width: 210px;
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
