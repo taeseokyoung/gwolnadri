@@ -1,0 +1,288 @@
+/* 공통 */
+
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+/* reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* a reset */
+ a {text-decoration: none; outline: none; color: #000;}
+
+ a:hover, a:active {text-decoration: none;}
+
+
+/* 공통 css : nav, footicon */
+
+body {
+    overflow: hidden;
+}
+
+.Wrapper {
+    width: 1061px;
+    margin: 0 auto;  
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Gwolnadri {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto; 
+}
+
+.Gwolnadri-intro {
+    width: 400px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.main-banner {
+    margin-bottom: 20px;
+}
+
+.sub-banner-1 {
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.sub-banner-1 a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 60px;
+    font-family: 'Bagel Fat One', cursive;
+    margin: 5px 0 20px 0;
+}
+
+.sub-title {
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.main-content {
+    margin-left: 5px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+/* 기능 부분만 스크롤 생성 */
+
+/* 크롬, 사파리, 오페라, 엣지 */
+.Gwolnadri-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* 파이어폭스 */
+.Gwolnadri-body {
+  scrollbar-width: none; 
+}
+
+.Gwolnadri-body {
+    position: relative;
+    width: 576px;
+    height: 100vh;
+    border: 1px solid rgb(51, 51, 51, 0.1);
+    overflow-y: scroll;
+}
+
+/* -------------------------- */
+
+.Gwolnadri-body .wrap {}
+
+header {
+    position: fixed;
+    top: 0;
+    left: calc(50% - 47px);
+    width: 575px;
+    font-size: 17px;
+    border: 1px solid rgb(221, 221, 221,0.5);
+    transition-property: background-color;
+    transition-duration: 1s; 
+    z-index: 1;
+}
+
+header nav {
+    margin: 40px 25px 25px 25px;
+}
+
+header h1 {
+    font-size: 30px;
+    color: #fff;
+    font-family: 'Bagel Fat One', cursive;
+}
+
+.Gwolnadri-body .nav-icon{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
+}
+
+/* 스크롤 시 네비바 색상 변경 */
+
+header.on {
+    position: fixed;
+    top: 0;
+    left: calc(50% - 47.5px);
+    width: 575.5px;
+    font-size: 17px;
+    border-bottom: 1px solid rgb(51, 51, 51, 0.1);
+    background-color:#fff;
+    transition-property: background-color;
+    transition-duration: 1s; 
+    z-index: 1;
+}
+
+header.on nav {
+    margin: 25px;
+}
+
+header.on h1 {
+    font-size: 30px;
+    color: #000;
+    font-family: 'Bagel Fat One', cursive;
+}
+
+header.on .nav-icon{
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
+}
+
+/* 하단 아이콘 메뉴 */
+
+.foot-icon {
+    position: fixed;
+    bottom: 0;
+    left: calc(50% - 47.5px);
+    width: 575.5px;
+    font-size: 17px;
+    border: 1px solid rgb(221, 221, 221,0.5);
+    background: #fff;
+}
+
+.foot-icon .flex{
+    margin: 25px 60px;
+}
+
+/* input-box */
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin: 0 5px 30px 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+label {
+    font-size: 17px;
+    font-weight: 500;
+    color: #555;
+    margin: 0 5px 20px 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+input::placeholder {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+input:focus::placeholder {
+    color: #fff;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* margin: 0 30px; */
+}
+
+/* button */
+
+button {
+    width: 100%;
+    border: inherit;
+    background: inherit;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #333;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+
+/* <- 왼쪽 화살표 nav */
+
+.left-arrow-header nav {
+    margin: 25px;
+}
+
+.left-arrow-header img {
+    width: 29px;
+}
