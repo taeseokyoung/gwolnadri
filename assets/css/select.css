@@ -1,17 +1,15 @@
 .sh-row {
-    display: flex;
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
     flex-direction: row;
     align-items: center;
     flex-wrap: nowrap;
     margin-bottom: 10px;
+    row-gap: 10px;
 }
 
 .form-input {
     margin: 80px 5px 80px 5px;
-}
-
-.first {
-    padding-right: 108px;
 }
 
 .last {
@@ -26,6 +24,7 @@
     margin: 0px 20px;
     text-align: center;
     white-space : nowrap;
+    grid-row: 1 / span 2;
 }
 
 .in {
@@ -53,7 +52,7 @@
 [type="radio"]:checked {
     background-color: #333;
     color: #fff
-  }
+}
 
 .sh-row input[type=radio]{
     display: none;
@@ -63,7 +62,7 @@
     display: inline-block;
     cursor: pointer;
     height: 24px;
-    width: 90px;
+    /* width: 90px; */
     border: 1px solid #333;
     line-height: 24px;
     text-align: center;
