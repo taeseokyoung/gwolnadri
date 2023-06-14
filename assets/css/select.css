@@ -6,12 +6,16 @@
     margin-bottom: 10px;
 }
 
+.form-input {
+    margin: 80px 5px 80px 5px;
+}
+
 .first {
     padding-right: 108px;
 }
 
 .last {
-    padding: 0px 108px 0px 70px;
+    padding: 0px 108px 0px 71px;
 }
 
 .sh-lable {
