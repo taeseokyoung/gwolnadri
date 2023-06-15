@@ -3,7 +3,9 @@ window.onload = () => {
 }
 
 
-async function handleSelectSend(hanbok_id) {
+async function handleSelectHanbok(hanbok_id) {
+    const urlParams = new URLSearchParams(window.location.search);
+    hanbok_id = urlParams.get('hanbok_id');
 
     const date = document.getElementById('rsrvt_date').value;
     const time = document.querySelector('input[type=radio][name=time]:checked').value;
@@ -15,8 +17,6 @@ async function handleSelectSend(hanbok_id) {
     middle = time.split(':')
     order_id = first[2]+middle[1]+first[0]+middle[0]+first[1]
 
-    const urlParams = new URLSearchParams(window.location.search);
-    hanbok_id = urlParams.get('hanbok_id');
 
     const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/${hanbok_id}`, {
     })
@@ -77,6 +77,7 @@ async function handleSelectSend(hanbok_id) {
                 method: 'POST',
                 body: JSON.stringify({
                     "tid": tid,
+                    "type":"hanbok",
                     "created_at": created_at,
                     "partner_order_id": order_id,
                     "partner_user_id": order_stf_id,

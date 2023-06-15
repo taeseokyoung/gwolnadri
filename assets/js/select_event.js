@@ -1,5 +1,4 @@
 window.onload = async function EventGetTime(event_id) {
-    console.log('로딩')
     let urlParams = new URLSearchParams(window.location.search);
     event_id = urlParams.get('event_id');
 
@@ -29,10 +28,14 @@ window.onload = async function EventGetTime(event_id) {
         document.getElementById('16').disabled = false;
         document.getElementById('17').disabled = false;
         document.getElementById('18').disabled = false;
+        document.getElementById('select').setAttribute('onClick','handleSelectHanbok()');
+    } else {
+        alert("잘못된 상품 정보입니다")
+        window.location.href = `${frontend_base_url}`
     }
 }
 
-async function handleSelectSend(event_id) {
+async function handleSelectEvent(event_id) {
     const urlParams = new URLSearchParams(window.location.search);
     event_id = urlParams.get('event_id');
 
@@ -46,7 +49,7 @@ async function handleSelectSend(event_id) {
     middle = time.split(':')
     order_id = first[2]+middle[1]+first[0]+middle[0]+first[1]
 
-    const response = await fetch(`${backend_base_url}/events/1`, {
+    const response = await fetch(`${backend_base_url}/events/${event_id}`, {
     })
 
     if (response.status == 200) {
@@ -105,6 +108,7 @@ async function handleSelectSend(event_id) {
                 method: 'POST',
                 body: JSON.stringify({
                     "tid": tid,
+                    "type":"event",
                     "created_at": created_at,
                     "partner_order_id": order_id,
                     "partner_user_id": order_stf_id,
@@ -132,9 +136,9 @@ async function handleSelectSend(event_id) {
         }
 
     } else {
-        console.log(response_json)
+        // console.log(response_json)
         alert(response.status,"잘못된 상품 정보입니다")
-        window.location.href = `${frontend_base_url}`
+        // window.location.href = `${frontend_base_url}`
     }
 
 }
