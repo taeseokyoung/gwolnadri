@@ -1,7 +1,36 @@
-window.onload = () => {
+window.onload = async function EventGetTime(event_id) {
     console.log('로딩')
-}
+    let urlParams = new URLSearchParams(window.location.search);
+    event_id = urlParams.get('event_id');
 
+    const get_time = await fetch(`${backend_base_url}/events/${event_id}`, {
+    })
+
+    if (get_time.status == 200) {
+        const getTime_json = await get_time.json()
+
+        const timeSlots = getTime_json.time_slots
+        for(i in timeSlots){
+            console.log(timeSlots[i]);
+
+            let innerTime = timeSlots[i].split(':')[0]
+            console.log(innerTime)
+
+            document.getElementById(`${innerTime}`).disabled = false;
+        };
+    } else if (get_time.status == 404) {
+        document.getElementById('9').disabled = false;
+        document.getElementById('10').disabled = false;
+        document.getElementById('11').disabled = false;
+        document.getElementById('12').disabled = false;
+        document.getElementById('13').disabled = false;
+        document.getElementById('14').disabled = false;
+        document.getElementById('15').disabled = false;
+        document.getElementById('16').disabled = false;
+        document.getElementById('17').disabled = false;
+        document.getElementById('18').disabled = false;
+    }
+}
 
 async function handleSelectSend(event_id) {
     const urlParams = new URLSearchParams(window.location.search);
