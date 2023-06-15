@@ -1,0 +1,82 @@
+.sh-row {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+    row-gap: 10px;
+}
+
+.form-input {
+    margin: 80px 5px 80px 5px;
+}
+
+.last {
+    padding: 0px 108px 0px 71px;
+}
+
+.sh-lable {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #555;
+    margin: 0px 20px;
+    text-align: center;
+    white-space : nowrap;
+    grid-row: 1 / span 2;
+}
+
+.in {
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #333;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:14px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin: 0px 8px;
+}
+
+.in:focus-visible {
+    background-color: #333;
+    color: #fff
+}
+
+[type="radio"]:checked {
+    background-color: #333;
+    color: #fff
+}
+
+.sh-row input[type=radio]{
+    display: none;
+}
+
+.sh-row input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    /* width: 90px; */
+    border: 1px solid #333;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:14px;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin: 0px 8px;
+}
+.sh-row input[type=radio]+label{
+    background-color: #fff;
+    color: #333;
+}
+.sh-row input[type=radio]:checked+label{
+    background-color: #333;
+    color: #fff;
+}
