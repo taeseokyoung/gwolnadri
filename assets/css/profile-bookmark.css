@@ -44,7 +44,7 @@
 
 
 
-/* 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
+/* 행사 카드 */
 
 .contant-page {
     z-index: -1;
@@ -118,5 +118,66 @@
 }
 
 .sub-card-txt .card-icon span {
+   font-size: 11px;
+}
+
+
+
+/* -------- */
+
+
+/* *{
+    outline: 1px solid red;
+} */
+
+/* 스토어 카드 */
+
+.contant-page .store-sub-card{
+    width: auto;
+    margin: 30px;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.store-txt .hanbok-category {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+    width: auto;
+    padding: 7px 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    color: #000;
+}
+
+.store-txt .hanbok-title {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+
+.store-txt .hanbok_address {
+    font-size: 17px;
+    font-weight: 300;
+    margin: 0 2px 25px 5px;
+}
+
+
+.store-sub-card .card-icon {
+    display: flex;
+    gap: 30px;
+    margin: 0 0 0 5px;
+}
+
+.store-sub-card .card-icon img {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+.store-sub-card .card-icon span {
    font-size: 11px;
 }
