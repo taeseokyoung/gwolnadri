@@ -15,10 +15,15 @@ async function handleLogin() {
     });
     // access,refresh 토큰 데이터 json으로 받기
     const response_json = await response.json();
+
     // // 로컬 스토리지에 jwt 토큰 저장하기
     localStorage.setItem("access", response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
     console.log(response_json);
+
+    // 쿠키에 access 토큰 저장하기, 하루 이후에 만료 = 1
+    setCookie("access", response_json.access, 1)
+
     // payload로 저장하기 
     const base64Url = response_json.access.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
