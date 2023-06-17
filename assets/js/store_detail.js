@@ -54,7 +54,7 @@ window.onload = async function HanbokStoreDetail() {
 
             const btn = document.createElement("button");
             btn.setAttribute("type", "button")
-            btn.setAttribute("onclick", `SelectItem(${hanboks.id})`)
+            // btn.setAttribute("onclick",`SelectItem(${hanboks.id})`)
             btn.innerText = "예약하기"
 
             div.appendChild(img)
@@ -62,6 +62,7 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(name)
             div2.appendChild(price)
             div2.appendChild(btn)
+
             hanbok.insertBefore(div, hanbok.firstChild);
         })
 
@@ -71,5 +72,5 @@ window.onload = async function HanbokStoreDetail() {
 }
 
 async function SelectItem(hanbok_id) {
-    window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
+    window.location.href = `${frontend_base_url}/doc/select.html?hanbok_id=${hanbok_id}`
 }

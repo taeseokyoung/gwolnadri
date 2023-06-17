@@ -3,9 +3,7 @@ window.onload = () => {
 }
 
 
-async function handleSelectSend(event_id) {
-    const urlParams = new URLSearchParams(window.location.search);
-    event_id = urlParams.get('event_id');
+async function handleSelectSend(hanbok_id) {
 
     const date = document.getElementById('rsrvt_date').value;
     const time = document.querySelector('input[type=radio][name=time]:checked').value;
@@ -17,18 +15,21 @@ async function handleSelectSend(event_id) {
     middle = time.split(':')
     order_id = first[2]+middle[1]+first[0]+middle[0]+first[1]
 
-    const response = await fetch(`${backend_base_url}/events/1`, {
+    const urlParams = new URLSearchParams(window.location.search);
+    hanbok_id = urlParams.get('hanbok_id');
+
+    const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/${hanbok_id}`, {
     })
 
     if (response.status == 200) {
         const response_json = await response.json()
         console.log(response_json)
 
-        const item = response_json.title
-        const order_stf_id = response_json.author
-        const original_price = response_json.money
+        const item = response_json.hanbok_name
+        const order_stf_id = response_json.owner
+        const hanbok_price = response_json.hanbok_price
 
-        const price = original_price * int_quantity
+        const price = hanbok_price * int_quantity
         const vat = price * 0.1
         const total = price + vat
 
