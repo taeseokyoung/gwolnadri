@@ -62,7 +62,6 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(name)
             div2.appendChild(price)
             div2.appendChild(btn)
-
             hanbok.insertBefore(div, hanbok.firstChild);
         })
 
