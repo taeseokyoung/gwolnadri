@@ -1,29 +1,60 @@
 
 window.onload = async function loadStoreList() {
     stores = await store()
-    // console.log("여기여기여기 : ", stores["StoreList"][0]["store_name"])
+    console.log("여기여기여기 : ", stores["StoreList"][0])
 
-    const store_card = document.getElementById("store-card")
+    const storeCard = document.getElementById("store-list-body")
 
     stores["StoreList"].forEach(store => {
         console.log(store.store_name)
+
+        
+        const newCon = document.createElement("div")
         const newTitle = document.createElement("div")
         const newCate = document.createElement("p")
         const newStore = document.createElement("p")
+        const newAdd = document.createElement("p")
+        const newIcon = document.createElement("div")
+        const newHeart = document.createElement("div")
+        const newBook = document.createElement("div")
+        const newHeartImg = document.createElement("img")
+        const newBookImg = document.createElement("img")
+        const newHeartNum = document.createElement("span")
+
+        
+        storeCard.appendChild(newCon)
+
+        newCon.appendChild(newTitle)
         newTitle.appendChild(newCate)
         newTitle.appendChild(newStore)
+        newCon.appendChild(newAdd)
 
+        newCon.append(newIcon)
+        newIcon.appendChild(newHeart)
+        newIcon.appendChild(newBook)
+        newHeart.appendChild(newHeartImg)
+        newHeart.appendChild(newHeartNum)
+        newBook.appendChild(newBookImg)
+        
+
+        newCon.setAttribute("class", "contant-card")
         newTitle.setAttribute("class", "store-title")
         newCate.setAttribute("class", "hanbok_category")
         newStore.setAttribute("class", "hanbok_store")
-        newStore.innerText=store.store_name
-        // newCate = setAttribute("class", "hanbok_category")
-        // newCate = setAttribute("id", store.store_name)
-        // const newName = document.createElement("p")
-        // newName = setAttribute("class", "hanbok_store")
+        newAdd.setAttribute("class", "hanbok_address")
+        newIcon.setAttribute("class", "card-icon")
+        newHeart.setAttribute("class", "heart")
+        newBook.setAttribute("class", "bookmark")
+        newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+        newHeartImg.setAttribute("alt", "")
+        newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+        newBookImg.setAttribute("alt", "")
 
-        // 
-        store_card.appendChild(newTitle)
+        newStore.innerText=store.store_name
+        newAdd.innerText=store.store_address
+        newHeartNum.innerText=store.total_likes
+        newCate.innerText = "전통한복"  //카테고리 가져오기
+        
     });
     
 }
