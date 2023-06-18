@@ -75,7 +75,7 @@ window.onload = async function loadStoreList() {
         level: 3
     }
     var map = new kakao.maps.Map(mapContainer, mapOptions);
- 
+    var bounds = new kakao.maps.LatLngBounds();  
 
     // 마커 이미지 생성
     var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -88,7 +88,11 @@ window.onload = async function loadStoreList() {
             position: positions[i].latlng,
             title : positions[i].title,
             image : markerImage 
+            
         })
+        // marker.setMap(map);
+        bounds.extend(positions[i].latlng);
+        map.setBounds(bounds)
     }
    
 }
