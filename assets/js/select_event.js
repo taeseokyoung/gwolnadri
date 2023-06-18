@@ -236,7 +236,7 @@ async function handleSelectEvent(ticket_id) {
                             method: 'POST',
                             body: JSON.stringify({
                                 "tid": tid,
-                                "type":"행사",
+                                "type":"event",
                                 "created_at": created_at,
                                 "partner_order_id": order_id,
                                 "partner_user_id": order_stf_id,
