@@ -138,3 +138,11 @@
     background-color: rgb(30, 30, 77, 0.7);
     border: 1px solid rgb(255, 255, 255,0.7);
 }
+
+/* 후기작성하기 버튼 */
+.njs-button {
+    width: fit-content;
+    float: right;
+    padding: 5px 5px 5px 5px;
+    font-size: 15px;
+}

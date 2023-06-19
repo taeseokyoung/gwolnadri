@@ -91,6 +91,23 @@
                     <div class="review">
                         <p class="review-title">한복 예약 후기</p>
                         <div class="sub-content" id="content-list">
+                            <div class="review-card">
+                                <form style="width: 100%;">
+                                    <div class="review-txt">
+                                        <select id="new-star">
+                                            <option value="">별점선택</option>
+                                            <option value=1>⭐️</option>
+                                            <option value=2>⭐️⭐️</option>
+                                            <option value=3>⭐️⭐️⭐️</option>
+                                            <option value=4>⭐️⭐️⭐️⭐️</option>
+                                            <option value=5>⭐️⭐️⭐️⭐️⭐️</option>
+                                        </select>
+                                        <input type="text" id="new-comment">  
+                                        <button type="button" onclick="submitComment()" class="njs-button" >작성완료</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
                             <!-- <div class="review-card">
                                 <img class="review_image" src="assets/img/캐릭터한복.jpg" alt="">
                                 <div class="review-txt">

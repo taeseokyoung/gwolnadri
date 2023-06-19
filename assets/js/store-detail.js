@@ -27,7 +27,7 @@ window.onload = async function HanbokStoreDetail() {
         const get_total_likes = response_json.Store.total_likes
         const get_bookmarks = response_json.Store.store_bookmarks
         const get_avgstar = response_json.Store.avg_stars.avg_stars
-        console.log(get_avgstar)
+        // console.log(get_avgstar)
 
         const comments = response_json.Comment
         // console.log(comments)\
@@ -113,7 +113,7 @@ window.onload = async function HanbokStoreDetail() {
         //후기 생성
         const comment = document.getElementById('content-list');
         comments.forEach(comments => {
-            console.log(comments)
+            // console.log(comments)
             const newCard = document.createElement("div")
             const newImage = document.createElement("img")
             const newText = document.createElement("div")
@@ -166,3 +166,24 @@ async function KakaoMap(lng,lat,name){
             clickable: true
         })
 }
+
+// 한복점 후기 작성
+async function submitComment(){
+    const newStar = document.getElementById("new-star")
+    const value = newStar.options[newStar.selectedIndex].value
+    const newComment = document.getElementById("new-comment").value
+    console.log("내가 작성한 댓글: ", newComment, "내 별점 : ",value)
+}
+
+// 업로드 이미지 미리보기
+function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('preview').src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      document.getElementById('preview').src = "";
+    }
+  }
