@@ -23,11 +23,47 @@ window.onload = async function HanbokStoreDetail() {
         const get_address = response_json.Store.store_address
         const get_x = response_json.Store.location_x
         const get_y = response_json.Store.location_y
+        const get_likes = response_json.Store.likes
+        const get_total_likes = response_json.Store.total_likes
+        const get_bookmarks = response_json.Store.store_bookmarks
 
         const store_name = document.getElementById('store_name');
         const store_address = document.getElementById('store_address');
+        const store_likes = document.getElementById('heart');
+        const store_bookmarks = document.getElementById('bookmark');
+
+        const newHeartImg = document.createElement("img")
+        const newBookImg = document.createElement("img")
+        const newHeartNum = document.createElement("span")
+
         store_name.innerText = get_name
         store_address.innerText = get_address
+        newHeartNum.innerText = get_total_likes
+ 
+        store_likes.appendChild(newHeartImg)
+        store_likes.appendChild(newHeartNum)
+        store_bookmarks.appendChild(newBookImg)
+
+        //로그인 여부 판단
+        if (payload){
+            const payload_parse = JSON.parse(payload)
+            //하트 표시
+            if (get_likes.includes(payload_parse.user_id)){
+                newHeartImg.setAttribute("src", "../assets/img/Heart-full.svg")
+            } else {
+                newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+            }
+
+            //북마크 표시
+            if (get_bookmarks.includes(payload_parse.user_id)){
+                newBookImg.setAttribute("src", "../assets/img/Bookmark-full.svg")
+            } else {
+                newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+            }
+        } else {
+            newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+            newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+        }
 
         const hanbok = document.getElementById('hanbok_list');
         console.log(response_json.HanbokList)
@@ -63,7 +99,6 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
-        // console.log(get_x,get_y)
         KakaoMap(get_x,get_y,store_name.innerText)
 
     } else {
