@@ -49,7 +49,7 @@ async function SelectDate(){
         const opt_title = document.getElementById('opt_title');
         timeList.disabled = false;
         selectTime.disabled = false;
-        opt_title.innerText = "행사 시간 || 현재 예약인원 / 전체인원"
+        opt_title.innerText = "행사 시간 || 잔여 좌석"
 
         
         for (let i = 0; i < eventTime_json.length; i++) {
@@ -58,11 +58,12 @@ async function SelectDate(){
             
             const current = times.current_booking
             const max_booking = times.max_booking_count
+            const num = max_booking - current
             const event_time = times.event_time
             const ticket_id = times.id
             
             const opt = document.createElement("option")
-            opt.innerText = event_time + " || " + current + "/" + max_booking
+            opt.innerText = event_time + " || " + "잔여 : " + num + "석"
             
             timeList.appendChild(opt)
         }
