@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/store.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1312e624bbfd4dd22fdfd0e7e00aced"></script>
 </head>
 
 <body>
@@ -40,41 +41,26 @@
                         </nav>
                     </header>
                     <div class="store-page">
-                        <!-- 이미지 대신 지도 -->
-                        <img class="image" src="assets/img/전통한복.jpg" alt="">
+                        <div id="map" style="width:100%;height:600px;"></div>
                     </div>
-                    <div class="contant-page">
+                    <div class="contant-page" id="store-list-body">
                         <h2>한복점 리스트</h2>
-                        <div class="contant-card">
+                        <!-- 작성예시 -->
+                        <!-- <div class="contant-card">
                             <div class="store-title">
                                 <p class="hanbok_category">전통한복</p>
                                 <p class="hanbok_store">한복남 경복궁점</p>
                             </div>
                             <p class="hanbok_address">서울특별시 종로구 사직로 133-5</p>
                             <div class="card-icon">
-                                <div class="heart">
-                                    <img src="/assets/img/Heart-outline.svg" alt=""><span>1</span>
-                                </div>
-                                <div class="bookmark">
+                                <div class="heart">-->
+                                    <!-- <img src="assets/img/Heart-outline.svg" alt=""><span>1</span> -->
+                                <!-- </div> -->
+                                 <!--<div class="bookmark">
                                     <img src="/assets/img/Bookmark-outline.svg" alt=""><span>1</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="contant-card">
-                            <div class="store-title">
-                                <p class="hanbok_category">전통한복</p>
-                                <p class="hanbok_store">한복남 경복궁점</p>
-                            </div>
-                            <p class="hanbok_address">서울특별시 종로구 사직로 133-5</p>
-                            <div class="card-icon">
-                                <div class="heart">
-                                    <img src="/assets/img/Heart-outline.svg" alt=""><span>1</span>
-                                </div>
-                                <div class="bookmark">
-                                    <img src="/assets/img/Bookmark-outline.svg" alt=""><span>1</span>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -96,9 +82,11 @@
     </div>
 
 
-    <script src="assets/js/common.js"></script>
+   <!-- <script src="assets/js/common.js"></script> -->
+    <script src="assets/js/api.js"></script> 
+    <script src="assets/js/store.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="assets/js/store-detail.js"></script>
+    
 </body>
 
 </html>
