@@ -148,5 +148,5 @@ async function store() {
 
 async function storeLink(store_id) {
     console.log(store_id)
-    // window.location.replace(`${front_base_url}/store/${store.id}`)
+    location.href = `${frontend_base_url}/store-detail.html?hanbokstore_id=${store_id}`
 }

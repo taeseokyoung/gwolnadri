@@ -9,9 +9,9 @@ var swiper = new Swiper(".mySwiper", {
 
 
 window.onload = async function HanbokStoreDetail() {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // hanbokstore_id = urlParams.get('hanbokstore_id');
-    hanbokstore_id = 1
+    const urlParams = new URLSearchParams(window.location.search);
+    hanbokstore_id = urlParams.get('hanbokstore_id');
+    
 
     const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}`, {
     })
@@ -23,7 +23,6 @@ window.onload = async function HanbokStoreDetail() {
         const get_address = response_json.Store.store_address
         const get_x = response_json.Store.location_x
         const get_y = response_json.Store.location_y
-        const get_star = response_json.Store.star
 
         const store_name = document.getElementById('store_name');
         const store_address = document.getElementById('store_address');
@@ -64,6 +63,8 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
+        // console.log(get_x,get_y)
+        KakaoMap(get_x,get_y,store_name.innerText)
 
     } else {
         alert(response.status)
@@ -72,4 +73,25 @@ window.onload = async function HanbokStoreDetail() {
 
 async function SelectItem(hanbok_id) {
     window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
+}
+
+//지도 생성
+async function KakaoMap(lng,lat,name){
+    var Position  = new kakao.maps.LatLng(lat,lng);      
+    var mapContainer = document.getElementById('map')
+    var mapOptions = {
+        center: Position,
+        level: 1
+    }
+    var map = new kakao.maps.Map(mapContainer, mapOptions);
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
+    var imageSize = new kakao.maps.Size(24, 35);  
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: Position,
+            title : name,
+            image : markerImage, 
+            clickable: true
+        })
 }
