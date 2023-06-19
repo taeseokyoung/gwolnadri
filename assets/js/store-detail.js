@@ -17,7 +17,7 @@ window.onload = async function HanbokStoreDetail() {
     })
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
+        // console.log(response_json)
 
         const get_name = response_json.Store.store_name
         const get_address = response_json.Store.store_address
@@ -26,20 +26,28 @@ window.onload = async function HanbokStoreDetail() {
         const get_likes = response_json.Store.likes
         const get_total_likes = response_json.Store.total_likes
         const get_bookmarks = response_json.Store.store_bookmarks
+        const get_avgstar = response_json.Store.avg_stars.avg_stars
+        console.log(get_avgstar)
 
+        const comments = response_json.Comment
+        // console.log(comments)\
         const store_name = document.getElementById('store_name');
         const store_address = document.getElementById('store_address');
+        
         const store_likes = document.getElementById('heart');
         const store_bookmarks = document.getElementById('bookmark');
-
+        
+        const newAvgGrade = document.createElement("span")
         const newHeartImg = document.createElement("img")
         const newBookImg = document.createElement("img")
         const newHeartNum = document.createElement("span")
 
         store_name.innerText = get_name
+        newAvgGrade.innerText = " " +get_avgstar
         store_address.innerText = get_address
         newHeartNum.innerText = get_total_likes
  
+        store_name.appendChild(newAvgGrade)
         store_likes.appendChild(newHeartImg)
         store_likes.appendChild(newHeartNum)
         store_bookmarks.appendChild(newBookImg)
@@ -66,9 +74,9 @@ window.onload = async function HanbokStoreDetail() {
         }
 
         const hanbok = document.getElementById('hanbok_list');
-        console.log(response_json.HanbokList)
+        // console.log(response_json.HanbokList)
         response_json.HanbokList.forEach(hanboks => {
-            console.log(hanboks)
+            // console.log(hanboks)
 
             const div = document.createElement("div")
             div.setAttribute("class", "sub-card swiper-slide")
@@ -99,7 +107,35 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
+
         KakaoMap(get_x,get_y,store_name.innerText)
+
+        //후기 생성
+        const comment = document.getElementById('content-list');
+        comments.forEach(comments => {
+            console.log(comments)
+            const newCard = document.createElement("div")
+            const newImage = document.createElement("img")
+            const newText = document.createElement("div")
+            const newGrade = document.createElement("p")
+            const newContent = document.createElement("p")
+
+            newCard.setAttribute("class","review-card")
+            newImage.setAttribute("class","review_image")
+            newImage.setAttribute("src", `${backend_base_url}${comments.review_image}`)
+            newImage.setAttribute("alt","")
+            newText.setAttribute("class", "review-txt")
+            newGrade.setAttribute("class","grade")
+            newGrade.innerText = "별점 : "+comments.grade
+            newContent.setAttribute("class", "content")
+            newContent.innerText = comments.content
+
+            comment.appendChild(newCard)
+            newCard.appendChild(newImage)
+            newCard.appendChild(newText)
+            newText.appendChild(newGrade)
+            newText.appendChild(newContent)
+        })
 
     } else {
         alert(response.status)
