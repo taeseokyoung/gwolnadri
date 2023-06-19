@@ -13,6 +13,9 @@ async function handleLogin() {
             "password": password
         })
     });
+
+
+  if (response.status == 200) {
     // access,refresh 토큰 데이터 json으로 받기
     const response_json = await response.json();
 
@@ -31,12 +34,35 @@ async function handleLogin() {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
-    if (response.status == 200) {
-        alert('로그인 성공')
+
+    alert('로그인 성공')
         window.location.replace(`${frontend_base_url}/`);
-    } else {
-        alert(response.status)
-    }
+    
+  } else {
+      alert("로그인 실패했습니다. 다시 시도해 주세요.")
+  }
 }
 
-checkLogin()
+// 에러나서 주석처리함  
+// checkLogin()
+
+// 소셜로그인 버튼 링크
+document.addEventListener('DOMContentLoaded', function() {
+  const kakaoBtn = document.querySelector('.kakao');
+  const naverBtn = document.querySelector('.naver');
+  const googleBtn = document.querySelector('.google');
+
+  kakaoBtn.addEventListener('click', function() {
+    window.location.href = `${backend_base_url}/users/kakao/login/`; 
+  });
+
+  naverBtn.addEventListener('click', function() {
+    window.location.href = `${backend_base_url}/users/naver/login/`; 
+  });
+
+  googleBtn.addEventListener('click', function() {
+    window.location.href = `${backend_base_url}/users/google/login/`; 
+  });
+});
+
+
