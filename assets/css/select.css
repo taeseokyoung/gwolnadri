@@ -72,10 +72,12 @@
     padding: 15px 20px;
     margin: 0px 8px;
 }
+
 .sh-row input[type=radio]+label{
     background-color: #fff;
     color: #333;
 }
+
 .sh-row input[type=radio]:checked+label{
     background-color: #333;
     color: #fff;
@@ -90,6 +92,13 @@
 
 .event_date {
     width: 100%;
+}
+
+.event_date:disabled {
+    background-color: transparent;
+    cursor: not-allowed;
+    color: -internal-light-dark(graytext, rgb(170, 170, 170));
+    opacity: 0.7;
 }
 
 .sh-btn {
@@ -131,11 +140,40 @@ select:disabled {
 }
 
 #quantity:disabled {
-    background-color: transparent;
+    background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
+  /*     background-color: transparent; */
     cursor: not-allowed;
 }
 
 .gap2 {
     gap: 90px;
-    margin: 100px 5px 100px 5px;
+    margin: 70px 5px 100px 5px;
+}
+
+.sh-title {
+    white-space: nowrap;
+
+}
+
+.start {
+    align-items: flex-start;
+}
+
+.sh-btn2 {
+    max-width: fit-content;
+    max-height: fit-content;
+    background-color: transparent;
+    padding: 0px 10px 10px 10px;
+}
+
+.xi-refresh {
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.xi-refresh:hover {
+    color: rgb(71, 71, 71);
+    text-shadow: 3px 3px 2px rgb(180, 180, 180);
 }
