@@ -50,7 +50,7 @@ window.onload = async function HanbokStoreDetail() {
         if (get_avgstar==null){
             newAvgGrade.innerText = " "
         } else {
-            newAvgGrade.innerText = " " +get_avgstar
+            newAvgGrade.innerText = " ⭐️" +get_avgstar.toFixed(2)
         }
  
         store_name.appendChild(newAvgGrade)
@@ -125,6 +125,7 @@ window.onload = async function HanbokStoreDetail() {
             const newText = document.createElement("div")
             const newGrade = document.createElement("p")
             const newContent = document.createElement("p")
+            let starNum
 
             newCard.setAttribute("class","review-card")
             newImage.setAttribute("class","review_image")
@@ -132,7 +133,24 @@ window.onload = async function HanbokStoreDetail() {
             newImage.setAttribute("alt","")
             newText.setAttribute("class", "review-txt")
             newGrade.setAttribute("class","grade")
-            newGrade.innerText = "별점 : "+comments.grade
+            switch(comments.grade) {
+                case 1 :
+                    starNum="⭐️"
+                    break
+                case 2:
+                    starNum="⭐️⭐️"
+                    break
+                case 3:
+                    starNum="⭐️⭐️⭐️"
+                    break
+                case 4:
+                    starNum="⭐️⭐️⭐️⭐️"
+                    break
+                case 5:
+                    starNum="⭐️⭐️⭐️⭐️⭐️"
+                    break
+            }
+            newGrade.innerText = "별점 : "+ starNum + " " + comments.grade 
             newContent.setAttribute("class", "content")
             newContent.innerText = comments.content
 
@@ -175,10 +193,40 @@ async function KakaoMap(lng,lat,name){
 
 // 한복점 후기 작성
 async function submitComment(){
+    const urlParams = new URLSearchParams(window.location.search);
+    hanbokstore_id = urlParams.get('hanbokstore_id');
+
     const newStar = document.getElementById("new-star")
-    const value = newStar.options[newStar.selectedIndex].value
-    const newComment = document.getElementById("new-comment").value
-    console.log("내가 작성한 댓글: ", newComment, "내 별점 : ",value)
+    const grade = newStar.options[newStar.selectedIndex].value
+    const content = document.getElementById("new-comment").value
+    const review_image = document.getElementById("image").files[0]
+
+    const formdata = new FormData()
+
+    formdata.append("grade", grade)
+    formdata.append("content", content)
+    formdata.append("review_image", review_image)
+
+    if (token){
+        const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`,{
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: formdata
+        } 
+        )
+        if(response.status==200) {
+            alert("후기작성 완료!")
+            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+        } else {
+            alert(response.status)
+    }
+    } else {
+        alert("재로그인이 필요합니다")
+        location.replace(`${frontend_base_url}/`)
+    }
+    
 }
 
 // 업로드 이미지 미리보기
