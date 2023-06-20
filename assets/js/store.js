@@ -6,7 +6,6 @@ window.onload = async function loadStoreList() {
     
     //지도 생성
     var positions =[]
-    // var storeId =[]
     var mapContainer = document.getElementById('map')
     var mapOptions = {
         center: new kakao.maps.LatLng( 37.5714476873524,126.998320034926),
@@ -148,5 +147,5 @@ async function store() {
 
 async function storeLink(store_id) {
     console.log(store_id)
-    // window.location.replace(`${front_base_url}/store/${store.id}`)
+    location.href = `${frontend_base_url}/store-detail.html?hanbokstore_id=${store_id}`
 }
