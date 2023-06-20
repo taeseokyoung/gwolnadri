@@ -1,6 +1,31 @@
-/* *{
-    outline: 1px solid red;
-} */
+/* 스크롤 시 네비바 색상 변경 */
+
+header {
+    position: fixed;
+    top: 0;
+    left: calc(50% - 47.5px);
+    width: 575.5px;
+    font-size: 17px;
+    border-bottom: 1px solid rgb(51, 51, 51, 0.1);
+    background-color:#fff;
+    transition-property: background-color;
+    transition-duration: 1s; 
+    z-index: 999;
+}
+
+header nav {
+    margin: 25px;
+}
+
+header h1 {
+    font-size: 30px;
+    color: #000;
+    font-family: 'Bagel Fat One', cursive;
+}
+
+.nav-icon img{
+    filter: invert(0%) sepia(1%) saturate(7499%) hue-rotate(338deg) brightness(10000%) contrast(96%);
+}
 
 /* 메인 카드 (최상위에 있는 카드) */
 
