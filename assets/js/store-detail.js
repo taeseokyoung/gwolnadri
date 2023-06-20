@@ -43,9 +43,15 @@ window.onload = async function HanbokStoreDetail() {
         const newHeartNum = document.createElement("span")
 
         store_name.innerText = get_name
-        newAvgGrade.innerText = " " +get_avgstar
         store_address.innerText = get_address
         newHeartNum.innerText = get_total_likes
+
+        // 평균 별점이 없는경우|있는경우
+        if (get_avgstar==null){
+            newAvgGrade.innerText = " "
+        } else {
+            newAvgGrade.innerText = " " +get_avgstar
+        }
  
         store_name.appendChild(newAvgGrade)
         store_likes.appendChild(newHeartImg)

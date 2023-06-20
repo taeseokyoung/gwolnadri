@@ -146,3 +146,11 @@
     padding: 5px 5px 5px 5px;
     font-size: 15px;
 }
+
+/* 후기작성하기 내용물 */
+.review-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
