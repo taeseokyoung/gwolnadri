@@ -42,15 +42,28 @@
                 <div class="profile-wrap">
                     <h2>예약 상세내역</h2>
                     <div class="reservation-view">
-                        <!-- 행사/한복 정보 -->
                         <div class="item_box">
                             <div class="item_txtBox img">
+                                <p class="item_title"><i class="xi-angle-right-min"></i>냠냠 한복점/진주유등축제</p>
+                                <!-- 행사사진 -->
                                 <img src="assets/img/image-2.jpg" class="event_img">
-                                <p class="item_title"><i class="xi-angle-right-min"></i>진주유등축제</p>
+                                <!-- 한복정보 -->
+                                <div class="item_tBox line hanbok">
+                                    <p class="field">주소</p>
+                                    <p class="item">서울 종로구 가회동 1-43</p>
+                                </div>
+                                <div class="item_tBox line hanbok">
+                                    <p class="field">상품명</p>
+                                    <p class="item">냠냠한복</p>
+                                </div>
+                                <!-- 공통 -->
+                                <div class="item_tBox sh_right">
+                                    <button class="info_btn"><i class="xi-angle-right-min"></i>상세보기</button>
+                                </div>
                             </div>
                             <div class="item_txtBox">
                                 <div class="item_tBox line">
-                                    <p class="field">예매번호</p>
+                                    <p class="field">예매번호/예약번호</p>
                                     <p class="item">tid</p>
                                 </div>
                                 <div class="item_tBox line">
@@ -62,32 +75,31 @@
                                     <p class="item">13:00 ~ 15:00</p>
                                 </div>
                                 <div class="item_tBox line">
-                                    <p class="field">매수</p>
-                                    <p class="item">2매</p>
-                                </div>
-                                <div class="item_tBox sh_right">
-                                <button class="info_btn"><i class="xi-angle-right-min"></i>상세보기</button>
+                                    <p class="field">매수/인원</p>
+                                    <p class="item">2매/2명</p>
                                 </div>
                             </div>
                         </div>
                         <div class="sh-box price"></div>
                         <div class="sh-box none">
-                            <p class="sh-small">예매일</p>
+                            <p class="sh-small">예매일/예약일</p>
                             <p id="price" class="sh-right">2023.06.12</p>
                         </div>
                         <div class="sh-box none">
                             <p class="sh-small">상태</p>
-                            <p id="vat" class="sh-right">예매</p>
+                            <p id="vat" class="sh-right">예매 /예약</p>
                         </div>
                         <div class="sh-box none">
-                            <p class="sh-small">매수</p>
-                            <p id="vat" class="sh-right">2매</p>
+                            <p class="sh-small">매수 / 인원</p>
+                            <p id="vat" class="sh-right">2매 /2명</p>
                         </div>
                         <div class="sh-box to">
                             <p class="sh-small">금액</p>
                             <p id="tax_free" class="sh-right">13000</p>
                         </div>
-                        <div class="item_tBox sh_right">
+                        <div class="item_tBox sh_btnBox">
+                            <!-- 취소 버튼은 한복 전용 -->
+                            <button id="hanbok_delete" class="info_btn pay"><i class="xi-angle-right-min"></i>예약 취소하기</button>
                             <button class="info_btn pay"><i class="xi-angle-right-min"></i>결제내역 상세보기</button>
                         </div>
                     </div>
