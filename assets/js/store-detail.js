@@ -81,7 +81,6 @@ window.onload = async function HanbokStoreDetail() {
             const formCard = document.createElement("form")
             const newFormReview1 = document.createElement("div")
             const newFormReview2 = document.createElement("div")
-            //----여기 아래는 Let?? const??----//
             const newSelect = document.createElement("select")
             const newOption = document.createElement("option")
             const newOption1 = document.createElement("option")
@@ -116,7 +115,7 @@ window.onload = async function HanbokStoreDetail() {
             newPreImg.setAttribute("style", "width:200px; height:200px; object-fit:cover;")
             newFormBtn.setAttribute("type", "button")
             newFormBtn.setAttribute("class", "njs-button")
-            newFormBtn.setAttribute("onclick", "submitComment()")
+            newFormBtn.setAttribute("onclick", `submitComment(${hanbokstore_id})`)
 
             commentList.appendChild(reviewCard)
             reviewCard.appendChild(formCard)
@@ -197,6 +196,7 @@ window.onload = async function HanbokStoreDetail() {
             let starNum
 
             newCard.setAttribute("class","review-card")
+            newCard.setAttribute("id", `${comments.id}`)
             newImage.setAttribute("class","review_image")
             newImage.setAttribute("src", `${backend_base_url}${comments.review_image}`)
             newImage.setAttribute("alt","")
@@ -228,6 +228,24 @@ window.onload = async function HanbokStoreDetail() {
             newCard.appendChild(newText)
             newText.appendChild(newGrade)
             newText.appendChild(newContent)
+
+            //로그인사용자와 후기 작성자가 같으면 수정버튼 활성화
+            if (comments.user == payload_parse.user_id){
+                const newBtnCase = document.createElement("div")
+                const newEditBtn = document.createElement("button")
+                const newDelBtn = document.createElement("button")
+                newEditBtn.setAttribute("type", "button")
+                newDelBtn.setAttribute("type", "button")
+                // newEditBtn.setAttribute("class", "njs-button")
+                newEditBtn.setAttribute("onclick", `EditComment(${hanbokstore_id},${comments.id})`)
+                newDelBtn.setAttribute("onclick", `DeleteComment(${hanbokstore_id},${comments.id})`)
+                newBtnCase.setAttribute("style", "display: flex;")
+                newEditBtn.innerText = "후기 수정"
+                newDelBtn.innerText = "후기 삭제"
+                comment.appendChild(newBtnCase)
+                newBtnCase.appendChild(newEditBtn)
+                newBtnCase.appendChild(newDelBtn)
+            }
         })
 
     } else {
@@ -261,9 +279,7 @@ async function KakaoMap(lng,lat,name){
 }
 
 // 한복점 후기 작성
-async function submitComment(){
-    const urlParams = new URLSearchParams(window.location.search);
-    hanbokstore_id = urlParams.get('hanbokstore_id');
+async function submitComment(hanbokstore_id){
 
     const newStar = document.getElementById("new-star")
     const grade = newStar.options[newStar.selectedIndex].value
@@ -290,7 +306,7 @@ async function submitComment(){
                 alert("후기작성 완료!")
                 location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
                 break
-            case 404 :
+            case 400 :
                 alert("빈칸을 모두 채워주세요.")
                 break
             case 401 :
@@ -318,3 +334,71 @@ function readURL(input) {
       document.getElementById('preview').src = "";
     }
   }
+
+//후기 수정하기
+async function EditComment(hanbokstore_id, comments_id){
+    //이전 작성한 내용이 들어가있는 후기 작성 페이지 등장!
+
+    const newStar = document.getElementById("new-star")
+    const grade = newStar.options[newStar.selectedIndex].value
+    const content = document.getElementById("new-comment").value
+    const review_image = document.getElementById("image").files[0]
+
+    const formdata = new FormData()
+
+    formdata.append("grade", grade)
+    formdata.append("content", content)
+    formdata.append("review_image", review_image)
+
+    if (token){
+        const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments.id}`,{
+            method: 'PUT',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: formdata
+        } 
+        )
+        switch(response.status){
+            case 200 :
+                alert("후기작성 완료!")
+                location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+                break
+            case 400 :
+                alert("빈칸을 모두 채워주세요.")
+                break
+            case 401 :
+                alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+                location.replace(`${frontend_base_url}/`)
+                break
+       
+    }
+    } else {
+        alert("로그인이 필요합니다")
+        location.replace(`${frontend_base_url}/`)
+    }
+}
+
+//후기 삭제하기
+async function DeleteComment(hanbokstore_id,comments_id){
+    const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments_id}`,{
+        method: 'DELETE',
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
+    } 
+    )
+    switch(response.status){
+        case 204 :
+            alert("삭제 완료!")
+            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+            break
+        case 401 :
+            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            location.replace(`${frontend_base_url}/`)
+            break
+
+   
+}
+    
+}
