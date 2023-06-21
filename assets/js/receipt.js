@@ -1,10 +1,10 @@
 
 
 window.onload = async function Receipt() {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // tid = urlParams.get('tid');
+    const urlParams = new URLSearchParams(window.location.search);
+    tid = urlParams.get('tid');
 
-    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/T48bf67e62ea0bae8e4f`,{
+    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`,{
     })
     if (response.status == 200) {
         const response_json = await response.json()
