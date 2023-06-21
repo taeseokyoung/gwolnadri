@@ -63,7 +63,7 @@ window.onload = async function EventReservation() {
                     
                     const button = document.createElement("button")
                     button.setAttribute("class","sh-right")
-                    button.setAttribute("onClick",`ReservationDetail(${tid})`)
+                    button.setAttribute("onClick",`ReservationDetail("${tid}")`)
                     button.innerText = "상세보기"
         
                     const div = document.createElement("div")
@@ -112,5 +112,6 @@ window.onload = async function EventReservation() {
 }
 
 async function ReservationDetail(tid) {
+    console.log(tid)
     window.location.href = `${frontend_base_url}/reservation_detail.html?tid=${tid}`
 }

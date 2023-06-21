@@ -105,3 +105,8 @@ button {
     padding-top: 0px;
     margin-left: 25px;
 }
+
+#title {
+    flex-direction: row-reverse;
+    display: flex;
+}

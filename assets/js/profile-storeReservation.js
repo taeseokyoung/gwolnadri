@@ -11,7 +11,7 @@ window.onload = async function HanbokReservation() {
 
         // tid 출력
         for (let i = 0; i < response_json.length; i++) {
-            const tid = response_json[i].tid
+            let tid = response_json[i].tid
             const item_name = response_json[i].item_name
             const quantity = response_json[i].quantity
 
@@ -35,7 +35,7 @@ window.onload = async function HanbokReservation() {
             
             const button = document.createElement("button")
             button.setAttribute("class","sh-right2")
-            button.setAttribute("onClick",`ReservationDetail(${tid})`)
+            button.setAttribute("onClick",`ReservationDetail("${tid}")`)
             button.innerText = "상세보기"
 
             const div = document.createElement("div")
@@ -67,16 +67,13 @@ window.onload = async function HanbokReservation() {
             div.appendChild(item)
             
             card_list.insertBefore(subCard, card_list.firstChild);
-                                    
-              
+             
             }
             
         } else {
             alert(response.status)
             window.location.href = `${frontend_base_url}`
-            
     } 
-
 }
 
 async function ReservationDetail(tid) {
