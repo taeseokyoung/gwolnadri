@@ -21,19 +21,19 @@ function goBack() {
     window.history.back();
 }
 
-// 내 정보 수정 : 이미지 미리보기
-document.querySelector('.profile-image-input').addEventListener('change', function () {
-    readURL(this)
-})
+// // 내 정보 수정 : 이미지 미리보기
+// document.querySelector('.profile-image-input').addEventListener('change', function () {
+//     readURL(this)
+// })
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.querySelector('.profile-image').src = e.target.result;
-        };
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        document.querySelector('.profile-image').src = "";
-    }
-}
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             document.querySelector('.profile-image').src = e.target.result;
+//         };
+//         reader.readAsDataURL(input.files[0]);
+//     } else {
+//         document.querySelector('.profile-image').src = "";
+//     }
+// }
