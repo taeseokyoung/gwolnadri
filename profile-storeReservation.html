@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/profile-storeReservation.js"></script>
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="assets/css/profile-bookmark.css">
@@ -38,13 +40,14 @@
                 </header>
                 <div class="profile-wrap">
                     <h2>한복 예약 내역</h2>
-                    <div class="contant-page">
+                    <div id="card_list" class="contant-page">
                         <div class="store-sub-card">
                             <p class="sh-lift">예약번호 : tid</p>
                             <button class="sh-right2">상세보기<i class="xi-angle-right-min"></i></button>
                             <div class="store-txt">
                                 <!-- <a class="hanbok-category">전통한복</a> -->
-                                <p class="hanbok_address"><span class="sh-subTitle">예약일</span>   23.06.20</p>
+                                <p class="hanbok_address">
+                                    <span class="sh-subTitle">예약일</span>23.06.20</p>
                                 <span class="sh-event-date time">10:00</span>
                                 <h3 class="hanbok-title">냠냠한복 1벌</h3>
                             </div>
