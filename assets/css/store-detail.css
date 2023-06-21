@@ -1,3 +1,7 @@
+/* *{
+    outline: 1px solid red;
+} */
+
 /* 스크롤 시 네비바 색상 변경 */
 
 header {
@@ -42,7 +46,7 @@ header h1 {
 
 
 .store-wrap .contant-page, .store-wrap .review {
-    margin: 30px;
+    margin: 30px 30px 120px 30px;
 }
 
 .store-title .hanbok_store {
@@ -175,7 +179,33 @@ header h1 {
 /* 후기작성하기 내용물 */
 .review-content {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.review-button {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 200px;
+}
+
+.review-button>.button-case{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;    
+}
+
+.review-button>.button-case>button{
+    padding: 3px 13px;    
+}
+
+.sh_input_img {
+    width:55%;
+}
+
+select {
+    padding: 10px 5px;
 }
