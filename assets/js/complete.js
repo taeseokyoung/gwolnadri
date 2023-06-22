@@ -4,7 +4,7 @@ window.onload = async function CompletePgtoken() {
     const urlParams = new URLSearchParams(window.location.search);
     const pg_token = urlParams.get('pg_token');
     const cookie_tid = getCookie("tid")
-    console.log(getCookie("tid"))
+    // console.log(getCookie("tid"))
     
     const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${cookie_tid}`, {
     })
@@ -179,4 +179,8 @@ window.onload = async function CompletePgtoken() {
 // 메인화면으로 location
 async function MainRedirect() {
     window.location.href = `${frontend_base_url}`
+}
+
+async function Reservation(tid) {
+    window.location.href = `${frontend_base_url}/reservation_detail.html?tid=${tid}`
 }
