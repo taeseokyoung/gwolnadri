@@ -26,6 +26,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    cursor: default;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -162,6 +163,7 @@ header {
 
 header nav {
     margin: 40px 25px 25px 25px;
+    z-index: 999;
 }
 
 header h1 {
@@ -286,4 +288,8 @@ button {
 
 .left-arrow-header img {
     width: 29px;
+}
+
+.card-icon img {
+    cursor: pointer;
 }
