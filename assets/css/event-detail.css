@@ -1,14 +1,15 @@
 /* 메인 카드 (최상위에 있는 카드) */
-
+*{
+    outline: 1px solid red;
+    }
 .Gwolnadri-body .main-page {
     position: relative;
-    z-index: -1;
 }
 
 .Gwolnadri-body .main-page img{
     width: 100%;
     height: 600px;
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 
 .Gwolnadri-body .card-txt {
@@ -163,7 +164,7 @@
     margin: 30px 30px 15px 30px;
 }
 
-.review .review_image {
+.review .review-image {
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -185,3 +186,9 @@
 .review-txt {
     line-height: 1.45;
 }
+
+.comment_img {
+    width: 200px;
+    height: 200px;
+}
+
