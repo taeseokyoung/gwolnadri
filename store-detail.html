@@ -73,6 +73,26 @@
                     </div>
                     <div class="review">
                         <p class="review-title">한복 예약 후기</p>
+                        <div id="js_input" class="review-card">
+                            <form style="width:100%">
+                                <div class="review-content">
+                                    <select id="new-star">
+                                        <option value=" ">별점선택</option>
+                                        <option value=1>⭐️</option>
+                                        <option value=2>⭐️⭐️</option>
+                                        <option value=3>⭐️⭐️⭐️</option>
+                                        <option value=4>⭐️⭐️⭐️⭐️</option>
+                                        <option value=5>⭐️⭐️⭐️⭐️⭐️</option>
+                                    </select>
+                                    <input type="text" id="new-comment" style="width:90%">
+                                </div>
+                                <div class="review-content">
+                                    <input type="file" id="image" class="sh_input_img" onchange="readURL(this);">
+                                    <img id="preview" style="width:200px; height:200px; object-fit:cover;">
+                                </div>
+                                <button type="button" id="create-comment-btn" class="njs-button" onclick="submitComment()">작성완료</button>
+                            </form>
+                        </div>
                         <div class="sub-content" id="content-list">
                             <!-- 후기 작성 예시 -->
                             <!-- <div class="review-card">
@@ -102,6 +122,7 @@
     </div>
 
     <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/common-nonnav.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1312e624bbfd4dd22fdfd0e7e00aced"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="/assets/js/store-detail.js"></script>
