@@ -1,18 +1,18 @@
 async function handleLogin() {
-    console.log('로그인 버튼');
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    console.log(email, password);
-    const response = await fetch(`${backend_base_url}/users/token/`, {
-        headers: {
-            'content-type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-            "email": email,
-            "password": password
-        })
-    });
+  console.log('로그인 버튼');
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  console.log(email, password);
+  const response = await fetch(`${backend_base_url}/users/token/`, {
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      "email": email,
+      "password": password
+    })
+  });
 
 
   if (response.status == 200) {
@@ -31,15 +31,15 @@ async function handleLogin() {
     const base64Url = response_json.access.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
 
     alert('로그인 성공')
-        window.location.replace(`${frontend_base_url}/`);
-    
+    window.location.replace("/");
+
   } else {
-      alert("로그인 실패했습니다. 다시 시도해 주세요.")
+    alert("로그인 실패했습니다. 다시 시도해 주세요.")
   }
 }
 
@@ -47,21 +47,21 @@ async function handleLogin() {
 // checkLogin()
 
 // 소셜로그인 버튼 링크
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const kakaoBtn = document.querySelector('.kakao');
   const naverBtn = document.querySelector('.naver');
   const googleBtn = document.querySelector('.google');
 
-  kakaoBtn.addEventListener('click', function() {
-    window.location.href = `${backend_base_url}/users/kakao/login/`; 
+  kakaoBtn.addEventListener('click', function () {
+    window.location.href = `${backend_base_url}/users/kakao/login/`;
   });
 
-  naverBtn.addEventListener('click', function() {
-    window.location.href = `${backend_base_url}/users/naver/login/`; 
+  naverBtn.addEventListener('click', function () {
+    window.location.href = `${backend_base_url}/users/naver/login/`;
   });
 
-  googleBtn.addEventListener('click', function() {
-    window.location.href = `${backend_base_url}/users/google/login/`; 
+  googleBtn.addEventListener('click', function () {
+    window.location.href = `${backend_base_url}/users/google/login/`;
   });
 });
 
