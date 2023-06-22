@@ -25,7 +25,7 @@ async function currentProfile(user_id) {
 
   const profile_img = document.getElementById("profile_image");
   if (response_json.profile_image) {
-    const imageUrl = `${BACKEND_BASE_URL}${response_json.profile_image}`;
+    const imageUrl = `${backend_base_url}${response_json.profile_image}`;
     document.getElementById("profile_preview").src = imageUrl;
   } else {
     document.getElementById("profile_preview").src =
@@ -63,17 +63,21 @@ function deleteProfileImage() {
 }
 
 async function updateProfile() {
+  const email = document.getElementById("email").value;
   const username = document.getElementById("username").value;
-  const fileInput = document.getElementById("profile_image");
-  const file = fileInput.files[0];
+  const fileInput = document.getElementById("profile_image").files[0];
+  // const file = fileInput.files[0];
   const formData = new FormData();
-
+  
+  formData.append("email", email);
   formData.append("username", username);
-
-  if (file) {
-    formData.append("profile_image", file);
+  
+  
+  if (fileInput) {
+    formData.append("profile_image", fileInput);
   }
-
+  
+  console.log(formData)
   const response = await fetch(`${backend_base_url}/users/me/modify/`, {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("access"),

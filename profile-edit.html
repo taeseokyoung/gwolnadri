@@ -41,14 +41,13 @@
                 <div class="profile-wrap">
                     <h2>내 정보 수정</h2>
                     <div class="profile-page">
-                        <form method="post">
+                        <form>
                             <div id="profile-image" class="form-image">
-
                                 <img id="profile_preview" src="" alt="프로필 이미지 미리보기">
                                 <div class="button-container">
                                     <button type="button" class="edit-button" onclick="toggleFileInput()">프로필
                                         사진</button>
-                                    <input type="file" id="profile_image" name="profile_image" style="display: none;"
+                                    <input type="file" id="profile_image" name="profile-image" style="display: none;"
                                         onchange="previewImage()">
                                 </div>
                                 <button type="button" class="edit-button" onclick="deleteProfileImage()">사진
