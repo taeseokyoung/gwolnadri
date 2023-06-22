@@ -1,8 +1,9 @@
 
 /* 메인 카드 (최상위에 있는 카드) */
-*{
+/* *{
     outline: 1px solid red;
-    }
+ } */
+
 .Gwolnadri-body .main-page {
     position: relative;
 }
