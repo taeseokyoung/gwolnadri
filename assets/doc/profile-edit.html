@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/profile-edit.js"></script>
-    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="assets/css/profile-edit.css">
+    <link rel="stylesheet" href="/assets/css/profile-edit.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
 
@@ -23,7 +21,7 @@
                 </div>
                 <div class="sub-banner-1">
                     <a href="https://www.royalpalace.go.kr/">
-                        <img src="assets/img/gb_logo.png" alt="">
+                        <img src="/assets/img/gb_logo.png" alt="">
                         <p>바로가기 ></p>
                     </a>
                 </div>
@@ -32,27 +30,23 @@
                 <header class="left-arrow-header">
                     <nav class="nav flex">
                         <div class="nav-icon" onclick="goBack()">
-                            <img src="assets/img/left.svg" />
-                            <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
+                            <img src="/assets/img/left.svg" />
                         </div>
                     </nav>
                 </header>
 
-                <div class="profile-wrap">
+                <div class="profile-wrap mb120px">
                     <h2>내 정보 수정</h2>
                     <div class="profile-page">
                         <form>
                             <div id="profile-image" class="form-image">
                                 <img id="profile_preview" src="" alt="프로필 이미지 미리보기">
                                 <div class="button-container">
-                                    <button type="button" class="edit-button" onclick="toggleFileInput()">프로필
-                                        사진</button>
+                                    <button type="button" class="edit-button" onclick="toggleFileInput()">프로필사진</button>
                                     <input type="file" id="profile_image" name="profile-image" style="display: none;"
                                         onchange="previewImage()">
                                 </div>
-                                <button type="button" class="edit-button" onclick="deleteProfileImage()">사진
-                                    삭제</button>
-
+                                <button type="button" class="edit-button" onclick="deleteProfileImage()">사진삭제</button>
                             </div>
                             <div class="form-input">
                                 <div class="input-box">
@@ -71,7 +65,6 @@
                                     <label for="password2">변경할 패스워드 확인</label>
                                     <input type="text" id="password2" name="password2" placeholder="패스워드를 다시 입력하세요.">
                                 </div> -->
-
                             </div>
                             <button class="update-button" onclick="updateProfile()" type="button">수정하기</button>
                             <div class=" withdrawal-button">
@@ -80,15 +73,13 @@
                         </form>
                     </div>
                 </div>
-
-
-
-                <footer>
-
-                </footer>
+                <footer></footer>
             </div>
         </section>
     </div>
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/profile-edit.js"></script>
 </body>
 
 </html>

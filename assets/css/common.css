@@ -126,7 +126,7 @@ h2 {
     font-weight: 400;
 }
 
-/* 기능 부분만 스크롤 생성 */
+/* ------ Gwolnadri-body Y 스크롤 생성 ------ */
 
 /* 크롬, 사파리, 오페라, 엣지 */
 .Gwolnadri-body::-webkit-scrollbar {
@@ -146,7 +146,7 @@ h2 {
     overflow-y: scroll;
 }
 
-/* -------------------------- */
+/* ------ 네비바 ------ */
 
 .Gwolnadri-body .wrap {}
 
@@ -163,7 +163,7 @@ header {
 }
 
 header nav {
-    margin: 40px 25px 25px 25px;
+    margin: 25px;
     z-index: 999;
 }
 
@@ -177,7 +177,7 @@ header h1 {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
 }
 
-/* 스크롤 시 네비바 색상 변경 */
+/* ------ 네비바 색상 변경 ------ */
 
 header.on {
     position: fixed;
@@ -189,24 +189,36 @@ header.on {
     background-color:#fff;
     transition-property: background-color;
     transition-duration: 1s; 
-    z-index: 1;
-}
-
-header.on nav {
-    margin: 25px;
+    z-index: 999;
 }
 
 header.on h1 {
-    font-size: 30px;
     color: #000;
-    font-family: 'Bagel Fat One', cursive;
 }
 
 header.on .nav-icon{
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
 }
 
-/* 하단 아이콘 메뉴 */
+
+/* ------ 왼쪽 화살표 네비바 ------ */
+
+header.left-arrow-header {
+    background-color:#fff;
+    transition-property: background-color;
+    transition-duration: 1s; 
+    z-index: 999;
+}
+
+header.left-arrow-header nav {
+    margin: 25px;
+}
+
+header.left-arrow-header img {
+    width: 29px;
+}
+
+/* ------ 하단 메뉴 아이콘 ------ */
 
 .foot-icon {
     position: fixed;
@@ -221,6 +233,12 @@ header.on .nav-icon{
 
 .foot-icon .flex{
     margin: 25px 60px;
+}
+
+/* ------ 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 ------ */
+
+.mb120px {
+    padding-bottom: 120px;
 }
 
 /* input-box */
@@ -264,7 +282,7 @@ input:focus::placeholder {
     /* margin: 0 30px; */
 }
 
-/* button */
+/* ------ 검정색 버튼 (default) ------ */
 
 button {
     width: 100%;
@@ -281,16 +299,7 @@ button {
 }
 
 
-/* <- 왼쪽 화살표 nav */
-
-.left-arrow-header nav {
-    margin: 25px;
-}
-
-.left-arrow-header img {
-    width: 29px;
-}
-
+/* 좋아요, 북마크 아이콘 */
 .card-icon img {
     cursor: pointer;
 }

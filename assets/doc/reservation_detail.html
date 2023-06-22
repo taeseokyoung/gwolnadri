@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/reservation_detail.js"></script>
-    <link rel="stylesheet" href="assets/css/common.css">
+
+    <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="assets/css/profile.css">
-    <link rel="stylesheet" href="assets/css/receipt.css">
-    <link rel="stylesheet" href="assets/css/reservation_detail.css">
+    <link rel="stylesheet" href="/assets/css/profile.css">
+    <link rel="stylesheet" href="/assets/css/receipt.css">
+    <link rel="stylesheet" href="/assets/css/reservation_detail.css">
     <title>궐나드리 : 예약내역 상세보기</title>
 </head>
 
@@ -25,7 +24,7 @@
                 </div>
                 <div class="sub-banner-1">
                     <a href="https://www.royalpalace.go.kr/">
-                        <img src="assets/img/gb_logo.png" alt="">
+                        <img src="/assets/img/gb_logo.png" alt="">
                         <p>바로가기 ></p>
                     </a>
                 </div>
@@ -34,19 +33,19 @@
                 <header class="left-arrow-header">
                     <nav class="nav flex">
                         <div class="nav-icon" onclick="goBack()">
-                            <img src="assets/img/left.svg" />
+                            <img src="/assets/img/left.svg" />
                             <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
                         </div>
                     </nav>
                 </header>
-                <div class="profile-wrap">
+                <div class="profile-wrap mb120px">
                     <h2>예약 상세내역</h2>
                     <div class="reservation-view">
                         <div class="item_box">
                             <div class="item_txtBox img">
                                 <p id="title" class="item_title"><i class="xi-angle-right-min"></i>냠냠 한복점/얌얌냠냠축제</p>
                                 <!-- 행사사진 -->
-                                <img id="event_img" src="assets/img/image-2.jpg" class="event_img">
+                                <img id="event_img" src="/assets/img/image-2.jpg" class="event_img">
                                 <!-- 한복정보 -->
                                 <div id="addBox" class="item_tBox line hanbok">
                                     <p class="field">주소</p>
@@ -99,25 +98,18 @@
                         </div>
                         <div class="item_tBox sh_btnBox">
                             <!-- 취소 버튼은 한복 전용 -->
-                            <button id="hanbok_delete" class="info_btn pay"><i class="xi-angle-right-min"></i>예약 취소하기</button>
-                            <button id="receipt" class="info_btn pay"><i class="xi-angle-right-min"></i>결제내역 상세보기</button>
+                            <button id="hanbok_delete" class="info_btn pay"><i class="xi-angle-right-min"></i>예약
+                                취소하기</button>
+                            <button id="receipt" class="info_btn pay"><i class="xi-angle-right-min"></i>결제내역
+                                상세보기</button>
                         </div>
                     </div>
                 </div>
-                <footer>
-
-                </footer>
-            </div>
-            <div class="foot-icon">
-                <div class="flex">
-                    <img src="assets/img/Category.svg" />
-                    <img src="assets/img/Ticket1.svg" />
-                    <img src="assets/img/Bag3.svg" />
-                    <img src="assets/img/Profile-Circle.svg" />
-                </div>
+                <footer></footer>
             </div>
         </section>
     </div>
+    <script src="/assets/js/loader.js"></script>
 </body>
 
 </html>

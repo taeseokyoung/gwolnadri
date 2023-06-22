@@ -1,3 +1,17 @@
+// 스크롤 시 네비바 색상 변경
+const scroll_body = document.querySelector("#Gwolnadri-body");
+
+document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
+    let y = scroll_body.scrollTop
+
+    if (y > 5) {
+        document.querySelector('.header').classList.add('on')
+    }
+    else if (y < 5) {
+        document.querySelector('.header').classList.remove('on')
+    }
+});
+
 const kchf = "https://www.chf.or.kr"
 
 window.onload = async function loadEvents() {
@@ -97,7 +111,4 @@ window.onload = async function loadEvents() {
         }
 
     })
-
-
-
 }

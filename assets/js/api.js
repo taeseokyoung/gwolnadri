@@ -13,6 +13,10 @@ function checkLogin() {
     }
 }
 
+// 뒤로가기
+function goBack() {
+    window.history.back();
+}
 
 //쿠키 저장
 // expiredays 는 일자 정수 - 365년 1년 쿠키

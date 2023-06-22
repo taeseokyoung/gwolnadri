@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/signup.js"></script>
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/signup.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/signup.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
 
@@ -22,7 +20,7 @@
                 </div>
                 <div class="sub-banner-1">
                     <a href="https://www.royalpalace.go.kr/">
-                        <img src="assets/img/gb_logo.png" alt="">
+                        <img src="/assets/img/gb_logo.png" alt="">
                         <p>바로가기 ></p>
                     </a>
                 </div>
@@ -31,12 +29,11 @@
                 <header class="left-arrow-header">
                     <nav class="nav flex">
                         <div class="nav-icon" onclick="goBack()">
-                            <img src="assets/img/left.svg" />
-                            <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
+                            <img src="/assets/img/left.svg" />
                         </div>
                     </nav>
                 </header>
-                <div class="signup-wrap">
+                <div class="signup-wrap mb120px">
                     <h2>회원가입</h2>
                     <div class="login-page">
                         <form action="">
@@ -52,7 +49,8 @@
                                 </div>
                                 <div class="input-box">
                                     <label for="password2">패스워드 확인</label>
-                                   <input type="password" id="password2" name="password2" placeholder="패스워드를 다시 입력하세요.">
+                                    <input type="password" id="password2" name="password2"
+                                        placeholder="패스워드를 다시 입력하세요.">
                                 </div>
                                 <div class="input-box">
                                     <label for="username">유저네임</label>
@@ -66,23 +64,15 @@
                             <button onclick="handleSignup()" class="login-form-btn" type="button">회원가입</button>
                         </form>
                     </div>
-                    <ul class="login-option flex">
-                        <li><a href="">아이디 찾기</a></li>
-                        <li><a href="">비밀번호 찾기</a></li>
-                        <li><a href="http://127.0.0.1:5500/login.html">로그인</a></li>
-                    </ul>
                 </div>
-                <footer>
-
-                </footer>
+                <footer></footer>
             </div>
+        </section>
     </div>
 
-    </section>
-    </div>
-
-
-
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/signup.js"></script>
 </body>
 
 </html>

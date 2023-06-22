@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/profile-storeReservation.js"></script>
-    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="assets/css/profile-bookmark.css">
-    <link rel="stylesheet" href="assets/css/profile-reservation.css">
+    <link rel="stylesheet" href="/assets/css/profile-bookmark.css">
+    <link rel="stylesheet" href="/assets/css/profile-reservation.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
 
@@ -24,7 +22,7 @@
                 </div>
                 <div class="sub-banner-1">
                     <a href="https://www.royalpalace.go.kr/">
-                        <img src="assets/img/gb_logo.png" alt="">
+                        <img src="/assets/img/gb_logo.png" alt="">
                         <p>바로가기 ></p>
                     </a>
                 </div>
@@ -33,12 +31,12 @@
                 <header class="left-arrow-header">
                     <nav class="nav flex">
                         <div class="nav-icon" onclick="goBack()">
-                            <img src="assets/img/left.svg" />
+                            <img src="/assets/img/left.svg" />
                             <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
                         </div>
                     </nav>
                 </header>
-                <div class="profile-wrap">
+                <div class="profile-wrap mb120px">
                     <h2>한복 예약 내역</h2>
                     <div id="card_list" class="contant-page">
                         <div class="store-sub-card">
@@ -47,7 +45,8 @@
                             <div class="store-txt">
                                 <!-- <a class="hanbok-category">전통한복</a> -->
                                 <p class="hanbok_address">
-                                    <span class="sh-subTitle">예약일</span>23.06.20</p>
+                                    <span class="sh-subTitle">예약일</span>23.06.20
+                                </p>
                                 <span class="sh-event-date time">10:00</span>
                                 <h3 class="hanbok-title">냠냠한복 1벌</h3>
                             </div>
@@ -57,26 +56,18 @@
                             <button class="sh-right2">상세보기<i class="xi-angle-right-min"></i></button>
                             <div class="store-txt">
                                 <!-- <a class="hanbok-category">전통한복</a> -->
-                                <p class="hanbok_address"><span class="sh-subTitle">예약일</span>   23.06.20</p>
+                                <p class="hanbok_address"><span class="sh-subTitle">예약일</span> 23.06.20</p>
                                 <span class="sh-event-date time">10:00</span>
                                 <h3 class="hanbok-title">냠냠한복 1벌</h3>
                             </div>
                         </div>
                     </div>
-                    <footer>
-
-                    </footer>
                 </div>
-                <div class="foot-icon">
-                    <div class="flex">
-                        <img src="assets/img/Category.svg" />
-                        <img src="assets/img/Ticket1.svg" />
-                        <img src="assets/img/Bag3.svg" />
-                        <img src="assets/img/Profile-Circle.svg" />
-                    </div>
-                </div>
+                <footer></footer>
+            </div>
         </section>
     </div>
+    <script src="/assets/js/loader.js"></script>
 </body>
 
 </html>

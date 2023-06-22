@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/complete.js"></script>
-    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="assets/css/profile.css">
-    <link rel="stylesheet" href="assets/css/complete.css">
+    <link rel="stylesheet" href="/assets/css/profile.css">
+    <link rel="stylesheet" href="/assets/css/complete.css">
     <title>궐나드리 : 결제완료</title>
 </head>
 
 <body>
     <div class="Wrapper">
-        <section class="Gwolnadri">
+        <section class="Gwolnadri mb120px">
             <div class="Gwolnadri-intro">
                 <div class="main-banner">
                     <p class="sub-title">가장 편리한 궁궐 관람 서비스</p>
@@ -24,13 +22,21 @@
                 </div>
                 <div class="sub-banner-1">
                     <a href="https://www.royalpalace.go.kr/">
-                        <img src="assets/img/gb_logo.png" alt="">
+                        <img src="/assets/img/gb_logo.png" alt="">
                         <p>바로가기 ></p>
                     </a>
                 </div>
             </div>
             <div class="Gwolnadri-body">
-                <div class="profile-wrap">
+                <header class="left-arrow-header">
+                    <nav class="nav flex">
+                        <div class="nav-icon" onclick="goBack()">
+                            <img src="/assets/img/left.svg" />
+                            <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
+                        </div>
+                    </nav>
+                </header>
+                <div class="profile-wrap mb30px">
                     <div class="reservation-page">
                         <p class="txt sh-body">결제가 완료되었습니다</p>
                     </div>
@@ -39,21 +45,13 @@
                         <button onclick="MainRedirect()" class="login-form-btn sh-btn n" type="button">메인화면으로</button>
                     </ul>
                 </div>
-                <footer>
-
-                </footer>
-            </div>
-            <div class="foot-icon">
-                <div class="flex">
-                    <img src="assets/img/Category.svg" />
-                    <img src="assets/img/Ticket1.svg" />
-                    <img src="assets/img/Bag3.svg" />
-                    <img src="assets/img/Profile-Circle.svg" />
-                </div>
             </div>
         </section>
+        <footer></footer>
     </div>
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/complete.js"></script>
 </body>
 
 </html>
-                

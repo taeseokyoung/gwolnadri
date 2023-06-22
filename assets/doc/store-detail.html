@@ -27,15 +27,14 @@
                 </div>
             </div>
             <div class="Gwolnadri-body" id="Gwolnadri-body">
-                <div class="store-wrap">
-                    <header class="header">
+                <div class="store-wrap mb120px">
+                    <header class="header on">
                         <nav class="nav flex">
                             <div class="nav-logo">
                                 <h1>궐나드리</h1>
                             </div>
                             <div class="nav-icon">
                                 <img src="/assets/img/Search2.svg" />
-                                <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
                             </div>
                         </nav>
                     </header>
@@ -90,7 +89,8 @@
                                     <input type="file" id="image" class="sh_input_img" onchange="readURL(this);">
                                     <img id="preview" style="width:200px; height:200px; object-fit:cover;">
                                 </div>
-                                <button type="button" id="create-comment-btn" class="njs-button" onclick="submitComment()">작성완료</button>
+                                <button type="button" id="create-comment-btn" class="njs-button"
+                                    onclick="submitComment()">작성완료</button>
                             </form>
                         </div>
                         <div class="sub-content" id="content-list">
@@ -105,25 +105,16 @@
                                 </div> -->
                         </div>
                     </div>
-                    <footer>
-
-                    </footer>
                 </div>
-                <div class="foot-icon">
-                    <div class="flex">
-                        <img src="/assets/img/Category.svg" />
-                        <img src="/assets/img/Ticket1.svg" />
-                        <img src="/assets/img/Bag3.svg" />
-                        <img src="/assets/img/Profile-Circle.svg" />
-                    </div>
-                </div>
+                <footer></footer>
             </div>
         </section>
     </div>
 
     <script src="/assets/js/api.js"></script>
-    <script src="/assets/js/common-nonnav.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1312e624bbfd4dd22fdfd0e7e00aced"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1312e624bbfd4dd22fdfd0e7e00aced"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="/assets/js/store-detail.js"></script>
 </body>

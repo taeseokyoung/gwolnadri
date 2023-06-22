@@ -1,3 +1,17 @@
+// 스크롤 시 네비바 색상 변경
+const scroll_body = document.querySelector("#Gwolnadri-body");
+
+document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
+  let y = scroll_body.scrollTop
+
+  if (y > 5) {
+    document.querySelector('.header').classList.add('on')
+  }
+  else if (y < 5) {
+    document.querySelector('.header').classList.remove('on')
+  }
+});
+
 window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
