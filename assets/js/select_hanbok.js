@@ -24,7 +24,7 @@ async function handleSelectHanbok(hanbok_id) {
     middle = time.split(':')
     middle1 = middle[0].split('')
     
-    const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/1`, {
+    const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/${hanbok_id}`, {
     })
     
     if (response.status == 200) {

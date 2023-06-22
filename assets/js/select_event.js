@@ -2,7 +2,7 @@ window.onload = async function SelectTicket(event_id) {
     let urlParams = new URLSearchParams(window.location.search);
     event_id = urlParams.get('event_id');
 
-    const eventData = await fetch(`${backend_base_url}/events/1/`, {
+    const eventData = await fetch(`${backend_base_url}/events/${event_id}`, {
     })
     if (eventData.status == 200) {
         const eventData_json = await eventData.json()
@@ -44,7 +44,7 @@ async function SelectDate(){
 
     const v_date = document.getElementById('rsrvt_date').value;
 
-    const eventTime = await fetch(`${backend_base_url}/events/1/${v_date}/ticket/`, {
+    const eventTime = await fetch(`${backend_base_url}/events/${event_id}/${v_date}/ticket/`, {
         headers: {
             "Authorization": `Bearer ${token}`
         }
@@ -104,7 +104,7 @@ async function SelectTime(){
         alert("다시 선택해주세요")
 
     } else {
-        const eventBooking = await fetch(`${backend_base_url}/events/1/${v_date}/${s_time}/ticket/`, {
+        const eventBooking = await fetch(`${backend_base_url}/events/${event_id}/${v_date}/${s_time}/ticket/`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -143,8 +143,6 @@ async function SelectTime(){
 
 
 async function handleSelectEvent(ticket_id) {
-    let urlParams = new URLSearchParams(window.location.search);
-    event_id = urlParams.get('event_id');
 
     const quantity = document.getElementById('quantity').value;
     const int_quantity = Number(quantity)
@@ -154,7 +152,7 @@ async function handleSelectEvent(ticket_id) {
         location.reload()
 
     } else {
-        const eventticket = await fetch(`${backend_base_url}/events/2/ticket/`, {
+        const eventticket = await fetch(`${backend_base_url}/events/${ticket_id}/ticket/`, {
         })
         if (eventticket.status == 200) {
             const eventticket_json = await eventticket.json()
@@ -190,7 +188,7 @@ async function handleSelectEvent(ticket_id) {
                 console.log(`${ticket_id}`)
 
                 // 행사 정보 조회
-                const response = await fetch(`${backend_base_url}/events/1/`, {
+                const response = await fetch(`${backend_base_url}/events/${event_id}/`, {
                 })
                 
                 if (response.status == 200) {
