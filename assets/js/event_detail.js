@@ -38,9 +38,8 @@ async function EventDetail() {
   const bookmarkElement = document.createElement('div');
   const bookmarkIconElement1 = document.createElement('img');
 
-  eventImgElement.id = 'event_img';
-  eventImgElement.className = 'image';
-  eventImgElement.src = "assets/img/image-2.jpg";
+  eventImgElement.className = 'event_img';
+  eventImgElement.src = "/assets/img/image-2.jpg";
   eventImgElement.alt = '';
 
   categoryElement.className = 'category';
