@@ -1,5 +1,5 @@
-window.onload = async function EventDetail() {
-    const response = await fetch(`http://127.0.0.1:8000/events/`, { method: 'GET' });
+window.onload = async function EventList() {
+    const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
     const response_json = await response.json();
     console.log(response_json);
 
@@ -14,8 +14,8 @@ window.onload = async function EventDetail() {
       const get_event_start_date = element.event_start_date;
       const get_event_end_date = element.event_end_date;
       const get_like_count = element.likes_count;
-      const get_review_count = element.review_count;
-      console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_review_count);
+      const get_bookmarker = element.event_bookmarks;
+      console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
   
       const eventCard = document.createElement('div');
       eventCard.classList.add('sub-card');
@@ -60,9 +60,9 @@ window.onload = async function EventDetail() {
       likeCount.id = 'like_count';
       likeCount.innerText = String(get_like_count);
   
-      const reviewIcon = document.createElement('div');
-      reviewIcon.id = 'review_icon';
-      reviewIcon.classList.add('bookmark');
+      const bookmarkIcon = document.createElement('div');
+      bookmarkIcon.id = 'bookmark_icon';
+      bookmarkIcon.classList.add('bookmark');
   
       const reviewIconImage = document.createElement('img');
       reviewIconImage.src = '/assets/img/Bookmark-outline.svg';
@@ -73,10 +73,10 @@ window.onload = async function EventDetail() {
       likeIcon.appendChild(likeIconImage);
       likeIcon.appendChild(likeCount);
   
-      reviewIcon.appendChild(reviewIconImage);
+      bookmarkIcon.appendChild(reviewIconImage);
   
       cardIcon.appendChild(likeIcon);
-      cardIcon.appendChild(reviewIcon);
+      cardIcon.appendChild(bookmarkIcon);
   
       eventCardTxt.appendChild(eventCategory);
       eventCardTxt.appendChild(eventTitle);
@@ -86,7 +86,39 @@ window.onload = async function EventDetail() {
       eventCard.appendChild(eventImage);
       eventCard.appendChild(reservationTag);
       eventCard.appendChild(eventCardTxt);
-  
-      eventListContainer.appendChild(eventCard);
+
+      eventImage.addEventListener('click', function() {
+        const event_id = parseInt(element.id, 10);
+        window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+      });
+    
+
+      bookmarkIcon.addEventListener('click', async () => {
+        const event_id = parseInt(element.id, 10);
+        const token = localStorage.getItem("access");
+      
+        console.log(event_id);
+        if (payload){
+          try {
+            const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
+              method: 'POST',
+              headers: {
+                "Authorization": `Bearer ${token}`
+              }
+            });
+        
+            const bookmarkData = await bookmarkResponse.json();
+            alert(bookmarkData.message);
+          } catch (error) {
+            console.error('Error bookmarking event:', error);
+          }
+        } else {
+          alert("로그인이 필요합니다")
+        }
+        });
+
+    eventListContainer.appendChild(eventCard);
+      
     });
+
   }
