@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="/assets/css/profile-edit.css">
+    <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
+</head>
+
+<body>
+    <div class="Wrapper">
+        <section class="Gwolnadri">
+            <div class="Gwolnadri-intro">
+                <div class="main-banner">
+                    <p class="sub-title">가장 편리한 궁궐 관람 서비스</p>
+                    <h2>궐나드리</h2>
+                    <p class="main-content">궁궐 관람 예약 및 큐레이션, 한복 대여 서비스까지!</p>
+                </div>
+                <div class="sub-banner-1">
+                    <a href="https://www.royalpalace.go.kr/">
+                        <img src="/assets/img/gb_logo.png" alt="">
+                        <p>바로가기 ></p>
+                    </a>
+                </div>
+            </div>
+            <div class="Gwolnadri-body">
+                <header class="left-arrow-header">
+                    <nav class="nav flex">
+                        <div class="nav-icon" onclick="goBack()">
+                            <img src="/assets/img/left.svg" />
+                        </div>
+                    </nav>
+                </header>
+
+                <div class="profile-wrap mb120px">
+                    <h2>내 정보 수정</h2>
+                    <div class="profile-page">
+                        <form>
+                            <div id="profile-image" class="form-image">
+                                <img id="profile_preview" src="" alt="프로필 이미지 미리보기">
+                                <div class="button-container">
+                                    <button type="button" class="edit-button" onclick="toggleFileInput()">프로필사진</button>
+                                    <input type="file" id="profile_image" name="profile-image" style="display: none;"
+                                        onchange="previewImage()">
+                                </div>
+                                <button type="button" class="edit-button" onclick="deleteProfileImage()">사진삭제</button>
+                            </div>
+                            <div class="form-input">
+                                <div class="input-box">
+                                    <label for="email">이메일</label>
+                                    <input type="text" id="email" name="email" placeholder="" disabled>
+                                </div>
+                                <div class="input-box">
+                                    <label for="username">변경할 유저네임</label>
+                                    <input type="text" id="username" name="username" placeholder="">
+                                </div>
+                                <!-- <div class="input-box">
+                                    <label for="password">변경할 패스워드</label>
+                                    <input type="text" id="password" name="password" placeholder="패스워드를 입력하세요.">
+                                </div>
+                                <div class="input-box">
+                                    <label for="password2">변경할 패스워드 확인</label>
+                                    <input type="text" id="password2" name="password2" placeholder="패스워드를 다시 입력하세요.">
+                                </div> -->
+                            </div>
+                            <button class="update-button" onclick="updateProfile()" type="button">수정하기</button>
+                            <div class=" withdrawal-button">
+                                <button id="withdrawal-btn" class="edit-button" onclick="UserDelete()">탈퇴</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <footer></footer>
+            </div>
+        </section>
+    </div>
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/profile-edit.js"></script>
+</body>
+
+</html>
