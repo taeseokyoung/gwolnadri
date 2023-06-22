@@ -35,7 +35,7 @@ window.onload = async function EventList() {
     eventCard.classList.add('sub-card');
 
     const eventImage = document.createElement('img');
-    eventImage.src = 'assets/img/image-2.jpg';
+    eventImage.src = '/assets/img/image-2.jpg';
     eventImage.alt = '';
 
     const reservationTag = document.createElement('p');

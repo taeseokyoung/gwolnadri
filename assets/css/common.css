@@ -235,6 +235,10 @@ header.left-arrow-header img {
     margin: 25px 60px;
 }
 
+.foot-icon img {
+    cursor: pointer;
+}
+
 /* ------ 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 ------ */
 
 .mb120px {
