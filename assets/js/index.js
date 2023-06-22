@@ -21,7 +21,6 @@ window.onload = async function loadEvents() {
             sub_card_txt.setAttribute("class", "sub-card-txt")
             sub_card.append(sub_card_txt)
 
-
             const category = document.createElement("a")
             category.setAttribute("class", "category")
             category.innerText = "전시/행사"
@@ -64,7 +63,6 @@ window.onload = async function loadEvents() {
 
     })
 
-
     const content_scrap_page = document.querySelector(".contant-page.scrap")
 
     scrap_event.forEach(scrap => {
@@ -103,24 +101,3 @@ window.onload = async function loadEvents() {
 
 
 }
-
-
-
-
-
-/* <div class="sub-card">
-    <img src="assets/img/image-2.jpg" alt="">
-    <div class="sub-card-txt">
-        <a class="category">전시/행사</a>
-        <h3 class="title">경복궁 야간관람</h3>
-        <p class="event-date">23.05.10 - 23.06.10</p>
-        <div class="card-icon">
-            <div class="heart">
-                <img src="/assets/img/Heart-outline.svg" alt=""><span>1</span>
-            </div>
-            <div class="bookmark">
-                <img src="/assets/img/Bookmark-outline.svg" alt=""><span>1</span>
-            </div>
-        </div>
-    </div>
-</div> */
