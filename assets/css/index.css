@@ -83,6 +83,7 @@
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
+    filter:brightness(0.5)
 }
 
 .sub-card .sub-card-txt {
@@ -109,6 +110,7 @@
 .sub-card-txt .title {
     font-size: 25px;
     font-weight: 500;
+    line-height: 1.25;
     margin-bottom: 10px;
 }
 
@@ -133,4 +135,11 @@
 
 .sub-card-txt .card-icon span {
    font-size: 11px;
+}
+
+.contant-page h2 {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 60px 2px 25px 35px;
+    font-family: 'Noto Sans KR', sans-serif;
 }

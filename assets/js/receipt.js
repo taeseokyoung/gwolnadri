@@ -1,16 +1,16 @@
 
 
 window.onload = async function Receipt() {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // tid = urlParams.get('tid');
+    const urlParams = new URLSearchParams(window.location.search);
+    tid = urlParams.get('tid');
 
-    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/T48bf67e62ea0bae8e4f`,{
+    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`,{
     })
     if (response.status == 200) {
         const response_json = await response.json()
         console.log(response_json)
 
-        const get_tid = response_json.tid
+        const get_aid = response_json.aid
         const get_approved = response_json.approved_at
         const get_item = response_json.item_name
         const get_order_id = response_json.partner_order_id
@@ -25,7 +25,7 @@ window.onload = async function Receipt() {
         const time_approved = get_approved.split('T')[1].split('+')[0]
         const last_approved = date_approved + " " + time_approved
 
-        const tid = document.getElementById('tid');
+        const aid = document.getElementById('aid');
         const order = document.getElementById('order');
         const partner = document.getElementById('partner');
         const approved = document.getElementById('approved');
@@ -35,7 +35,7 @@ window.onload = async function Receipt() {
         const vat = document.getElementById('vat');
         const total = document.getElementById('total');
 
-        tid.innerText = get_tid
+        aid.innerText = get_aid
         order.innerText = str_order_id
         partner.innerText = get_partner_user
         approved.innerText = last_approved

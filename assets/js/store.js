@@ -85,7 +85,7 @@ window.onload = async function loadStoreList() {
         }
         
 
-        console.log("여기 : ", store.id)
+        // console.log("여기 : ", store.id)
         newStore.innerText=store.store_name
         newAdd.innerText=store.store_address
         newHeartNum.innerText=store.total_likes

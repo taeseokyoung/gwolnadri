@@ -26,10 +26,34 @@ function setCookie(key, value, expiredays) {
 //쿠키 조회
 function getCookie(name) {
     var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return value? value[2] : null;
+    return value ? value[2] : null;
 }
 
 //쿠키 삭제
 function deleteCookie(name) {
     document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
+}
+
+// 크롤링 이벤트 리스트
+async function eventScrapList() {
+    const response = await fetch(`${backend_base_url}/events/list/`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        console.log(response_json)
+        return response_json
+    } else {
+        alert("요청이 실패했습니다!")
+    }
+}
+
+// 이벤트 리스트
+async function eventList() {
+    const response = await fetch(`${backend_base_url}/events/`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        console.log(response_json)
+        return response_json
+    } else {
+        alert("요청이 실패했습니다!")
+    }
 }

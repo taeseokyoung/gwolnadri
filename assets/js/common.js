@@ -21,6 +21,7 @@ function goBack() {
     window.history.back();
 }
 
+
 // 내 정보 수정 : 이미지 미리보기
 // document.querySelector('.profile-image-input').addEventListener('change', function () {
 //     readURL(this)

@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./assets/js/api.js"></script>
+        <script src="./assets/js/profile.js"></script>
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="assets/css/profile.css">
@@ -38,39 +40,39 @@
                 <div class="profile-wrap">
                     <h2>마이페이지</h2>
                     <div class="profile-page">
-                        <img class="profile-image" src="assets/img/no-prifile.png" alt="">
-                        <a class="name">
-                            <p>떠경이</p>
+                        <img id = profile_image class="profile-image" src="" alt="">
+                        <a id=username class="name">
+                            <p></p>
                             <i class="xi-angle-right-min"></i>
                         </a>
 
-                        <p class="email">test@gmail.com</p>
+                        <p id=email class="email">이메일</p>
                     </div>
                     <div class="reservation-page">
                         <p class="txt">총 0건의 예약이 있습니다.</p>
                     </div>
                     <ul class="reservation-view">
                         <li>
-                            <a href="">
+                            <a id=event_bookmark href="/profile-eventbookmark.html">
                                 <p>나의 관심 행사</p>
                                 <i class="xi-angle-right"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a id=store_bookmark href="/profile-storebookmark.html">
                                 <p>나의 관심 한복점</p>
-                                <i class="xi-angle-right"></i>
+                                <i  class="xi-angle-right"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a id=booked_event href="/profile-eventbookmark.html">
                                 <p>행사 예약 내역</p>
                                 <i class="xi-angle-right"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <p>한복점 예약 내역</p>
+                            <a id=booked_store href="/profile-storebookmark.html">
+                                <p>한복 예약 내역</p>
                                 <i class="xi-angle-right"></i>
                             </a>
                         </li>
