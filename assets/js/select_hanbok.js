@@ -1,11 +1,11 @@
 window.onload = () => {
     let now_utc = Date.now()
-    let timeOff = new Date().getTimezoneOffset()*60000;
-    let tomorrow = new Date(now_utc-timeOff+86400000).toISOString().split("T")[0];
+    let timeOff = new Date().getTimezoneOffset() * 60000;
+    let tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
 
     const date = document.getElementById('rsrvt_date');
 
-    date.setAttribute("min",`${tomorrow}`)
+    date.setAttribute("min", `${tomorrow}`)
 }
 
 
@@ -23,17 +23,17 @@ async function handleSelectHanbok(hanbok_id) {
     first1 = first[2].split('')
     middle = time.split(':')
     middle1 = middle[0].split('')
-    
-    const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/1`, {
+
+    const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/${hanbok_id}`, {
     })
-    
+
     if (response.status == 200) {
         const response_json = await response.json()
         console.log(response_json)
 
         const store_id = response_json.store
-        
-        order_id = first1[1]+middle1[1]+first1[0]+middle1[0]+middle[1]+first[0]+`${store_id}`
+
+        order_id = first1[1] + middle1[1] + first1[0] + middle1[0] + middle[1] + first[0] + `${store_id}`
         console.log(order_id)
 
         const item = response_json.hanbok_name
@@ -45,7 +45,7 @@ async function handleSelectHanbok(hanbok_id) {
         const total = price + vat
 
         const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/ready", {
-            headers:{
+            headers: {
                 "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
                 "Content-Type": "application/x-www-form-urlencoded"
             },
@@ -66,7 +66,7 @@ async function handleSelectHanbok(hanbok_id) {
         });
 
         console.log(kakao_pay)
-        
+
         if (kakao_pay.status == 200) {
             alert("결제요청 완료")
 
@@ -77,9 +77,9 @@ async function handleSelectHanbok(hanbok_id) {
             const created_at = kakao_json.created_at
             const next_url_m = kakao_json.next_redirect_mobile_url
             const next_url_p = kakao_json.next_redirect_pc_url
-            
+
             setCookie("tid", tid, 2);
-    
+
             const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${payload_parse.user_id}/`, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -88,7 +88,7 @@ async function handleSelectHanbok(hanbok_id) {
                 method: 'POST',
                 body: JSON.stringify({
                     "tid": tid,
-                    "type":"hanbok",
+                    "type": "hanbok",
                     "created_at": created_at,
                     "partner_order_id": order_id,
                     "partner_user_id": order_stf_id,
@@ -106,18 +106,18 @@ async function handleSelectHanbok(hanbok_id) {
                 alert("db 저장완료")
                 window.location.href = next_url_p
             } else {
-                alert("db 저장실패",send.status)
+                alert("db 저장실패", send.status)
                 // window.location.href = `${frontend_base_url}`
             }
 
         } else {
             console.log(kakao_pay.status)
-            alert("결제요청 실패",kakao_pay.status)
+            alert("결제요청 실패", kakao_pay.status)
         }
 
     } else {
         console.log(response_json)
-        alert(response.status,"잘못된 상품 정보입니다")
+        alert(response.status, "잘못된 상품 정보입니다")
         window.location.href = `${frontend_base_url}`
     }
 
