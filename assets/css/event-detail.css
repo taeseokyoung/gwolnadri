@@ -169,6 +169,8 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border: 1px solid rgb(51, 51, 51, 0.1);
+
 }
 
 .review .sub-content {
@@ -178,6 +180,7 @@
 }
 
 .review-card {
+    position: relative;
     display: flex;
     gap: 30px;
     padding: 15px;
@@ -186,6 +189,8 @@
 
 .review-txt {
     line-height: 1.45;
+    height: 200px;
+    border: 1px solid rgb(51, 51, 51, 0.1);
 }
 
 .comment_img {
@@ -193,3 +198,19 @@
     height: 200px;
 }
 
+.deletebtn {
+    line-height: 0.25;
+    width: 70px;
+    height: 30px;
+    padding: 0px;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 13px;
+    border: 1px solid rgb(51, 51, 51, 0.1);
+    transition: border 0.25s;
+}
+
+.deletebtn:hover {
+    border: 9px solid black;
+  }

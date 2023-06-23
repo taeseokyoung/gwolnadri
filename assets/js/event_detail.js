@@ -24,6 +24,7 @@ async function EventDetail() {
 
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
+  // console.log(response_json.likes)
 
   const mainPageElement = document.querySelector('.main-page');
   const eventImgElement = document.createElement('img');
@@ -56,6 +57,11 @@ async function EventDetail() {
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
+  if (response_json.likes.includes(payload_parse.user_id)) {
+    heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg")
+  } else {  
+    heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg")
+  }
   likeCountElement.id = 'like_count';
   likeCountElement.textContent = response_json.likes_count;
   heartElement.appendChild(heartIconElement);
@@ -66,6 +72,11 @@ async function EventDetail() {
   bookmarkIconElement1.id = 'bookmarkIcon';
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
+    if (response_json.event_bookmarks.includes(payload_parse.user_id)) {
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg")
+  } else {  
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+  }
   bookmarkElement.appendChild(bookmarkIconElement1);
 
   cardIconElement.className = 'card-icon';
@@ -140,6 +151,8 @@ async function EventDetail() {
     } else {
       alert("로그인이 필요합니다.");
     }
+    window.location.reload()
+
   });
 
 
@@ -165,6 +178,7 @@ async function EventDetail() {
       alert("로그인이 필요합니다")
     }
 
+    window.location.reload()
 
   });
 };
@@ -198,10 +212,16 @@ async function Eventreview() {
 
     const reviewButton = document.createElement('button');
     reviewButton.id = 'deletebtn'
+    reviewButton.className = 'deletebtn'
     reviewButton.setAttribute("onclick", `HandleCommentDelete(${get_review_id})`)
     reviewButton.textContent = "삭제하기"
-    reviewButton.style.backgroundColor = '#555'
-    reviewButton.style.w
+    // reviewButton.style.backgroundColor = '#555'
+    // reviewButton.style.margin = "93px";
+    // reviewButton.style.marginRight = "0px";
+    // reviewButton.style.padding = "5px";
+    // reviewButton.style.width = "80px";
+    // reviewButton.style.height = "1px";
+    // reviewButton.style.font-size = "10px";
 
 
 
