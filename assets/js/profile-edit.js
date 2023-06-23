@@ -29,7 +29,7 @@ async function currentProfile(user_id) {
     document.getElementById("profile_preview").src = imageUrl;
   } else {
     document.getElementById("profile_preview").src =
-      "/assets/img/no-prifile.png";
+      "/assets/img/no-profile.png";
   }
 }
 
@@ -59,7 +59,7 @@ function previewImage() {
 
 function deleteProfileImage() {
   document.getElementById("profile_image").value = "";
-  document.getElementById("profile_preview").src = "/assets/img/no-prifile.png";
+  document.getElementById("profile_preview").src = "/assets/img/no-profile.png";
 }
 
 async function updateProfile() {
@@ -88,7 +88,7 @@ async function updateProfile() {
 
   if (response.status == 200) {
     alert("수정 완료");
-    window.location.replace(`../profile.html`);
+    window.location.replace(`profile.html`);
   } else if (username == "") {
     alert("닉네임은 필수 입력값입니다.");
   } else {
