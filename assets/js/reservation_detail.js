@@ -72,7 +72,7 @@ window.onload = async function ReservationDetail() {
                 
                 const store_name = hanbok_json.Store.store_name
                 const store_address = hanbok_json.Store.store_address
-                const store_id = hanbok_json.Store.id
+                const store_id = hanbok_json.Store.store_id
                 
                 title.innerText = store_name
                 title.appendChild(i)
@@ -164,7 +164,7 @@ async function HanbokDelete(tid){
         window.location.href = `${frontend_base_url}/profile-storeReservation.html`
     } else {
         (response.status)
-        window.location.href = `http://127.0.0.1:5500/index.html`
+        window.location.href = `${frontend_base_url}`
     }
 }
 

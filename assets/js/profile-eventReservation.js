@@ -94,19 +94,19 @@ window.onload = async function EventReservation() {
                                     
                 } else {
                     alert(event.status)
-                    window.location.href = `http://127.0.0.1:5500/index.html`
+                    window.location.href = `${frontend_base_url}`
                 }
 
             } else {
                 alert(eventDetail.status)
-                window.location.href = `http://127.0.0.1:5500/index.html`
+                window.location.href = `${frontend_base_url}`
             }
             
         }
             
     } else {
         alert(response.status)
-        window.location.href = `http://127.0.0.1:5500/index.html`
+        window.location.href = `${frontend_base_url}`
     }
 
 }
