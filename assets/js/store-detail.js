@@ -39,6 +39,8 @@ window.onload = async function HanbokStoreDetail() {
         const newHeartImg = document.createElement("img")
         const newBookImg = document.createElement("img")
         const newHeartNum = document.createElement("span")
+        let likeOn
+        let bookOn
 
         store_name.innerText = get_name
         store_address.innerText = get_address
@@ -56,92 +58,33 @@ window.onload = async function HanbokStoreDetail() {
         store_likes.appendChild(newHeartNum)
         store_bookmarks.appendChild(newBookImg)
 
-        // console.log(payload_parse)
         //---로그인 사용자의 경우
         if (payload){
             const payload_parse = JSON.parse(payload)
-            //북마크 표시
+            
+            //좋아요 표시
             if (get_likes.includes(payload_parse.user_id)){
+                likeOn = 1
                 newHeartImg.setAttribute("src", "/assets/img/Heart-full.svg")
             } else {
+                likeOn = 0
                 newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             }
-            //하트 표시
+            //북마크 표시
             if (get_bookmarks.includes(payload_parse.user_id)){
+                bookOn = 1
                 newBookImg.setAttribute("src", "/assets/img/Bookmark-full.svg")
             } else {
+                bookOn = 0
                 newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
-
-            //후기 작성 
+            newHeartImg.setAttribute("onclick", `likeBtn(${likeOn})`)
+            newBookImg.setAttribute("onclick", `bookBtn(${bookOn})`)
             
-            // const commentList = document.getElementById("content-list")
-            // const reviewCard = document.createElement("div")
-            // const formCard = document.createElement("form")
-            // const newFormReview1 = document.createElement("div")
-            // const newFormReview2 = document.createElement("div")
-            // const newSelect = document.createElement("select")
-            // const newOption = document.createElement("option")
-            // const newOption1 = document.createElement("option")
-            // const newOption2 = document.createElement("option")
-            // const newOption3 = document.createElement("option")
-            // const newOption4 = document.createElement("option")
-            // const newOption5 = document.createElement("option")
-            // const newInputTxt = document.createElement("input")
-            // const newInputImg = document.createElement("input")
-            // const newPreImg = document.createElement("img")
             const newFormBtn = document.getElementById("create-comment-btn")
-
-            // reviewCard.setAttribute("class", "review-card")
-            // formCard.setAttribute("style", "width: 100%;")
-            // newFormReview1.setAttribute("class", "review-content")
-            // newFormReview2.setAttribute("class", "review-content")
-            // newSelect.setAttribute("id", "new-star")
-            // newOption.setAttribute("value", "")
-            // newOption1.setAttribute("value", "1")
-            // newOption2.setAttribute("value", "2")
-            // newOption3.setAttribute("value", "3")
-            // newOption4.setAttribute("value", "4")
-            // newOption5.setAttribute("value", "5")
-            // newInputTxt.setAttribute("type","text")
-            // newInputTxt.setAttribute("id","new-comment")
-            // newInputTxt.setAttribute("style","width:90%;")
-            // newInputImg.setAttribute("type", "file")
-            // newInputImg.setAttribute("id", "image")
-            // newInputImg.setAttribute("class", "sh_input_img")
-            // newInputImg.setAttribute("onchange", "readURL(this);")
-            // newPreImg.setAttribute("id", "preview")
-            // newPreImg.setAttribute("style", "width:200px; height:200px; object-fit:cover;")
-            // newFormBtn.setAttribute("type", "button")
-            // newFormBtn.setAttribute("class", "njs-button")
             newFormBtn.setAttribute("onclick", `submitComment(${hanbokstore_id})`)
-
-            // commentList.appendChild(reviewCard)
-            // reviewCard.appendChild(formCard)
-            // formCard.appendChild(newFormReview1)
-            // formCard.appendChild(newFormReview2)
-            // newFormReview1.appendChild(newSelect)
-            // newFormReview1.appendChild(newInputTxt)
-            // newSelect.appendChild(newOption)
-            // newSelect.appendChild(newOption1)
-            // newSelect.appendChild(newOption2)
-            // newSelect.appendChild(newOption3)
-            // newSelect.appendChild(newOption4)
-            // newSelect.appendChild(newOption5)
-            // newFormReview2.appendChild(newInputImg)
-            // newFormReview2.appendChild(newPreImg)
-            // formCard.appendChild(newFormBtn)
-            
-            // newOption.innerText = "별점선택"
-            // newOption1.innerText = "⭐️"
-            // newOption2.innerText = "⭐️⭐️"
-            // newOption3.innerText = "⭐️⭐️⭐️"
-            // newOption4.innerText = "⭐️⭐️⭐️⭐️"
-            // newOption5.innerText = "⭐️⭐️⭐️⭐️⭐️"
-            // newFormBtn.innerText = "작성완료"
-            
             } else {
-                //---ㅂㅣ로그인 사용자의 경우
+            //---ㅂㅣ로그인 사용자의 경우
                 newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
                 newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
                 document.getElementById("js_input").style.display = "none";
@@ -532,3 +475,66 @@ function readURLEdit(input) {
       document.getElementById('preview-edit').src = "";
     }
   }
+
+
+// 좋아요 버튼 클릭
+async function likeBtn(likeOn){
+    const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/like/`,{
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    } 
+    )
+    switch(response.status){
+        case 200 :
+            if(likeOn == 0){
+               alert("좋아요를 눌렀습니다!")
+            }
+            if(likeOn == 1){
+                alert("좋아요를 취소했습니다!") 
+             }
+            
+            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+            break
+        case 400 :
+            alert(response.status)
+            break
+        case 401 :
+            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            location.replace(`${frontend_base_url}/`)
+            break
+   
+        }
+}
+
+// 북마크 버튼 클릭
+async function bookBtn(bookOn){
+    const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/bookmark/`,{
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    } 
+    )
+    switch(response.status){
+        case 200 :
+            if(bookOn == 0){
+               alert("북마크했습니다!")
+            }
+            if(bookOn == 1){
+                alert("북마크를 취소했습니다!") 
+             }
+            
+            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+            break
+        case 400 :
+            alert(response.status)
+            break
+        case 401 :
+            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            location.replace(`${frontend_base_url}/`)
+            break
+   
+        }
+}
