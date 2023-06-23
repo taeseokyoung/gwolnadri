@@ -59,7 +59,7 @@ window.onload = async function loadStoreList() {
         newIcon.setAttribute("class", "card-icon")
         newHeart.setAttribute("class", "heart")
         newBook.setAttribute("class", "bookmark")
-        newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+        newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
         newHeartImg.setAttribute("alt", "")
         newBookImg.setAttribute("alt", "")
 
@@ -68,20 +68,20 @@ window.onload = async function loadStoreList() {
             const payload_parse = JSON.parse(payload)
             //하트 표시
             if (store.likes.includes(payload_parse.user_id)){
-                newHeartImg.setAttribute("src", "../assets/img/Heart-full.svg")
+                newHeartImg.setAttribute("src", "/assets/img/Heart-full.svg")
             } else {
-                newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+                newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             }
 
             //북마크 표시
             if (store.store_bookmarks.includes(payload_parse.user_id)){
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-full.svg")
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-full.svg")
             } else {
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
         } else {
-            newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
-            newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+            newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
+            newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
         }
         
 

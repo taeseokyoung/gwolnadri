@@ -62,15 +62,15 @@ window.onload = async function HanbokStoreDetail() {
             const payload_parse = JSON.parse(payload)
             //북마크 표시
             if (get_likes.includes(payload_parse.user_id)){
-                newHeartImg.setAttribute("src", "../assets/img/Heart-full.svg")
+                newHeartImg.setAttribute("src", "/assets/img/Heart-full.svg")
             } else {
-                newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+                newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             }
             //하트 표시
             if (get_bookmarks.includes(payload_parse.user_id)){
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-full.svg")
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-full.svg")
             } else {
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
 
             //후기 작성 
@@ -142,8 +142,8 @@ window.onload = async function HanbokStoreDetail() {
             
             } else {
                 //---ㅂㅣ로그인 사용자의 경우
-                newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+                newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
                 document.getElementById("js_input").style.display = "none";
             }
 
@@ -450,21 +450,11 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt){
     const content = document.getElementById("new-comment-edit")
     const review_image = document.getElementById("image-edit")
     
-
-    // content.innerText = prevTxt
-    console.log(content)
-
-    // newStar.setAttribute.selectedIndex(`${comments_id.grade}`)
     const formdata = new FormData()
 
     formdata.append("grade", grade.value)
     formdata.append("content", content.value)
     formdata.append("review_image", review_image.files[0])
-
-    
-
-    
-    
 
     if (token){
         const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments_id}/`,{
