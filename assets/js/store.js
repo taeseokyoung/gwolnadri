@@ -20,7 +20,7 @@ window.onload = async function loadStoreList() {
     stores = await store()
     stores["StoreList"].forEach(store => {
         
-        const newCon = document.createElement("div")
+        const newCon = document.createElement("a")
         const newTitle = document.createElement("div")
         const newCate = document.createElement("p")
         const newStore = document.createElement("p")
@@ -31,15 +31,19 @@ window.onload = async function loadStoreList() {
         const newHeartImg = document.createElement("img")
         const newBookImg = document.createElement("img")
         const newHeartNum = document.createElement("span")
+        const titleBlock = document.createElement("div")
+        const newBlock = document.createElement("div")
         let likeOn
         let bookOn
         
         storeCard.appendChild(newCon)
-
+        
         newCon.appendChild(newTitle)
         newTitle.appendChild(newCate)
-        newTitle.appendChild(newStore)
-        newCon.appendChild(newAdd)
+        newTitle.appendChild(titleBlock)
+        titleBlock.appendChild(newStore)
+        titleBlock.appendChild(newBlock)
+        newTitle.appendChild(newAdd)
 
         newCon.append(newIcon)
         newIcon.appendChild(newHeart)
@@ -51,10 +55,10 @@ window.onload = async function loadStoreList() {
         
         newCon.setAttribute("class", "contant-card")
         newTitle.setAttribute("class", "store-title")
-        
+        titleBlock.setAttribute("style","display: flex;")
         newCate.setAttribute("class", "hanbok_category")
         newStore.setAttribute("class", "hanbok_store")
-        newStore.setAttribute("onClick", "storeLink("+store.id+")")
+        newCon.setAttribute("onClick", "storeLink("+store.id+")")
         newAdd.setAttribute("class", "hanbok_address")
         newIcon.setAttribute("class", "card-icon")
         newHeart.setAttribute("class", "heart")
