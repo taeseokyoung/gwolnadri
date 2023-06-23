@@ -130,8 +130,6 @@ window.onload = async function loadStoreList() {
 //         // 마커를 클릭해도 상점 디테일 페이지로 이동
         
 //         console.log(marker[0]); 
-       
-            
 //         // storeLink(storeId[i].id)
 //   });
     
@@ -173,15 +171,15 @@ async function bookBtn(store_id, bookOn){
             if(bookOn == 1){
                 alert("북마크를 취소했습니다!") 
              }
-            
             location.replace(`${frontend_base_url}/store.html`)
             break
         case 400 :
-            alert(response.status)
+            alert("잘못된 요청입니다.")
+            location.replace(`${frontend_base_url}/store.html`)
             break
         case 401 :
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/`)
+            location.replace(`${frontend_base_url}/login.html`)
             break
    
         }
@@ -208,11 +206,12 @@ async function likeBtn(store_id, likeOn){
             location.replace(`${frontend_base_url}/store.html`)
             break
         case 400 :
-            alert(response.status)
+            alert("잘못된 요청입니다.")
+            location.replace(`${frontend_base_url}/store.html`)
             break
         case 401 :
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/`)
+            location.replace(`${frontend_base_url}/login.html`)
             break
    
         }

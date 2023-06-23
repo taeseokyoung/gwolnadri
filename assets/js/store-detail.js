@@ -26,7 +26,6 @@ window.onload = async function HanbokStoreDetail() {
         const get_total_likes = response_json.Store.total_likes
         const get_bookmarks = response_json.Store.store_bookmarks
         const get_avgstar = response_json.Store.avg_stars.avg_stars
-        // console.log(get_avgstar)
 
         const comments = response_json.Comment
         const store_name = document.getElementById('store_name');
@@ -92,10 +91,8 @@ window.onload = async function HanbokStoreDetail() {
 
 
         const hanbok = document.getElementById("hanbok_list");
-        // console.log(response_json.HanbokList)
-        response_json.HanbokList.forEach(hanboks => {
-            // console.log(hanboks)
 
+        response_json.HanbokList.forEach(hanboks => {
             const div = document.createElement("div")
             div.setAttribute("class", "sub-card swiper-slide")
 
@@ -126,7 +123,7 @@ window.onload = async function HanbokStoreDetail() {
             hanbok.insertBefore(div, hanbok.firstChild);
         })
 
-        KakaoMap(get_x,get_y,store_name.innerText)
+        KakaoMap(get_x,get_y,get_name)
 
         //후기 생성
         const comment = document.getElementById('content-list');
@@ -172,7 +169,6 @@ window.onload = async function HanbokStoreDetail() {
             newContent.innerText = comments.content
             review_button.setAttribute("class","review-button")
             
-            // comment.appendChild(newCard)
             comment.insertBefore(newCard, comment.firstChild);
             newCard.appendChild(newImage)
             newCard.appendChild(review_button)
@@ -186,7 +182,6 @@ window.onload = async function HanbokStoreDetail() {
             //로그인사용자와 후기 작성자가 같으면 수정버튼 활성화
             if (payload){
                 if (comments.user == payload_parse.user_id){
-                    
                     const newBtnCase = document.createElement("div")
                     const newEditBtn = document.createElement("button")
                     const newDelBtn = document.createElement("button")
@@ -205,14 +200,13 @@ window.onload = async function HanbokStoreDetail() {
                     review_button.appendChild(newBtnCase)
                     newBtnCase.appendChild(newEditBtn)
                     newBtnCase.appendChild(newDelBtn)
-
-
-                    } else {
-
                     }}
             })
             
 
+    } else if(response.status==404) {
+        alert("존재하지 않는 페이지 입니다.")
+        window.location.href = `${index_url}`
     } else {
         alert(response.status)
     }
@@ -233,8 +227,8 @@ async function KakaoMap(lng,lat,name){
     var map = new kakao.maps.Map(mapContainer, mapOptions);
     var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
     var imageSize = new kakao.maps.Size(24, 35);  
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-        var marker = new kakao.maps.Marker({
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    var marker = new kakao.maps.Marker({
             map: map,
             position: Position,
             title : name,
@@ -276,13 +270,13 @@ async function submitComment(hanbokstore_id){
                 break
             case 401 :
                 alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-                location.replace(`${frontend_base_url}/`)
+                location.replace(`${index_url}`)
                 break
        
     }
     } else {
         alert("로그인이 필요합니다")
-        location.replace(`${frontend_base_url}/`)
+        location.replace(`${index_url}`)
     }
     
 }
@@ -418,13 +412,13 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt){
                 break
             case 401 :
                 alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-                location.replace(`${frontend_base_url}`)
+                location.replace(`${index_url}`)
                 break
        
     }
     } else {
         alert("로그인이 필요합니다")
-        location.replace(`${frontend_base_url}`)
+        location.replace(`127.0.0.1:5500/index.html`)
     }
 }
 
@@ -444,7 +438,7 @@ async function DeleteComment(hanbokstore_id,comments_id){
             break
         case 401 :
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/`)
+            location.replace(`${index_url}`)
             break
 }  
 }
@@ -502,7 +496,7 @@ async function likeBtn(likeOn){
             break
         case 401 :
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/`)
+            location.replace(`${index_url}`)
             break
    
         }
@@ -533,7 +527,7 @@ async function bookBtn(bookOn){
             break
         case 401 :
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/`)
+            location.replace(`${index_url}`)
             break
    
         }
