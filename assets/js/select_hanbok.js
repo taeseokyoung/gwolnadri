@@ -107,7 +107,7 @@ async function handleSelectHanbok(hanbok_id) {
                 window.location.href = next_url_p
             } else {
                 alert("db 저장실패", send.status)
-                // window.location.href = `${frontend_base_url}`
+                // window.location.href = `http://127.0.0.1:5500/index.html`
             }
 
         } else {
@@ -118,7 +118,7 @@ async function handleSelectHanbok(hanbok_id) {
     } else {
         console.log(response_json)
         alert(response.status, "잘못된 상품 정보입니다")
-        window.location.href = `${frontend_base_url}`
+        window.location.href = `http://127.0.0.1:5500/index.html`
     }
 
 }
