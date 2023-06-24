@@ -29,7 +29,7 @@ async function currentProfile(user_id) {
     document.getElementById("profile_preview").src = imageUrl;
   } else {
     document.getElementById("profile_preview").src =
-      "/assets/img/no-prifile.png";
+      "/assets/img/no-profile.png";
   }
 }
 
@@ -59,7 +59,7 @@ function previewImage() {
 
 function deleteProfileImage() {
   document.getElementById("profile_image").value = "";
-  document.getElementById("profile_preview").src = "/assets/img/no-prifile.png";
+  document.getElementById("profile_preview").src = "/assets/img/no-profile.png";
 }
 
 async function updateProfile() {
@@ -68,15 +68,15 @@ async function updateProfile() {
   const fileInput = document.getElementById("profile_image").files[0];
   // const file = fileInput.files[0];
   const formData = new FormData();
-  
+
   formData.append("email", email);
   formData.append("username", username);
-  
-  
+
+
   if (fileInput) {
     formData.append("profile_image", fileInput);
   }
-  
+
   console.log(formData)
   const response = await fetch(`${backend_base_url}/users/me/modify/`, {
     headers: {
@@ -88,7 +88,7 @@ async function updateProfile() {
 
   if (response.status == 200) {
     alert("수정 완료");
-    window.location.replace(`../profile.html`);
+    location.replace(`${frontend_base_url}/profile.html`);
   } else if (username == "") {
     alert("닉네임은 필수 입력값입니다.");
   } else {
@@ -107,8 +107,9 @@ async function UserDelete() {
     });
     if (response.status == 204) {
       alert("회원탈퇴가 완료되었습니다.");
-      window.location.replace(`/login.html`);
+      location.replace(`${frontend_base_url}/login.html`);
     } else {
       alert("권한이 없습니다.");
     }
-  }}
+  }
+}

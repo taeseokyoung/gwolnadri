@@ -37,6 +37,9 @@
     display: none;
 }
 
+.login-option>li a{
+    cursor: pointer
+}
 
 /* 로그인 버튼 */
 

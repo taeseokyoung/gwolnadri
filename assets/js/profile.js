@@ -21,11 +21,12 @@ async function myProfile(user_id) {
 
   var profileImageElement = document.getElementById("profile_image");
   if (profileImageURL !== null) {
-    profileImageElement.setAttribute("src", `${backend_base_url}${profileImageURL}`)
+    profileImageElement.setAttribute("src", `${backend_base_url}${profileImageURL}`);
   } else {
-    var defaultImageURL = "assets/img/no-prifile.png";
-    profileImageElement.setAttribute("src", defaultImageURL);}
-  
+    var defaultImageURL = "/assets/img/no-profile.png";
+    profileImageElement.setAttribute("src", defaultImageURL);
+  }
+
   var usernameElement = document
     .getElementById("username")
     .querySelector("p");
