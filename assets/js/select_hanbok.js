@@ -29,12 +29,10 @@ async function handleSelectHanbok(hanbok_id) {
 
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
 
         const store_id = response_json.store
 
         order_id = first1[1] + middle1[1] + first1[0] + middle1[0] + middle[1] + first[0] + `${store_id}`
-        console.log(order_id)
 
         const item = response_json.hanbok_name
         const order_stf_id = response_json.owner
@@ -65,14 +63,10 @@ async function handleSelectHanbok(hanbok_id) {
             })
         });
 
-        console.log(kakao_pay)
-
         if (kakao_pay.status == 200) {
             alert("결제요청 완료")
 
             const kakao_json = await kakao_pay.json()
-            console.log(kakao_json)
-
             const tid = kakao_json.tid
             const created_at = kakao_json.created_at
             const next_url_m = kakao_json.next_redirect_mobile_url
@@ -100,25 +94,22 @@ async function handleSelectHanbok(hanbok_id) {
                     "rsrvt_time": time
                 })
             })
-            console.log(send)
 
             if (send.status == 200) {
                 alert("db 저장완료")
                 window.location.href = next_url_p
             } else {
                 alert("db 저장실패", send.status)
-                // window.location.href = `${frontend_base_url}`
+                // window.location.href = `${index_url}`
             }
 
         } else {
-            console.log(kakao_pay.status)
             alert("결제요청 실패", kakao_pay.status)
         }
 
     } else {
-        console.log(response_json)
         alert(response.status, "잘못된 상품 정보입니다")
-        window.location.href = `${frontend_base_url}`
+        window.location.href = `${index_url}`
     }
 
 }

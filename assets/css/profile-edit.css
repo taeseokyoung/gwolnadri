@@ -32,18 +32,54 @@
 }
 
 .edit-button {
-
-    margin: 5px 5px 5px 5px;
     width: 100%;
-    border: 2px solid gray;
+    border: inherit;
     background: inherit;
     border-radius: 5px;
-    padding: 2px;
+    padding: 20px;
     font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #333;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+.edit-button2 {
+    width: 100%; 
+    background: inherit;
+    font-size: 16px;
     font-weight: 400;
     color: gray;
     background-color: rgba(0, 0, 0, 0);
     font-family: 'Noto Sans KR', sans-serif;
     cursor: pointer;
-    margin: 10px 5px 10px 5px;
+    display: grid;
+    justify-content: end;
 }
+
+.edit-button3 {
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    background: inherit;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-button4 {
+    width: 100%;
+    background: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    color: gray;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    display: grid;
+} 

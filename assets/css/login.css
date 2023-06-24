@@ -37,8 +37,9 @@
     display: none;
 }
 
-
-/* 로그인 버튼 */
+.login-option>li a{
+    cursor: pointer
+}
 
 .login-btn {
     gap: 30px;

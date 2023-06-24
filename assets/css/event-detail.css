@@ -1,8 +1,4 @@
-
-/* 메인 카드 (최상위에 있는 카드) */
-/* *{
-    outline: 1px solid red;
- } */
+/* 메인 카드 */
 
 .Gwolnadri-body .main-page {
     position: relative;
@@ -81,7 +77,7 @@
     line-height: 1.45;
 }
 
-/* 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
+/* 서브 카드 */
 
 .contant-page {
     z-index: -1;
@@ -169,6 +165,8 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border: 1px solid rgb(51, 51, 51, 0.1);
+
 }
 
 .review .sub-content {
@@ -178,6 +176,7 @@
 }
 
 .review-card {
+    position: relative;
     display: flex;
     gap: 30px;
     padding: 15px;
@@ -186,6 +185,7 @@
 
 .review-txt {
     line-height: 1.45;
+    height: 200px;
 }
 
 .comment_img {
@@ -193,3 +193,20 @@
     height: 200px;
 }
 
+.deletebtn {
+    line-height: 0.25;
+    width: 70px;
+    height: 30px;
+    padding: 0px;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 13px;
+    border: 1px solid rgb(51, 51, 51, 0.1);
+    transition: border 0.25s;
+    display: none;
+}
+
+.deletebtn:hover {
+    border: 9px solid black;
+  }

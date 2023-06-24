@@ -26,7 +26,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-  cursor:default;
+    cursor:default;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -174,8 +174,14 @@ header h1 {
 }
 
 .Gwolnadri-body .nav-icon{
+    display: flex;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
 }
+
+.Gwolnadri-body .nav-icon img {
+    cursor: pointer;
+}
+
 
 /* ------ 네비바 색상 변경 ------ */
 
@@ -283,7 +289,6 @@ input:focus::placeholder {
     display: flex;
     flex-direction: column;
     text-align: left;
-    /* margin: 0 30px; */
 }
 
 /* ------ 검정색 버튼 (default) ------ */

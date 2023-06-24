@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="/assets/css/profile-bookmark.css">
+    <link rel="stylesheet" href="/assets/css/event.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
 
@@ -31,35 +31,22 @@
                     <nav class="nav flex">
                         <div class="nav-icon" onclick="goBack()">
                             <img src="/assets/img/left.svg" />
-                            <!-- <img src="assets/img/Menu-Hamburger.svg" /> -->
                         </div>
                     </nav>
                 </header>
-                <div class="profile-wrap mb120px">
-                    <h2>나의 관심 한복점</h2>
-                    <div class="contant-page">
-                        <div class="store-sub-card">
-                            <div class="store-txt">
-                                <a class="hanbok-category">전통한복</a>
-                                <h3 class="hanbok-title">한복남 경복궁점</h3>
-                                <p class="hanbok_address">서울특별시 종로구 사직로 133-5</p>
-                                <div class="card-icon">
-                                    <div class="heart">
-                                        <img src="/assets/img/Heart-outline.svg" alt=""><span>1</span>
-                                    </div>
-                                    <div class="bookmark">
-                                        <img src="/assets/img/Bookmark-outline.svg" alt=""><span>1</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="sh_search_tbox">
+                    <img src="/assets/img/Search2.svg" />
+                    <h2 id="search_result" class="sh_search_title">검색 결과</h2>
                 </div>
+                <div id="event_list" class="contant-page"></div>
                 <footer></footer>
             </div>
         </section>
     </div>
+
+    <script src="/assets/js/api.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/search.js"></script>
 </body>
 
 </html>

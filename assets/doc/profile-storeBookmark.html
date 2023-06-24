@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" href="/assets/css/profile.css">
-    <link rel="stylesheet" href="/assets/css/complete.css">
-    <title>궐나드리 : 결제완료</title>
+    <link rel="stylesheet" href="/assets/css/profile-bookmark.css">
+    <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
 
 <body>
     <div class="Wrapper">
-        <section class="Gwolnadri mb120px">
+        <section class="Gwolnadri">
             <div class="Gwolnadri-intro">
                 <div class="main-banner">
                     <p class="sub-title">가장 편리한 궁궐 관람 서비스</p>
@@ -35,22 +34,17 @@
                         </div>
                     </nav>
                 </header>
-                <div class="profile-wrap mb30px">
-                    <div class="reservation-page">
-                        <p class="txt sh-body">결제가 완료되었습니다</p>
-                    </div>
-                    <ul class="reservation-view">
-                        <button onclick="Reservation()" class="login-form-btn sh-btn" type="button">예약 확인하기</button>
-                        <button onclick="MainRedirect()" class="login-form-btn sh-btn n" type="button">메인화면으로</button>
-                    </ul>
+                <div class="profile-wrap mb120px">
+                    <h2>나의 관심 한복점</h2>
+                    <div class="contant-page" id="store-list-body"></div>
                 </div>
+                <footer></footer>
             </div>
         </section>
-        <footer></footer>
     </div>
     <script src="/assets/js/api.js"></script>
     <script src="/assets/js/loader.js"></script>
-    <script src="/assets/js/complete.js"></script>
+    <script src="/assets/js/profile-storebookmark.js"></script>
 </body>
 
 </html>

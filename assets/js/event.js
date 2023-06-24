@@ -15,12 +15,6 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
-  console.log(response_json);
-
-  // for (let i = 0; i < response_json.length; i++) {
-  //     const booking = response_json[i]
-  //     console.log(booking)}
-
   const eventListContainer = document.getElementById('event_list');
 
   response_json.forEach(element => {
@@ -29,18 +23,33 @@ window.onload = async function EventList() {
     const get_event_end_date = element.event_end_date;
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
-    console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
+    const get_image = element.image
 
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
 
     const eventImage = document.createElement('img');
-    eventImage.src = '/assets/img/image-2.jpg';
+    eventImage.src = `${get_image}`;
     eventImage.alt = '';
+
+    const currentDate = new Date();
+    const eventStart = new Date(get_event_start_date);
+    const eventEnd = new Date(get_event_end_date);
+    const oneDay = 24 * 60 * 60 * 1000;
+    const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
+    const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
 
     const reservationTag = document.createElement('p');
     reservationTag.classList.add('reservation');
-    reservationTag.innerText = '기간한정';
+    if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
+      reservationTag.innerText = '행사중';
+    } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+      reservationTag.innerText = '행사예정';
+    } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
+      reservationTag.innerText = '마감임박';
+    } else {
+      reservationTag.innerText = '삑';
+    }
 
     const eventCardTxt = document.createElement('div');
     eventCardTxt.classList.add('sub-card-txt');
@@ -69,6 +78,7 @@ window.onload = async function EventList() {
     const likeIconImage = document.createElement('img');
     likeIconImage.src = '/assets/img/Heart-outline.svg';
     likeIconImage.alt = '';
+    likeIconImage.style.cursor = "default";
 
     const likeCount = document.createElement('span');
     likeCount.id = 'like_count';
@@ -78,16 +88,20 @@ window.onload = async function EventList() {
     bookmarkIcon.id = 'bookmark_icon';
     bookmarkIcon.classList.add('bookmark');
 
-    const reviewIconImage = document.createElement('img');
-    reviewIconImage.src = '/assets/img/Bookmark-outline.svg';
-    reviewIconImage.alt = '';
+    const bookmarkIconImage = document.createElement('img');
+    if (!payload_parse || !payload_parse.user_id) {
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+    } else if (get_bookmarker.includes(payload_parse.user_id)) {
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-full.svg");
+    }
+    bookmarkIconImage.alt = '';
 
 
 
     likeIcon.appendChild(likeIconImage);
     likeIcon.appendChild(likeCount);
 
-    bookmarkIcon.appendChild(reviewIconImage);
+    bookmarkIcon.appendChild(bookmarkIconImage);
 
     cardIcon.appendChild(likeIcon);
     cardIcon.appendChild(bookmarkIcon);
@@ -111,7 +125,6 @@ window.onload = async function EventList() {
       const event_id = parseInt(element.id, 10);
       const token = localStorage.getItem("access");
 
-      // console.log(event_id);
       if (payload) {
         try {
           const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
@@ -125,14 +138,37 @@ window.onload = async function EventList() {
           alert(bookmarkData.message);
         } catch (error) {
           console.error('Error bookmarking event:', error);
+
         }
       } else {
         alert("로그인이 필요합니다")
       }
+      window.location.reload()
+
     });
 
     eventListContainer.appendChild(eventCard);
 
   });
 
+}
+
+async function HandleSearch() {
+
+  const search_bar = document.getElementById("search_bar");
+
+  if (search_bar.style.display == 'none') {
+    search_bar.style.display = 'block';
+  } else {
+    search_bar.style.display = 'none';
+  }
+}
+
+
+async function enterkey(event) {
+  if (event.keyCode == 13) {
+    // 엔터키가 눌렸을 때
+    const word = document.getElementById("search_bar").value;
+    window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+  }
 }

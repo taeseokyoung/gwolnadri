@@ -21,7 +21,6 @@ async function EventDetail() {
   event_id = urlParams.get('event_id');
   const eventDetailURL = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
 
-
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
 
@@ -38,8 +37,12 @@ async function EventDetail() {
   const bookmarkElement = document.createElement('div');
   const bookmarkIconElement1 = document.createElement('img');
 
+  const get_image = response_json.image;
+  const backend_image_url = `${backend_base_url}${get_image}`;
+
+
   eventImgElement.className = 'event_img';
-  eventImgElement.src = "/assets/img/image-2.jpg";
+  eventImgElement.src = backend_image_url;
   eventImgElement.alt = '';
 
   categoryElement.className = 'category';
@@ -56,16 +59,30 @@ async function EventDetail() {
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
+  if (!payload_parse || !payload_parse.user_id) {
+    heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg");
+  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+    heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg");
+  }
+
   likeCountElement.id = 'like_count';
   likeCountElement.textContent = response_json.likes_count;
   heartElement.appendChild(heartIconElement);
   heartElement.appendChild(likeCountElement);
 
 
+
+
   bookmarkElement.className = 'bookmark';
   bookmarkIconElement1.id = 'bookmarkIcon';
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
+  if (!payload_parse || !payload_parse.user_id) {
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg");
+  }
+
   bookmarkElement.appendChild(bookmarkIconElement1);
 
   cardIconElement.className = 'card-icon';
@@ -102,17 +119,6 @@ async function EventDetail() {
   subContentTxtElement.className = 'content-txt';
   subContentTxtElement.textContent = response_json.content;
 
-  // subContentElement.appendChild(subContentTitleElement);
-  // subContentElement.appendChild(subContentTxtElement);
-
-  // contant_pageElement.appendChild(reservationButton);
-  // contant_pageElement.appendChild(subContentElement);
-
-
-
-
-  // mainPageElement.appendChild(eventImgElement);
-  // mainPageElement.appendChild(cardTxtElement);
 
   subContentElement.appendChild(subContentTitleElement);
   subContentElement.appendChild(subContentTxtElement);
@@ -120,7 +126,7 @@ async function EventDetail() {
   contant_pageElement.appendChild(reservationButton);
   contant_pageElement.appendChild(subContentElement);
 
-  // 북마크 아이콘에 이벤트 리스너 등록
+
   bookmarkElement.addEventListener('click', async () => {
     const token = localStorage.getItem("access");
     if (payload) {
@@ -140,6 +146,8 @@ async function EventDetail() {
     } else {
       alert("로그인이 필요합니다.");
     }
+    window.location.reload()
+
   });
 
 
@@ -165,6 +173,7 @@ async function EventDetail() {
       alert("로그인이 필요합니다")
     }
 
+    window.location.reload()
 
   });
 };
@@ -172,10 +181,7 @@ async function EventDetail() {
 async function Eventreview() {
   const review_response = await fetch(`${backend_base_url}/events/${event_id}/review/`, { method: 'GET' });
   const review_response_json = await review_response.json();
-
-  // const reviewElement = document.querySelector('.sub-content');
   const review_list = document.getElementById('review_list');
-
   review_response_json.forEach(element => {
 
     const get_img = element.review_image;
@@ -198,12 +204,14 @@ async function Eventreview() {
 
     const reviewButton = document.createElement('button');
     reviewButton.id = 'deletebtn'
+    reviewButton.className = 'deletebtn'
     reviewButton.setAttribute("onclick", `HandleCommentDelete(${get_review_id})`)
-    reviewButton.textContent = "삭제하기"
-    reviewButton.style.backgroundColor = '#555'
-    reviewButton.style.w
-
-
+    reviewButton.textContent = "삭제하기";
+    if (payload && payload_parse.user_id === element.author) {
+      reviewButton.style.display = "block";
+    } else {
+      reviewButton.style.display = "none";
+    }
 
     const reviewAuthorElement = document.createElement('p');
     reviewAuthorElement.id = 'author';
@@ -239,14 +247,6 @@ async function Eventreview() {
     reviewContentElement.className = 'content';
     reviewContentElement.textContent = get_content;
 
-
-    // reviewCardElement.appendChild(reviewImgElement)
-    // reviewTxtElement.appendChild(reviewAuthorElement)
-    // reviewTxtElement.appendChild(reviewGradeElement)
-    // reviewTxtElement.appendChild(reviewContentElement)
-    // reviewCardElement.appendChild(reviewTxtElement)
-    // reviewElement.appendChild(reviewCardElement)
-
     reviewCardElement.appendChild(reviewImgElement)
     reviewCardElement.appendChild(reviewTxtElement)
     reviewTxtElement.appendChild(reviewAuthorElement)
@@ -267,11 +267,11 @@ async function HandleCommentDelete(get_review_id) {
     method: 'DELETE'
   })
   if (response.status == 204) {
-    alert("삭제완료")
+    alert("리뷰가 삭제되었습니다.")
     window.location.reload()
 
   } else if (response.status == 403) {
-    alert("작성하신 글이 아닙니다.")
+    alert("작성하신 리뷰가 아닙니다.")
   }
   else if (response.status == 401) {
     alert("로그인이 필요합니다.")
@@ -288,10 +288,6 @@ async function HandleComment() {
   const com_txt = document.getElementById('com_txt').value;
 
   const grade = select_grade.split('')[0]
-  // console.log(grade)
-  // console.log(in_img)
-  // console.log(com_txt)
-
   const formdata = new FormData();
 
   formdata.append("grade", grade)
@@ -306,67 +302,7 @@ async function HandleComment() {
     body: formdata
   })
   if (response.status == 201) {
-    // const email = payload_parse.email.split('')[0]
-
-    // const review_list = document.getElementById('review_list');
-
-    // console.log(typeof review_list);
-    // const reviewCardElement = document.createElement('div');
-    // reviewCardElement.setAttribute("class","review-card");
-
-    // const reviewImgElement = document.createElement('img');
-    // reviewImgElement.className = 'review-image';
-    // reviewImgElement.id = 'review-image';
-    // reviewImgElement.src = in_img;
-    // reviewImgElement.alt = '';
-
-    // const reviewTxtElement = document.createElement('div');
-    // reviewTxtElement.setAttribute("class","review-txt")
-
-    // const reviewAuthorElement = document.createElement('p');
-    // reviewAuthorElement.id = 'author';
-    // reviewAuthorElement.className = 'author';
-    // reviewAuthorElement.textContent = email;
-
-    // const reviewGradeElement = document.createElement('p');
-    // reviewGradeElement.id = 'grade';
-    // reviewGradeElement.className = 'grade';
-
-    // switch(grade) {
-    // case 1 :
-    // starNum="⭐️"
-    // break
-    // case 2:
-    // starNum="⭐️⭐️"
-    // break
-    // case 3:
-    // starNum="⭐️⭐️⭐️"
-    // break
-    // case 4:
-    // starNum="⭐️⭐️⭐️⭐️"
-    // break
-    // case 5:
-    // starNum="⭐️⭐️⭐️⭐️⭐️"
-    // break        
-    // }
-
-    // reviewGradeElement.textContent = "별점 : "+ starNum + " ";
-
-    // const reviewContentElement = document.createElement('p');
-    // reviewContentElement.id = 'content';
-    // reviewContentElement.className = 'content';
-    // reviewContentElement.textContent = com_txt;
-
-    // reviewCardElement.appendChild(reviewImgElement)
-    // reviewCardElement.appendChild(reviewTxtElement)
-    // reviewTxtElement.appendChild(reviewAuthorElement)
-    // reviewTxtElement.appendChild(reviewGradeElement)
-    // reviewTxtElement.appendChild(reviewContentElement)
-
-    // review_list.appendChild(reviewCardElement);
-
-    // 방법생각해보기
-    alert("작성완료")
+    alert("작성되었습니다.")
     window.location.reload()
 
   } else {
