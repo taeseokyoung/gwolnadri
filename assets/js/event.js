@@ -87,7 +87,8 @@ window.onload = async function EventList() {
     const likeIconImage = document.createElement('img');
     likeIconImage.src = '/assets/img/Heart-outline.svg';
     likeIconImage.alt = '';
-
+    likeIconImage.style.cursor = "default";
+    
     const likeCount = document.createElement('span');
     likeCount.id = 'like_count';
     likeCount.innerText = String(get_like_count);
