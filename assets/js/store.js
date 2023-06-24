@@ -3,7 +3,6 @@ window.onload = async function loadStoreList() {
     
     const payload = localStorage.getItem("payload")
     
-    
     //지도 생성
     var positions =[]
     var mapContainer = document.getElementById('map')
@@ -21,7 +20,7 @@ window.onload = async function loadStoreList() {
     stores = await store()
     stores["StoreList"].forEach(store => {
         
-        const newCon = document.createElement("div")
+        const newCon = document.createElement("div") 
         const newTitle = document.createElement("div")
         const newCate = document.createElement("p")
         const newStore = document.createElement("p")
@@ -32,14 +31,19 @@ window.onload = async function loadStoreList() {
         const newHeartImg = document.createElement("img")
         const newBookImg = document.createElement("img")
         const newHeartNum = document.createElement("span")
-
+        // const titleBlock = document.createElement("div")
+        // const newBlock = document.createElement("div")
+        let likeOn
+        let bookOn
         
         storeCard.appendChild(newCon)
-
+        
         newCon.appendChild(newTitle)
         newTitle.appendChild(newCate)
+        // newTitle.appendChild(titleBlock)
         newTitle.appendChild(newStore)
-        newCon.appendChild(newAdd)
+        // newTitle.appendChild(newBlock)
+        newTitle.appendChild(newAdd)
 
         newCon.append(newIcon)
         newIcon.appendChild(newHeart)
@@ -51,15 +55,15 @@ window.onload = async function loadStoreList() {
         
         newCon.setAttribute("class", "contant-card")
         newTitle.setAttribute("class", "store-title")
-        
+    
         newCate.setAttribute("class", "hanbok_category")
         newStore.setAttribute("class", "hanbok_store")
-        newStore.setAttribute("onClick", "storeLink("+store.id+")")
+        newTitle.setAttribute("onclick", "storeLink("+store.id+")")
         newAdd.setAttribute("class", "hanbok_address")
         newIcon.setAttribute("class", "card-icon")
         newHeart.setAttribute("class", "heart")
         newBook.setAttribute("class", "bookmark")
-        newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+        newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
         newHeartImg.setAttribute("alt", "")
         newBookImg.setAttribute("alt", "")
 
@@ -68,20 +72,25 @@ window.onload = async function loadStoreList() {
             const payload_parse = JSON.parse(payload)
             //하트 표시
             if (store.likes.includes(payload_parse.user_id)){
-                newHeartImg.setAttribute("src", "../assets/img/Heart-full.svg")
+                likeOn = 1
+                newHeartImg.setAttribute("src", "/assets/img/Heart-full.svg")
             } else {
-                newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
+                likeOn = 0
+                newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             }
-
             //북마크 표시
             if (store.store_bookmarks.includes(payload_parse.user_id)){
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-full.svg")
+                bookOn = 1
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-full.svg")
             } else {
-                newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+                bookOn = 0
+                newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
+            newHeartImg.setAttribute("onclick", "likeBtn("+store.id+`,${likeOn})`)
+            newBookImg.setAttribute("onclick", "bookBtn("+store.id+`,${bookOn})`)
         } else {
-            newHeartImg.setAttribute("src", "../assets/img/Heart-outline.svg")
-            newBookImg.setAttribute("src", "../assets/img/Bookmark-outline.svg")
+            newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
+            newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
         }
         
 
@@ -96,11 +105,6 @@ window.onload = async function loadStoreList() {
             title: store.store_name,
             latlng: new kakao.maps.LatLng(store.location_y,store.location_x)
         })
-        
-        // //한복점 아이디 리스트 생성
-        // storeId.push({
-        //     id: store.id,
-        // })
         
     })
       
@@ -126,8 +130,6 @@ window.onload = async function loadStoreList() {
 //         // 마커를 클릭해도 상점 디테일 페이지로 이동
         
 //         console.log(marker[0]); 
-       
-            
 //         // storeLink(storeId[i].id)
 //   });
     
@@ -145,7 +147,72 @@ async function store() {
     }
 }
 
+//한복집 디테일 페이지로 넘어가기
 async function storeLink(store_id) {
     console.log(store_id)
     location.href = `${frontend_base_url}/store-detail.html?hanbokstore_id=${store_id}`
+}
+
+
+// 북마크 버튼 클릭
+async function bookBtn(store_id, bookOn){
+    const response = await fetch(`${backend_base_url}/api/v1/stores/${store_id}/bookmark/`,{
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    } 
+    )
+    switch(response.status){
+        case 200 :
+            if(bookOn == 0){
+               alert("북마크했습니다!")
+            }
+            if(bookOn == 1){
+                alert("북마크를 취소했습니다!") 
+             }
+            location.replace(`${frontend_base_url}/store.html`)
+            break
+        case 400 :
+            alert("잘못된 요청입니다.")
+            location.replace(`${frontend_base_url}/store.html`)
+            break
+        case 401 :
+            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            location.replace(`${frontend_base_url}/login.html`)
+            break
+   
+        }
+}
+
+// 좋아요 버튼 클릭
+async function likeBtn(store_id, likeOn){
+    const response = await fetch(`${backend_base_url}/api/v1/stores/${store_id}/like/`,{
+        method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    } 
+    )
+    switch(response.status){
+        case 200 :
+            if(likeOn == 0){
+               alert("좋아요를 눌렀습니다!")
+            }
+            if(likeOn == 1){
+                alert("좋아요를 취소했습니다!") 
+             }
+            
+            location.replace(`${frontend_base_url}/store.html`)
+            break
+        case 400 :
+            alert("잘못된 요청입니다.")
+            location.replace(`${frontend_base_url}/store.html`)
+            break
+        case 401 :
+            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            location.replace(`${frontend_base_url}/login.html`)
+            break
+   
+        }
 }
