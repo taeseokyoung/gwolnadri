@@ -15,7 +15,7 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
-  console.log(response_json);
+  // console.log(response_json);
 
   // for (let i = 0; i < response_json.length; i++) {
   //     const booking = response_json[i]
@@ -29,7 +29,7 @@ window.onload = async function EventList() {
     const get_event_end_date = element.event_end_date;
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
-    console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
+    // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
 
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
@@ -78,16 +78,20 @@ window.onload = async function EventList() {
     bookmarkIcon.id = 'bookmark_icon';
     bookmarkIcon.classList.add('bookmark');
 
-    const reviewIconImage = document.createElement('img');
-    reviewIconImage.src = '/assets/img/Bookmark-outline.svg';
-    reviewIconImage.alt = '';
+    const bookmarkIconImage = document.createElement('img');
+    if (get_bookmarker.includes(payload_parse.user_id)) {
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-full.svg")
+    } else {  
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+    }
+    bookmarkIconImage.alt = '';
 
 
 
     likeIcon.appendChild(likeIconImage);
     likeIcon.appendChild(likeCount);
 
-    bookmarkIcon.appendChild(reviewIconImage);
+    bookmarkIcon.appendChild(bookmarkIconImage);
 
     cardIcon.appendChild(likeIcon);
     cardIcon.appendChild(bookmarkIcon);
@@ -129,6 +133,8 @@ window.onload = async function EventList() {
       } else {
         alert("로그인이 필요합니다")
       }
+      window.location.reload()
+
     });
 
     eventListContainer.appendChild(eventCard);
