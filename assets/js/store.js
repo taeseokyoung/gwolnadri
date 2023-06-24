@@ -20,7 +20,7 @@ window.onload = async function loadStoreList() {
     stores = await store()
     stores["StoreList"].forEach(store => {
         
-        const newCon = document.createElement("a")
+        const newCon = document.createElement("div") 
         const newTitle = document.createElement("div")
         const newCate = document.createElement("p")
         const newStore = document.createElement("p")
@@ -31,8 +31,8 @@ window.onload = async function loadStoreList() {
         const newHeartImg = document.createElement("img")
         const newBookImg = document.createElement("img")
         const newHeartNum = document.createElement("span")
-        const titleBlock = document.createElement("div")
-        const newBlock = document.createElement("div")
+        // const titleBlock = document.createElement("div")
+        // const newBlock = document.createElement("div")
         let likeOn
         let bookOn
         
@@ -40,9 +40,9 @@ window.onload = async function loadStoreList() {
         
         newCon.appendChild(newTitle)
         newTitle.appendChild(newCate)
-        newTitle.appendChild(titleBlock)
-        titleBlock.appendChild(newStore)
-        titleBlock.appendChild(newBlock)
+        // newTitle.appendChild(titleBlock)
+        newTitle.appendChild(newStore)
+        // newTitle.appendChild(newBlock)
         newTitle.appendChild(newAdd)
 
         newCon.append(newIcon)
@@ -55,10 +55,10 @@ window.onload = async function loadStoreList() {
         
         newCon.setAttribute("class", "contant-card")
         newTitle.setAttribute("class", "store-title")
-        titleBlock.setAttribute("style","display: flex;")
+    
         newCate.setAttribute("class", "hanbok_category")
         newStore.setAttribute("class", "hanbok_store")
-        newCon.setAttribute("onClick", "storeLink("+store.id+")")
+        newTitle.setAttribute("onclick", "storeLink("+store.id+")")
         newAdd.setAttribute("class", "hanbok_address")
         newIcon.setAttribute("class", "card-icon")
         newHeart.setAttribute("class", "heart")
