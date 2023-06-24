@@ -95,11 +95,13 @@ window.onload = async function EventReservation() {
                 } else {
                     alert(event.status)
                     window.location.href = `${index_url}`
+
                 }
 
             } else {
                 alert(eventDetail.status)
                 window.location.href = `${index_url}`
+
             }
             
         }
