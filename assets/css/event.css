@@ -154,3 +154,65 @@
 .sub-card-txt .card-icon span {
    font-size: 11px;
 }
+
+.sh_search_title {
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 10px;
+}
+
+.sh_search_tbox {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 20% 0 50px 35px;
+}
+
+.sh_col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 550px;
+    
+}
+
+.sh_small {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    color: #353535;
+}
+
+.xi-calendar-cancle {
+    color: #353535;
+    font-size: 50px;
+    font-weight: 200;
+}
+
+.sh_search {
+    color: #000;
+    background-color: transparent;
+    width: 250px;
+    margin-left: 8px;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 5px 10px;
+}
+
+.sh_search:focus-visible {
+    outline: none;
+}
+
+.sh_btn {
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-image: url("/assets/img/Search2.svg");
+    background-position: center;
+    background-size: contain;
+}
