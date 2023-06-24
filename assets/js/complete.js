@@ -93,7 +93,7 @@ window.onload = async function CompletePgtoken() {
                             // window.location.href = `${next_url_p}?tid=${tid}`
                         } else {
                             // alert("db 저장실패",send.status)
-                            // window.location.href = `http://127.0.0.1:5500/index.html`
+                            // window.location.href = `${index_url}`
                         }
 
                     } else {
@@ -102,7 +102,7 @@ window.onload = async function CompletePgtoken() {
 
                 } else {
                     alert("수량 오류, 관리자에게 문의하세요", ticket.status)
-                    window.location.href = `http://127.0.0.1:5500/index.html`
+                    window.location.href = `${index_url}`
                 }
 
             } else if (type == "hanbok") {
@@ -153,7 +153,7 @@ window.onload = async function CompletePgtoken() {
                         // window.location.href = `${next_url_p}?tid=${tid}`
                     } else {
                         // alert("db 저장실패",send.status)
-                        // window.location.href = `http://127.0.0.1:5500/index.html`
+                        // window.location.href = `${index_url}`
                     }
 
                 } else {
@@ -171,14 +171,14 @@ window.onload = async function CompletePgtoken() {
     } else {
         console.log(response_json)
         alert(response.status,"잘못된 상품 정보입니다")
-        window.location.href = `http://127.0.0.1:5500/index.html`
+        window.location.href = `${index_url}`
     }
 }
 
 
 // 메인화면으로 location
 async function MainRedirect() {
-    window.location.href = `http://127.0.0.1:5500/index.html`
+    window.location.href = `${index_url}`
 }
 
 async function Reservation() {
