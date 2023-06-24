@@ -61,26 +61,30 @@ async function EventDetail() {
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
-  if (response_json.likes.includes(payload_parse.user_id)) {
-    heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg")
-  } else {  
-    heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg")
+  if (!payload_parse || !payload_parse.user_id) { 
+    heartIconElement.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+    heartIconElement.setAttribute("src", "/assets/img/Bookmark-full.svg");
   }
+
   likeCountElement.id = 'like_count';
   likeCountElement.textContent = response_json.likes_count;
   heartElement.appendChild(heartIconElement);
   heartElement.appendChild(likeCountElement);
 
 
+
+
   bookmarkElement.className = 'bookmark';
   bookmarkIconElement1.id = 'bookmarkIcon';
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
-    if (response_json.event_bookmarks.includes(payload_parse.user_id)) {
-    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg")
-  } else {  
-    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+  if (!payload_parse || !payload_parse.user_id) { 
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg");
   }
+
   bookmarkElement.appendChild(bookmarkIconElement1);
 
   cardIconElement.className = 'card-icon';
