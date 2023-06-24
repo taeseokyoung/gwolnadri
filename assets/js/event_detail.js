@@ -62,9 +62,9 @@ async function EventDetail() {
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
   if (!payload_parse || !payload_parse.user_id) { 
-    heartIconElement.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+    heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg");
   } else if (get_bookmarker.includes(payload_parse.user_id)) {
-    heartIconElement.setAttribute("src", "/assets/img/Bookmark-full.svg");
+    heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg");
   }
 
   likeCountElement.id = 'like_count';
