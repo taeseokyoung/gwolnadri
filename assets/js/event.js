@@ -142,3 +142,25 @@ window.onload = async function EventList() {
   });
 
 }
+
+async function HandleSearch() {
+    
+  const search_bar = document.getElementById("search_bar");
+  
+  if(search_bar.style.display=='none'){
+      search_bar.style.display = 'block';	
+  }else{
+      search_bar.style.display = 'none';	
+  } 
+}
+
+
+async function enterkey(event) {
+  if (event.keyCode == 13) {
+      // 엔터키가 눌렸을 때
+      const word = document.getElementById("search_bar").value;
+      console.log(word);
+      
+      window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+  }
+}

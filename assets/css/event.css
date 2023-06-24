@@ -192,3 +192,27 @@
     font-size: 50px;
     font-weight: 200;
 }
+
+.sh_search {
+    color: #000;
+    background-color: transparent;
+    width: 250px;
+    margin-left: 8px;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 5px 10px;
+}
+
+.sh_search:focus-visible {
+    outline: none;
+}
+
+.sh_btn {
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-image: url("/assets/img/Search2.svg");
+    background-position: center;
+    background-size: contain;
+}
