@@ -94,19 +94,21 @@ window.onload = async function EventReservation() {
                                     
                 } else {
                     alert(event.status)
-                    window.location.href = `${frontend_base_url}`
+                    window.location.href = `${index_url}`
+
                 }
 
             } else {
                 alert(eventDetail.status)
-                window.location.href = `${frontend_base_url}`
+                window.location.href = `${index_url}`
+
             }
             
         }
             
     } else {
         alert(response.status)
-        window.location.href = `${frontend_base_url}`
+        window.location.href = `${index_url}`
     }
 
 }

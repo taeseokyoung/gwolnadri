@@ -164,7 +164,7 @@ async function HanbokDelete(tid){
         window.location.href = `${frontend_base_url}/profile-storeReservation.html`
     } else {
         (response.status)
-        window.location.href = `${frontend_base_url}`
+        window.location.href = `${index_url}`
     }
 }
 

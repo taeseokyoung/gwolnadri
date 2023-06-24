@@ -72,7 +72,8 @@ window.onload = async function HanbokReservation() {
             
         } else {
             alert(response.status)
-            window.location.href = `${frontend_base_url}`
+            window.location.href = `${index_url}`
+
     } 
 }
 
