@@ -24,7 +24,7 @@ async function EventDetail() {
 
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
-  // console.log(response_json.likes)
+  console.log(response_json)
 
   const mainPageElement = document.querySelector('.main-page');
   const eventImgElement = document.createElement('img');
@@ -189,6 +189,7 @@ async function Eventreview() {
 
   // const reviewElement = document.querySelector('.sub-content');
   const review_list = document.getElementById('review_list');
+  // console.log(review_response_json)
 
   review_response_json.forEach(element => {
 
@@ -214,16 +215,12 @@ async function Eventreview() {
     reviewButton.id = 'deletebtn'
     reviewButton.className = 'deletebtn'
     reviewButton.setAttribute("onclick", `HandleCommentDelete(${get_review_id})`)
-    reviewButton.textContent = "삭제하기"
-    // reviewButton.style.backgroundColor = '#555'
-    // reviewButton.style.margin = "93px";
-    // reviewButton.style.marginRight = "0px";
-    // reviewButton.style.padding = "5px";
-    // reviewButton.style.width = "80px";
-    // reviewButton.style.height = "1px";
-    // reviewButton.style.font-size = "10px";
-
-
+    reviewButton.textContent = "삭제하기";
+    if (payload && payload_parse.user_id === element.author) {
+      reviewButton.style.display = "block";
+    } else {
+      reviewButton.style.display = "none";
+    }
 
     const reviewAuthorElement = document.createElement('p');
     reviewAuthorElement.id = 'author';
@@ -326,65 +323,6 @@ async function HandleComment() {
     body: formdata
   })
   if (response.status == 201) {
-    // const email = payload_parse.email.split('')[0]
-
-    // const review_list = document.getElementById('review_list');
-
-    // console.log(typeof review_list);
-    // const reviewCardElement = document.createElement('div');
-    // reviewCardElement.setAttribute("class","review-card");
-
-    // const reviewImgElement = document.createElement('img');
-    // reviewImgElement.className = 'review-image';
-    // reviewImgElement.id = 'review-image';
-    // reviewImgElement.src = in_img;
-    // reviewImgElement.alt = '';
-
-    // const reviewTxtElement = document.createElement('div');
-    // reviewTxtElement.setAttribute("class","review-txt")
-
-    // const reviewAuthorElement = document.createElement('p');
-    // reviewAuthorElement.id = 'author';
-    // reviewAuthorElement.className = 'author';
-    // reviewAuthorElement.textContent = email;
-
-    // const reviewGradeElement = document.createElement('p');
-    // reviewGradeElement.id = 'grade';
-    // reviewGradeElement.className = 'grade';
-
-    // switch(grade) {
-    // case 1 :
-    // starNum="⭐️"
-    // break
-    // case 2:
-    // starNum="⭐️⭐️"
-    // break
-    // case 3:
-    // starNum="⭐️⭐️⭐️"
-    // break
-    // case 4:
-    // starNum="⭐️⭐️⭐️⭐️"
-    // break
-    // case 5:
-    // starNum="⭐️⭐️⭐️⭐️⭐️"
-    // break        
-    // }
-
-    // reviewGradeElement.textContent = "별점 : "+ starNum + " ";
-
-    // const reviewContentElement = document.createElement('p');
-    // reviewContentElement.id = 'content';
-    // reviewContentElement.className = 'content';
-    // reviewContentElement.textContent = com_txt;
-
-    // reviewCardElement.appendChild(reviewImgElement)
-    // reviewCardElement.appendChild(reviewTxtElement)
-    // reviewTxtElement.appendChild(reviewAuthorElement)
-    // reviewTxtElement.appendChild(reviewGradeElement)
-    // reviewTxtElement.appendChild(reviewContentElement)
-
-    // review_list.appendChild(reviewCardElement);
-
     // 방법생각해보기
     alert("작성완료")
     window.location.reload()
