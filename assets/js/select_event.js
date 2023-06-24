@@ -36,7 +36,7 @@ window.onload = async function SelectTicket(event_id) {
     } else {
         console.log(eventData_json)
         alert(eventData.status, "잘못된 상품 정보입니다")
-        window.location.href = `http://127.0.0.1:5500/index.html`
+        window.location.href = `${index_url}`
     }
 }
 
@@ -92,7 +92,7 @@ async function SelectDate() {
     } else {
         console.log(eventTime)
         alert(eventTime.status, "잘못된 상품 정보입니다")
-        window.location.href = `http://127.0.0.1:5500/index.html`
+        window.location.href = `${index_url}`
     }
 }
 
@@ -140,7 +140,7 @@ async function SelectTime() {
         } else {
             console.log(eventBooking)
             alert(eventBooking.status, "잘못된 상품 정보입니다")
-            window.location.href = `http://127.0.0.1:5500/index.html`
+            window.location.href = `${index_url}`
         }
     }
 }
@@ -272,7 +272,7 @@ async function handleSelectEvent(ticket_id) {
                             window.location.href = next_url_p
                         } else {
                             // alert("db 저장실패", send.status)
-                            // window.location.href = `http://127.0.0.1:5500/index.html`
+                            // window.location.href = `${index_url}`
                         }
 
                     } else {
@@ -284,14 +284,14 @@ async function handleSelectEvent(ticket_id) {
                     console.log(response_json)
                     alert(response.status, "잘못된 상품 정보입니다")
                     // goBack()
-                    window.location.href = `http://127.0.0.1:5500/index.html`
+                    window.location.href = `${index_url}`
                 }
             }
         } else {
             console.log(eventticket_json)
             alert(eventticket.status, "잘못된 상품 정보입니다")
             // goBack()
-            window.location.href = `http://127.0.0.1:5500/index.html`
+            window.location.href = `${index_url}`
         }
     }
 }
