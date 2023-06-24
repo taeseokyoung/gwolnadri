@@ -39,8 +39,12 @@ async function EventDetail() {
   const bookmarkElement = document.createElement('div');
   const bookmarkIconElement1 = document.createElement('img');
 
+  const get_image = response_json.image;
+  const backend_image_url = `${backend_base_url}${get_image}`;
+  
+
   eventImgElement.className = 'event_img';
-  eventImgElement.src = "/assets/img/image-2.jpg";
+  eventImgElement.src = backend_image_url;
   eventImgElement.alt = '';
 
   categoryElement.className = 'category';
@@ -57,26 +61,30 @@ async function EventDetail() {
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
-  if (response_json.likes.includes(payload_parse.user_id)) {
-    heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg")
-  } else {  
-    heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg")
+  if (!payload_parse || !payload_parse.user_id) { 
+    heartIconElement.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+    heartIconElement.setAttribute("src", "/assets/img/Bookmark-full.svg");
   }
+
   likeCountElement.id = 'like_count';
   likeCountElement.textContent = response_json.likes_count;
   heartElement.appendChild(heartIconElement);
   heartElement.appendChild(likeCountElement);
 
 
+
+
   bookmarkElement.className = 'bookmark';
   bookmarkIconElement1.id = 'bookmarkIcon';
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
-    if (response_json.event_bookmarks.includes(payload_parse.user_id)) {
-    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg")
-  } else {  
-    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+  if (!payload_parse || !payload_parse.user_id) { 
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+    bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg");
   }
+
   bookmarkElement.appendChild(bookmarkIconElement1);
 
   cardIconElement.className = 'card-icon';

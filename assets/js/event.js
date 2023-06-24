@@ -15,7 +15,7 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
-  // console.log(response_json);
+  console.log(response_json);
 
   // for (let i = 0; i < response_json.length; i++) {
   //     const booking = response_json[i]
@@ -29,18 +29,36 @@ window.onload = async function EventList() {
     const get_event_end_date = element.event_end_date;
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
+    const get_image = element.image
     // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
 
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
 
     const eventImage = document.createElement('img');
-    eventImage.src = '/assets/img/image-2.jpg';
+    eventImage.src = `${get_image}`;
     eventImage.alt = '';
+
+
+    const currentDate = new Date();
+    const eventStart = new Date(get_event_start_date); 
+    const eventEnd = new Date(get_event_end_date); 
+    const oneDay = 24 * 60 * 60 * 1000;
+    const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
+    const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
 
     const reservationTag = document.createElement('p');
     reservationTag.classList.add('reservation');
-    reservationTag.innerText = '기간한정';
+    if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
+      reservationTag.innerText = '행사중';
+    } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+      reservationTag.innerText = '행사예정';
+    } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
+      reservationTag.innerText = '마감임박';
+    } else {
+      reservationTag.innerText = '삑'; 
+    }
+    console.log(currentDate, eventEnd - 7 * oneDay)
 
     const eventCardTxt = document.createElement('div');
     eventCardTxt.classList.add('sub-card-txt');
@@ -79,10 +97,10 @@ window.onload = async function EventList() {
     bookmarkIcon.classList.add('bookmark');
 
     const bookmarkIconImage = document.createElement('img');
-    if (get_bookmarker.includes(payload_parse.user_id)) {
-      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-full.svg")
-    } else {  
-      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+    if (!payload_parse || !payload_parse.user_id) { 
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-outline.svg");
+    } else if (get_bookmarker.includes(payload_parse.user_id)) {
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-full.svg");
     }
     bookmarkIconImage.alt = '';
 
@@ -129,6 +147,7 @@ window.onload = async function EventList() {
           alert(bookmarkData.message);
         } catch (error) {
           console.error('Error bookmarking event:', error);
+          
         }
       } else {
         alert("로그인이 필요합니다")
