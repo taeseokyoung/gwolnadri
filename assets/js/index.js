@@ -1,4 +1,3 @@
-// 스크롤 시 네비바 색상 변경
 const scroll_body = document.querySelector("#Gwolnadri-body");
 
 document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
@@ -41,14 +40,13 @@ window.onload = async function loadEvents() {
             const title = document.createElement("h3")
             title.setAttribute("class", "title")
             title.innerText = nonscrap.title
-            // 행사 시작 - 행사 종료 기간 입력
+
             const event_date = document.createElement("p")
             event_date.setAttribute("class", "event-date")
             const start_date = nonscrap.event_start_date
             const end_date = nonscrap.event_end_date
             event_date.innerText = start_date + ' - ' + end_date
 
-            // 좋아요, 북마크 아이콘
             const card_icon = document.createElement("div")
             card_icon.setAttribute("class", "card-icon")
 
@@ -64,7 +62,6 @@ window.onload = async function loadEvents() {
             const bookmark_img = document.createElement("img")
             bookmark_img.setAttribute("src", "/assets/img/Bookmark-outline.svg")
 
-            // 좋아요 숫자 변경 필요
             const heart_num = document.createElement("span")
             heart_num.innerText = "2"
 
@@ -100,7 +97,7 @@ window.onload = async function loadEvents() {
             const title = document.createElement("h3")
             title.setAttribute("class", "title")
             title.innerText = scrap.title
-            // 행사 시작 - 행사 종료 기간 입력
+
             const event_date = document.createElement("p")
             event_date.setAttribute("class", "event-date")
             const start_date = scrap.start_date.substr(2).replaceAll('-', '.')
@@ -115,14 +112,14 @@ window.onload = async function loadEvents() {
 
 
 async function HandleSearch() {
-    
+
     const search_bar = document.getElementById("search_bar");
-    
-    if(search_bar.style.display=='none'){
-        search_bar.style.display = 'block';	
-    }else{
-        search_bar.style.display = 'none';	
-    } 
+
+    if (search_bar.style.display == 'none') {
+        search_bar.style.display = 'block';
+    } else {
+        search_bar.style.display = 'none';
+    }
 }
 
 
@@ -130,8 +127,6 @@ async function enterkey(event) {
     if (event.keyCode == 13) {
         // 엔터키가 눌렸을 때
         const word = document.getElementById("search_bar").value;
-        console.log(word);
-        
         window.location.href = `${frontend_base_url}/search.html?search=${word}`;
     }
 }

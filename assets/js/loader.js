@@ -1,5 +1,3 @@
-// 하단 메뉴 아이콘
-
 async function injectFooticon() {
 
     fetch("/assets/components/foot-icon.html").then(response => {
