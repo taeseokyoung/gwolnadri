@@ -14,16 +14,18 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 const kchf = "https://www.chf.or.kr"
 
 window.onload = async function loadEvents() {
-    book_event = await eventList()
-    scrap_event = await eventScrapList()
-
-    const content_page = document.querySelector(".contant-page.nonscrap")
-
-    book_event.forEach(nonscrap => {
+    const payload = localStorage.getItem("payload");
+    book_event = await eventList();
+    scrap_event = await eventScrapList();
+  
+    const content_page = document.querySelector(".contant-page.nonscrap");
+  
+    book_event.forEach(async nonscrap => {
 
         if (nonscrap) {
             const sub_card = document.createElement("div")
             sub_card.setAttribute("class", "sub-card")
+            sub_card.setAttribute("onclick", `eventDetail(${nonscrap.id})`)
 
             const card_image = document.createElement("img")
             card_image.setAttribute("src", `${nonscrap.image}`)
@@ -57,22 +59,35 @@ window.onload = async function loadEvents() {
             bookmark.setAttribute("class", "bookmark")
 
             const heart_img = document.createElement("img")
-            heart_img.setAttribute("src", "/assets/img/Heart-outline.svg")
-
             const bookmark_img = document.createElement("img")
-            bookmark_img.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+            
+            //로그인 여부 판단
+            if (payload){
+                const payload_parse = JSON.parse(payload)
+                heart_img.setAttribute("src", "/assets/img/Heart-outline.svg")
+                //북마크 표시
+                if (nonscrap.event_bookmarks.includes(payload_parse.user_id)){
+                    bookOn = 1
+                    bookmark_img.setAttribute("src", "/assets/img/Bookmark-full.svg")
+                } else {
+                    bookOn = 0
+                    bookmark_img.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+                }
+            } else {
+                bookmark_img.setAttribute("src", "/assets/img/Bookmark-outline.svg")
+            }
 
             const heart_num = document.createElement("span")
-            heart_num.innerText = "2"
+            heart_num.innerText = `${nonscrap.likes_count}`
 
             heart.append(heart_img, heart_num)
             bookmark.append(bookmark_img)
             card_icon.append(heart, bookmark)
             sub_card_txt.append(category, title, event_date, card_icon)
             content_page.append(sub_card)
-        }
+        }}
 
-    })
+    )
 
     const content_scrap_page = document.querySelector(".contant-page.scrap")
 
@@ -129,4 +144,9 @@ async function enterkey(event) {
         const word = document.getElementById("search_bar").value;
         window.location.href = `${frontend_base_url}/search.html?search=${word}`;
     }
+}
+
+
+async function eventDetail(event_id) {
+    location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`
 }

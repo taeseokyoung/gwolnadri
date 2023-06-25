@@ -89,12 +89,15 @@ window.onload = async function EventList() {
     bookmarkIcon.classList.add('bookmark');
 
     const bookmarkIconImage = document.createElement('img');
+    bookmarkIconImage.alt = '';
+
     if (!payload_parse || !payload_parse.user_id) {
       bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-outline.svg");
     } else if (get_bookmarker.includes(payload_parse.user_id)) {
       bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-full.svg");
+    } else {
+      bookmarkIconImage.setAttribute("src", "/assets/img/Bookmark-outline.svg");
     }
-    bookmarkIconImage.alt = '';
 
 
 

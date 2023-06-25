@@ -207,9 +207,8 @@
 /* 북마크, 좋아요 */
 .card-icon {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 30px;
-
 }
 
 .contant-page{
@@ -223,7 +222,6 @@
     align-items: center;
     width: 100%;
     height: 550px;
-    
 }
 
 .sh_small {
@@ -263,3 +261,8 @@
     background-size: contain;
 }
 
+.xi-shop {
+    color: #353535;
+    font-size: 50px;
+    font-weight: 200;
+}
