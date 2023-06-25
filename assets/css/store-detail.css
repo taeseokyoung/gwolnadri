@@ -4,6 +4,10 @@
 
 /* 메인 카드 (최상위에 있는 카드) */
 
+.Gwolnadri-body {
+    overflow-x:hidden;
+}
+
 .Gwolnadri-body .main-page {
     position: relative;
     z-index: -1;
