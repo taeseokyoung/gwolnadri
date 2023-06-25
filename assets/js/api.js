@@ -1,5 +1,5 @@
 const frontend_base_url = "http://127.0.0.1:5500/assets/doc"
-const backend_base_url = "http://127.0.0.1:8000"
+const backend_base_url = "https://gwolnadri.online"
 const index_url = "http://127.0.0.1:5500/index.html"
 
 
