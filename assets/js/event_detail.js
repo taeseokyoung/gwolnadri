@@ -61,9 +61,10 @@ async function EventDetail() {
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
+  const get_likes = response_json.likes
   if (!payload_parse || !payload_parse.user_id) { 
     heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg");
-  } else if (get_bookmarker.includes(payload_parse.user_id)) {
+  } else if (get_likes.includes(payload_parse.user_id)) {
     heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg");
   }
 
@@ -79,6 +80,7 @@ async function EventDetail() {
   bookmarkIconElement1.id = 'bookmarkIcon';
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
+  const get_bookmarker = response_json.event_bookmarks
   if (!payload_parse || !payload_parse.user_id) { 
     bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg");
   } else if (get_bookmarker.includes(payload_parse.user_id)) {

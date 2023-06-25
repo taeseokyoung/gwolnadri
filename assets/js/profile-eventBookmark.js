@@ -9,7 +9,6 @@ window.onload = async function ReservationDetail() {
     if (response.status == 200) {
         const response_json = await response.json()
         const bookmark_list = response_json.bookmark_events
-        
         if (bookmark_list.length == 0) {
             const none_list = document.createElement('div')
             none_list.setAttribute('class','sh_col')
@@ -39,10 +38,28 @@ window.onload = async function ReservationDetail() {
                 event_img.setAttribute('src',"/assets/img/image-2.jpg")
     
                 // 기간한정 스티커 ----
+                const get_event_start_date = events.event_start_date
+                const get_event_end_date = events.event_end_date
+
+                const currentDate = new Date();
+                const eventStart = new Date(get_event_start_date); 
+                const eventEnd = new Date(get_event_end_date); 
+                const oneDay = 24 * 60 * 60 * 1000;
+                const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
+                const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
+            
                 const season = document.createElement('p')
                 season.setAttribute('class','reservation')
-                season.innerText = "기간한정"
-    
+                if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
+                  season.innerText = '행사중';
+                } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+                  season.innerText = '행사예정';
+                } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
+                  season.innerText = '마감임박';
+                } else {
+                  season.innerText = '삑'; 
+                }
+                
                 const txt_div = document.createElement('div')
                 txt_div.setAttribute('class','sub-card-txt')
     
