@@ -2,10 +2,6 @@ const frontend_base_url = "https://gwolnadri.netlify.app/assets/doc"
 const backend_base_url = "https://gwolnadri.online"
 const index_url = "https://gwolnadri.netlify.app/index.html"
 
-response.addHeader("Access-Control-Allow-Origin", "http://www.ozit.co.kr");
-response.addHeader("Access-Control-Allow-Origin", "http://abc.ozit.co.kr");
-response.addHeader("Access-Control-Allow-Origin", "http://test.ozrank.co.kr");
-
 const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload);
 const token = localStorage.getItem("access");
