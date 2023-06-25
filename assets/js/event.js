@@ -51,7 +51,7 @@ window.onload = async function EventList() {
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
       reservationTag.innerText = '행사중';
-    } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+    } else if (diffDaysStart > 0 ) {
       reservationTag.innerText = '행사예정';
     } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';

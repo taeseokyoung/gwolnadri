@@ -52,7 +52,7 @@ window.onload = async function ReservationDetail() {
                 season.setAttribute('class','reservation')
                 if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
                   season.innerText = '행사중';
-                } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+                } else if (diffDaysStart > 0 ) {
                   season.innerText = '행사예정';
                 } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
                   season.innerText = '마감임박';
