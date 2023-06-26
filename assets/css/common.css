@@ -26,7 +26,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-  cursor:default;
+    cursor:default;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -58,7 +58,6 @@ table {
 
 /* a reset */
  a {text-decoration: none; outline: none; color: #000;}
-
  a:hover, a:active {text-decoration: none;}
 
 
@@ -313,3 +312,63 @@ button {
 .card-icon img {
     cursor: pointer;
 }
+
+@media(max-width:1060px){
+    .Wrapper {
+        width: auto;
+        margin: 0 0;
+    }
+    .Gwolnadri {
+        display: block;
+     
+    }
+    .Gwolnadri .main-page img{
+        object-fit: cover;
+    }
+    .Gwolnadri-intro {
+        display: none;
+    }
+
+    .Gwolnadri-body {
+        width: auto;
+    }
+
+    header {
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 17px;
+        border: 1px solid rgb(221, 221, 221,0.5);
+        transition-property: background-color;
+        transition-duration: 1s;
+        z-index: 999;
+    }
+
+     header.on {
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 17px;
+        z-index: 999;
+    }
+
+    .foot-icon {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid rgb(221, 221, 221,0.5);
+    background: #fff;
+    z-index: 1;
+    }
+    
+
+    .foot-icon .flex{
+        margin: 25px 60px;
+    }
+
+    .foot-icon img {
+        cursor: pointer;
+    }
+}
+
