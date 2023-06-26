@@ -10,11 +10,13 @@ window.onload = async function SelectTicket(event_id) {
         const origin_min_date = eventData_json.event_start_date
         const origin_max_date = eventData_json.event_end_date
 
-        const min_date = origin_min_date.split('.')
-        const max_date = origin_max_date.split('.')
+        // const min_date = origin_min_date.split('.')
+        // const max_date = origin_max_date.split('.')
+        // const start_date = "20" + min_date[0] + '-' + min_date[1] + '-' + min_date[2]
+        // const end_date = "20" + max_date[0] + '-' + max_date[1] + '-' + max_date[2]
 
-        const start_date = "20" + min_date[0] + '-' + min_date[1] + '-' + min_date[2]
-        const end_date = "20" + max_date[0] + '-' + max_date[1] + '-' + max_date[2]
+        const start_date = eventData_json.event_start_date
+        const end_date = eventData_json.event_end_date
 
         let now_utc = Date.now()
         let timeOff = new Date().getTimezoneOffset() * 60000;

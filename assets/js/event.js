@@ -16,15 +16,14 @@ window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
   const eventListContainer = document.getElementById('event_list');
-
   response_json.forEach(element => {
     const get_title = element.title;
     const get_event_start_date = element.event_start_date;
     const get_event_end_date = element.event_end_date;
+    const get_likes = element.likes
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
     const get_image = element.image
-
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
 
@@ -43,7 +42,7 @@ window.onload = async function EventList() {
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
       reservationTag.innerText = '행사중';
-    } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+    } else if (diffDaysStart > 0 ) {
       reservationTag.innerText = '행사예정';
     } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';
@@ -77,9 +76,16 @@ window.onload = async function EventList() {
 
     const likeIconImage = document.createElement('img');
     likeIconImage.src = '/assets/img/Heart-outline.svg';
+    if (!payload_parse || !payload_parse.user_id) { 
+      likeIconImage.setAttribute("src", "/assets/img/Heart-outline.svg");
+    } else if (get_likes.includes(payload_parse.user_id)) {
+      likeIconImage.setAttribute("src", "/assets/img/Heart-full.svg");
+    } else{
+      likeIconImage.setAttribute("src", "/assets/img/Heart-outline.svg");
+    }
     likeIconImage.alt = '';
-    likeIconImage.style.cursor = "default";
-
+    // likeIconImage.style.cursor = "default";
+    
     const likeCount = document.createElement('span');
     likeCount.id = 'like_count';
     likeCount.innerText = String(get_like_count);
@@ -118,6 +124,8 @@ window.onload = async function EventList() {
     eventCard.appendChild(reservationTag);
     eventCard.appendChild(eventCardTxt);
 
+    eventListContainer.appendChild(eventCard);
+
     eventImage.addEventListener('click', function () {
       const event_id = parseInt(element.id, 10);
       window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
@@ -150,11 +158,37 @@ window.onload = async function EventList() {
 
     });
 
-    eventListContainer.appendChild(eventCard);
-
+    likeIcon.addEventListener('click', async () => {
+      const event_id = parseInt(element.id, 10);
+      const token = localStorage.getItem("access");
+      if (payload) {
+        try {
+          const heartResponse = await fetch(`${backend_base_url}/events/${event_id}/like/`, {
+            method: 'POST',
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          });
+  
+          const heartData = await heartResponse.json();
+          alert(heartData.message);
+  
+        } catch (error) {
+          console.error('Error likes event:', error);
+        }
+      }
+      else {
+        alert("로그인이 필요합니다")
+      }
+  
+      window.location.reload()
+  
+    });
+    
   });
 
-}
+};  
+
 
 async function HandleSearch() {
 

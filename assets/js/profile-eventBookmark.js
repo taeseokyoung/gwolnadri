@@ -87,6 +87,71 @@ window.onload = async function ReservationDetail() {
         } else if (events.likes.includes(payload_parse.user_id)) {
           like_icon.setAttribute("src", "/assets/img/Heart-full.svg");
         } else {
+
+            console.log(bookmark_list)
+            
+            for (let i = 0; i < bookmark_list.length; i++) {
+                const events = bookmark_list[i]
+    
+                const div = document.createElement('div')
+                div.setAttribute('class','sub-card')
+    
+                const event_img = document.createElement('img')
+                // event_img.setAttribute('src',`${backend_base_url}${events.image}`)
+                event_img.setAttribute('src',"/assets/img/image-2.jpg")
+    
+                // 기간한정 스티커 ----
+                const get_event_start_date = events.event_start_date
+                const get_event_end_date = events.event_end_date
+
+                const currentDate = new Date();
+                const eventStart = new Date(get_event_start_date); 
+                const eventEnd = new Date(get_event_end_date); 
+                const oneDay = 24 * 60 * 60 * 1000;
+                const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
+                const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
+            
+                const season = document.createElement('p')
+                season.setAttribute('class','reservation')
+                if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
+                  season.innerText = '행사중';
+                } else if (diffDaysStart > 0 ) {
+                  season.innerText = '행사예정';
+                } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
+                  season.innerText = '마감임박';
+                } else {
+                  season.innerText = '삑'; 
+                }
+                
+                const txt_div = document.createElement('div')
+                txt_div.setAttribute('class','sub-card-txt')
+    
+                const category = document.createElement('a')
+                category.setAttribute('class','category')
+                category.innerText = "전시/행사"
+    
+                const event_title = document.createElement('h3')
+                event_title.setAttribute('class','title')
+                event_title.innerText = `${events.title}`
+    
+                const event_date = document.createElement('p')
+                event_date.setAttribute('class','event-date')
+                event_date.innerText = `${events.event_start_date}`+ " - "+`${events.event_end_date}`
+    
+                const icon_div = document.createElement('div')
+                icon_div.setAttribute('class','card-icon')
+    
+                const like_div = document.createElement('div')
+                like_div.setAttribute('class','heart')
+    
+                const like_icon = document.createElement('img')
+                if (!payload_parse || !payload_parse.user_id) {
+                    like_icon.setAttribute("src", "/assets/img/Heart-outline.svg");
+                } else if (events.likes.includes(payload_parse.user_id)) {
+                    like_icon.setAttribute("src", "/assets/img/Heart-full.svg");
+                } else {
+                    like_icon.setAttribute("src", "/assets/img/Heart-outline.svg");
+
           like_icon.setAttribute("src", "/assets/img/Heart-outline.svg");
         }
 

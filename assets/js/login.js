@@ -32,24 +32,32 @@ async function handleLogin() {
   }
 }
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById('login-signup-btn').addEventListener('click', function () {
+    window.location.href = `${frontend_base_url}/signup.html`
+  })
+})
+
+
+// 에러로 주석처리
 // checkLogin()
 
-document.addEventListener('DOMContentLoaded', function () {
-  const kakaoBtn = document.querySelector('.kakao');
-  const naverBtn = document.querySelector('.naver');
-  const googleBtn = document.querySelector('.google');
+// 소셜로그인 버튼 링크
+// document.addEventListener('DOMContentLoaded', function () {
+//   const kakaoBtn = document.querySelector('.kakao');
+//   const naverBtn = document.querySelector('.naver');
+//   const googleBtn = document.querySelector('.google');
 
-  kakaoBtn.addEventListener('click', function () {
-    window.location.href = `${backend_base_url}/users/kakao/login/`;
-  });
+//   kakaoBtn.addEventListener('click', function () {
+//     window.location.href = `${backend_base_url}/users/kakao/login/`;
+//   });
 
-  naverBtn.addEventListener('click', function () {
-    window.location.href = `${backend_base_url}/users/naver/login/`;
-  });
+//   naverBtn.addEventListener('click', function () {
+//     window.location.href = `${backend_base_url}/users/naver/login/`;
+//   });
 
-  googleBtn.addEventListener('click', function () {
-    window.location.href = `${backend_base_url}/users/google/login/`;
-  });
-});
-
-
+//   googleBtn.addEventListener('click', function () {
+//     window.location.href = `${backend_base_url}/users/google/login/`;
+//   });
+// });

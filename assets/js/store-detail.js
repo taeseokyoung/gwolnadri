@@ -214,7 +214,11 @@ window.onload = async function HanbokStoreDetail() {
 }
 
 async function SelectItem(hanbok_id) {
-    window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
+    if (payload){
+        window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
+    } else {
+        alert('로그인이 필요합니다')
+    }
 }
 
 async function KakaoMap(lng, lat, name) {

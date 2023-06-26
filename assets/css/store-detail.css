@@ -1,3 +1,7 @@
+.Gwolnadri-body {
+    overflow-x:hidden;
+}
+
 .Gwolnadri-body .main-page {
     position: relative;
     z-index: -1;

@@ -330,5 +330,9 @@ function readURL(input) {
 }
 
 async function bookingbtn(event_id) {
-  window.location.href = `${frontend_base_url}/select_event.html?event_id=${event_id}`
+  if (payload) {
+    window.location.href = `${frontend_base_url}/select_event.html?event_id=${event_id}`
+  } else {
+    alert('로그인이 필요합니다')
+  }
 }

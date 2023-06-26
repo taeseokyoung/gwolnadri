@@ -69,8 +69,8 @@ window.onload = async function ReservationDetail() {
 
                 const store_name = hanbok_json.Store.store_name
                 const store_address = hanbok_json.Store.store_address
-                const store_id = hanbok_json.Store.store_id
-
+                const store_id = hanbok_json.Store.id
+                
                 title.innerText = store_name
                 title.appendChild(i)
                 address.innerText = store_address
