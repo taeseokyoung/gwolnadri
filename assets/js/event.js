@@ -15,12 +15,6 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
-  console.log(response_json);
-
-  // for (let i = 0; i < response_json.length; i++) {
-  //     const booking = response_json[i]
-  //     console.log(booking)}
-
   const eventListContainer = document.getElementById('event_list');
   response_json.forEach(element => {
     const get_title = element.title;
@@ -30,7 +24,6 @@ window.onload = async function EventList() {
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
     const get_image = element.image
-    // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
 
@@ -38,10 +31,9 @@ window.onload = async function EventList() {
     eventImage.src = `${get_image}`;
     eventImage.alt = '';
 
-
     const currentDate = new Date();
-    const eventStart = new Date(get_event_start_date); 
-    const eventEnd = new Date(get_event_end_date); 
+    const eventStart = new Date(get_event_start_date);
+    const eventEnd = new Date(get_event_end_date);
     const oneDay = 24 * 60 * 60 * 1000;
     const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
     const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
@@ -55,7 +47,7 @@ window.onload = async function EventList() {
     } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';
     } else {
-      reservationTag.innerText = '삑'; 
+      reservationTag.innerText = '삑';
     }
 
     const eventCardTxt = document.createElement('div');
@@ -144,7 +136,6 @@ window.onload = async function EventList() {
       const event_id = parseInt(element.id, 10);
       const token = localStorage.getItem("access");
 
-      // console.log(event_id);
       if (payload) {
         try {
           const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
@@ -158,7 +149,7 @@ window.onload = async function EventList() {
           alert(bookmarkData.message);
         } catch (error) {
           console.error('Error bookmarking event:', error);
-          
+
         }
       } else {
         alert("로그인이 필요합니다")
@@ -200,23 +191,21 @@ window.onload = async function EventList() {
 
 
 async function HandleSearch() {
-    
+
   const search_bar = document.getElementById("search_bar");
-  
-  if(search_bar.style.display=='none'){
-      search_bar.style.display = 'block';	
-  }else{
-      search_bar.style.display = 'none';	
-  } 
+
+  if (search_bar.style.display == 'none') {
+    search_bar.style.display = 'block';
+  } else {
+    search_bar.style.display = 'none';
+  }
 }
 
 
 async function enterkey(event) {
   if (event.keyCode == 13) {
-      // 엔터키가 눌렸을 때
-      const word = document.getElementById("search_bar").value;
-      console.log(word);
-      
-      window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+    // 엔터키가 눌렸을 때
+    const word = document.getElementById("search_bar").value;
+    window.location.href = `${frontend_base_url}/search.html?search=${word}`;
   }
 }

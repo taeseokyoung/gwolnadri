@@ -178,6 +178,6 @@ window.onload = async function SelectTicket(search) {
           
             });            
         }
-        
     }
+  }
 }

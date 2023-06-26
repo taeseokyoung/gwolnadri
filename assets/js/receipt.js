@@ -1,14 +1,11 @@
-
-
 window.onload = async function Receipt() {
     const urlParams = new URLSearchParams(window.location.search);
     tid = urlParams.get('tid');
 
-    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`,{
+    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`, {
     })
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
 
         const get_aid = response_json.aid
         const get_approved = response_json.approved_at
@@ -19,7 +16,7 @@ window.onload = async function Receipt() {
         const get_vat = response_json.vat_amount
         const get_total = response_json.total_amount
 
-        const str_order_id = String(get_order_id).slice(0,4)+"********"
+        const str_order_id = String(get_order_id).slice(0, 4) + "********"
         const get_price = get_total - get_vat
         const date_approved = get_approved.split('T')[0]
         const time_approved = get_approved.split('T')[1].split('+')[0]
@@ -45,7 +42,5 @@ window.onload = async function Receipt() {
         vat.innerText = get_vat
         total.innerText = get_total
 
-    } else {
-        alert(response.status)
     }
 }

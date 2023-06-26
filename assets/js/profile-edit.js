@@ -3,7 +3,6 @@ const user_id = parseInt(
 );
 const logined_token = localStorage.getItem("access");
 const logined_account = payload_parse.account;
-console.log(payload_parse.user_id);
 
 window.onload = () => {
   currentProfile(user_id);
@@ -77,7 +76,6 @@ async function updateProfile() {
     formData.append("profile_image", fileInput);
   }
 
-  console.log(formData)
   const response = await fetch(`${backend_base_url}/users/me/modify/`, {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("access"),
