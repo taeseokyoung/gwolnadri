@@ -41,6 +41,12 @@
     cursor: pointer
 }
 
+#login-signup-btn {
+    margin-top: 20px;
+    background-color: #cccccc;
+    color: #333333;
+}
+
 /* 로그인 버튼 */
 
 .login-btn {
