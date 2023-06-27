@@ -8,12 +8,12 @@ let map = new kakao.maps.Map(mapContainer, mapOptions);
 let bounds = new kakao.maps.LatLngBounds();
 let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
 
-window.onload = function () {
-    StoresList()
-}
+
+StoresList()
+
 
 async function StoresList() {
-    const response = await fetch(`${backend_base_url}/api/v1/stores/`);
+    const response = await fetch(`${backend_base_url}/api/v1/stores/`, { method: GET });
     const response_json = await response.json()
     const storeCard = document.getElementById("store-list-body");
     response_json["StoreList"].forEach(store => {
@@ -40,19 +40,7 @@ async function StoresList() {
         newHeartImg.setAttribute("alt", "")
         const newBookImg = document.createElement("img")
         newBookImg.setAttribute("alt", "")
-
-
-
-
         const newHeartNum = document.createElement("span")
-
-
-
-
-
-
-
-
         let likeOn
         let bookOn
 
