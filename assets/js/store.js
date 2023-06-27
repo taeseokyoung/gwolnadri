@@ -1,24 +1,23 @@
+const payload = localStorage.getItem("payload")
+
+var positions = []
+var mapContainer = document.getElementById('map')
+var mapOptions = {
+    center: new kakao.maps.LatLng(37.5714476873524, 126.998320034926),
+    level: 3
+}
+var map = new kakao.maps.Map(mapContainer, mapOptions);
+var bounds = new kakao.maps.LatLngBounds();
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
+
 window.onload = function () {
-    loadStoreList()
+    store()
 }
 
-async function loadStoreList() {
-
-    const payload = localStorage.getItem("payload")
-
-    var positions = []
-    var mapContainer = document.getElementById('map')
-    var mapOptions = {
-        center: new kakao.maps.LatLng(37.5714476873524, 126.998320034926),
-        level: 3
-    }
-    var map = new kakao.maps.Map(mapContainer, mapOptions);
-    var bounds = new kakao.maps.LatLngBounds();
-    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
-
-    const storeCard = document.getElementById("store-list-body")
-    const stores = await store()
-    stores["StoreList"].forEach(store => {
+async function store() {
+    const response = await fetch(`${backend_base_url}/api/v1/stores/`)
+    const response_json = await response.json()
+    response_json.forEach(store => {
 
         const newCon = document.createElement("div")
         const newTitle = document.createElement("div")
@@ -100,36 +99,26 @@ async function loadStoreList() {
         })
 
     })
+}
 
 
 
-    for (var i = 0; i < positions.length; i++) {
-        var imageSize = new kakao.maps.Size(24, 35);
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: positions[i].latlng,
-            title: positions[i].title,
-            image: markerImage,
-            clickable: true
+for (var i = 0; i < positions.length; i++) {
+    var imageSize = new kakao.maps.Size(24, 35);
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: positions[i].latlng,
+        title: positions[i].title,
+        image: markerImage,
+        clickable: true
 
-        })
-        bounds.extend(positions[i].latlng);
-        map.setBounds(bounds)
-
-    }
+    })
+    bounds.extend(positions[i].latlng);
+    map.setBounds(bounds)
 
 }
 
-async function store() {
-    const response = await fetch(`${backend_base_url}/api/v1/stores/`)
-    if (response.status == 200) {
-        const response_json = await response.json()
-        return response_json
-    } else {
-        alert("요청이 실패했습니다!")
-    }
-}
 
 async function storeLink(store_id) {
     console.log(store_id)
