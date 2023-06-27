@@ -185,7 +185,8 @@ async function handleSelectEvent(ticket_id) {
                     const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/ready", {
                         headers: {
                             "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
-                            "Content-Type": "application/x-www-form-urlencoded"
+                            "Content-Type": "application/x-www-form-urlencoded",
+                             "X-CSRFToken": '{{csrf_token}}'
                         },
                         method: 'POST',
                         body: new URLSearchParams({
@@ -217,7 +218,8 @@ async function handleSelectEvent(ticket_id) {
                         const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${payload_parse.user_id}/`, {
                             headers: {
                                 "Authorization": `Bearer ${token}`,
-                                'content-type': 'application/json'
+                                'content-type': 'application/json',
+                                 "X-CSRFToken": '{{csrf_token}}'
                             },
                             method: 'POST',
                             body: JSON.stringify({
