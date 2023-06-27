@@ -36,7 +36,6 @@
                         </div>
                     </nav>
                 </header>
-
                 <div class="profile-wrap mb120px">
                     <h2>내 정보 수정</h2>
                     <div class="profile-page">
@@ -44,7 +43,8 @@
                             <div id="profile-image" class="form-image">
                                 <img id="profile_preview" src="" alt="프로필 이미지 미리보기">
                                 <div class="button-container">
-                                    <button type="button" class="edit-button3" onclick="toggleFileInput()">프로필사진</button>
+                                    <button type="button" class="edit-button3"
+                                        onclick="toggleFileInput()">프로필사진</button>
                                     <input type="file" id="profile_image" name="profile-image" style="display: none;"
                                         onchange="previewImage()">
                                 </div>
@@ -59,14 +59,6 @@
                                     <label for="username">변경할 유저네임</label>
                                     <input type="text" id="username" name="username" placeholder="">
                                 </div>
-                                <!-- <div class="input-box">
-                                    <label for="password">변경할 패스워드</label>
-                                    <input type="text" id="password" name="password" placeholder="패스워드를 입력하세요.">
-                                </div>
-                                <div class="input-box">
-                                    <label for="password2">변경할 패스워드 확인</label>
-                                    <input type="text" id="password2" name="password2" placeholder="패스워드를 다시 입력하세요.">
-                                </div> -->
                             </div>
                             <button class="update-button" onclick="updateProfile()" type="button">수정하기</button>
                             <div class=" withdrawal-button">

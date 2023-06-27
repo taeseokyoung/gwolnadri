@@ -329,7 +329,6 @@ input:focus::placeholder {
     display: flex;
     flex-direction: column;
     text-align: left;
-    /* margin: 0 30px; */
 }
 
 /* ------ 검정색 버튼 (default) ------ */

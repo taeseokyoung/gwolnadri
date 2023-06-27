@@ -52,7 +52,7 @@ window.onload = async function ReservationDetail() {
         season.setAttribute('class', 'reservation')
         if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
           season.innerText = '행사중';
-        } else if (diffDaysStart > 0) {
+        } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
           season.innerText = '행사예정';
         } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
           season.innerText = '마감임박';
@@ -80,6 +80,7 @@ window.onload = async function ReservationDetail() {
 
         const like_div = document.createElement('div')
         like_div.setAttribute('class', 'heart')
+
 
         const like_icon = document.createElement('img')
         if (!payload_parse || !payload_parse.user_id) {
@@ -183,15 +184,3 @@ window.onload = async function ReservationDetail() {
 
   }
 }
-
-
-const response = await fetch('', {
-  headers: {
-    'content-type': 'application/json',
-  },
-  method: 'POST',
-  body: JSON.stringify({
-    "email": email,
-    "password": password
-  })
-});
