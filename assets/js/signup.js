@@ -7,6 +7,7 @@ async function handleSignup() {
   const response = await fetch(`${backend_base_url}/users/signup/`, {
     headers: {
       "content-type": "application/json",
+       "X-CSRFToken": '{{csrf_token}}'
     },
     method: "POST",
     body: JSON.stringify({
