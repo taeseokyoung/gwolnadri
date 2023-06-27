@@ -1,14 +1,12 @@
-const payload = localStorage.getItem("payload")
-
-var positions = []
-var mapContainer = document.getElementById('map')
-var mapOptions = {
+let positions = []
+let mapContainer = document.getElementById('map')
+let mapOptions = {
     center: new kakao.maps.LatLng(37.5714476873524, 126.998320034926),
     level: 3
 }
-var map = new kakao.maps.Map(mapContainer, mapOptions);
-var bounds = new kakao.maps.LatLngBounds();
-var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
+let map = new kakao.maps.Map(mapContainer, mapOptions);
+let bounds = new kakao.maps.LatLngBounds();
+let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
 
 window.onload = function () {
     store()
