@@ -133,7 +133,8 @@ window.onload = async function ReservationDetail() {
               const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
                 method: 'POST',
                 headers: {
-                  "Authorization": `Bearer ${token}`
+                  "Authorization": `Bearer ${token}`,
+                   "X-CSRFToken": '{{csrf_token}}'
                 }
               });
 
@@ -156,7 +157,8 @@ window.onload = async function ReservationDetail() {
               const heartResponse = await fetch(`${backend_base_url}/events/${event_id}/like/`, {
                 method: 'POST',
                 headers: {
-                  "Authorization": `Bearer ${token}`
+                  "Authorization": `Bearer ${token}`,
+                   "X-CSRFToken": '{{csrf_token}}'
                 }
               });
 
