@@ -44,7 +44,8 @@ window.onload = async function SelectTicket(search) {
 
             const currentDate = new Date();
             currentDate.setHours(0, 0, 0, 0);
-
+            eventStart.setHours(0, 0, 0, 0);
+            eventEnd.setHours(0, 0, 0, 0);
             const eventStart = new Date(get_event_start_date); 
             const eventEnd = new Date(get_event_end_date); 
             const oneDay = 24 * 60 * 60 * 1000;
