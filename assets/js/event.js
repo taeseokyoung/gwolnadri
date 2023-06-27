@@ -12,9 +12,7 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
   }
 });
 
-window.onload = async function EventList() {
-  const backend_base_url = "https://gwolnadri.online"
-
+async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
   const eventListContainer = document.getElementById('event_list');
@@ -26,7 +24,6 @@ window.onload = async function EventList() {
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
     const get_image = element.image;
-    // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
 
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
