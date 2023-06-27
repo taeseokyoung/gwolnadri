@@ -71,7 +71,8 @@
     height: 300px;
     object-fit: cover;
     border-radius: 10px;
-    filter:brightness(0.5)
+    filter:brightness(0.5);
+    margin-bottom:30px;
 }
 
 .sub-card .sub-card-txt {

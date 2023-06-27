@@ -23,12 +23,14 @@ window.onload = async function EventList() {
     const get_likes = element.likes
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
-    const get_image = element.image
+    const get_image = element.image.slice("http://127.0.0.1:8000".length);
+    // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
+
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
 
     const eventImage = document.createElement('img');
-    eventImage.src = `${get_image}`;
+    eventImage.src = `${backend_base_url}${get_image}`;
     eventImage.alt = '';
 
     const currentDate = new Date();
@@ -42,7 +44,7 @@ window.onload = async function EventList() {
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
       reservationTag.innerText = '행사중';
-    } else if (diffDaysStart > 0 ) {
+    } else if (diffDaysStart > 0) {
       reservationTag.innerText = '행사예정';
     } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';
@@ -76,16 +78,16 @@ window.onload = async function EventList() {
 
     const likeIconImage = document.createElement('img');
     likeIconImage.src = '/assets/img/Heart-outline.svg';
-    if (!payload_parse || !payload_parse.user_id) { 
+    if (!payload_parse || !payload_parse.user_id) {
       likeIconImage.setAttribute("src", "/assets/img/Heart-outline.svg");
     } else if (get_likes.includes(payload_parse.user_id)) {
       likeIconImage.setAttribute("src", "/assets/img/Heart-full.svg");
-    } else{
+    } else {
       likeIconImage.setAttribute("src", "/assets/img/Heart-outline.svg");
     }
     likeIconImage.alt = '';
     // likeIconImage.style.cursor = "default";
-    
+
     const likeCount = document.createElement('span');
     likeCount.id = 'like_count';
     likeCount.innerText = String(get_like_count);
@@ -169,10 +171,10 @@ window.onload = async function EventList() {
               "Authorization": `Bearer ${token}`
             }
           });
-  
+
           const heartData = await heartResponse.json();
           alert(heartData.message);
-  
+
         } catch (error) {
           console.error('Error likes event:', error);
         }
@@ -180,14 +182,14 @@ window.onload = async function EventList() {
       else {
         alert("로그인이 필요합니다")
       }
-  
+
       window.location.reload()
-  
+
     });
-    
+
   });
 
-};  
+};
 
 
 async function HandleSearch() {
