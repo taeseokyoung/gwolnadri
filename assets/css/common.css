@@ -1,7 +1,32 @@
 /* 공통 */
 
+html {
+    font-size: 10px!important;
+    font-family: 'GmarketSansLight';
+}
+
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+@font-face {
+    font-family: 'OKGUNG';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/OKGUNG.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('/assets/font/GmarketSansTTFLight.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('/assets/font/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('/assets/font/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: normal;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
@@ -37,20 +62,24 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansLight';
+    overflow: hidden;
 }
 
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -62,10 +91,6 @@ table {
 
 
 /* 공통 css : nav, footicon */
-
-body {
-    overflow: hidden;
-}
 
 .Wrapper {
     width: 1061px;
@@ -86,7 +111,24 @@ body {
 
 .Gwolnadri-intro {
     width: 400px;
-    font-family: 'Noto Sans KR', sans-serif;
+}
+
+h1 {
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+h2 {
+    margin: 0 0 30px 5px;
+    font-size: 2.1rem;
+    font-family: 'GmarketSansMedium';
+    white-space: nowrap;
+}
+
+.Gwolnadri-intro h2 {
+    font-size: 65px;
+    font-family: 'OKGUNG';
+    margin: 0 0 25px 0;
 }
 
 .main-banner {
@@ -95,8 +137,9 @@ body {
 
 .sub-banner-1 {
     align-items: center;
-    padding: 10px 20px;
-    border: 1px solid #333;
+    padding: 15px 20px;
+    border: 1px solid rgb(51, 51, 51, 0.5);
+    /* box-shadow: 3px 3px 3px rgb(51, 51, 51, 0.2); */
     border-radius: 5px;
 }
 
@@ -106,35 +149,29 @@ body {
     justify-content: space-between;
 }
 
-h2 {
-    font-size: 60px;
-    font-family: 'Bagel Fat One', cursive;
-    margin: 5px 0 20px 0;
-}
-
 .sub-title {
-    margin-left: 5px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #333;
+    margin: 0 0 10px 5px;
+    font-size: 19.5px;
+    font-family: 'GmarketSansMedium';
 }
 
 .main-content {
-    margin-left: 5px;
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 18px;
+    font-family: 'GmarketSansLight';
+    margin: 0 0 0 5px;
 }
 
 /* ------ Gwolnadri-body Y 스크롤 생성 ------ */
 
 /* 크롬, 사파리, 오페라, 엣지 */
 .Gwolnadri-body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* 파이어폭스 */
 .Gwolnadri-body {
-  scrollbar-width: none; 
+    scrollbar-width: none; 
+    font-family: 'GmarketSansLight';
 }
 
 .Gwolnadri-body {
@@ -148,6 +185,10 @@ h2 {
 /* ------ 네비바 ------ */
 
 .Gwolnadri-body .wrap {}
+
+.contant-page {
+    margin: 30px;
+}
 
 header {
     position: fixed;
@@ -167,9 +208,9 @@ header nav {
 }
 
 header h1 {
-    font-size: 30px;
+    font-size: 3.1rem;
     color: #fff;
-    font-family: 'Bagel Fat One', cursive;
+    font-family: 'OKGUNG';
 }
 
 .Gwolnadri-body .nav-icon{
@@ -257,7 +298,7 @@ header.left-arrow-header img {
     flex-direction: column;
     gap: 80px;
     margin: 0 5px 30px 5px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
 }
 
 label {
@@ -265,14 +306,14 @@ label {
     font-weight: 500;
     color: #555;
     margin: 0 5px 20px 5px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
 }
 
 input {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     padding: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
 }
 
 input::placeholder {
@@ -302,7 +343,7 @@ button {
     font-weight: 400;
     color: #fff;
     background-color: #333;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     cursor: pointer;
 }
 
@@ -311,6 +352,104 @@ button {
 .card-icon img {
     cursor: pointer;
 }
+
+/* 메인 배너 */
+.Gwolnadri-body .main-page .card-txt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 40px;
+    width: 300px;
+    color: #fff;
+}
+
+.main-page .card-txt .category {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 300;
+    width: auto;
+    padding: 10px 14px 7px 14px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.main-page .card-txt .title {
+    font-size: 2.9rem;
+    margin-bottom: 15px;
+    font-family: 'GmarketSansMedium';
+}
+
+.main-page .card-txt .event-date {
+    font-size: 1.9rem;
+    margin: 0 0 35px 5px;
+    font-family: 'GmarketSansMedium';
+    color: 1px solid rgba(255,255,255,0.5);
+}
+
+.main-page .card-txt .card-icon {
+    display: flex;
+    gap: 30px;
+    margin: 0 0 0 5px;
+}
+
+.main-page .card-txt .card-icon img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+}
+
+.main-page .card-txt .card-icon span {
+   font-size: 1.3rem;
+}
+
+/* 카드 */
+
+.main-page .card-txt .category {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 300;
+    width: auto;
+    padding: 10px 14px 7px 14px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.card-txt .title {
+    font-size: 2.9rem;
+    margin-bottom: 15px;
+    font-family: 'GmarketSansMedium';
+}
+
+.card-txt .event-date {
+    font-size: 1.9rem;
+    margin: 0 0 35px 5px;
+    font-family: 'GmarketSansMedium';
+    color: 1px solid rgba(255,255,255,0.5);
+}
+
+.card-txt .card-icon {
+    display: flex;
+    gap: 30px;
+    margin: 0 0 0 5px;
+}
+
+.card-txt .card-icon img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+}
+
+.card-txt .card-icon span {
+   font-size: 1.3rem;
+}
+
+
 
 @media(max-width:1060px){
     .Wrapper {
@@ -363,7 +502,7 @@ button {
     
 
     .foot-icon .flex{
-        margin: 25px 60px;
+        margin: 25px 30px;
     }
 
     .foot-icon img {
@@ -371,3 +510,10 @@ button {
     }
 }
 
+
+.main-page>img {
+    background-color: #555;
+}
+.event-list .sub-card>img {
+    background-color: #555;  
+}

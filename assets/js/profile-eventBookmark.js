@@ -81,6 +81,7 @@ window.onload = async function ReservationDetail() {
         const like_div = document.createElement('div')
         like_div.setAttribute('class', 'heart')
 
+
         const like_icon = document.createElement('img')
         if (!payload_parse || !payload_parse.user_id) {
           like_icon.setAttribute("src", "/assets/img/Heart-outline.svg");
@@ -89,7 +90,7 @@ window.onload = async function ReservationDetail() {
         } else {
           like_icon.setAttribute("src", "/assets/img/Heart-outline.svg");
         }
-        
+
         const like_span = document.createElement('span')
         like_span.innerText = `${events.likes_count}`
 

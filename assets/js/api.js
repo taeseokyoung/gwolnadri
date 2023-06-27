@@ -12,6 +12,10 @@ function checkLogin() {
     }
 }
 
+document.querySelector('h1').addEventListener('click', function () {
+    window.location.replace(`${index_url}`)
+})
+
 function goBack() {
     window.history.back();
 }

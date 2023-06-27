@@ -198,7 +198,7 @@ async function Eventreview() {
     const reviewImgElement = document.createElement('img');
     reviewImgElement.className = 'review-image';
     reviewImgElement.id = 'review-image';
-    reviewImgElement.src = get_img;
+    reviewImgElement.src = `${get_img}`;
     reviewImgElement.alt = '';
 
     const reviewTxtElement = document.createElement('div');
