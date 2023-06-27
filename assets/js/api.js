@@ -14,6 +14,10 @@ function checkLogin() {
     }
 }
 
+document.querySelector('h1').addEventListener('click', function () {
+    window.location.replace(`${index_url}`)
+})
+
 // 뒤로가기
 function goBack() {
     window.history.back();

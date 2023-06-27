@@ -1,6 +1,6 @@
 .home-wrap {
     margin: 20% 30px 0 30px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansLight';
 }
 
 .left-arrow-header .nav-icon{
@@ -10,21 +10,20 @@
 .home-wrap h2 {
     font-size: 60px;
     font-weight: 500;
-    font-family: 'Bagel Fat One', cursive;
-    margin: 0 0 40px 5px;
+    font-family: 'OKGUNG';
+    margin: 0 0 40px 0;
 }
 
 .home-wrap .sub-title {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 400;
     margin: 0 0 15px 5px;
 }
 
 .home-wrap .content {
-    font-size: 25px;
-    line-height: 1.45;
+    font-size: 17px;
+    line-height: 1.5;
     margin: 0 0 200px 5px;
-    color:rgba(0, 0, 0, 0.4);
 }
 
 .home-wrap button {

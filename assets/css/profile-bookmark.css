@@ -9,7 +9,7 @@
 .profile-wrap h2 {
     font-size: 25px;
     font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     margin: 0 0 60px 5px;
 }
 
@@ -51,7 +51,6 @@
 }
 .contant-page .sub-card{
     position: relative;
-    margin: 30px;
 }
 
 .sub-card .reservation {
@@ -240,7 +239,7 @@
 }
 
 .sh_small {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansLight';
     font-size: 20px;
     margin-top: 20px;
     color: #353535;

@@ -1,9 +1,3 @@
-
-/* 메인 카드 (최상위에 있는 카드) */
-/* *{
-    outline: 1px solid red;
- } */
-
 .Gwolnadri-body .main-page {
     position: relative;
 }
@@ -22,47 +16,6 @@
     width: 300px;
     color: #fff;
     z-index: 1;
-}
-
-.card-txt .category {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 300;
-    width: auto;
-    padding: 8px 13px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
-
-.card-txt .title {
-    font-size: 29px;
-    font-weight: 500;
-    margin-bottom: 15px;
-}
-
-.card-txt .event-date {
-    font-size: 21px;
-    font-weight: 300;
-    margin: 0 2px 35px 5px;
-}
-
-.card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
-
-.card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-
-.card-txt .card-icon span {
-    font-size: 11px;
 }
 
 .event-wrap .sub-content {

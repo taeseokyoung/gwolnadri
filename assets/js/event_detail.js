@@ -41,7 +41,7 @@ async function EventDetail() {
 
   const get_image = response_json.image;
   const backend_image_url = `${backend_base_url}${get_image}`;
-  
+
 
   eventImgElement.className = 'event_img';
   eventImgElement.src = backend_image_url;
@@ -62,7 +62,7 @@ async function EventDetail() {
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
   const get_likes = response_json.likes
-  if (!payload_parse || !payload_parse.user_id) { 
+  if (!payload_parse || !payload_parse.user_id) {
     heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg");
   } else if (get_likes.includes(payload_parse.user_id)) {
     heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg");
@@ -81,7 +81,7 @@ async function EventDetail() {
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
   const get_bookmarker = response_json.event_bookmarks
-  if (!payload_parse || !payload_parse.user_id) { 
+  if (!payload_parse || !payload_parse.user_id) {
     bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg");
   } else if (get_bookmarker.includes(payload_parse.user_id)) {
     bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg");
@@ -215,7 +215,7 @@ async function Eventreview() {
     const reviewImgElement = document.createElement('img');
     reviewImgElement.className = 'review-image';
     reviewImgElement.id = 'review-image';
-    reviewImgElement.src = get_img;
+    reviewImgElement.src = `${get_img}`;
     reviewImgElement.alt = '';
 
     const reviewTxtElement = document.createElement('div');
