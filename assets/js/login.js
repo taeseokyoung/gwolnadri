@@ -4,6 +4,7 @@ async function handleLogin() {
   const response = await fetch(`${backend_base_url}/users/token/`, {
     headers: {
       'content-type': 'application/json',
+       "X-CSRFToken": '{{csrf_token}}'
     },
     method: 'POST',
     body: JSON.stringify({
