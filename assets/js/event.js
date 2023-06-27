@@ -23,7 +23,7 @@ window.onload = async function EventList() {
     const get_likes = element.likes
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
-    const get_image = element.image.slice("http://127.0.0.1:8000".length);
+    const get_image = element.image;
     // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
 
     const eventCard = document.createElement('div');
