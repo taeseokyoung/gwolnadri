@@ -13,6 +13,11 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 });
 
 
+window.onload = function () {
+  EventList()
+}
+
+
 async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`);
   if (response.status == 200) {
