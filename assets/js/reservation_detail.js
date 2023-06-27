@@ -134,25 +134,29 @@ window.onload = async function ReservationDetail() {
                     status.innerText = "예매"
 
                 } else {
-                    (detail.status)
+                    alert("잘못된 티켓 정보입니다. 관리자에게 문의하세요",detail.status)
+                    window.location.href = `${index_url}`
                 }
             } else {
-                (event.status)
+                alert("잘못된 티켓 정보입니다. 관리자에게 문의하세요",event.status)
+                window.location.href = `${index_url}`
             }
 
         } else {
-            (response.status)
+            alert("DB type 오류",response.status)
+            window.location.href = `${index_url}`
         }
 
     } else {
-       (response.status)
+       console.log(response.status)
+       window.location.href = `${index_url}`
     }
 }
 
 
 async function HanbokDelete(tid){
     let user_id = payload_parse.user_id
-    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${user_id}/${tid}`,{
+    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`,{
         headers: {
             "Authorization": `Bearer ${token}`
         },
@@ -163,7 +167,7 @@ async function HanbokDelete(tid){
         alert(response_json.message)
         window.location.href = `${frontend_base_url}/profile-storeReservation.html`
     } else {
-        (response.status)
+        alret("잘못된 정보입니다, 관리자에게 문의하세요",response.status)
         window.location.href = `${index_url}`
     }
 }
