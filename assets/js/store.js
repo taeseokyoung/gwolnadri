@@ -19,16 +19,40 @@ async function StoresList() {
     response_json["StoreList"].forEach(store => {
 
         const newCon = document.createElement("div")
+        newCon.setAttribute("class", "contant-card")
         const newTitle = document.createElement("div")
+        newTitle.setAttribute("class", "store-title")
         const newCate = document.createElement("p")
+        newCate.setAttribute("class", "hanbok_category")
         const newStore = document.createElement("p")
+        newStore.setAttribute("class", "hanbok_store")
+        newTitle.setAttribute("onclick", "storeLink(" + store.id + ")")
         const newAdd = document.createElement("p")
+        newAdd.setAttribute("class", "hanbok_address")
         const newIcon = document.createElement("div")
+        newIcon.setAttribute("class", "card-icon")
         const newHeart = document.createElement("div")
+        newHeart.setAttribute("class", "heart")
         const newBook = document.createElement("div")
+        newBook.setAttribute("class", "bookmark")
         const newHeartImg = document.createElement("img")
+        newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
+        newHeartImg.setAttribute("alt", "")
         const newBookImg = document.createElement("img")
+        newBookImg.setAttribute("alt", "")
+
+
+
+
         const newHeartNum = document.createElement("span")
+
+
+
+
+
+
+
+
         let likeOn
         let bookOn
 
@@ -36,29 +60,15 @@ async function StoresList() {
         newTitle.appendChild(newCate)
         newTitle.appendChild(newStore)
         newTitle.appendChild(newAdd)
-
         newCon.append(newIcon)
         newIcon.appendChild(newHeart)
         newIcon.appendChild(newBook)
         newHeart.appendChild(newHeartImg)
         newHeart.appendChild(newHeartNum)
         newBook.appendChild(newBookImg)
-
         storeCard.appendChild(newCon)
 
-        newCon.setAttribute("class", "contant-card")
-        newTitle.setAttribute("class", "store-title")
 
-        newCate.setAttribute("class", "hanbok_category")
-        newStore.setAttribute("class", "hanbok_store")
-        newTitle.setAttribute("onclick", "storeLink(" + store.id + ")")
-        newAdd.setAttribute("class", "hanbok_address")
-        newIcon.setAttribute("class", "card-icon")
-        newHeart.setAttribute("class", "heart")
-        newBook.setAttribute("class", "bookmark")
-        newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
-        newHeartImg.setAttribute("alt", "")
-        newBookImg.setAttribute("alt", "")
 
         if (payload) {
             const payload_parse = JSON.parse(payload)
@@ -98,7 +108,6 @@ async function StoresList() {
 
     })
 }
-
 
 
 for (var i = 0; i < positions.length; i++) {
