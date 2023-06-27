@@ -13,6 +13,8 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 });
 
 window.onload = async function EventList() {
+  const backend_base_url = "https://gwolnadri.online"
+
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
   const eventListContainer = document.getElementById('event_list');
@@ -31,7 +33,7 @@ window.onload = async function EventList() {
     const backend_image_url = `${backend_base_url}${get_image}`;
 
     const eventImage = document.createElement('img');
-    eventImage.src = 'backend_image_url';
+    eventImage.src = backend_image_url;
     eventImage.alt = '';
 
     const currentDate = new Date();
