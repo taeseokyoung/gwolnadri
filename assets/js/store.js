@@ -1,4 +1,8 @@
-window.onload = async function loadStoreList() {
+window.onload = function () {
+    loadStoreList()
+}
+
+async function loadStoreList() {
 
     const payload = localStorage.getItem("payload")
 
@@ -13,7 +17,7 @@ window.onload = async function loadStoreList() {
     var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
 
     const storeCard = document.getElementById("store-list-body")
-    stores = await store()
+    const stores = await store()
     stores["StoreList"].forEach(store => {
 
         const newCon = document.createElement("div")
@@ -137,7 +141,7 @@ async function bookBtn(store_id, bookOn) {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
-             "X-CSRFToken": '{{csrf_token}}'
+            "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
@@ -168,7 +172,7 @@ async function likeBtn(store_id, likeOn) {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
-             "X-CSRFToken": '{{csrf_token}}'
+            "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
