@@ -28,9 +28,10 @@ window.onload = async function EventList() {
 
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
+    const backend_image_url = `${backend_base_url}${get_image}`;
 
     const eventImage = document.createElement('img');
-    eventImage.src = `${backend_base_url}${get_image}`;
+    eventImage.src = 'backend_image_url';
     eventImage.alt = '';
 
     const currentDate = new Date();
