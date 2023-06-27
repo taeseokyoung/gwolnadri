@@ -128,7 +128,7 @@ async function EventDetail() {
   contant_pageElement.appendChild(reservationButton);
   contant_pageElement.appendChild(subContentElement);
 
-
+  
   bookmarkElement.addEventListener('click', async () => {
     const token = localStorage.getItem("access");
     if (payload) {
@@ -136,7 +136,8 @@ async function EventDetail() {
         const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
           method: 'POST',
           headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            "X-CSRFToken": '{{csrf_token}}'
           }
         });
 
@@ -160,7 +161,8 @@ async function EventDetail() {
         const heartResponse = await fetch(`${backend_base_url}/events/${event_id}/like/`, {
           method: 'POST',
           headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+             "X-CSRFToken": '{{csrf_token}}'
           }
         });
 
@@ -298,7 +300,8 @@ async function HandleComment() {
 
   const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
     headers: {
-      "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`,
+       "X-CSRFToken": '{{csrf_token}}'
     },
     method: 'POST',
     body: formdata
