@@ -76,6 +76,7 @@
 }
 .contant-page .sub-card{
     position: relative;
+    margin-bottom: 30px;
 }
 
 .sub-card .reservation {
@@ -87,6 +88,8 @@
     padding: 8px 10px 10px 10px;
     background: rgb(230, 0, 45, 0.7);
 }
+
+.event_list .sub-card
 
 .contant-page .sub-card img{
     width: 100%;

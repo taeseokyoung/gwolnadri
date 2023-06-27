@@ -509,11 +509,3 @@ button {
         cursor: pointer;
     }
 }
-
-
-.main-page>img {
-    background-color: #555;
-}
-.event-list .sub-card>img {
-    background-color: #555;  
-}
