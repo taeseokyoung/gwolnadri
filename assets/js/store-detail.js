@@ -258,7 +258,8 @@ async function submitComment(hanbokstore_id) {
         const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
             method: 'POST',
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`,
+                 "X-CSRFToken": '{{csrf_token}}'
             },
             body: formdata
         }
@@ -467,7 +468,8 @@ async function likeBtn(likeOn) {
     const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/like/`, {
         method: 'POST',
         headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
@@ -497,7 +499,8 @@ async function bookBtn(bookOn) {
     const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/bookmark/`, {
         method: 'POST',
         headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
