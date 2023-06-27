@@ -8,9 +8,8 @@ window.onload = async function SelectTicket(event_id) {
         const eventData_json = await eventData.json()
         console.log(eventData_json)
 
-        const origin_min_date = eventData_json.event_start_date
-        const origin_max_date = eventData_json.event_end_date
-
+        // const origin_min_date = eventData_json.event_start_date
+        // const origin_max_date = eventData_json.event_end_date
         // const min_date = origin_min_date.split('.')
         // const max_date = origin_max_date.split('.')
         // const start_date = "20" + min_date[0] + '-' + min_date[1] + '-' + min_date[2]
@@ -247,7 +246,7 @@ async function handleSelectEvent(ticket_id) {
                         setCookie("tid", tid, 2);
 
                         // DB에 결제요청건 저장
-                        const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${payload_parse.user_id}/`, {
+                        const send = await fetch(`${backend_base_url}/api/v1/stores/payment/`, {
                             headers: {
                                 "Authorization": `Bearer ${token}`,
                                 'content-type': 'application/json'
@@ -270,8 +269,14 @@ async function handleSelectEvent(ticket_id) {
                         console.log(send)
 
                         if (send.status == 200) {
-                            // alert("db 저장완료")
-                            window.location.href = next_url_p
+                            
+                            if (matchMedia("screen and (max-width: 431px)").matches) {
+                                // 1060px 미만에서 사용할 JavaScript
+                                window.location.href = `${next_url_m}`
+                              } else {
+                                // 1060px 이상에서 사용할 JavaScript
+                                window.location.href = `${next_url_p}`
+                              }
                         } else {
                             // alert("db 저장실패", send.status)
                             // window.location.href = `${index_url}`
