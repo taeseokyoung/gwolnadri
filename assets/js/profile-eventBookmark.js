@@ -42,6 +42,7 @@ window.onload = async function ReservationDetail() {
                 const get_event_end_date = events.event_end_date
 
                 const currentDate = new Date();
+                currentDate.setHours(0, 0, 0, 0);
                 const eventStart = new Date(get_event_start_date); 
                 const eventEnd = new Date(get_event_end_date); 
                 const oneDay = 24 * 60 * 60 * 1000;

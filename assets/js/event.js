@@ -40,12 +40,13 @@ window.onload = async function EventList() {
 
 
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
     const eventStart = new Date(get_event_start_date); 
     const eventEnd = new Date(get_event_end_date); 
     const oneDay = 24 * 60 * 60 * 1000;
     const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
     const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
-
+    console.log(currentDate,eventStart ,diffDaysStart)
     const reservationTag = document.createElement('p');
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
