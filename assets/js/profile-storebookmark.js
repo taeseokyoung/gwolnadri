@@ -122,7 +122,8 @@ async function bookBtn(store_id, bookOn) {
     const response = await fetch(`${backend_base_url}/api/v1/stores/${store_id}/bookmark/`, {
         method: 'POST',
         headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
@@ -152,7 +153,8 @@ async function likeBtn(store_id, likeOn) {
     const response = await fetch(`${backend_base_url}/api/v1/stores/${store_id}/like/`, {
         method: 'POST',
         headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
