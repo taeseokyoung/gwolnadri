@@ -12,9 +12,15 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
   }
 });
 
+
 async function EventList() {
-  const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
-  const response_json = await response.json();
+  const response = await fetch(`${backend_base_url}/events/`);
+  if (response.status == 200) {
+    const response_json = await response.json()
+    return response_json
+  } else {
+    alert("요청이 실패했습니다!")
+  }
   const eventListContainer = document.getElementById('event_list');
   response_json.forEach(element => {
     const get_title = element.title;
