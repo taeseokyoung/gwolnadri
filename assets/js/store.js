@@ -32,8 +32,6 @@ async function StoresList() {
         let likeOn
         let bookOn
 
-        storeCard.appendChild(newCon)
-
         newCon.appendChild(newTitle)
         newTitle.appendChild(newCate)
         newTitle.appendChild(newStore)
@@ -46,6 +44,7 @@ async function StoresList() {
         newHeart.appendChild(newHeartNum)
         newBook.appendChild(newBookImg)
 
+        storeCard.appendChild(newCon)
 
         newCon.setAttribute("class", "contant-card")
         newTitle.setAttribute("class", "store-title")
