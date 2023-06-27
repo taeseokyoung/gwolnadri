@@ -450,11 +450,6 @@ button {
    font-size: 1.3rem;
 }
 
-.contant-page .sub-card {
-    margin-bottom: 30px;
-}
-
-
 @media(max-width:1060px){
     .Wrapper {
         width: auto;
