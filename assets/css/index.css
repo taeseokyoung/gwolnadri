@@ -59,10 +59,6 @@
    font-size: 1.1rem;
 }
 
-
-
-/* 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
-
 .contant-page {
     z-index: -1;
 }

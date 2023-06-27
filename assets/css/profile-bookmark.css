@@ -42,10 +42,6 @@
     display: none;
 }
 
-
-
-/* 행사 카드 */
-
 .contant-page {
     z-index: -1;
 }
@@ -119,17 +115,6 @@
 .sub-card-txt .card-icon span {
    font-size: 11px;
 }
-
-
-
-/* -------- */
-
-
-/* *{
-    outline: 1px solid red;
-} */
-
-/* 스토어 카드 */
 
 .contant-page .store-sub-card{
     width: auto;

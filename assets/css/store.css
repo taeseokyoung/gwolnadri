@@ -42,12 +42,10 @@
     cursor: pointer;
 }
 
-/* 북마크, 좋아요 */
 .store-wrap .card-icon {
     display: flex;
     justify-content: flex-end;
     gap: 30px;
-
 }
 
 .store-wrap .contant-page, .store-wrap .review {

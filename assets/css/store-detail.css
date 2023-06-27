@@ -10,7 +10,6 @@
 .Gwolnadri-body .store-page img{
     width: 100%;
     height: 600px;
-    /* object-fit: cover; */
 }
 
 .store-wrap .contant-page, .store-wrap .review {
@@ -42,8 +41,6 @@
     border-bottom: 1px solid rgb(51, 51, 51, 0.1);
 }
 
-/* 스토어 리뷰 */
-
 .review-title {
     font-size: 21px;
     font-weight: 500;
@@ -73,15 +70,11 @@
     line-height: 1.45;
 }
 
-/* 북마크, 좋아요 */
-
 .card-icon {
     display: flex;
     flex-direction: row;
 }
 
-/* 스토어 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
- 
 .swiper {
     width: 100%;
     height: 100%;
@@ -136,7 +129,6 @@
     border: 1px solid rgb(255, 255, 255,0.7);
 }
 
-/* 후기작성하기 버튼 */
 .njs-button {
     width: fit-content;
     float: right;
@@ -144,7 +136,6 @@
     font-size: 15px;
 }
 
-/* 후기작성하기 내용물 */
 .review-content {
     display: flex;
     align-items: flex-end;

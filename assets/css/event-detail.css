@@ -34,7 +34,7 @@
     line-height: 1.45;
 }
 
-/* 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
+/* 서브 카드 */
 
 .contant-page {
     z-index: -1;
@@ -143,7 +143,6 @@
 .review-txt {
     line-height: 1.45;
     height: 200px;
-    /* border: 1px solid rgb(51, 51, 51, 0.1); */
 }
 
 .comment_img {

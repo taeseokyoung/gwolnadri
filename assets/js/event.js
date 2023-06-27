@@ -15,12 +15,6 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
 window.onload = async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
-  console.log(response_json);
-
-  // for (let i = 0; i < response_json.length; i++) {
-  //     const booking = response_json[i]
-  //     console.log(booking)}
-
   const eventListContainer = document.getElementById('event_list');
   response_json.forEach(element => {
     const get_title = element.title;
@@ -31,13 +25,13 @@ window.onload = async function EventList() {
     const get_bookmarker = element.event_bookmarks;
     const get_image = element.image.slice("http://127.0.0.1:8000".length);
     // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
+
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
 
     const eventImage = document.createElement('img');
     eventImage.src = `${backend_base_url}${get_image}`;
     eventImage.alt = '';
-
 
     const currentDate = new Date();
     const eventStart = new Date(get_event_start_date);
@@ -144,7 +138,6 @@ window.onload = async function EventList() {
       const event_id = parseInt(element.id, 10);
       const token = localStorage.getItem("access");
 
-      // console.log(event_id);
       if (payload) {
         try {
           const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
@@ -215,8 +208,6 @@ async function enterkey(event) {
   if (event.keyCode == 13) {
     // 엔터키가 눌렸을 때
     const word = document.getElementById("search_bar").value;
-    console.log(word);
-
     window.location.href = `${frontend_base_url}/search.html?search=${word}`;
   }
 }
