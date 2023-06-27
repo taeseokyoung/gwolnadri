@@ -9,13 +9,14 @@ let bounds = new kakao.maps.LatLngBounds();
 let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
 
 window.onload = function () {
-    store()
+    StoresList()
 }
 
-async function store() {
-    const response = await fetch(`${backend_base_url}/api/v1/stores/`)
+async function StoresList() {
+    const response = await fetch(`${backend_base_url}/api/v1/stores/`);
     const response_json = await response.json()
-    response_json.forEach(store => {
+    const storeCard = document.getElementById("store-list-body");
+    response_json["StoreList"].forEach(store => {
 
         const newCon = document.createElement("div")
         const newTitle = document.createElement("div")
