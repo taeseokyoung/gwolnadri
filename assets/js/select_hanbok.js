@@ -17,7 +17,7 @@ async function handleSelectHanbok(hanbok_id) {
     const time = document.querySelector('input[type=radio][name=time]:checked').value;
     let quantity = document.getElementById('quantity').value;
 
-    if (date == null || time == null) {
+if (date == null || time == null) {
         alert("다시 선택해주세요")
     
     } else {
@@ -51,7 +51,6 @@ async function handleSelectHanbok(hanbok_id) {
                 headers: {
                     "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
                     "Content-Type": "application/x-www-form-urlencoded",
-                    "X-CSRFToken": '{{csrf_token}}'
                 },
                 method: 'POST',
                 body: new URLSearchParams({

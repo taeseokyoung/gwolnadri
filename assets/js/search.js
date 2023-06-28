@@ -130,59 +130,44 @@ window.onload = async function SelectTicket(search) {
                 window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
             });
 
-            bookmark_icon.addEventListener('click', async () => {
-                const event_id = parseInt(events.id, 10);
-          
-                // console.log(event_id);
-                if (payload) {
-                  try {
-                    const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
-                      method: 'POST',
-                      headers: {
-                        "Authorization": `Bearer ${token}`,
-                          "X-CSRFToken": '{{csrf_token}}'
-                      }
-                    });
-          
-                    const bookmarkData = await bookmarkResponse.json();
-                    alert(bookmarkData.message);
-                  } catch (error) {
-                    console.error('Error bookmarking event:', error);
-                  }
-                } else {
-                  alert("로그인이 필요합니다")
-                }
-                window.location.reload()
-          
-            });
-            
-            like_icon.addEventListener('click', async () => {
-              const event_id = parseInt(events.id, 10);
-              const token = localStorage.getItem("access");
-              if (payload) {
-                try {
-                  const heartResponse = await fetch(`${backend_base_url}/events/${event_id}/like/`, {
-                    method: 'POST',
-                    headers: {
-                      "Authorization": `Bearer ${token}`,
-                        "X-CSRFToken": '{{csrf_token}}'
-                    }
-                  });
-          
-                  const heartData = await heartResponse.json();
-                  alert(heartData.message);
-          
-                } catch (error) {
-                  console.error('Error likes event:', error);
-                }
-              }
-              else {
-                alert("로그인이 필요합니다")
-              }
-          
-              window.location.reload()
-          
-            });            
+            const bookmarkData = await bookmarkResponse.json();
+            alert(bookmarkData.message);
+          } catch (error) {
+            console.error('Error bookmarking event:', error);
+          }
+        } else {
+          alert("로그인이 필요합니다")
         }
+        window.location.reload()
+
+      });
+
+      like_icon.addEventListener('click', async () => {
+        const event_id = parseInt(events.id, 10);
+        const token = localStorage.getItem("access");
+        if (payload) {
+          try {
+            const heartResponse = await fetch(`${backend_base_url}/events/${event_id}/like/`, {
+              method: 'POST',
+              headers: {
+                "Authorization": `Bearer ${token}`,
+              }
+            });
+
+            const heartData = await heartResponse.json();
+            alert(heartData.message);
+
+          } catch (error) {
+            console.error('Error likes event:', error);
+          }
+        }
+        else {
+          alert("로그인이 필요합니다")
+        }
+
+        window.location.reload()
+
+      });
     }
+  }
 }
