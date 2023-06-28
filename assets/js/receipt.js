@@ -8,7 +8,6 @@ window.onload = async function Receipt() {
     })
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
 
         const get_aid = response_json.aid
         const get_approved = response_json.approved_at
@@ -47,5 +46,6 @@ window.onload = async function Receipt() {
 
     } else {
         alert(response.status)
+        window.location.href = `${index_url}`
     }
 }

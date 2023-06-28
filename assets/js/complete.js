@@ -11,7 +11,6 @@ window.onload = async function CompletePgtoken() {
 
     if (response.status == 200) {
         const response_json = await response.json()
-        console.log(response_json)
 
         if (cookie_tid == response_json.tid) {
 
@@ -20,8 +19,6 @@ window.onload = async function CompletePgtoken() {
             const partner_user_id = response_json.partner_user_id
             const quantity = response_json.quantity
             const type = response_json.type
-            console.log(type)
-            console.log(quantity)
 
             if (type == "event") {
 
@@ -121,8 +118,6 @@ window.onload = async function CompletePgtoken() {
                         "pg_token": pg_token
                     })
                 })
-                console.log(kakao_pay)
-
                 if (kakao_pay.status == 200) {
                     // alert("결제 완료")
 
@@ -149,23 +144,25 @@ window.onload = async function CompletePgtoken() {
                     console.log(send)
         
                     if (send.status == 200) {
-                        // alert("db 저장완료")
-                        // window.location.href = `${next_url_p}?tid=${tid}`
+                        
                     } else {
-                        // alert("db 저장실패",send.status)
-                        // window.location.href = `${index_url}`
+                        alert("결제 실패, 관리자에게 문의하세요",send.status)
+                        window.location.href = `${index_url}`
                     }
 
                 } else {
-                    // alert("발급 실패",kakao_pay.status)
+                    // alert("이미 처리된 요청입니다",kakao_pay.status)
+                    console.log("이미 처리된 요청입니다")
                 }
 
             } else {
-                // alert("DB type 오류")
+                alert("DB type 오류")
+                window.location.href = `${index_url}`
             }
 
         } else {
-            // alert("DB tid 오류")
+            alert("결제번호 오류, 관리자에게 문의하세요", response_json.status)
+            window.location.href = `${index_url}`
         }
 
     } else {

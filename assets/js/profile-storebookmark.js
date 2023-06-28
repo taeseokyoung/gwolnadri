@@ -5,8 +5,7 @@ window.onload = async function loadStoreList() {
 
     //한복점 html 카드 생성
     const storeCard = document.getElementById("store-list-body")
-    bookedStores = await bookedStore()
-    console.log(bookedStores["bookmark_stores"])
+    const bookedStores = await bookedStore()
 
     console.log(bookedStores["bookmark_stores"].length)
     if (bookedStores["bookmark_stores"].length == 0) {
