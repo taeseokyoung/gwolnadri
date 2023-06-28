@@ -76,7 +76,10 @@ button {
 .item {
     color: #303030;
     font-size: 17px;
-    font-weight: 400; 
+    font-weight: 400;
+    white-space: pre-wrap;
+    word-break: break-all;
+    text-align: right;
 }
 
 .line {
