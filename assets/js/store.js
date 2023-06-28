@@ -13,7 +13,7 @@ StoresList()
 
 
 async function StoresList() {
-    const response = await fetch(`${backend_base_url}/api/v1/stores/`, { method: GET });
+    const response = await fetch(`${backend_base_url}/api/v1/stores/`);
     const response_json = await response.json()
     const storeCard = document.getElementById("store-list-body");
     response_json["StoreList"].forEach(store => {
