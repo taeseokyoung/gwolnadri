@@ -7,7 +7,7 @@
 }
 
 .profile-wrap h2 {
-    font-size: 25px;
+    font-size: 2.5rem;
     font-weight: 500;
     font-family: 'GmarketSansMedium';
     margin: 0 0 60px 5px;
@@ -25,7 +25,7 @@
     justify-content: space-between;
     padding: 30px 0;
     border-bottom: 1px solid rgb(221, 221, 221,0.5);
-    font-size: 19px;
+    font-size: 1.9rem;
     color: #555;
     margin: 0 0 0 5px;
 }
@@ -53,7 +53,7 @@
     position: absolute;
     top: 30px;
     right: 30px;
-    font-size: 17px;
+    font-size: 1.7rem;
     color: #fff;
     padding: 8px 10px 10px 10px;
     background: rgb(230, 0, 45, 0.7);
@@ -88,13 +88,13 @@
 }
 
 .sub-card-txt .title {
-    font-size: 25px;
+    font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
 .sub-card-txt .event-date {
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 300;
     margin: 0 2px 25px 5px;
 }
@@ -137,14 +137,14 @@
 }
 
 .store-txt .hanbok-title {
-    font-size: 25px;
+    font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
 
 .store-txt .hanbok_address {
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 300;
     margin: 0 2px 25px 5px;
 }
@@ -182,7 +182,7 @@
 
 
 .store-title .hanbok_store {
-    font-size: 29px;
+    font-size: 2.9rem;
     font-weight: 500;
     margin: 0 0 15px 0;
     cursor: pointer;
@@ -190,7 +190,7 @@
 
 .store-title .hanbok_category {
     display: inline-block;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 400;
     padding: 8px 13px;
     margin-bottom: 15px;
@@ -225,7 +225,7 @@
 
 .sh_small {
     font-family: 'GmarketSansLight';
-    font-size: 20px;
+    font-size: 2rem;
     margin-top: 20px;
     color: #353535;
     white-space: nowrap;
@@ -265,4 +265,279 @@
     color: #353535;
     font-size: 50px;
     font-weight: 200;
+}
+
+
+@media(max-width:1060px){
+
+    html{
+        font-size: 8px !important;
+    }
+    .profile-wrap {
+    margin: 20% 30px 0 30px;
+}
+
+.left-arrow-header .nav-icon{
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
+}
+
+.profile-wrap h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: 'GmarketSansMedium';
+    margin: 0 0 60px 5px;
+}
+
+.reservation-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.reservation-view>li>a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px solid rgb(221, 221, 221,0.5);
+    font-size: 1.9rem;
+    color: #555;
+    margin: 0 0 0 5px;
+}
+
+.login-option>li::after{
+    content: "";
+    position: absolute;
+    right: -50%;
+    transform: translateX(50%);
+
+}
+
+.login-option>li:last-child::after{
+    display: none;
+}
+
+.contant-page {
+    z-index: -1;
+}
+.contant-page .sub-card{
+    position: relative;
+}
+
+.sub-card .reservation {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 1.7rem;
+    color: #fff;
+    padding: 8px 10px 10px 10px;
+    background: rgb(230, 0, 45, 0.7);
+}
+
+.contant-page .sub-card img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.sub-card .sub-card-txt {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    width: 300px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.sub-card-txt .category {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 300;
+    width: auto;
+    padding: 7px 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.sub-card-txt .title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.sub-card-txt .event-date {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin: 0 2px 25px 5px;
+}
+
+.sub-card-txt .card-icon {
+    display: flex;
+    gap: 30px;
+    margin: 0 0 0 5px;
+}
+
+.sub-card-txt .card-icon img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+.sub-card-txt .card-icon span {
+   font-size: 11px;
+}
+
+.contant-page .store-sub-card{
+    width: auto;
+    margin: 30px;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.store-txt .hanbok-category {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+    width: auto;
+    padding: 7px 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    color: #000;
+}
+
+.store-txt .hanbok-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+
+.store-txt .hanbok_address {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin: 0 2px 25px 5px;
+}
+
+
+.store-sub-card .card-icon {
+    display: flex;
+    gap: 30px;
+    margin: 0 0 0 5px;
+}
+
+.store-sub-card .card-icon img {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+.store-sub-card .card-icon span {
+   font-size: 11px;
+}
+
+/* 한복점 리스트 포멧 그대로 가져옴 */
+
+.contant-page .contant-card {
+    position: relative;
+    display: block;
+    width: auto;
+    height: 150px;
+    border: 1px solid rgb(51, 51, 51, 0.5);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+
+.store-title .hanbok_store {
+    font-size: 2.9rem;
+    font-weight: 500;
+    margin: 0 0 15px 0;
+    cursor: pointer;
+}
+
+.store-title .hanbok_category {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 8px 13px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(51, 51, 51, 0.7);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.store-title .hanbok_address {
+    cursor: pointer;
+}
+
+/* 북마크, 좋아요 */
+.card-icon {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.contant-page{
+    margin: 30px;
+}
+
+.sh_col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 550px;
+}
+
+.sh_small {
+    font-family: 'GmarketSansLight';
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #353535;
+}
+
+.xi-calendar-cancle {
+    color: #353535;
+    font-size: 50px;
+    font-weight: 200;
+}
+
+.sh_search {
+    color: #000;
+    background-color: transparent;
+    width: 250px;
+    margin-left: 8px;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 5px 10px;
+}
+
+.sh_search:focus-visible {
+    outline: none;
+}
+
+.sh_btn {
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    background-image: url("/assets/img/Search2.svg");
+    background-position: center;
+    background-size: contain;
+}
+
+.xi-shop {
+    color: #353535;
+    font-size: 50px;
+    font-weight: 200;
+}
 }

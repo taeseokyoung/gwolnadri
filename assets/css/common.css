@@ -207,6 +207,11 @@ header nav {
     z-index: 999;
 }
 
+nav .nav-logo{
+    line-height: 30px;
+    margin-top: 4px;
+}
+
 header h1 {
     font-size: 3.1rem;
     color: #fff;
@@ -450,6 +455,7 @@ button {
 }
 
 @media(max-width:1060px){
+
     .Wrapper {
         width: auto;
         margin: 0 0;
@@ -506,4 +512,6 @@ button {
     .foot-icon img {
         cursor: pointer;
     }
+
+
 }
