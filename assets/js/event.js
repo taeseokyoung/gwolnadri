@@ -71,10 +71,14 @@ async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const response_json = await response.json();
 
-  // for (let i = 0; i < response_json.length; i++) {
-  //     const booking = response_json[i]
-  //     console.log(booking)}
 
+window.onload = function () {
+  EventList()
+}
+
+async function EventList() {
+  const response = await fetch(`${backend_base_url}/events/`);
+  const response_json = await response.json()
   const eventListContainer = document.getElementById('event_list');
   response_json.forEach(element => {
     const get_title = element.title;
@@ -91,13 +95,13 @@ async function EventList() {
     eventImage.src = `${backend_base_url}${get_image}`;
     eventImage.alt = '';
 
-
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
     const eventStart = new Date(get_event_start_date); 
     eventStart.setHours(0, 0, 0, 0);
     const eventEnd = new Date(get_event_end_date); 
     eventEnd.setHours(0, 0, 0, 0);
+
     const oneDay = 24 * 60 * 60 * 1000;
     const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
     const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
@@ -106,12 +110,12 @@ async function EventList() {
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
       reservationTag.innerText = '행사중';
-    } else if (diffDaysStart > 0 ) {
+    } else if (diffDaysStart > 0) {
       reservationTag.innerText = '행사예정';
     } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';
     } else {
-      reservationTag.innerText = '삑'; 
+      reservationTag.innerText = '삑';
     }
 
     const eventCardTxt = document.createElement('div');
@@ -140,16 +144,16 @@ async function EventList() {
 
     const likeIconImage = document.createElement('img');
     likeIconImage.src = '/assets/img/Heart-outline.svg';
-    if (!payload_parse || !payload_parse.user_id) { 
+    if (!payload_parse || !payload_parse.user_id) {
       likeIconImage.setAttribute("src", "/assets/img/Heart-outline.svg");
     } else if (get_likes.includes(payload_parse.user_id)) {
       likeIconImage.setAttribute("src", "/assets/img/Heart-full.svg");
-    } else{
+    } else {
       likeIconImage.setAttribute("src", "/assets/img/Heart-outline.svg");
     }
     likeIconImage.alt = '';
     // likeIconImage.style.cursor = "default";
-    
+
     const likeCount = document.createElement('span');
     likeCount.id = 'like_count';
     likeCount.innerText = String(get_like_count);
@@ -213,7 +217,7 @@ async function EventList() {
           alert(bookmarkData.message);
         } catch (error) {
           console.error('Error bookmarking event:', error);
-          
+
         }
       } else {
         alert("로그인이 필요합니다")
@@ -233,10 +237,10 @@ async function EventList() {
               "Authorization": `Bearer ${token}`
             }
           });
-  
+
           const heartData = await heartResponse.json();
           alert(heartData.message);
-  
+
         } catch (error) {
           console.error('Error likes event:', error);
         }
@@ -244,34 +248,32 @@ async function EventList() {
       else {
         alert("로그인이 필요합니다")
       }
-  
+
       window.location.reload()
-  
+
     });
-    
+
   });
 
-};  
+};
 
 
 async function HandleSearch() {
-    
+
   const search_bar = document.getElementById("search_bar");
-  
-  if(search_bar.style.display=='none'){
-      search_bar.style.display = 'block';	
-  }else{
-      search_bar.style.display = 'none';	
-  } 
+
+  if (search_bar.style.display == 'none') {
+    search_bar.style.display = 'block';
+  } else {
+    search_bar.style.display = 'none';
+  }
 }
 
 
 async function enterkey(event) {
   if (event.keyCode == 13) {
-      // 엔터키가 눌렸을 때
-      const word = document.getElementById("search_bar").value;
-      console.log(word);
-      
-      window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+    // 엔터키가 눌렸을 때
+    const word = document.getElementById("search_bar").value;
+    window.location.href = `${frontend_base_url}/search.html?search=${word}`;
   }
 }

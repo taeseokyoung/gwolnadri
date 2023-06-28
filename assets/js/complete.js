@@ -4,8 +4,7 @@ window.onload = async function CompletePgtoken() {
     const urlParams = new URLSearchParams(window.location.search);
     const pg_token = urlParams.get('pg_token');
     const cookie_tid = getCookie("tid")
-    // console.log(getCookie("tid"))
-    
+
     const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${cookie_tid}`, {
     })
 
@@ -23,11 +22,8 @@ window.onload = async function CompletePgtoken() {
             if (type == "event") {
 
                 const str_order = String(partner_order_id)
-                console.log(str_order)
-
                 const ticket_id = str_order.split('2023')[1]
 
-                // booking 처리
                 const ticket = await fetch(`${backend_base_url}/events/${ticket_id}/bookedticket/`, {
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -38,14 +34,11 @@ window.onload = async function CompletePgtoken() {
                         "quantity": quantity
                     })
                 })
-                console.log(ticket)
 
                 if (ticket.status == 201) {
-                    // alert("티켓 예매완료")
 
-                    // 결제 확정
                     const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/approve", {
-                        headers:{
+                        headers: {
                             "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
                             "Content-Type": "application/x-www-form-urlencoded"
                         },
@@ -58,19 +51,14 @@ window.onload = async function CompletePgtoken() {
                             "pg_token": pg_token
                         })
                     })
-                    console.log(kakao_pay)
 
                     if (kakao_pay.status == 200) {
-                        // alert("결제 완료")
 
                         const kakao_json = await kakao_pay.json()
-                        console.log(kakao_json)
-                        
                         const aid = kakao_json.aid
                         const payment_type = kakao_json.payment_method_type
                         const approved = kakao_json.approved_at
 
-                        // DB에 결제완료건 저장
                         const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}/`, {
                             headers: {
                                 "Authorization": `Bearer ${token}`,
@@ -83,7 +71,6 @@ window.onload = async function CompletePgtoken() {
                                 "approved_at": approved
                             })
                         })
-                        console.log(send)
             
                         if (send.status == 200) {
                             console.log("db 저장완료")
@@ -121,12 +108,24 @@ window.onload = async function CompletePgtoken() {
                 if (kakao_pay.status == 200) {
                     // alert("결제 완료")
 
-                    const kakao_json = await kakao_pay.json()
-                    console.log(kakao_json)
-                    
-                    const aid = kakao_json.aid
-                    const payment_type = kakao_json.payment_method_type
-                    const approved = kakao_json.approved_at
+                        if (kakao_pay.status == 200) {
+                            const kakao_json = await kakao_pay.json()
+                            const aid = kakao_json.aid
+                            const payment_type = kakao_json.payment_method_type
+                            const approved = kakao_json.approved_at
+                            const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}/`, {
+                                headers: {
+                                    "Authorization": `Bearer ${token}`,
+                                    'content-type': 'application/json'
+                                },
+                                method: 'PUT',
+                                body: JSON.stringify({
+                                    "aid": aid,
+                                    "payment_method_type": payment_type,
+                                    "approved_at": approved
+                                })
+                            })
+                            if (send.status == 200) {
 
                     // DB에 결제완료건 저장
                     const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}/`, {
@@ -164,16 +163,9 @@ window.onload = async function CompletePgtoken() {
             alert("결제번호 오류, 관리자에게 문의하세요", response_json.status)
             window.location.href = `${index_url}`
         }
-
-    } else {
-        console.log(response_json)
-        alert(response.status,"잘못된 상품 정보입니다")
-        window.location.href = `${index_url}`
     }
 }
 
-
-// 메인화면으로 location
 async function MainRedirect() {
     window.location.href = `${index_url}`
 }

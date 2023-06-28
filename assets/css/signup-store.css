@@ -8,8 +8,7 @@
 
 .signup-wrap h2 {
     font-size: 25px;
-    font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     margin: 0 0 60px 5px;
 }
 
@@ -36,8 +35,6 @@
 .login-option>li:last-child::after{
     display: none;
 }
-
-/* 이메일 인증 버튼 */
 
 .email-box {
     position: relative;

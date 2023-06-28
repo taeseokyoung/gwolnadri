@@ -1,7 +1,3 @@
-/* 메인 카드 (최상위에 있는 카드) */
-/* *{
-    outline: 1px solid red;
-    } */
 .Gwolnadri-body .main-page {
     position: relative;
     z-index: -1;
@@ -10,13 +6,11 @@
 .Gwolnadri-body .main-page img{
     width: 100%;
     height: 600px;
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 
 .Gwolnadri-body .card-txt {
     position: absolute;
-    /* bottom: 35px;
-    left: 40px; */
     bottom: 0;
     left: 0;
     padding: 40px;
@@ -28,34 +22,35 @@
     position: absolute;
     top: 140px;
     right: 30px;
-    font-size: 19px;
+    font-size: 1.7rem;
     color: #fff;
-    padding: 8px 10px 10px 10px;
+    padding: 10px 10px 8px 10px;
     background: rgb(230, 0, 45, 0.7);
 }
 
 .card-txt .category {
     display: inline-block;
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: 300;
     width: auto;
-    padding: 8px 13px;
-    margin-bottom: 15px;
+    padding: 10px 14px 7px 14px;
+    margin-bottom: 20px;
     border: 1px solid rgba(255,255,255,0.7);
     border-radius: 20px;
     color: #fff;
 }
 
 .card-txt .title {
-    font-size: 29px;
-    font-weight: 500;
+    font-size: 2.9rem;
     margin-bottom: 15px;
+    font-family: 'GmarketSansMedium';
 }
 
 .card-txt .event-date {
-    font-size: 21px;
-    font-weight: 300;
-    margin: 0 2px 35px 5px;
+    font-size: 2.1rem;
+    margin: 0 0 35px 5px;
+    font-family: 'GmarketSansMedium';
+    color: 1px solid rgba(255,255,255,0.5);
 }
 
 .card-txt .card-icon {
@@ -72,28 +67,22 @@
 }
 
 .card-txt .card-icon span {
-   font-size: 11px;
+   font-size: 1.1rem;
 }
 
-
-/* 서브 카드 (아래 컨텐츠 탭에 들어갈 카드) */
 
 .contant-page {
     z-index: -1;
 }
 .contant-page .sub-card{
     position: relative;
-    margin: 30px;
+    margin-bottom: 30px;
 }
 
-.sub-card .reservation {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 17px;
-    color: #fff;
-    padding: 8px 10px 10px 10px;
-    background: rgb(230, 0, 45, 0.7);
+.event_list .sub-card>img{
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .contant-page .sub-card img{
@@ -105,6 +94,19 @@
 
 }
 
+.sub-card .reservation {
+    top: 30px;
+    right: 30px;
+}
+
+.sub-card .sub-card-txt {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    width: 300px;
+    margin-bottom: 30px;
+    color: #fff;
+}
 .sub-card .sub-card-txt {
     position: absolute;
     bottom: 0;
@@ -116,10 +118,10 @@
 
 .sub-card-txt .category {
     display: inline-block;
-    font-size: 11px;
+    font-size: 1.1rem;
     font-weight: 300;
     width: auto;
-    padding: 7px 12px;
+    padding: 9px 12px 6px 12px;
     margin-bottom: 15px;
     border: 1px solid rgba(255,255,255,0.7);
     border-radius: 20px;
@@ -127,14 +129,16 @@
 }
 
 .sub-card-txt .title {
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-family: 'GmarketSansMedium';
+    line-height: 1.25;
     margin-bottom: 10px;
 }
 
 .sub-card-txt .event-date {
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 300;
+    font-family: 'GmarketSansMedium';
     margin: 0 2px 25px 5px;
 }
 
@@ -152,13 +156,13 @@
 }
 
 .sub-card-txt .card-icon span {
-   font-size: 11px;
+   font-size: 1.1rem;
 }
+
 
 .sh_search_title {
     font-size: 25px;
-    font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     margin-left: 10px;
 }
 
@@ -181,7 +185,7 @@
 }
 
 .sh_small {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansLight';
     font-size: 20px;
     margin-top: 20px;
     color: #353535;

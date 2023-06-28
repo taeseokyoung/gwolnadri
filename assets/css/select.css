@@ -17,7 +17,7 @@
 }
 
 .sh-lable {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     font-size: 17px;
     font-weight: 500;
     color: #555;
@@ -62,7 +62,6 @@
     display: inline-block;
     cursor: pointer;
     height: 24px;
-    /* width: 90px; */
     border: 1px solid #333;
     line-height: 24px;
     text-align: center;
@@ -115,7 +114,7 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     padding: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansLight';
 }
 
 button:disabled {
@@ -141,7 +140,6 @@ select:disabled {
 
 #quantity:disabled {
     background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
-  /*     background-color: transparent; */
     cursor: not-allowed;
 }
 

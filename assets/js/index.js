@@ -1,4 +1,3 @@
-// 스크롤 시 네비바 색상 변경
 const scroll_body = document.querySelector("#Gwolnadri-body");
 
 document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
@@ -18,9 +17,9 @@ window.onload = async function loadEvents() {
     const payload = localStorage.getItem("payload");
     book_event = await eventList();
     scrap_event = await eventScrapList();
-  
+
     const content_page = document.querySelector(".contant-page.nonscrap");
-  
+
     book_event.forEach(async nonscrap => {
 
         if (nonscrap) {
@@ -29,7 +28,7 @@ window.onload = async function loadEvents() {
             sub_card.setAttribute("onclick", `eventDetail(${nonscrap.id})`)
 
             const card_image = document.createElement("img")
-            card_image.setAttribute("src", `${nonscrap.image}`)
+            card_image.setAttribute("src", `${backend_base_url}${nonscrap.image}`)
             card_image.setAttribute("onerror", "this.src='https://cdn.eyesmag.com/content/uploads/posts/2023/03/23/NEWMAIN-6bfe982d-aaed-4f32-952d-d2f794c5a155.jpg'")
             sub_card.append(card_image)
 
@@ -43,14 +42,13 @@ window.onload = async function loadEvents() {
             const title = document.createElement("h3")
             title.setAttribute("class", "title")
             title.innerText = nonscrap.title
-            // 행사 시작 - 행사 종료 기간 입력
+
             const event_date = document.createElement("p")
             event_date.setAttribute("class", "event-date")
             const start_date = nonscrap.event_start_date
             const end_date = nonscrap.event_end_date
             event_date.innerText = start_date + ' - ' + end_date
 
-            // 좋아요, 북마크 아이콘
             const card_icon = document.createElement("div")
             card_icon.setAttribute("class", "card-icon")
 
@@ -62,13 +60,13 @@ window.onload = async function loadEvents() {
 
             const heart_img = document.createElement("img")
             const bookmark_img = document.createElement("img")
-            
+
             //로그인 여부 판단
-            if (payload){
+            if (payload) {
                 const payload_parse = JSON.parse(payload)
                 heart_img.setAttribute("src", "/assets/img/Heart-outline.svg")
                 //북마크 표시
-                if (nonscrap.event_bookmarks.includes(payload_parse.user_id)){
+                if (nonscrap.event_bookmarks.includes(payload_parse.user_id)) {
                     bookOn = 1
                     bookmark_img.setAttribute("src", "/assets/img/Bookmark-full.svg")
                 } else {
@@ -79,7 +77,6 @@ window.onload = async function loadEvents() {
                 bookmark_img.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
 
-            // 좋아요 숫자 변경 필요
             const heart_num = document.createElement("span")
             heart_num.innerText = `${nonscrap.likes_count}`
 
@@ -88,7 +85,8 @@ window.onload = async function loadEvents() {
             card_icon.append(heart, bookmark)
             sub_card_txt.append(category, title, event_date, card_icon)
             content_page.append(sub_card)
-        }}
+        }
+    }
 
     )
 
@@ -115,7 +113,7 @@ window.onload = async function loadEvents() {
             const title = document.createElement("h3")
             title.setAttribute("class", "title")
             title.innerText = scrap.title
-            // 행사 시작 - 행사 종료 기간 입력
+
             const event_date = document.createElement("p")
             event_date.setAttribute("class", "event-date")
             const start_date = scrap.start_date.substr(2).replaceAll('-', '.')
@@ -130,14 +128,14 @@ window.onload = async function loadEvents() {
 
 
 async function HandleSearch() {
-    
+
     const search_bar = document.getElementById("search_bar");
-    
-    if(search_bar.style.display=='none'){
-        search_bar.style.display = 'block';	
-    }else{
-        search_bar.style.display = 'none';	
-    } 
+
+    if (search_bar.style.display == 'none') {
+        search_bar.style.display = 'block';
+    } else {
+        search_bar.style.display = 'none';
+    }
 }
 
 
@@ -145,8 +143,6 @@ async function enterkey(event) {
     if (event.keyCode == 13) {
         // 엔터키가 눌렸을 때
         const word = document.getElementById("search_bar").value;
-        console.log(word);
-        
         window.location.href = `${frontend_base_url}/search.html?search=${word}`;
     }
 }

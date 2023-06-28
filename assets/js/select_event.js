@@ -6,7 +6,6 @@ window.onload = async function SelectTicket(event_id) {
     })
     if (eventData.status == 200) {
         const eventData_json = await eventData.json()
-        console.log(eventData_json)
 
         // const origin_min_date = eventData_json.event_start_date
         // const origin_max_date = eventData_json.event_end_date
@@ -25,17 +24,14 @@ window.onload = async function SelectTicket(event_id) {
         const date = document.getElementById('rsrvt_date');
 
         if (start_date < tomorrow) {
-            console.log("tomorrow : " + `${tomorrow}` + " > " + "start_date : " + `${start_date}`)
             date.setAttribute("min", `${tomorrow}`)
         } else {
-            console.log("start_date : " + `${start_date}` + " > " + "tomorrow : " + `${tomorrow}`)
             date.setAttribute("min", `${start_date}`)
         }
 
         date.setAttribute("max", `${end_date}`)
 
     } else {
-        console.log(eventData_json)
         alert(eventData.status, "잘못된 상품 정보입니다")
         window.location.href = `${index_url}`
     }
@@ -46,9 +42,6 @@ async function SelectDate() {
     event_id = urlParams.get('event_id');
 
     const v_date = document.getElementById('rsrvt_date').value;
-
-    console.log(v_date)
-
     const eventTime = await fetch(`${backend_base_url}/events/${event_id}/${v_date}/ticket/`, {
         headers: {
             "Authorization": `Bearer ${token}`
@@ -56,8 +49,6 @@ async function SelectDate() {
     })
     if (eventTime.status == 200) {
         const eventTime_json = await eventTime.json()
-        console.log(eventTime_json)
-
         let e_date = document.getElementById('rsrvt_date');
         let btn_date = document.getElementById('select_date');
         e_date.disabled = true;
@@ -73,7 +64,6 @@ async function SelectDate() {
 
         for (let i = 0; i < eventTime_json.length; i++) {
             const times = eventTime_json[i]
-            console.log(times)
 
             const current = times.current_booking
             const max_booking = times.max_booking_count
@@ -87,11 +77,10 @@ async function SelectDate() {
             timeList.appendChild(opt)
         }
 
-    } else if (eventTime.status == 404) {
+    } else if (eventTime.status == 404 || v_date == null) {
         alert("다시 선택해주세요")
 
     } else {
-        console.log(eventTime)
         alert(eventTime.status, "잘못된 상품 정보입니다")
         window.location.href = `${index_url}`
     }
@@ -102,8 +91,6 @@ async function SelectTime() {
     const v_date = document.getElementById('rsrvt_date').value;
     const v_time = document.getElementById('timeList').value;
     const s_time = v_time.split(' ')[0]
-
-    console.log(s_time)
 
     if (s_time == "행사") {
         alert("다시 선택해주세요")
@@ -116,7 +103,6 @@ async function SelectTime() {
         })
         if (eventBooking.status == 200) {
             const eventBooking_json = await eventBooking.json()
-            console.log(eventBooking_json)
 
             let e_time = document.getElementById('timeList');
             let btn_time = document.getElementById('selectTime');
@@ -128,7 +114,6 @@ async function SelectTime() {
 
             for (let i = 0; i < eventBooking_json.length; i++) {
                 const booking = eventBooking_json[i]
-                console.log(booking)
 
                 const max_booking = booking.max_booking_count
                 const current = booking.current_booking
@@ -139,7 +124,6 @@ async function SelectTime() {
                 Kakaopay.setAttribute("onClick", `handleSelectEvent(${ticket_id})`)
             }
         } else {
-            console.log(eventBooking)
             alert(eventBooking.status, "잘못된 상품 정보입니다")
             window.location.href = `${index_url}`
         }
@@ -161,13 +145,11 @@ async function handleSelectEvent(ticket_id) {
         })
         if (eventticket.status == 200) {
             const eventticket_json = await eventticket.json()
-            console.log(eventticket_json)
 
             const max_booking = eventticket_json.max_booking_count
             const current = eventticket_json.current_booking
 
             if (int_quantity + current > max_booking) {
-                console.log(eventticket_json)
                 alert("티켓의 잔여 수량이 모자랍니다")
                 location.reload()
 
@@ -177,28 +159,19 @@ async function handleSelectEvent(ticket_id) {
                 const v_time = document.getElementById('timeList').value;
                 const time = v_time.split(' ')[0]
                 const r_time = time.split('~')[0]
-                console.log(r_time)
-                console.log(date)
-                console.log(time)
-                console.log(quantity)
 
                 first = date.split('-')
                 first2 = first[2].split('')
                 middle1 = time.split(':')[0].split('')
                 middle2 = time.split(':')[1].split('~')[1].split('')
 
-                //  ----2023(ticket_id)
                 const order_id = first2[1] + middle1[1] + middle2[1] + first2[0] + first[0] + `${ticket_id}`
-                console.log(order_id)
-                console.log(`${ticket_id}`)
 
-                // 행사 정보 조회
                 const response = await fetch(`${backend_base_url}/events/${event_id}/`, {
                 })
 
                 if (response.status == 200) {
                     const response_json = await response.json()
-                    console.log(response_json)
 
                     const item = response_json.title
                     const order_stf_id = response_json.author
@@ -208,11 +181,11 @@ async function handleSelectEvent(ticket_id) {
                     const vat = price * 0.1
                     const total = price + vat
 
-                    // 카카오 결제 신청
                     const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/ready", {
                         headers: {
                             "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
-                            "Content-Type": "application/x-www-form-urlencoded"
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            //  "X-CSRFToken": '{{csrf_token}}'
                         },
                         method: 'POST',
                         body: new URLSearchParams({
@@ -230,14 +203,10 @@ async function handleSelectEvent(ticket_id) {
                         })
                     });
 
-                    console.log(kakao_pay)
 
                     if (kakao_pay.status == 200) {
-                        // alert("결제요청 완료")
 
                         const kakao_json = await kakao_pay.json()
-                        console.log(kakao_json)
-
                         const tid = kakao_json.tid
                         const created_at = kakao_json.created_at
                         const next_url_m = kakao_json.next_redirect_mobile_url
@@ -247,9 +216,11 @@ async function handleSelectEvent(ticket_id) {
 
                         // DB에 결제요청건 저장
                         const send = await fetch(`${backend_base_url}/api/v1/stores/payment/`, {
+
                             headers: {
                                 "Authorization": `Bearer ${token}`,
-                                'content-type': 'application/json'
+                                'content-type': 'application/json',
+                                 "X-CSRFToken": '{{csrf_token}}'
                             },
                             method: 'POST',
                             body: JSON.stringify({
@@ -290,20 +261,17 @@ async function handleSelectEvent(ticket_id) {
                 } else {
                     console.log(response_json)
                     alert(response.status, "잘못된 상품 정보입니다")
-                    // goBack()
                     window.location.href = `${index_url}`
                 }
             }
         } else {
             console.log(eventticket_json)
             alert(eventticket.status, "잘못된 상품 정보입니다")
-            // goBack()
             window.location.href = `${index_url}`
         }
     }
 }
 
-// 페이지 새로고침
 async function onClickReload() {
     location.reload()
 }
