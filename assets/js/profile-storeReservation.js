@@ -1,4 +1,8 @@
 window.onload = async function HanbokReservation() {
+  
+    const card_list = document.getElementById('card_list');
+
+    // event 예약내역 조회
     const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${payload_parse.user_id}/hanbok/`, {
         headers: {
             "Authorization": `Bearer ${token}`
@@ -6,8 +10,29 @@ window.onload = async function HanbokReservation() {
     })
     if (response.status == 200) {
         const response_json = await response.json()
+        
+        if (response_json.length == 0) {
 
-        for (let i = 0; i < response_json.length; i++) {
+            // 예약이 없습니다
+            const none_list = document.createElement('div')
+            none_list.setAttribute('class','sh_col')
+
+            const i = document.createElement('i')
+            i.setAttribute('class','xi-shop')
+
+            const none_content = document.createElement('p')
+            none_content.setAttribute('class','sh_small')
+            none_content.innerText = "예약한 한복이 없습니다"
+
+            none_list.appendChild(i)
+            none_list.appendChild(none_content)
+            card_list.insertBefore(none_list, card_list.firstChild);
+
+        } else {
+          
+            // tid 출력
+            for (let i = 0; i < response_json.length; i++) {
+            
             let tid = response_json[i].tid
             const item_name = response_json[i].item_name
             const quantity = response_json[i].quantity
@@ -59,12 +84,11 @@ window.onload = async function HanbokReservation() {
             div.appendChild(item)
 
             card_list.insertBefore(subCard, card_list.firstChild);
-
+            }
         }
-
     } else {
+        alert(response.status)
         window.location.href = `${index_url}`
-
     }
 }
 

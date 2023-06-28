@@ -37,29 +37,35 @@ window.onload = async function ReservationDetail() {
         // event_img.setAttribute('src',`${backend_base_url}${events.image}`)
         event_img.setAttribute('src', "/assets/img/image-2.jpg")
 
+        
         // 기간한정 스티커 ----
         const get_event_start_date = events.event_start_date
         const get_event_end_date = events.event_end_date
 
         const currentDate = new Date();
-        const eventStart = new Date(get_event_start_date);
-        const eventEnd = new Date(get_event_end_date);
+        currentDate.setHours(0, 0, 0, 0);
+
+        const eventStart = new Date(get_event_start_date); 
+        const eventEnd = new Date(get_event_end_date); 
+        eventStart.setHours(0, 0, 0, 0);
+        eventEnd.setHours(0, 0, 0, 0);
         const oneDay = 24 * 60 * 60 * 1000;
         const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
         const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
 
         const season = document.createElement('p')
-        season.setAttribute('class', 'reservation')
+        season.setAttribute('class','reservation')
         if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
           season.innerText = '행사중';
-        } else if (diffDaysStart > 0 && diffDaysStart <= 7) {
+        } else if (diffDaysStart > 0 ) {
           season.innerText = '행사예정';
         } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
           season.innerText = '마감임박';
         } else {
-          season.innerText = '삑';
+          season.innerText = '삑'; 
         }
 
+        
         const txt_div = document.createElement('div')
         txt_div.setAttribute('class', 'sub-card-txt')
 
@@ -127,7 +133,6 @@ window.onload = async function ReservationDetail() {
         bookmark_icon.addEventListener('click', async () => {
           const event_id = parseInt(events.id, 10);
 
-          // console.log(event_id);
           if (payload) {
             try {
               const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {

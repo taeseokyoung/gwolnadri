@@ -42,5 +42,9 @@ window.onload = async function Receipt() {
         vat.innerText = get_vat
         total.innerText = get_total
 
+    } else {
+        alert(response.status)
+        window.location.href = `${index_url}`
+
     }
 }

@@ -185,6 +185,7 @@ async function Eventreview() {
   const review_response = await fetch(`${backend_base_url}/events/${event_id}/review/`, { method: 'GET' });
   const review_response_json = await review_response.json();
   const review_list = document.getElementById('review_list');
+
   review_response_json.forEach(element => {
 
     const get_img = element.review_image;
@@ -192,14 +193,13 @@ async function Eventreview() {
     const get_grade = element.grade;
     const get_content = element.content;
     const get_review_id = element.id
-
     const reviewCardElement = document.createElement('div');
     reviewCardElement.setAttribute("class", "review-card");
 
     const reviewImgElement = document.createElement('img');
     reviewImgElement.className = 'review-image';
     reviewImgElement.id = 'review-image';
-    reviewImgElement.src = `${get_img}`;
+    reviewImgElement.src = `${backend_base_url}${get_img}`;
     reviewImgElement.alt = '';
 
     const reviewTxtElement = document.createElement('div');
@@ -289,10 +289,9 @@ async function HandleComment() {
   const select_grade = document.getElementById('grade').value;
   const in_img = document.getElementById('in_img').files[0];
   const com_txt = document.getElementById('com_txt').value;
-
   const grade = select_grade.split('')[0]
+  
   const formdata = new FormData();
-
   formdata.append("grade", grade)
   formdata.append("review_image", in_img)
   formdata.append("content", com_txt)

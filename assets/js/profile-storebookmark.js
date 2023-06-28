@@ -4,7 +4,8 @@ window.onload = async function loadStoreList() {
 
     //한복점 html 카드 생성
     const storeCard = document.getElementById("store-list-body")
-    bookedStores = await bookedStore()
+    const bookedStores = await bookedStore()
+
     if (bookedStores["bookmark_stores"].length == 0) {
         const none_list = document.createElement('div')
         none_list.setAttribute('class', 'sh_col')
