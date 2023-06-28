@@ -94,6 +94,11 @@
 
 }
 
+.sub-card .reservation {
+    top: 30px;
+    right: 30px;
+}
+
 .sub-card .sub-card-txt {
     position: absolute;
     bottom: 0;
