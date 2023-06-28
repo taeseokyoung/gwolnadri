@@ -77,7 +77,7 @@ async function SelectDate() {
             timeList.appendChild(opt)
         }
 
-    } else if (eventTime.status == 404) {
+    } else if (eventTime.status == 404 || v_date == null) {
         alert("다시 선택해주세요")
 
     } else {
@@ -185,7 +185,6 @@ async function handleSelectEvent(ticket_id) {
                         headers: {
                             "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
                             "Content-Type": "application/x-www-form-urlencoded",
-                             "X-CSRFToken": '{{csrf_token}}'
                         },
                         method: 'POST',
                         body: new URLSearchParams({
@@ -220,7 +219,6 @@ async function handleSelectEvent(ticket_id) {
                             headers: {
                                 "Authorization": `Bearer ${token}`,
                                 'content-type': 'application/json',
-                                 "X-CSRFToken": '{{csrf_token}}'
                             },
                             method: 'POST',
                             body: JSON.stringify({

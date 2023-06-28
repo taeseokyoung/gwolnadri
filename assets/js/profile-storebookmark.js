@@ -124,7 +124,6 @@ async function bookBtn(store_id, bookOn) {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
-             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
@@ -155,7 +154,6 @@ async function likeBtn(store_id, likeOn) {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
-             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )

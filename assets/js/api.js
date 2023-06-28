@@ -1,6 +1,11 @@
-const frontend_base_url = "https://gwolnadri.netlify.app/assets/doc"
-const backend_base_url = "https://gwolnadri.online"
-const index_url = "https://gwolnadri.netlify.app/index.html"
+// const frontend_base_url = "https://gwolnadri.netlify.app/assets/doc"
+// const backend_base_url = "https://gwolnadri.online"
+// const index_url = "https://gwolnadri.netlify.app/index.html"
+
+const frontend_base_url = "http://127.0.0.1:5500/assets/doc"
+const backend_base_url = "http://127.0.0.1:8000"
+const index_url = "http://127.0.0.1:5500/index.html"
+
 
 const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload);
@@ -54,3 +59,14 @@ async function eventList() {
         alert("요청이 실패했습니다!")
     }
 }
+
+async function storeList() {
+    const response = await fetch(`${backend_base_url}/api/v1/stores/`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert("요청이 실패했습니다!")
+    }
+}
+
