@@ -46,7 +46,6 @@ async function handleSelectHanbok(hanbok_id) {
             headers: {
                 "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
                 "Content-Type": "application/x-www-form-urlencoded",
-                 "X-CSRFToken": '{{csrf_token}}'
             },
             method: 'POST',
             body: new URLSearchParams({
@@ -79,7 +78,6 @@ async function handleSelectHanbok(hanbok_id) {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     'content-type': 'application/json',
-                     "X-CSRFToken": '{{csrf_token}}'
                 },
                 method: 'POST',
                 body: JSON.stringify({

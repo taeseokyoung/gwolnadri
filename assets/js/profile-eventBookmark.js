@@ -134,7 +134,6 @@ window.onload = async function ReservationDetail() {
                 method: 'POST',
                 headers: {
                   "Authorization": `Bearer ${token}`,
-                   "X-CSRFToken": '{{csrf_token}}'
                 }
               });
 
@@ -158,7 +157,6 @@ window.onload = async function ReservationDetail() {
                 method: 'POST',
                 headers: {
                   "Authorization": `Bearer ${token}`,
-                   "X-CSRFToken": '{{csrf_token}}'
                 }
               });
 

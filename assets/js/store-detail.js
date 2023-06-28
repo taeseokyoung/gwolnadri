@@ -214,7 +214,7 @@ window.onload = async function HanbokStoreDetail() {
 }
 
 async function SelectItem(hanbok_id) {
-    if (payload){
+    if (payload) {
         window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
     } else {
         alert('로그인이 필요합니다')
@@ -259,7 +259,6 @@ async function submitComment(hanbokstore_id) {
             method: 'POST',
             headers: {
                 "Authorization": `Bearer ${token}`,
-                 "X-CSRFToken": '{{csrf_token}}'
             },
             body: formdata
         }
@@ -469,7 +468,6 @@ async function likeBtn(likeOn) {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
-             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
@@ -500,7 +498,6 @@ async function bookBtn(bookOn) {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${token}`,
-             "X-CSRFToken": '{{csrf_token}}'
         }
     }
     )
