@@ -1,4 +1,96 @@
 .profile-wrap {
+    margin: 120px 30px 0 30px;
+}
+
+.left-arrow-header .nav-icon{
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
+}
+
+.profile-wrap .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 30px auto;
+}
+
+.form-image {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0 auto 30px auto;
+}
+
+.profile-page form {
+    text-align: center;
+}
+
+.profile-wrap h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: 'GmarketSansMedium';
+    margin: 0 0 80px 5px;
+}
+
+.edit-button {
+    width: 100%;
+    border: inherit;
+    background: inherit;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #fff;
+    background-color: #333;
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+}
+
+.edit-button2 {
+    width: 100%; 
+    background: inherit;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: gray;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+    display: grid;
+    justify-content: end;
+}
+
+.edit-button3 {
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    background: inherit;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'GmarketSansMedium';
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.edit-button4 {
+    width: 100%;
+    background: inherit;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: gray;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+    display: grid;
+} 
+
+@media(max-width:1060px){
+
+    html{
+        font-size: 8px !important;
+    }
+
+    .profile-wrap {
     margin: 20% 30px 0 30px;
 }
 
@@ -25,7 +117,7 @@
 }
 
 .profile-wrap h2 {
-    font-size: 25px;
+    font-size: 2.5rem;
     font-weight: 500;
     font-family: 'GmarketSansMedium';
     margin: 0 0 80px 5px;
@@ -37,7 +129,7 @@
     background: inherit;
     border-radius: 5px;
     padding: 20px;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 400;
     color: #fff;
     background-color: #333;
@@ -48,7 +140,7 @@
 .edit-button2 {
     width: 100%; 
     background: inherit;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
     color: gray;
     background-color: rgba(0, 0, 0, 0);
@@ -68,14 +160,14 @@
     text-decoration: none;
     text-align: center;
     font-family: 'GmarketSansMedium';
-    font-size: 16px;
+    font-size: 1.6rem;
     cursor: pointer;
 }
 
 .edit-button4 {
     width: 100%;
     background: inherit;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
     color: gray;
     background-color: rgba(0, 0, 0, 0);
@@ -83,3 +175,4 @@
     cursor: pointer;
     display: grid;
 } 
+}

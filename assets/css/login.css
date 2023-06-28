@@ -7,7 +7,7 @@
 }
 
 .login-wrap h2 {
-    font-size: 25px;
+    font-size: 2.5rem;
     font-weight: 500;
     font-family: 'GmarketSansMedium';
     margin: 0 0 60px 5px;
@@ -65,4 +65,61 @@
 
 .google{
      background-color:#EA4335;
+}
+
+
+@media(max-width:1060px){
+
+    html{
+        font-size: 8px !important;
+    }
+
+    .login-wrap {
+    margin: 20% 30px 0 30px;
+}
+
+.left-arrow-header .nav-icon{
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
+}
+
+.login-wrap h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: 'GmarketSansMedium';
+    margin: 0 0 60px 5px;
+}
+
+.login-btn {
+    flex-direction: column;
+}
+
+.login-option {
+    margin: 15px 60px 100px 60px;
+}
+
+.login-option>li {
+    position: relative;
+}
+
+.login-option>li::after{
+    content: "|";
+    position: absolute;
+    right: -50%;
+    transform: translateX(50%);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.login-option>li:last-child::after{
+    display: none;
+}
+
+.login-option>li a{
+    cursor: pointer
+}
+
+#login-signup-btn {
+    margin-top: 20px;
+    background-color: #cccccc;
+    color: #333333;
+}
 }

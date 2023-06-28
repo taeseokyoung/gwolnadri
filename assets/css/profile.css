@@ -14,7 +14,7 @@
 }
 
 .profile-wrap h2 {
-    font-size: 25px;
+    font-size: 2.5rem;
     font-weight: 500;
     font-family: 'GmarketSansMedium';
     margin: 0 0 60px 5px;
@@ -29,7 +29,7 @@
     display: flex;
     justify-content: center;
     gap: 5px;
-    font-size: 23px;
+    font-size: 2.3rem;
     font-weight: 500;
     margin-bottom: 15px;
 }
@@ -44,14 +44,14 @@
 }
 
 .profile-page .email {
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 300;
     color: #555;
 }
 
 .reservation-page {
     text-align: center; 
-    font-size: 21px;
+    font-size: 2.1rem;
     font-weight: 500;
     margin-bottom: 30px;
 }
@@ -68,7 +68,7 @@
     justify-content: space-between;
     padding: 30px 0;
     border-bottom: 1px solid rgb(221, 221, 221,0.5);
-    font-size: 19px;
+    font-size: 1.9rem;
     color: #555;
     margin: 0 0 0 5px;
 }
@@ -90,4 +90,100 @@
 
 .login-option>li:last-child::after{
     display: none;
+}
+
+
+@media(max-width:1060px){
+
+    html{
+        font-size: 8px !important;
+    }
+
+    .profile-wrap {
+    margin: 20% 30px 0 30px;
+}
+
+.left-arrow-header .nav-icon{
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
+}
+
+.profile-wrap .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+.profile-wrap h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: 'GmarketSansMedium';
+    margin: 0 0 60px 5px;
+}
+
+.profile-page {
+    text-align: center; 
+    margin-bottom: 60px;
+}
+
+.profile-page .name {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 2.3rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.profile-page .name>i {
+    margin: 3px 0 0 0;
+    cursor: pointer;
+}
+
+.profile-page .name>p {
+    cursor: pointer;
+}
+
+.profile-page .email {
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: #555;
+}
+
+.reservation-page {
+    text-align: center; 
+    font-size: 2.3rem;
+    font-weight: 500;
+    margin-bottom: 80px;
+}
+
+.reservation-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.reservation-view>li>a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px solid rgb(221, 221, 221,0.5);
+    font-size: 2.2rem;
+    color: #555;
+    margin: 0 0 0 5px;
+    cursor: pointer;
+}
+
+.login-option>li::after{
+    content: "";
+    position: absolute;
+    right: -50%;
+    transform: translateX(50%);
+}
+
+.login-option>li:last-child::after{
+    display: none;
+}
+
 }
