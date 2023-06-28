@@ -30,22 +30,22 @@ window.onload = async function EventList() {
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
     const get_image = element.image
-    // console.log(get_title, get_event_start_date, get_event_end_date, get_like_count, get_bookmarker);
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
-
     const eventImage = document.createElement('img');
-    eventImage.src = `${get_image}`;
+    eventImage.src = `${backend_base_url}${get_image}`;
     eventImage.alt = '';
 
 
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
     const eventStart = new Date(get_event_start_date); 
+    eventStart.setHours(0, 0, 0, 0);
     const eventEnd = new Date(get_event_end_date); 
+    eventEnd.setHours(0, 0, 0, 0);
     const oneDay = 24 * 60 * 60 * 1000;
     const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
     const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
-
     const reservationTag = document.createElement('p');
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
@@ -144,7 +144,6 @@ window.onload = async function EventList() {
       const event_id = parseInt(element.id, 10);
       const token = localStorage.getItem("access");
 
-      // console.log(event_id);
       if (payload) {
         try {
           const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
