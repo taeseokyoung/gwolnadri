@@ -28,11 +28,11 @@ async function handleSelectHanbok(hanbok_id) {
     })
 
     if (response.status == 200) {
+       
         const response_json = await response.json()
-
         const store_id = response_json.store
 
-        order_id = first1[1] + middle1[1] + first1[0] + middle1[0] + middle[1] + first[0] + `${store_id}`
+        order_id = `${payload_parse.user_id}` + middle1[1] + first1[0] + middle1[0] + middle[1] + first[0] + `${store_id}`
 
         const item = response_json.hanbok_name
         const order_stf_id = response_json.owner
@@ -65,7 +65,7 @@ async function handleSelectHanbok(hanbok_id) {
         });
 
         if (kakao_pay.status == 200) {
-            alert("결제요청 완료")
+            // alert("결제요청 완료")
 
             const kakao_json = await kakao_pay.json()
             const tid = kakao_json.tid
@@ -75,7 +75,7 @@ async function handleSelectHanbok(hanbok_id) {
 
             setCookie("tid", tid, 2);
 
-            const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${payload_parse.user_id}/`, {
+            const send = await fetch(`${backend_base_url}/api/v1/stores/payment/`, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     'content-type': 'application/json',
@@ -98,15 +98,22 @@ async function handleSelectHanbok(hanbok_id) {
             })
 
             if (send.status == 200) {
-                alert("db 저장완료")
-                window.location.href = next_url_p
+                
+                if (matchMedia("screen and (max-width: 431px)").matches) {
+                    // 1060px 미만에서 사용할 JavaScript
+                    window.location.href = `${next_url_m}`
+                } else {
+                    // 1060px 이상에서 사용할 JavaScript
+                    window.location.href = `${next_url_p}`
+                }
             } else {
                 alert("db 저장실패", send.status)
-                // window.location.href = `${index_url}`
+                window.location.href = `${index_url}`
             }
 
         } else {
-            alert("결제요청 실패", kakao_pay.status)
+            alert(kakao_pay.status, "결제요청 실패")
+            window.location.href = `${index_url}`
         }
 
     } else {
