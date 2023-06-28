@@ -143,6 +143,7 @@
 .review-txt {
     line-height: 1.45;
     height: 200px;
+    font-size: 18px;
 }
 
 .comment_img {
@@ -164,6 +165,6 @@
     display: none;
 }
 
-.deletebtn:hover {
+/* .deletebtn:hover {
     border: 9px solid black;
-  }
+  } */
