@@ -21,7 +21,6 @@ async function EventDetail() {
   event_id = urlParams.get('event_id');
   const eventDetailURL = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
 
-
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
 
@@ -40,7 +39,7 @@ async function EventDetail() {
 
   const get_image = response_json.image;
   const backend_image_url = `${backend_base_url}${get_image}`;
-  
+
 
   eventImgElement.className = 'event_img';
   eventImgElement.src = backend_image_url;
@@ -61,7 +60,7 @@ async function EventDetail() {
   heartIconElement.src = '/assets/img/Heart-outline.svg';
   heartIconElement.alt = '';
   const get_likes = response_json.likes
-  if (!payload_parse || !payload_parse.user_id) { 
+  if (!payload_parse || !payload_parse.user_id) {
     heartIconElement.setAttribute("src", "/assets/img/Heart-outline.svg");
   } else if (get_likes.includes(payload_parse.user_id)) {
     heartIconElement.setAttribute("src", "/assets/img/Heart-full.svg");
@@ -80,7 +79,7 @@ async function EventDetail() {
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
   bookmarkIconElement1.alt = '';
   const get_bookmarker = response_json.event_bookmarks
-  if (!payload_parse || !payload_parse.user_id) { 
+  if (!payload_parse || !payload_parse.user_id) {
     bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-outline.svg");
   } else if (get_bookmarker.includes(payload_parse.user_id)) {
     bookmarkIconElement1.setAttribute("src", "/assets/img/Bookmark-full.svg");
@@ -122,17 +121,6 @@ async function EventDetail() {
   subContentTxtElement.className = 'content-txt';
   subContentTxtElement.textContent = response_json.content;
 
-  // subContentElement.appendChild(subContentTitleElement);
-  // subContentElement.appendChild(subContentTxtElement);
-
-  // contant_pageElement.appendChild(reservationButton);
-  // contant_pageElement.appendChild(subContentElement);
-
-
-
-
-  // mainPageElement.appendChild(eventImgElement);
-  // mainPageElement.appendChild(cardTxtElement);
 
   subContentElement.appendChild(subContentTitleElement);
   subContentElement.appendChild(subContentTxtElement);
@@ -140,7 +128,7 @@ async function EventDetail() {
   contant_pageElement.appendChild(reservationButton);
   contant_pageElement.appendChild(subContentElement);
 
-  // 북마크 아이콘에 이벤트 리스너 등록
+  
   bookmarkElement.addEventListener('click', async () => {
     const token = localStorage.getItem("access");
     if (payload) {
@@ -148,7 +136,8 @@ async function EventDetail() {
         const bookmarkResponse = await fetch(`${backend_base_url}/events/${event_id}/bookmark/`, {
           method: 'POST',
           headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            "X-CSRFToken": '{{csrf_token}}'
           }
         });
 
@@ -172,7 +161,8 @@ async function EventDetail() {
         const heartResponse = await fetch(`${backend_base_url}/events/${event_id}/like/`, {
           method: 'POST',
           headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+             "X-CSRFToken": '{{csrf_token}}'
           }
         });
 
@@ -195,8 +185,6 @@ async function EventDetail() {
 async function Eventreview() {
   const review_response = await fetch(`${backend_base_url}/events/${event_id}/review/`, { method: 'GET' });
   const review_response_json = await review_response.json();
-
-  // const reviewElement = document.querySelector('.sub-content');
   const review_list = document.getElementById('review_list');
 
   review_response_json.forEach(element => {
@@ -263,14 +251,6 @@ async function Eventreview() {
     reviewContentElement.className = 'content';
     reviewContentElement.textContent = get_content;
 
-
-    // reviewCardElement.appendChild(reviewImgElement)
-    // reviewTxtElement.appendChild(reviewAuthorElement)
-    // reviewTxtElement.appendChild(reviewGradeElement)
-    // reviewTxtElement.appendChild(reviewContentElement)
-    // reviewCardElement.appendChild(reviewTxtElement)
-    // reviewElement.appendChild(reviewCardElement)
-
     reviewCardElement.appendChild(reviewImgElement)
     reviewCardElement.appendChild(reviewTxtElement)
     reviewTxtElement.appendChild(reviewAuthorElement)
@@ -291,11 +271,11 @@ async function HandleCommentDelete(get_review_id) {
     method: 'DELETE'
   })
   if (response.status == 204) {
-    alert("삭제완료")
+    alert("리뷰가 삭제되었습니다.")
     window.location.reload()
 
   } else if (response.status == 403) {
-    alert("작성하신 글이 아닙니다.")
+    alert("작성하신 리뷰가 아닙니다.")
   }
   else if (response.status == 401) {
     alert("로그인이 필요합니다.")
@@ -310,26 +290,23 @@ async function HandleComment() {
   const select_grade = document.getElementById('grade').value;
   const in_img = document.getElementById('in_img').files[0];
   const com_txt = document.getElementById('com_txt').value;
-
   const grade = select_grade.split('')[0]
-
-
+  
   const formdata = new FormData();
-
   formdata.append("grade", grade)
   formdata.append("review_image", in_img)
   formdata.append("content", com_txt)
 
   const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
     headers: {
-      "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`,
+       "X-CSRFToken": '{{csrf_token}}'
     },
     method: 'POST',
     body: formdata
   })
   if (response.status == 201) {
-    // 방법생각해보기
-    alert("작성완료")
+    alert("작성되었습니다.")
     window.location.reload()
 
   } else {

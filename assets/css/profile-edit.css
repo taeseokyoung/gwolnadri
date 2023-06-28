@@ -27,7 +27,7 @@
 .profile-wrap h2 {
     font-size: 25px;
     font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     margin: 0 0 80px 5px;
 }
 
@@ -41,7 +41,7 @@
     font-weight: 400;
     color: #fff;
     background-color: #333;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     cursor: pointer;
 }
 
@@ -52,7 +52,7 @@
     font-weight: 400;
     color: gray;
     background-color: rgba(0, 0, 0, 0);
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     cursor: pointer;
     display: grid;
     justify-content: end;
@@ -67,11 +67,10 @@
     color: #000;
     text-decoration: none;
     text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     font-size: 16px;
     cursor: pointer;
 }
-
 
 .edit-button4 {
     width: 100%;
@@ -80,7 +79,7 @@
     font-weight: 400;
     color: gray;
     background-color: rgba(0, 0, 0, 0);
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     cursor: pointer;
     display: grid;
 } 

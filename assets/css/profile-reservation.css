@@ -33,7 +33,7 @@
 }
 
 .sh-event-date {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     margin: 0px;
     font-weight: 400;
     font-size: 18px;
@@ -44,8 +44,6 @@
     margin-left: 55px;
     margin-bottom: 20px;
     font-size: 18px;
-    /* width: fit-content;
-    border-bottom: 1.5px solid #9a9dff; */
 }
 
 .reser_img {
@@ -53,8 +51,6 @@
 }
 
 .sh-sub {
-    /* background: rgba(223, 223, 223, 0.55);
-    color: #101010 !important; */
     padding: 10px;
     margin-bottom: 20px!important;
 }
@@ -81,23 +77,18 @@ button {
 .hanbok_address {
     font-weight: 400!important;
     font-size: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansLight';
     margin: 50px 0px 10px 3px!important;
-    /* border-bottom: 1.5px solid #9a9dff;
-    padding-bottom: 3px;
-    width: fit-content; */
 }
 
 .hanbok-title {
     float: right;
     margin-bottom: 0px;
-    /* margin-top: 10px; */
 }
 
 .store-txt {
     width: 100%;
     height: 60px;
-    /* background-color: antiquewhite; */
 }
 
 

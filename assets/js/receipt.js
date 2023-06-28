@@ -1,10 +1,8 @@
-
-
 window.onload = async function Receipt() {
     const urlParams = new URLSearchParams(window.location.search);
     tid = urlParams.get('tid');
 
-    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`,{
+    const response = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}`, {
     })
     if (response.status == 200) {
         const response_json = await response.json()
@@ -18,7 +16,7 @@ window.onload = async function Receipt() {
         const get_vat = response_json.vat_amount
         const get_total = response_json.total_amount
 
-        const str_order_id = String(get_order_id).slice(0,4)+"********"
+        const str_order_id = String(get_order_id).slice(0, 4) + "********"
         const get_price = get_total - get_vat
         const date_approved = get_approved.split('T')[0]
         const time_approved = get_approved.split('T')[1].split('+')[0]
@@ -47,5 +45,6 @@ window.onload = async function Receipt() {
     } else {
         alert(response.status)
         window.location.href = `${index_url}`
+
     }
 }

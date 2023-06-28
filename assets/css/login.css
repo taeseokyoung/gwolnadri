@@ -9,7 +9,7 @@
 .login-wrap h2 {
     font-size: 25px;
     font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSansMedium';
     margin: 0 0 60px 5px;
 }
 
@@ -48,6 +48,7 @@
 }
 
 /* 로그인 버튼 */
+
 
 .login-btn {
     gap: 30px;

@@ -28,13 +28,11 @@ async function handleSelectHanbok(hanbok_id) {
     })
 
     if (response.status == 200) {
+       
         const response_json = await response.json()
-        console.log(response_json)
-
         const store_id = response_json.store
 
         order_id = `${payload_parse.user_id}` + middle1[1] + first1[0] + middle1[0] + middle[1] + first[0] + `${store_id}`
-        console.log(order_id)
 
         const item = response_json.hanbok_name
         const order_stf_id = response_json.owner
@@ -47,7 +45,8 @@ async function handleSelectHanbok(hanbok_id) {
         const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/ready", {
             headers: {
                 "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
-                "Content-Type": "application/x-www-form-urlencoded"
+                "Content-Type": "application/x-www-form-urlencoded",
+                 "X-CSRFToken": '{{csrf_token}}'
             },
             method: 'POST',
             body: new URLSearchParams({
@@ -65,14 +64,10 @@ async function handleSelectHanbok(hanbok_id) {
             })
         });
 
-        console.log(kakao_pay)
-
         if (kakao_pay.status == 200) {
             // alert("결제요청 완료")
 
             const kakao_json = await kakao_pay.json()
-            console.log(kakao_json)
-
             const tid = kakao_json.tid
             const created_at = kakao_json.created_at
             const next_url_m = kakao_json.next_redirect_mobile_url
@@ -83,7 +78,8 @@ async function handleSelectHanbok(hanbok_id) {
             const send = await fetch(`${backend_base_url}/api/v1/stores/payment/`, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                     "X-CSRFToken": '{{csrf_token}}'
                 },
                 method: 'POST',
                 body: JSON.stringify({
@@ -100,7 +96,6 @@ async function handleSelectHanbok(hanbok_id) {
                     "rsrvt_time": time
                 })
             })
-            console.log(send)
 
             if (send.status == 200) {
                 
@@ -118,12 +113,10 @@ async function handleSelectHanbok(hanbok_id) {
 
         } else {
             alert(kakao_pay.status, "결제요청 실패")
-            // alert("결제요청 실패", kakao_pay.status)
             window.location.href = `${index_url}`
         }
 
     } else {
-        // alert(response_json.status)
         alert(response.status, "잘못된 상품 정보입니다")
         window.location.href = `${index_url}`
     }

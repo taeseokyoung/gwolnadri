@@ -1,4 +1,4 @@
-async function handleSignup(){
+async function handleSignup() {
   const email = document.getElementById("email").value;
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -7,6 +7,7 @@ async function handleSignup(){
   const response = await fetch(`${backend_base_url}/users/signup/`, {
     headers: {
       "content-type": "application/json",
+       "X-CSRFToken": '{{csrf_token}}'
     },
     method: "POST",
     body: JSON.stringify({
@@ -21,6 +22,6 @@ async function handleSignup(){
     alert("회원가입이 성공했습니다.");
     window.location.replace(`${frontend_base_url}/login.html`);
   } else {
-    alert("회원가입이 실패헀습니다. 다시 시도해주세요.");
+    alert("가입에 실패헀습니다. 다시 시도해주세요.");
   }
 }
