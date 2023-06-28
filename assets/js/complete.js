@@ -71,7 +71,7 @@ window.onload = async function CompletePgtoken() {
                                 "approved_at": approved
                             })
                         })
-            
+
                         if (send.status == 200) {
                             console.log("db 저장완료")
                             // window.location.href = `${next_url_p}?tid=${tid}`
@@ -92,7 +92,7 @@ window.onload = async function CompletePgtoken() {
             } else if (type == "hanbok") {
                 // 결제 확정
                 const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/approve", {
-                    headers:{
+                    headers: {
                         "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
@@ -108,11 +108,26 @@ window.onload = async function CompletePgtoken() {
                 if (kakao_pay.status == 200) {
                     // alert("결제 완료")
 
-                        if (kakao_pay.status == 200) {
-                            const kakao_json = await kakao_pay.json()
-                            const aid = kakao_json.aid
-                            const payment_type = kakao_json.payment_method_type
-                            const approved = kakao_json.approved_at
+                    if (kakao_pay.status == 200) {
+                        const kakao_json = await kakao_pay.json()
+                        const aid = kakao_json.aid
+                        const payment_type = kakao_json.payment_method_type
+                        const approved = kakao_json.approved_at
+                        const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}/`, {
+                            headers: {
+                                "Authorization": `Bearer ${token}`,
+                                'content-type': 'application/json'
+                            },
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                "aid": aid,
+                                "payment_method_type": payment_type,
+                                "approved_at": approved
+                            })
+                        })
+                        if (send.status == 200) {
+
+                            // DB에 결제완료건 저장
                             const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}/`, {
                                 headers: {
                                     "Authorization": `Bearer ${token}`,
@@ -125,43 +140,30 @@ window.onload = async function CompletePgtoken() {
                                     "approved_at": approved
                                 })
                             })
+                            console.log(send)
+
                             if (send.status == 200) {
 
-                    // DB에 결제완료건 저장
-                    const send = await fetch(`${backend_base_url}/api/v1/stores/payment/${tid}/`, {
-                        headers: {
-                            "Authorization": `Bearer ${token}`,
-                            'content-type': 'application/json'
-                        },
-                        method: 'PUT',
-                        body: JSON.stringify({
-                            "aid": aid,
-                            "payment_method_type": payment_type,
-                            "approved_at": approved
-                        })
-                    })
-                    console.log(send)
-        
-                    if (send.status == 200) {
-                        
+                            } else {
+                                alert("결제 실패, 관리자에게 문의하세요", send.status)
+                                window.location.href = `${index_url}`
+                            }
+
+                        } else {
+                            // alert("이미 처리된 요청입니다",kakao_pay.status)
+                            console.log("이미 처리된 요청입니다")
+                        }
+
                     } else {
-                        alert("결제 실패, 관리자에게 문의하세요",send.status)
+                        alert("DB type 오류")
                         window.location.href = `${index_url}`
                     }
 
                 } else {
-                    // alert("이미 처리된 요청입니다",kakao_pay.status)
-                    console.log("이미 처리된 요청입니다")
+                    alert("결제번호 오류, 관리자에게 문의하세요", response_json.status)
+                    window.location.href = `${index_url}`
                 }
-
-            } else {
-                alert("DB type 오류")
-                window.location.href = `${index_url}`
             }
-
-        } else {
-            alert("결제번호 오류, 관리자에게 문의하세요", response_json.status)
-            window.location.href = `${index_url}`
         }
     }
 }
