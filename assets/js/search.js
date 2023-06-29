@@ -144,13 +144,15 @@ window.onload = async function SelectTicket(search) {
             });
             const bookmarkData = await bookmarkResponse.json();
             alert(bookmarkData.message);
+            window.location.reload()
+
           } catch (error) {
             console.error('Error bookmarking event:', error);
           }
         } else {
           alert("로그인이 필요합니다")
-        }
-        window.location.reload()
+          location.replace(`${frontend_base_url}/login.html`)
+        }        
       });
 
 
@@ -168,6 +170,8 @@ window.onload = async function SelectTicket(search) {
 
             const heartData = await heartResponse.json();
             alert(heartData.message);
+            window.location.reload()
+
 
           } catch (error) {
             console.error('Error likes event:', error);
@@ -175,9 +179,8 @@ window.onload = async function SelectTicket(search) {
         }
         else {
           alert("로그인이 필요합니다")
+          location.replace(`${frontend_base_url}/login.html`)
         }
-
-        window.location.reload()
 
       });
     }
