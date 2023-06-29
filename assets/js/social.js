@@ -33,3 +33,5 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// 카카오랑 구글에서 &prompt=login가 있어서 누를때마다 로그인 가능, 하지만 추후에는 삭제 필수. 
+// 아니면 전에 로그인해서 변경해놓은 사항들 날라가고 새로 다시 회원가입/로그인 되는듯.

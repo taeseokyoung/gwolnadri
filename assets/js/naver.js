@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     alert("궐나드리에 환영합니다_N.");
     window.location.replace("/");
   } else if (response.status == 400) {
-    alert("이미 가입되어 있는 이메일 입니다. 다시 시도해 주세요._N");
+    alert("이미 가입되어 있는 네이버 계정입니다. 다시 시도해 주세요._N");
     window.location.replace(`${frontend_base_url}/login.html`);
   } else {
     const response_json = await response.json();

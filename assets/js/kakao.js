@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     alert("궐나드리에 환영합니다_K.");
     window.location.replace("/");
   } else if (response.status == 400) {
-    alert("이미 가입되어 있는 이메일 입니다. 다시 시도해 주세요._K");
+    alert("이미 가입되어 있는 카카오 계정입니다. 다시 시도해 주세요._K");
     window.location.replace(`${frontend_base_url}/login.html`);
   } else {
     const response_json = await response.json();
