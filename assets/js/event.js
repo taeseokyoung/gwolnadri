@@ -201,14 +201,16 @@ async function EventList() {
 
           const bookmarkData = await bookmarkResponse.json();
           alert(bookmarkData.message);
+          window.location.reload()
         } catch (error) {
           console.error('Error bookmarking event:', error);
 
         }
       } else {
         alert("로그인이 필요합니다")
+        location.replace(`${frontend_base_url}/login.html`)
+
       }
-      window.location.reload()
 
     });
 
@@ -226,6 +228,7 @@ async function EventList() {
 
           const heartData = await heartResponse.json();
           alert(heartData.message);
+          window.location.reload()
 
         } catch (error) {
           console.error('Error likes event:', error);
@@ -233,9 +236,9 @@ async function EventList() {
       }
       else {
         alert("로그인이 필요합니다")
+        location.replace(`${frontend_base_url}/login.html`)
       }
 
-      window.location.reload()
 
     });
 
