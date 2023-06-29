@@ -11,21 +11,6 @@ window.onload = async function loadStores() {
     let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커 이미지 생성
 
 
-    for (var i = 0; i < positions.length; i++) {
-        var imageSize = new kakao.maps.Size(24, 35);
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: positions[i].latlng,
-            title: positions[i].title,
-            image: markerImage,
-            clickable: true
-
-        })
-        bounds.extend(positions[i].latlng);
-        map.setBounds(bounds)
-    }
-
     store_list = await storeList();
     const storeCard = document.getElementById("store-list-body");
 
@@ -105,7 +90,24 @@ window.onload = async function loadStores() {
             })
         }
     })
+    //지도 위치 이동
+    for (var i = 0; i < positions.length; i++) {
+        var imageSize = new kakao.maps.Size(24, 35);
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: positions[i].latlng,
+            title: positions[i].title,
+            image: markerImage,
+            clickable: true
+
+        })
+        bounds.extend(positions[i].latlng);
+        map.setBounds(bounds)
+    }
 }
+
+
 
 async function storeLink(store_id) {
     console.log(store_id)
