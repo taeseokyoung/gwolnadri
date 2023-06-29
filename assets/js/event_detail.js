@@ -307,8 +307,12 @@ async function HandleComment() {
     alert("작성되었습니다.")
     window.location.reload()
 
-  } else {
+  } else if (response.status == 400) { 
+    alert("내용이 필요합니다.")
     (response.status)
+  }
+  else{
+    alert("로그인이 필요합니다.")
   }
 }
 

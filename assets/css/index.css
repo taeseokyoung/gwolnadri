@@ -74,6 +74,8 @@
     border-radius: 10px;
     filter:brightness(0.5);
     margin-bottom:30px;
+    cursor: pointer
+
 }
 
 .sub-card .sub-card-txt {
