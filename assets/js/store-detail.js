@@ -77,8 +77,6 @@ window.onload = async function HanbokStoreDetail() {
                 bookOn = 0
                 newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
-            newHeartImg.setAttribute("onclick", `likeBtn(${likeOn})`)
-            newBookImg.setAttribute("onclick", `bookBtn(${bookOn})`)
 
             const newFormBtn = document.getElementById("create-comment-btn")
             newFormBtn.setAttribute("onclick", `submitComment(${hanbokstore_id})`)
@@ -88,6 +86,8 @@ window.onload = async function HanbokStoreDetail() {
             newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             document.getElementById("js_input").style.display = "none";
         }
+        newHeartImg.setAttribute("onclick", `likeBtn(${likeOn})`)
+        newBookImg.setAttribute("onclick", `bookBtn(${bookOn})`)
 
 
         const hanbok = document.getElementById("hanbok_list");
@@ -218,6 +218,7 @@ async function SelectItem(hanbok_id) {
         window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
     } else {
         alert('로그인이 필요합니다')
+        location.replace(`${frontend_base_url}/login.html`)
     }
 }
 
@@ -272,14 +273,14 @@ async function submitComment(hanbokstore_id) {
                 alert("빈칸을 모두 채워주세요.")
                 break
             case 401:
-                alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-                location.replace(`${index_url}`)
+                alert("로그인이 필요합니다")
+                location.replace(`${frontend_base_url}/login.html`)
                 break
 
         }
     } else {
         alert("로그인이 필요합니다")
-        location.replace(`${index_url}`)
+        location.replace(`${frontend_base_url}/login.html`)
     }
 
 }
@@ -408,14 +409,14 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
                 alert("빈칸을 모두 채워주세요.")
                 break
             case 401:
-                alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-                location.replace(`${index_url}`)
+                alert("로그인이 필요합니다")
+                location.replace(`${frontend_base_url}/login.html`)
                 break
 
         }
     } else {
         alert("로그인이 필요합니다")
-        location.replace(`127.0.0.1:5500/index.html`)
+        location.replace(`${frontend_base_url}/login.html`)
     }
 }
 
@@ -433,8 +434,8 @@ async function DeleteComment(hanbokstore_id, comments_id) {
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
             break
         case 401:
-            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${index_url}`)
+            alert("로그인이 필요합니다")
+            location.replace(`${frontend_base_url}/login.html`)
             break
     }
 }
@@ -486,8 +487,8 @@ async function likeBtn(likeOn) {
             alert(response.status)
             break
         case 401:
-            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${index_url}`)
+            alert("로그인이 필요합니다.")
+            location.replace(`${frontend_base_url}/login.html`)
             break
 
     }
@@ -516,8 +517,8 @@ async function bookBtn(bookOn) {
             alert(response.status)
             break
         case 401:
-            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${index_url}`)
+            alert("로그인이 필요합니다")
+            location.replace(`${frontend_base_url}/login.html`)
             break
 
     }

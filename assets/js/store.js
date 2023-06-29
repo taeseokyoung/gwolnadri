@@ -72,12 +72,13 @@ window.onload = async function loadStores() {
                     bookOn = 0
                     newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
                 }
-                newHeartImg.setAttribute("onclick", "likeBtn(" + store.id + `,${likeOn})`)
-                newBookImg.setAttribute("onclick", "bookBtn(" + store.id + `,${bookOn})`)
+                
             } else {
                 newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
                 newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
             }
+            newHeartImg.setAttribute("onclick", "likeBtn(" + store.id + `,${likeOn})`)
+            newBookImg.setAttribute("onclick", "bookBtn(" + store.id + `,${bookOn})`)
 
             newStore.innerText = store.store_name
             newAdd.innerText = store.store_address
@@ -110,11 +111,11 @@ window.onload = async function loadStores() {
 
 
 async function storeLink(store_id) {
-    console.log(store_id)
     location.href = `${frontend_base_url}/store-detail.html?hanbokstore_id=${store_id}`
 }
 
 async function bookBtn(store_id, bookOn) {
+
     const response = await fetch(`${backend_base_url}/api/v1/stores/${store_id}/bookmark/`, {
         method: 'POST',
         headers: {
@@ -137,7 +138,7 @@ async function bookBtn(store_id, bookOn) {
             location.replace(`${frontend_base_url}/store.html`)
             break
         case 401:
-            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            alert("로그인이 필요합니다")
             location.replace(`${frontend_base_url}/login.html`)
             break
 
@@ -168,7 +169,7 @@ async function likeBtn(store_id, likeOn) {
             location.replace(`${frontend_base_url}/store.html`)
             break
         case 401:
-            alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
+            alert("로그인이 필요합니다")
             location.replace(`${frontend_base_url}/login.html`)
             break
 
