@@ -65,12 +65,11 @@ async function updateProfile() {
   const email = document.getElementById("email").value;
   const username = document.getElementById("username").value;
   const fileInput = document.getElementById("profile_image").files[0];
-  // const file = fileInput.files[0];
+
   const formData = new FormData();
 
   formData.append("email", email);
   formData.append("username", username);
-
 
   if (fileInput) {
     formData.append("profile_image", fileInput);
@@ -83,14 +82,13 @@ async function updateProfile() {
     method: "PUT",
     body: formData,
   });
-
   if (response.status == 200) {
-    alert("수정 완료");
+    alert("프로필 수정이 완료되었습니다.");
     location.replace(`${frontend_base_url}/profile.html`);
   } else if (username == "") {
-    alert("닉네임은 필수 입력값입니다.");
+    alert("유저네임은 필수 입력값입니다.");
   } else {
-    alert("에러입니다!!!왜죠!!!");
+    alert("프로필 사진을 확인해 주세요.");
   }
 }
 
