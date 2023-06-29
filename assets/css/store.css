@@ -51,6 +51,7 @@
 
 .store-wrap .contant-page, .store-wrap .review {
     margin: 30px;
+    cursor: default;
 }
 
 @media(max-width:1060px){
