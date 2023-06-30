@@ -26,13 +26,16 @@ window.onload = async function HanbokStoreDetail() {
         const get_total_likes = response_json.Store.total_likes
         const get_bookmarks = response_json.Store.store_bookmarks
         const get_avgstar = response_json.Store.avg_stars.avg_stars
+        const get_cate =  response_json.Store.tags[0]
+        console.log(get_cate)
 
         const comments = response_json.Comment
-        const store_name = document.getElementById('store_name');
-        const store_address = document.getElementById('store_address');
+        const store_cate =  document.getElementById("hanbok_category")
+        const store_name = document.getElementById('store_name')
+        const store_address = document.getElementById('store_address')
 
-        const store_likes = document.getElementById('heart');
-        const store_bookmarks = document.getElementById('bookmark');
+        const store_likes = document.getElementById('heart')
+        const store_bookmarks = document.getElementById('bookmark')
 
         const newAvgGrade = document.createElement("span")
         const newHeartImg = document.createElement("img")
@@ -44,6 +47,13 @@ window.onload = async function HanbokStoreDetail() {
         store_name.innerText = get_name
         store_address.innerText = get_address
         newHeartNum.innerText = get_total_likes
+
+        // 카테고리가 있는 경우 | 없는 경우
+        if (get_cate == null) {
+            store_cate.innerText = "전통한복"
+        } else {
+            store_cate.innerText = get_cate
+        }
 
         // 평균 별점이 없는경우|있는경우
         if (get_avgstar == null) {
@@ -84,7 +94,7 @@ window.onload = async function HanbokStoreDetail() {
             //---ㅂㅣ로그인 사용자의 경우
             newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
-            document.getElementById("js_input").style.display = "none";
+            // document.getElementById("js_input").style.display = "none";
         }
         newHeartImg.setAttribute("onclick", `likeBtn(${likeOn})`)
         newBookImg.setAttribute("onclick", `bookBtn(${bookOn})`)
@@ -122,7 +132,6 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
-
         KakaoMap(get_x, get_y, get_name)
 
         const comment_input = document.getElementById('review')
@@ -257,50 +266,57 @@ async function KakaoMap(lng, lat, name) {
 }
 
 async function submitComment(hanbokstore_id) {
+    if (payload){
+        const newStar = document.getElementById("new-star")
+        const grade = newStar.options[newStar.selectedIndex].value
+        const content = document.getElementById("new-comment").value
+        const review_image = document.getElementById("image").files[0]
 
-    const newStar = document.getElementById("new-star")
-    const grade = newStar.options[newStar.selectedIndex].value
-    const content = document.getElementById("new-comment").value
-    const review_image = document.getElementById("image").files[0]
-
-    
-    console.log(review_image.size)
-    // if (review_image.size > 
+        
+        console.log(review_image.size)
+        // if (review_image.size > 2MB로 제한)
+        // 글자 길이 50자 이내로 제한 글자 20-30자 되면 ...으로 전환 마우스 호버로 안에 내용 보이게 변환
+        //이제 로그인하지 않아도 후기 작성 보이게 변경
 
 
-    const formdata = new FormData()
+        const formdata = new FormData()
 
-    formdata.append("grade", grade)
-    formdata.append("content", content)
-    formdata.append("review_image", review_image)
+        formdata.append("grade", grade)
+        formdata.append("content", content)
+        formdata.append("review_image", review_image)
 
-    if (token) {
-        const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
-            method: 'POST',
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            },
-            body: formdata
+        if (token) {
+            const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
+                method: 'POST',
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: formdata
+            }
+            )
+            switch (response.status) {
+                case 200:
+                    alert("후기작성 완료!")
+                    location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+                    break
+                case 400:
+                    alert("빈칸을 모두 채워주세요.")
+                    break
+                case 401:
+                    alert("로그인이 필요합니다")
+                    location.replace(`${frontend_base_url}/login.html`)
+                    break
+
+            }
+        } else {
+            alert("로그인이 필요합니다")
+            location.replace(`${frontend_base_url}/login.html`)
         }
-        )
-        switch (response.status) {
-            case 200:
-                alert("후기작성 완료!")
-                location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-                break
-            case 400:
-                alert("빈칸을 모두 채워주세요.")
-                break
-            case 401:
-                alert("로그인이 필요합니다")
-                location.replace(`${frontend_base_url}/login.html`)
-                break
-
-        }
-    } else {
+    }else{
         alert("로그인이 필요합니다")
-        location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/login.html`)
     }
+    
 
 }
 
