@@ -179,6 +179,12 @@ font-size: 1.4rem;
 border: 1px solid rgb(51, 51, 51, 0.1);
 transition: border 0.25s;
 }
+.NoneText {
+    font-family: 'GmarketSansLight';
+    font-size: 4rem;
+    text-align: center;
+
+}
 
 /* .in_img, .grade {
 cursor: pointer;
@@ -400,5 +406,11 @@ font-size: 11px;
     font-size: 1.4rem;
     border: 1px solid rgb(51, 51, 51, 0.1);
     transition: border 0.25s;
+}
+.NoneText {
+    font-family: 'GmarketSansLight';
+    font-size: 4rem;
+    text-align: center;
+
 }
 } 

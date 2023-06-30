@@ -187,6 +187,20 @@ async function Eventreview() {
   const review_response_json = await review_response.json();
   const review_list = document.getElementById('review_list');
 
+  if (review_response_json.length === 0) {
+    // Display a message when there are no reviews
+    const noReviewContainElement = document.createElement('div');
+    noReviewContainElement.className = 'contant-page';
+
+    const noReviewTextElement = document.createElement('p');
+    noReviewTextElement.className = 'NoneText';
+    noReviewTextElement.textContent = "리뷰가 없습니다.";
+
+    noReviewContainElement.appendChild(noReviewTextElement);
+    review_list.appendChild(noReviewContainElement);
+    return;
+  }
+
   review_response_json.forEach(element => {
 
     const get_img = element.review_image;
