@@ -100,6 +100,7 @@
     flex-direction: row;
     z-index: -1;
     margin: 0 0 30px 0;
+    overflow-x: scroll;
 }
 
 .card-page .sub-card{
@@ -342,6 +343,8 @@ select {
     display: flex;
     align-items: flex-end;
     margin-bottom: 30px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .review-button {
@@ -369,5 +372,14 @@ select {
 
 select {
     padding: 10px 5px;
+}
+
+.sh_slide {
+    flex-shrink:unset;
+    min-width: 220px;
+}
+
+.sh_input {
+    flex-wrap: nowrap;
 }
 }

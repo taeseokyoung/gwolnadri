@@ -94,7 +94,7 @@ window.onload = async function HanbokStoreDetail() {
 
         response_json.HanbokList.forEach(hanboks => {
             const div = document.createElement("div")
-            div.setAttribute("class", "sub-card swiper-slide")
+            div.setAttribute("class", "sub-card swiper-slide sh_slide")
 
             const img = document.createElement("img")
             img.setAttribute("src", `${backend_base_url}${hanboks.hanbok_image}`)
@@ -191,8 +191,8 @@ window.onload = async function HanbokStoreDetail() {
                     newEditBtn.setAttribute("class", "njs-button")
                     newDelBtn.setAttribute("type", "button")
                     newDelBtn.setAttribute("class", "njs-button")
-                    newEditBtn.setAttribute("onclick", `EditComment(${hanbokstore_id},${comments.id})`)
-                    newDelBtn.setAttribute("onclick", `DeleteComment(${hanbokstore_id},${comments.id})`)
+                    newEditBtn.setAttribute("onclick", `EditComment(${comments.id})`)
+                    newDelBtn.setAttribute("onclick", `DeleteComment(${comments.id})`)
                     newBtnCase.setAttribute("style", "display: flex;")
                     newEditBtn.innerText = "수정"
                     newDelBtn.innerText = "삭제"
@@ -285,7 +285,7 @@ async function submitComment(hanbokstore_id) {
 
 }
 
-async function EditComment(hanbokstore_id, comments_id) {
+async function EditComment(comments_id) {
 
     const prevComment = document.getElementById(comments_id)
     const prevImg = prevComment.children[0].src
@@ -352,7 +352,7 @@ async function EditComment(hanbokstore_id, comments_id) {
     newPreImg.setAttribute("src", prevImg)
     newFormBtn.setAttribute("type", "button")
     newFormBtn.setAttribute("class", "njs-button")
-    newFormBtn.setAttribute("onclick", `saveEditComment(${hanbokstore_id},${comments_id},"${prevTxt}")`)
+    newFormBtn.setAttribute("onclick", `saveEditComment(${comments_id},"${prevTxt}")`)
 
     prevComment.appendChild(reviewCard)
     reviewCard.appendChild(formCard)
@@ -379,7 +379,7 @@ async function EditComment(hanbokstore_id, comments_id) {
     newFormBtn.innerText = "수정완료"
 }
 
-async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
+async function saveEditComment(comments_id, prevTxt) {
     const newStar = document.getElementById("new-star-edit")
     const grade = newStar.options[newStar.selectedIndex]
     const content = document.getElementById("new-comment-edit")
@@ -390,9 +390,11 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
     formdata.append("grade", grade.value)
     formdata.append("content", content.value)
     formdata.append("review_image", review_image.files[0])
+    console.log("후기번호 : ", comments_id)
+    console.log("내용 : ", formdata)
 
     if (token) {
-        const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments_id}/`, {
+        const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
             method: 'PUT',
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -420,8 +422,8 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
     }
 }
 
-async function DeleteComment(hanbokstore_id, comments_id) {
-    const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments_id}`, {
+async function DeleteComment(comments_id) {
+    const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}`, {
         method: 'DELETE',
         headers: {
             "Authorization": `Bearer ${token}`
