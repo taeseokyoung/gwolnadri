@@ -92,6 +92,18 @@
     display: none;
 }
 
+.edit-button2 {
+    width: 100%; 
+    background: inherit;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: gray;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'GmarketSansMedium';
+    cursor: pointer;
+    display: grid;
+    justify-content: end;
+}
 
 @media(max-width:1060px){
 
@@ -185,5 +197,7 @@
 .login-option>li:last-child::after{
     display: none;
 }
+
+
 
 }

@@ -25,7 +25,7 @@ async function handleLogin() {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
-    window.location.replace("/");
+    window.location.replace(`${index_url}`);
 
   } else {
     alert("로그인에 실패하였습니다. 다시 시도해 주세요.")
