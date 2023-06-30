@@ -51,15 +51,12 @@
 
 .store-wrap .contant-page, .store-wrap .review {
     margin: 30px;
+    cursor: default;
 }
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
-    .store-wrap h2 {
+.store-wrap h2 {
     margin: 0 0 30px 5px;
 }
 

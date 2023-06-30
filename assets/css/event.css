@@ -1,14 +1,3 @@
-.Gwolnadri-body .main-page {
-    position: relative;
-    z-index: -1;
-}
-
-.Gwolnadri-body .main-page img{
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-}
-
 .Gwolnadri-body .card-txt {
     position: absolute;
     bottom: 0;
@@ -218,20 +207,6 @@
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
-    .Gwolnadri-body .main-page {
-    position: relative;
-    z-index: -1;
-}
-
-.Gwolnadri-body .main-page img{
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-}
 
 .Gwolnadri-body .card-txt {
     position: absolute;

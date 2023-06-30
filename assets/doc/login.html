@@ -51,7 +51,8 @@
                                 </div>
                             </div>
                             <button onclick="handleLogin()" class="login-form-btn" type="button">로그인</button>
-                            <button id="login-signup-btn" class="login-form-btn" type="button">회원가입</button>
+                            <button id="login-signup-btn" class="login-form-btn" type="button">
+                                <a href="/assets/doc/signup.html">회원가입</a></button>
                         </form>
                     </div>
                     <!-- <ul class="login-option flex">
@@ -59,11 +60,12 @@
                         <li><a href="">비밀번호 찾기</a></li>
                         <li><a href="/assets/doc/signup.html">회원가입</a></li>
                     </ul> -->
-                    <!-- <div class="login-btn flex">
-                        <button class="kakao" onclick="kakaoLogin()"><i class="xi-kakaotalk"></i> 카카오로 로그인</button>
-                        <button class="naver" onclick="naverLogin()"><i class="xi-naver"></i> 네이버로 로그인</button>
-                        <button class="google" onclick="googleLogin()"><i class="xi-google"></i> 구글 로그인</button>
-                    </div> -->
+                    <div class="login-btn flex">
+                        <button class="kakao" onclick="kakaoLogin()" type="button"><i class="xi-kakaotalk"></i> 카카오
+                            로그인</button>
+                        <!-- <button class="naver" onclick="naverLogin()"><i class="xi-naver"></i> 네이버 로그인</button>
+                        <button class="google" onclick="googleLogin()"><i class="xi-google"></i> 구글 로그인</button> -->
+                    </div>
                 </div>
                 <footer></footer>
             </div>
@@ -72,6 +74,7 @@
     <script src="/assets/js/api.js"></script>
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/login.js"></script>
+    <script src="/assets/js/social.js"></script>
 </body>
 
 </html>

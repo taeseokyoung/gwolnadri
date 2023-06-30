@@ -58,11 +58,8 @@ p {
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
 
-    .sh-box {
+.sh-box {
     position: relative;
     display: flex;
     flex-direction: row;
