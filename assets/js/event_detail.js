@@ -195,7 +195,7 @@ async function Eventreview() {
     const get_content = element.content;
     const get_review_id = element.id
     const reviewCardElement = document.createElement('div');
-    reviewCardElement.setAttribute("class", "review-card");
+    reviewCardElement.setAttribute("class", "new-review-card");
 
     const reviewImgElement = document.createElement('img');
     reviewImgElement.className = 'review-image';
@@ -311,6 +311,7 @@ async function HandleComment() {
   } else if (response.status == 400) { 
     alert("내용이 필요합니다.")
     (response.status)
+    
   }
   else{
     alert("로그인이 필요합니다.")
