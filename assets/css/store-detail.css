@@ -357,3 +357,25 @@ select {
     padding: 10px 5px;
 }
 }
+
+@media(max-width:380px){
+
+    header.on .nav-icon {
+        display: none;
+    }
+    
+    header.on h1 {
+        text-align: left;
+    }
+
+    .review-card{
+        width: 100px;
+        height: 100px;
+    }
+
+    .review-card img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+}

@@ -633,11 +633,6 @@ button {
     padding: 5px 10px;
     }
 
-    .review-card .review-image {
-        width: 150px;
-        height: 150px;
-    }
-
     .contant-page, .review {
         margin: 0 20px
     }
@@ -701,10 +696,5 @@ button {
         object-fit: cover;
         width: auto;
         height: 200px !important;
-    }
-
-       .review-card .review-image {
-        width: 100px;
-        height: 100px;
     }
 }

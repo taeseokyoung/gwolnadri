@@ -328,3 +328,25 @@
         transition: border 0.25s;
     }
 } 
+
+@media(max-width:380px){
+
+    header .nav-icon {
+        display: none;
+    }
+    
+    header h1 {
+        text-align: left;
+    }
+
+    .review-card{
+        width: 100px;
+        height: 100px;
+    }
+
+    .review-card img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+}
