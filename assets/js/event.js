@@ -96,11 +96,11 @@ async function EventList() {
 
     const reservationTag = document.createElement('p');
     reservationTag.classList.add('reservation');
-    if (currentDate >= eventStart && currentDate <= (eventEnd - 7 * oneDay)) {
+    if (currentDate >= eventStart && currentDate <= (eventEnd - 2 * oneDay)) {
       reservationTag.innerText = '행사중';
     } else if (diffDaysStart > 0) {
       reservationTag.innerText = '행사예정';
-    } else if (diffDaysEnd <= 7 && diffDaysEnd > 0) {
+    } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';
     } else {
       reservationTag.innerText = '삑';
