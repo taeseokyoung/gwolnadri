@@ -178,11 +178,7 @@ select:disabled {
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
-    .sh-row {
+.sh-row {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     flex-direction: row;

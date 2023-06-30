@@ -176,10 +176,6 @@ select {
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
     .Gwolnadri-body {
     overflow-x:hidden;
 }

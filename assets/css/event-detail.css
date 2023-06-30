@@ -167,10 +167,6 @@
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
     .main-page .card-txt {
         position: absolute;
         bottom: 0;
