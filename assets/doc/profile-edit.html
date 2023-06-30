@@ -45,9 +45,12 @@
                                 <div class="button-container">
                                     <button type="button" class="edit-button3"
                                         onclick="toggleFileInput()">프로필사진</button>
+                                        <p style="font-size:13px; color: gray; line-height: 2em"> 2MB 이내로 올려주세요. </p>
                                     <input type="file" id="profile_image" name="profile-image" style="display: none;"
                                         onchange="previewImage()">
+                                        
                                 </div>
+                                
                                 <button type="button" class="edit-button4" onclick="deleteProfileImage()">사진삭제</button>
                             </div>
                             <div class="form-input">
@@ -57,7 +60,8 @@
                                 </div>
                                 <div class="input-box">
                                     <label for="username">변경할 유저네임</label>
-                                    <input type="text" id="username" name="username" placeholder="">
+                                    <input type="text" id="username" name="username" placeholder="" maxlength="20">
+                                    <p style="font-size:13px; color: gray; line-height: 2em"> 20자 이내로 적어주세요. </p>
                                 </div>
                             </div>
                             <button class="update-button" onclick="updateProfile()" type="button">수정하기</button>
