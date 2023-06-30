@@ -271,47 +271,48 @@ async function submitComment(hanbokstore_id) {
         const grade = newStar.options[newStar.selectedIndex].value
         const content = document.getElementById("new-comment").value
         const review_image = document.getElementById("image").files[0]
+        const maxSixe = 2 * 1024 * 1024
 
-        
-        console.log(review_image.size)
-        // if (review_image.size > 2MB로 제한)
-        // 글자 길이 50자 이내로 제한 글자 20-30자 되면 ...으로 전환 마우스 호버로 안에 내용 보이게 변환
-        //이제 로그인하지 않아도 후기 작성 보이게 변경
+        if (review_image.size >= maxSixe){
+            alert("이미지가 너무 큽니다.")
+            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
+        }else{
+            const formdata = new FormData()
 
-        const formdata = new FormData()
+            formdata.append("grade", grade)
+            formdata.append("content", content)
+            formdata.append("review_image", review_image)
 
-        formdata.append("grade", grade)
-        formdata.append("content", content)
-        formdata.append("review_image", review_image)
+            if (token) {
+                const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
+                    method: 'POST',
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                    body: formdata
+                }
+                )
+                switch (response.status) {
+                    case 200:
+                        alert("후기작성 완료!")
+                        location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+                        break
+                    case 400:
+                        alert("빈칸을 모두 채워주세요.")
+                        break
+                    case 401:
+                        alert("로그인이 필요합니다")
+                        location.replace(`${frontend_base_url}/login.html`)
+                        break
 
-        if (token) {
-            const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
-                method: 'POST',
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
-                body: formdata
+                }
+            } else {
+                alert("로그인이 필요합니다")
+                location.replace(`${frontend_base_url}/login.html`)
             }
-            )
-            switch (response.status) {
-                case 200:
-                    alert("후기작성 완료!")
-                    location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-                    break
-                case 400:
-                    alert("빈칸을 모두 채워주세요.")
-                    break
-                case 401:
-                    alert("로그인이 필요합니다")
-                    location.replace(`${frontend_base_url}/login.html`)
-                    break
-
-            }
-        } else {
-            alert("로그인이 필요합니다")
-            location.replace(`${frontend_base_url}/login.html`)
         }
+        
     }else{
         alert("로그인이 필요합니다")
             location.replace(`${frontend_base_url}/login.html`)
