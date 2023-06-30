@@ -27,7 +27,6 @@ window.onload = async function HanbokStoreDetail() {
         const get_bookmarks = response_json.Store.store_bookmarks
         const get_avgstar = response_json.Store.avg_stars.avg_stars
         const get_cate =  response_json.Store.tags[0]
-        console.log(get_cate)
 
         const comments = response_json.Comment
         const store_cate =  document.getElementById("hanbok_category")
@@ -388,7 +387,7 @@ async function EditComment(comments_id) {
     newPreImg.setAttribute("src", prevImg)
     newFormBtn.setAttribute("type", "button")
     newFormBtn.setAttribute("class", "njs-button")
-    newFormBtn.setAttribute("onclick", `saveEditComment(${comments_id},"${prevTxt}")`)
+    newFormBtn.setAttribute("onclick", `saveEditComment(${comments_id},"${prevTxt}","${prevImg}")`)
 
     prevComment.appendChild(reviewCard)
     reviewCard.appendChild(formCard)
@@ -415,7 +414,7 @@ async function EditComment(comments_id) {
     newFormBtn.innerText = "수정완료"
 }
 
-async function saveEditComment(comments_id, prevTxt) {
+async function saveEditComment(comments_id, prevTxt, prevImg) {
     const newStar = document.getElementById("new-star-edit")
     const grade = newStar.options[newStar.selectedIndex]
     const content = document.getElementById("new-comment-edit")
@@ -424,10 +423,21 @@ async function saveEditComment(comments_id, prevTxt) {
     const formdata = new FormData()
 
     formdata.append("grade", grade.value)
-    formdata.append("content", content.value)
+
+    if (content.value==null){
+        formdata.append("content", content.value)
+    }else{
+        formdata.append("content", prevTxt)
+    }
+
+    //이전 사진 넣기 도전중...
+    // if (review_image.files[0]==null){
+    //     formdata.append("review_image", prevImg)
+    // }else{
+    //     formdata.append("review_image", review_image.files[0])
+    // }
+
     formdata.append("review_image", review_image.files[0])
-    console.log("후기번호 : ", comments_id)
-    console.log("내용 : ", formdata)
 
     if (token) {
         const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
