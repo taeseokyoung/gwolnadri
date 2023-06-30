@@ -188,7 +188,6 @@ async function Eventreview() {
   const review_list = document.getElementById('review_list');
 
   if (review_response_json.length === 0) {
-    // Display a message when there are no reviews
     const noReviewContainElement = document.createElement('div');
     noReviewContainElement.className = 'contant-page';
 
@@ -260,10 +259,19 @@ async function Eventreview() {
 
     reviewGradeElement.textContent = "별점 : " + starNum + " ";
 
+    
     const reviewContentElement = document.createElement('p');
     reviewContentElement.id = 'content';
     reviewContentElement.className = 'content';
     reviewContentElement.textContent = get_content;
+
+    const max_lenght = 20;
+    if (get_content.length > max_lenght) {
+      reviewContentElement.textContent = get_content.substr(0, max_lenght) + '...';
+    } else {
+      reviewContentElement.textContent = get_content;
+    }
+
 
     reviewCardElement.appendChild(reviewImgElement)
     reviewCardElement.appendChild(reviewTxtElement)
