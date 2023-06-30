@@ -213,8 +213,11 @@ async function Eventreview() {
     const reviewImgElement = document.createElement('img');
     reviewImgElement.className = 'review-image';
     reviewImgElement.id = 'review-image';
+
     reviewImgElement.src = `${backend_base_url}${get_img}`;
     reviewImgElement.alt = '';
+    
+
 
     const reviewTxtElement = document.createElement('div');
     reviewTxtElement.setAttribute("class", "review-txt")
@@ -272,14 +275,13 @@ async function Eventreview() {
       reviewContentElement.textContent = get_content;
     }
 
-
     reviewCardElement.appendChild(reviewImgElement)
+
     reviewCardElement.appendChild(reviewTxtElement)
     reviewTxtElement.appendChild(reviewAuthorElement)
     reviewTxtElement.appendChild(reviewGradeElement)
     reviewTxtElement.appendChild(reviewContentElement)
     reviewTxtElement.appendChild(reviewButton)
-
     review_list.appendChild(reviewCardElement)
 
   });
@@ -313,7 +315,13 @@ async function HandleComment() {
   const in_img = document.getElementById('in_img').files[0];
   const com_txt = document.getElementById('com_txt').value;
   const grade = select_grade.split('')[0]
-  
+  const maxSixe = 2 * 1024 * 1024
+
+  if (in_img.size >= maxSixe){
+    alert("이미지가 너무 큽니다.")
+    window.location.reload()
+  }else{
+    
   const formdata = new FormData();
   formdata.append("grade", grade)
   formdata.append("review_image", in_img)
@@ -338,7 +346,7 @@ async function HandleComment() {
   else{
     alert("로그인이 필요합니다.")
   }
-}
+}}
 
 
 document.querySelector("#in_img").addEventListener('change', function () {
