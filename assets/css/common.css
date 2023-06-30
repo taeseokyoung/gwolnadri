@@ -110,7 +110,6 @@ table {
 
  .Gwolnadri-body .main-page {
     position: relative;
-    z-index: -1;
 }
 
 .Gwolnadri-body .main-page img{
@@ -566,6 +565,10 @@ button {
         margin: 15px 20px;
     }
 
+    header.left-arrow-header nav {
+        margin: 17px;
+    }
+
     .foot-icon {
       height: 70px;
     }
@@ -605,6 +608,10 @@ button {
         width: 30px;
         height: 30px;
     }
+        
+    .contant-page .sub-card>img{
+       height: 200px;
+    }
 
     .sh_btn {
     padding: 5px;
@@ -625,10 +632,23 @@ button {
     border-bottom: 1px solid #000;
     padding: 5px 10px;
     }
+
+    .review-card .review-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contant-page, .review {
+        margin: 0 20px
+    }
+        
 }
 
-
 @media(max-width:380px){
+    
+    html{
+        font-size: 8px !important;
+    }
 
     h1{
         text-align: center;
@@ -652,6 +672,11 @@ button {
         order: 1; 
     }
 
+    header.left-arrow-header nav {
+        margin: 15px;
+    }
+
+
     #search_bar {
         width: 200px;
     }
@@ -661,11 +686,11 @@ button {
     }
 
     .sh_search {
-    width: auto;
-    color: #000;
-    background-color: transparent;
-    border: none;
-    margin: 5px 10px 5px 20px;
+        width: auto;
+        color: #000;
+        background-color: transparent;
+        border: none;
+        margin: 5px 10px 5px 20px;
     }
 
     .Gwolnadri-body .main-page img{
@@ -676,5 +701,10 @@ button {
         object-fit: cover;
         width: auto;
         height: 200px !important;
+    }
+
+       .review-card .review-image {
+        width: 100px;
+        height: 100px;
     }
 }
