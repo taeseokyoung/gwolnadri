@@ -184,6 +184,13 @@ select {
     padding: 10px 5px;
 }
 
+.NoneText {
+    font-family: 'GmarketSansLight';
+    font-size: 4rem;
+    text-align: center;
+
+}
+
 
 @media(max-width:1060px){
 

@@ -125,84 +125,98 @@ window.onload = async function HanbokStoreDetail() {
 
         KakaoMap(get_x, get_y, get_name)
 
-        //후기 생성
-        const comment = document.getElementById('content-list');
-        comments.forEach(comments => {
-            const newCard = document.createElement("div")
-            const newImage = document.createElement("img")
-            const newText = document.createElement("div")
-            const newUser = document.createElement("div")
-            const newGrade = document.createElement("p")
-            const newContent = document.createElement("p")
-            const review_button = document.createElement("div")
-            let starNum
+        const comment_input = document.getElementById('review')
+        if (comments.length == 0){
+            const noReviewContainElement = document.createElement('div')
+            noReviewContainElement.className = 'contant-page'
 
-            newCard.setAttribute("class", "review-card")
-            newCard.setAttribute("id", `${comments.id}`)
-            newImage.setAttribute("class", "review_image")
+            const noReviewTextElement = document.createElement('p')
+            noReviewTextElement.className = 'NoneText'
+            noReviewTextElement.textContent = "리뷰가 없습니다."
 
-            newImage.setAttribute("src", `${backend_base_url}${comments.review_image}`)
-            newImage.setAttribute("alt", "")
-            newText.setAttribute("class", "review-txt")
-            newGrade.setAttribute("class", "grade")
-            switch (comments.grade) {
-                case 1:
-                    starNum = "⭐️"
-                    break
-                case 2:
-                    starNum = "⭐️⭐️"
-                    break
-                case 3:
-                    starNum = "⭐️⭐️⭐️"
-                    break
-                case 4:
-                    starNum = "⭐️⭐️⭐️⭐️"
-                    break
-                case 5:
-                    starNum = "⭐️⭐️⭐️⭐️⭐️"
-                    break
-            }
-            newGrade.innerText = "별점 : " + starNum
-            newUser.setAttribute("class", "content")
-            newUser.innerText = " 작성자 : " + comments.username
-            newContent.setAttribute("class", "content")
-            newContent.innerText = comments.content
-            review_button.setAttribute("class", "review-button")
+            noReviewContainElement.appendChild(noReviewTextElement)
+            comment_input.appendChild(noReviewContainElement)
+        } else {
+            //후기 생성
+            const comment = document.getElementById('content-list');
+            comments.forEach(comments => {
+                const newCard = document.createElement("div")
+                const newImage = document.createElement("img")
+                const newText = document.createElement("div")
+                const newUser = document.createElement("div")
+                const newGrade = document.createElement("p")
+                const newContent = document.createElement("p")
+                const review_button = document.createElement("div")
+                let starNum
 
-            comment.insertBefore(newCard, comment.firstChild);
-            newCard.appendChild(newImage)
-            newCard.appendChild(review_button)
-            newText.appendChild(newUser)
-            newText.appendChild(newGrade)
-            newText.appendChild(newContent)
+                newCard.setAttribute("class", "review-card")
+                newCard.setAttribute("id", `${comments.id}`)
+                newImage.setAttribute("class", "review_image")
 
-
-            review_button.appendChild(newText)
-
-            //로그인사용자와 후기 작성자가 같으면 수정버튼 활성화
-            if (payload) {
-                if (comments.user == payload_parse.user_id) {
-                    const newBtnCase = document.createElement("div")
-                    const newEditBtn = document.createElement("button")
-                    const newDelBtn = document.createElement("button")
-
-                    newBtnCase.setAttribute("class", "button-case")
-                    newEditBtn.setAttribute("type", "button")
-                    newEditBtn.setAttribute("class", "njs-button")
-                    newDelBtn.setAttribute("type", "button")
-                    newDelBtn.setAttribute("class", "njs-button")
-                    newEditBtn.setAttribute("onclick", `EditComment(${comments.id})`)
-                    newDelBtn.setAttribute("onclick", `DeleteComment(${comments.id})`)
-                    newBtnCase.setAttribute("style", "display: flex;")
-                    newEditBtn.innerText = "수정"
-                    newDelBtn.innerText = "삭제"
-
-                    review_button.appendChild(newBtnCase)
-                    newBtnCase.appendChild(newEditBtn)
-                    newBtnCase.appendChild(newDelBtn)
+                newImage.setAttribute("src", `${backend_base_url}${comments.review_image}`)
+                newImage.setAttribute("alt", "")
+                newText.setAttribute("class", "review-txt")
+                newGrade.setAttribute("class", "grade")
+                switch (comments.grade) {
+                    case 1:
+                        starNum = "⭐️"
+                        break
+                    case 2:
+                        starNum = "⭐️⭐️"
+                        break
+                    case 3:
+                        starNum = "⭐️⭐️⭐️"
+                        break
+                    case 4:
+                        starNum = "⭐️⭐️⭐️⭐️"
+                        break
+                    case 5:
+                        starNum = "⭐️⭐️⭐️⭐️⭐️"
+                        break
                 }
-            }
-        })
+                newGrade.innerText = "별점 : " + starNum
+                newUser.setAttribute("class", "content")
+                newUser.innerText = " 작성자 : " + comments.username
+                newContent.setAttribute("class", "content")
+                newContent.innerText = comments.content
+                review_button.setAttribute("class", "review-button")
+
+                comment.insertBefore(newCard, comment.firstChild);
+                newCard.appendChild(newImage)
+                newCard.appendChild(review_button)
+                newText.appendChild(newUser)
+                newText.appendChild(newGrade)
+                newText.appendChild(newContent)
+
+
+                review_button.appendChild(newText)
+
+                //로그인사용자와 후기 작성자가 같으면 수정버튼 활성화
+                if (payload) {
+                    if (comments.user == payload_parse.user_id) {
+                        const newBtnCase = document.createElement("div")
+                        const newEditBtn = document.createElement("button")
+                        const newDelBtn = document.createElement("button")
+
+                        newBtnCase.setAttribute("class", "button-case")
+                        newEditBtn.setAttribute("type", "button")
+                        newEditBtn.setAttribute("class", "njs-button")
+                        newDelBtn.setAttribute("type", "button")
+                        newDelBtn.setAttribute("class", "njs-button")
+                        newEditBtn.setAttribute("onclick", `EditComment(${comments.id})`)
+                        newDelBtn.setAttribute("onclick", `DeleteComment(${comments.id})`)
+                        newBtnCase.setAttribute("style", "display: flex;")
+                        newEditBtn.innerText = "수정"
+                        newDelBtn.innerText = "삭제"
+
+                        review_button.appendChild(newBtnCase)
+                        newBtnCase.appendChild(newEditBtn)
+                        newBtnCase.appendChild(newDelBtn)
+                    }
+                }
+            })
+        }
+        
 
 
     } else if (response.status == 404) {
@@ -248,6 +262,11 @@ async function submitComment(hanbokstore_id) {
     const grade = newStar.options[newStar.selectedIndex].value
     const content = document.getElementById("new-comment").value
     const review_image = document.getElementById("image").files[0]
+
+    
+    console.log(review_image.size)
+    // if (review_image.size > 
+
 
     const formdata = new FormData()
 
