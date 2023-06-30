@@ -126,3 +126,9 @@
     display: none;
 }
 }
+
+@media(max-width:500px){
+    .home-wrap {
+    margin: 80px 20px 0 20px;
+    font-family: 'GmarketSansLight';
+}}

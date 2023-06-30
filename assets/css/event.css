@@ -278,15 +278,6 @@
     margin-bottom: 30px;
 }
 
-.contant-page .sub-card>img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    filter: brightness(0.5);
-    cursor: pointer;
-}
-
 .sub-card .reservation {
     top: 30px;
     right: 30px;
