@@ -20,8 +20,6 @@ window.onload = function () {
 async function EventDetail() {
   const urlParams = new URLSearchParams(window.location.search);
   event_id = urlParams.get('event_id');
-  // const eventDetailURL = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
-
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
 
@@ -191,11 +189,6 @@ async function Eventreview() {
   if (review_response_json.length === 0) {
     const noReviewContainElement = document.createElement('div');
     noReviewContainElement.className = 'contant-page';
-
-    // const noReviewTextElement = document.createElement('p');
-    // noReviewTextElement.className = 'NoneText';
-    // noReviewTextElement.textContent = "리뷰가 없습니다.";
-
     noReviewContainElement.appendChild(noReviewTextElement);
     review_list.appendChild(noReviewContainElement);
     return;

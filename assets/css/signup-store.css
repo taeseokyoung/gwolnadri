@@ -1,117 +1,23 @@
-.signup-wrap {
-    margin: 120px 30px 0 30px;
-    height: 70%;
-}
+.signup-wrap { margin: 120px 30px 0 30px; height: 70%; } 
+.left-arrow-header .nav-icon { filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%); } 
+.signup-wrap h2 { font-size: 2.5rem; font-family: 'GmarketSansMedium'; margin: 0 0 0 5px; } 
+.login-btn { flex-direction: column; } 
+.login-option { margin: 15px 60px 100px 60px; } 
+.login-option>li { position: relative; } 
+.login-option>li::after { content: "|"; position: absolute; right: -50%; transform: translateX(50%); color: rgba(0, 0, 0, 0.7); } 
+.login-option>li:last-child::after { display: none; } 
+.email-box { position: relative; } 
+.email-certification { position: absolute; bottom: 10px; right: 0; width: 50px; height: 25px; padding: 0 0 6px 0; font-size: 1.5rem; color: #333; background-color: #eee; border: 1px solid #333; border-radius: 1px; } 
 
-.left-arrow-header .nav-icon{
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
-}
-
-.signup-wrap h2 {
-    font-size: 2.5rem;
-    font-family: 'GmarketSansMedium';
-    margin: 0 0 0 5px;
-}
-
-.login-btn {
-    flex-direction: column;
-}
-
-.login-option {
-    margin: 15px 60px 100px 60px;
-}
-
-.login-option>li {
-    position: relative;
-}
-
-.login-option>li::after{
-    content: "|";
-    position: absolute;
-    right: -50%;
-    transform: translateX(50%);
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.login-option>li:last-child::after{
-    display: none;
-}
-
-.email-box {
-    position: relative;
-}
-
-.email-certification {
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    width: 50px;
-    height: 25px;
-    padding: 0 0 6px 0;
-    font-size: 1.5rem;
-    color: #333;
-    background-color: #eee;
-    border: 1px solid #333;
-    border-radius: 1px;
-}
-
-@media(max-width:1060px){
-
-.signup-wrap {
-    margin: 110px 30px 0 30px;
-    height: 70%;
-
-}
-
-.left-arrow-header .nav-icon{
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
-}
-
-.signup-wrap h2 {
-    font-size: 2.5rem;
-    font-family: 'GmarketSansMedium';
-    margin: 0 0 0 5px;
-}
-
-.login-btn {
-    flex-direction: column;
-}
-
-.login-option {
-    margin: 15px 60px 100px 60px;
-}
-
-.login-option>li {
-    position: relative;
-}
-
-.login-option>li::after{
-    content: "|";
-    position: absolute;
-    right: -50%;
-    transform: translateX(50%);
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.login-option>li:last-child::after{
-    display: none;
-}
-
-.email-box {
-    position: relative;
-}
-
-.email-certification {
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    width: 50px;
-    height: 25px;
-    padding: 0 0 6px 0;
-    font-size: 1.5rem;
-    color: #333;
-    background-color: #eee;
-    border: 1px solid #333;
-    border-radius: 1px;
-}
-}
+@media(max-width:1060px) {
+.signup-wrap { margin: 110px 30px 0 30px; height: 70%;}
+.left-arrow-header .nav-icon { filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%); } 
+.signup-wrap h2 { font-size: 2.5rem; font-family: 'GmarketSansMedium'; margin: 0 0 0 5px; } 
+.login-btn { flex-direction: column; } 
+.login-option { margin: 15px 60px 100px 60px; } 
+.login-option>li { position: relative; } 
+.login-option>li::after { content: "|"; position: absolute; right: -50%; transform: translateX(50%); color: rgba(0, 0, 0, 0.7); } 
+.login-option>li:last-child::after { display: none; } 
+.email-box { position: relative; } 
+.email-certification { position: absolute; bottom: 10px; right: 0; width: 50px; height: 25px; padding: 0 0 6px 0; font-size: 1.5rem; color: #333; background-color: #eee; border: 1px solid #333; border-radius: 1px; } 
+ }

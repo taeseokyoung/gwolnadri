@@ -1,148 +1,79 @@
 .store-wrap .contant-page, .store-wrap .review { margin: 30px 30px 0 30px; } 
-
 .store-title .hanbok_store { font-size: 2.9rem; font-family: 'GmarketSansMedium'; margin: 0 0 15px 0; cursor: default; /* 상점 이름 부분 */ } 
-
 .store-title .hanbok_category { display: inline-block; font-size: 1.5rem; font-family: 'GmarketSansMedium'; padding: 8px 13px; margin-bottom: 15px; border: 1px solid rgb(51, 51, 51); border-radius: 20px; cursor: default; /* 상점 카테고리 부분 */ } 
-
 .store-wrap .card-icon { display: flex; justify-content: flex-end; gap: 30px; padding: 0 0 30px 0; border-bottom: 1px solid rgb(51, 51, 51, 0.1); } 
-
 .hanbok_address { font-size: 1.9rem; cursor: default; /* 상점 주소 부분 */ } 
-
 .review-title { font-size: 2.1rem; font-family: 'GmarketSansMedium'; margin: 30px 0; cursor: default; /* 상점 후기 부분 */ } 
-
 .review .review_image { width: 200px; height: 200px; object-fit: cover; } 
-
 .review .sub-content { display: flex; flex-direction: column; gap: 15px; } 
-
 .review-card { display: flex; gap: 30px; padding: 15px; border: 1px solid rgb(51, 51, 51, 0.1); } 
-
 .review-txt { line-height: 1.6; height: 200px; font-size: 1.8rem; } 
-
 .review-txt>div:nth-child(1) { font-family: 'GmarketSansMedium'; color: #555; } 
-
 .card-icon { display: flex; flex-direction: row; } 
-
 .swiper { width: 100%; height: 100%; margin: 0 0 0 30px; } 
-
 .card-page { display: flex; flex-direction: row; z-index: -1; margin: 0 0 30px 0; overflow-x: scroll; } 
-
 .card-page .sub-card { position: relative; } 
-
 .card-page .sub-card img { width: 210px; height: 300px; object-fit: cover; border-radius: 10px; filter: brightness(70%) } 
-
 .card-page .sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
-
 .card-page .sub-card-txt .title { font-size: 2.5rem; font-weight: 500; margin-bottom: 15px; } 
-
 .card-page .sub-card-txt .event-price { font-size: 1.9rem; font-weight: 300; margin-bottom: 30px; } 
-
 .card-page button { width: 90px; padding: 5px 10px; font-size: 1.5rem; background-color: rgb(30, 30, 77, 0.7); border: 1px solid rgb(255, 255, 255,0.7); } 
-
 .njs-button { width: fit-content; float: right; padding: 5px; font-size: 1.5rem; } 
-
 .review-content { display: flex; align-items: flex-end; margin-bottom: 30px; } 
-
 .review-button { display: flex; flex: 1; flex-direction: column; justify-content: space-between; width: 100%; height: 200px; } 
-
 .review-button>.button-case { display: flex; gap: 10px; justify-content: flex-end; } 
-
 .review-button>.button-case>button { padding: 3px 13px; } 
-
 .sh_input_img { width:55%; } 
-
 select { padding: 10px 5px; } 
-
 .NoneText { font-family: 'GmarketSansLight'; font-size: 4rem; text-align: center; } 
-
 .sh_input { flex-wrap: nowrap; } 
-
 #preview { width: 200px; height: 200px; object-fit: cover; } 
-
 #preview-edit { width: 200px; height: 200px; object-fit: cover; } 
 
 @media(max-width:1060px){
  .Gwolnadri-body { overflow-x:hidden; } 
-
  .Gwolnadri-body .main-page { position: relative; z-index: -1; } 
-
  .Gwolnadri-body .store-page img { width: 100%; height: 600px; } 
-
  .store-wrap .contant-page, .store-wrap .review { margin: 30px 30px 0 30px; } 
-
  .store-title .hanbok_store { font-size: 2.9rem; font-family: 'GmarketSansMedium'; margin: 0 0 15px 0; } 
-
  .store-title .hanbok_category { display: inline-block; font-size: 1.5rem; font-family: 'GmarketSansMedium'; padding: 8px 13px; margin-bottom: 15px; border: 1px solid rgb(51, 51, 51); border-radius: 20px; } 
-
  .store-wrap .card-icon { display: flex; justify-content: flex-end; gap: 30px; padding: 0 0 30px 0; border-bottom: 1px solid rgb(51, 51, 51, 0.1); } 
-
  .hanbok_address { font-size: 1.9rem; } 
-
  .review-title { font-size: 2.1rem; font-family: 'GmarketSansMedium'; margin: 30px 0; } 
-
  .review .sub-content { display: flex; flex-direction: column; gap: 15px; } 
-
  .review-card { display: flex; gap: 30px; padding: 15px; border: 1px solid rgb(51, 51, 51, 0.1); } 
-
  .review-txt { line-height: 1.6; height: 200px; font-size: 1.8rem; } 
-
  .review-txt>div:nth-child(1) { font-family: 'GmarketSansMedium'; color: #555; } 
-
  .card-icon { display: flex; flex-direction: row; } 
-
  .swiper { width: 100%; height: 100%; margin: 0 0 0 30px; } 
-
  .card-page { display: flex; flex-direction: row; z-index: -1; margin: 0 0 30px 0; } 
-
  .card-page .sub-card { position: relative; } 
-
  .card-page .sub-card img { width: 210px; height: 300px; object-fit: cover; border-radius: 10px; filter: brightness(70%) } 
-
  .card-page .sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
-
  .card-page .sub-card-txt .title { font-size: 2.5rem; font-weight: 500; margin-bottom: 15px; } 
-
  .card-page .sub-card-txt .event-price { font-size: 1.9rem; font-weight: 300; margin-bottom: 30px; } 
-
  .card-page button { width: 90px; padding: 5px 10px; font-size: 1.5rem; background-color: rgb(30, 30, 77, 0.7); border: 1px solid rgb(255, 255, 255,0.7); } 
-
  .njs-button { width: fit-content; float: right; padding: 5px; font-size: 1.5rem; } 
-
  .review-content { display: flex; align-items: flex-end; margin-bottom: 30px; justify-content: space-between; flex-wrap: wrap; } 
-
  .review-button { display: flex; flex: 1; flex-direction: column; justify-content: space-between; width: 100%; height: 200px; } 
-
  .review-button>.button-case { display: flex; gap: 10px; justify-content: flex-end; } 
-
  .review-button>.button-case>button { padding: 3px 13px; } 
-
  .sh_input_img { width:55%; } 
-
  select { padding: 10px 5px; } 
-
  .sh_slide { flex-shrink:unset; min-width: 220px; } 
  }
 
-
-
 @media(max-width:500px){
  #preview { width: 150px; height: 150px; object-fit: cover; } 
-
  #preview-edit { width: 150px; height: 150px; object-fit: cover; } 
-
  .review .review_image { width: 150px; height: 150px; object-fit: cover; } 
  .comment_img { width: 150px; height:150px; } 
  }
 
 @media(max-width:380px) { header .nav-icon { display: none; } 
- 
  header h1 { text-align: left; } 
-
  .review .review_image { width: 100px; height: 100px; object-fit: cover; } 
-
  .comment_img { width: 100px; height:100px; } 
-
- 
  #preview { width: 100px; height: 100px; object-fit: cover; } 
-
  #preview-edit { width: 100px; height: 100px; object-fit: cover; } 
  }
