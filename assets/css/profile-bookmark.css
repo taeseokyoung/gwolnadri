@@ -47,6 +47,7 @@
 }
 .contant-page .sub-card{
     position: relative;
+    margin-bottom: 30px;
 }
 
 .sub-card .reservation {
@@ -276,7 +277,7 @@
         font-size: 8px !important;
     }
     .profile-wrap {
-    margin: 20% 30px 0 30px;
+    margin: 120px 30px 0 30px;
 }
 
 .left-arrow-header .nav-icon{
@@ -488,7 +489,7 @@
 }
 
 .contant-page{
-    margin: 30px;
+    margin: 15px;
 }
 
 .sh_col {
