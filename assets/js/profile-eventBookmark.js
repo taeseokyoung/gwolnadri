@@ -60,6 +60,7 @@ window.onload = async function ReservationDetail() {
         } else if (diffDaysStart > 0) {
           season.innerText = '행사예정';
         } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
+        } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
           season.innerText = '마감임박';
         } else {
           season.innerText = '행사종료';

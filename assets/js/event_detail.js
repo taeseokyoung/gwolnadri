@@ -16,10 +16,11 @@ window.onload = function () {
   EventDetail()
   Eventreview()
 }
+
 async function EventDetail() {
   const urlParams = new URLSearchParams(window.location.search);
   event_id = urlParams.get('event_id');
-  const eventDetailURL = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+  // const eventDetailURL = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
 
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
@@ -187,6 +188,19 @@ async function Eventreview() {
   const review_response_json = await review_response.json();
   const review_list = document.getElementById('review_list');
 
+  if (review_response_json.length === 0) {
+    const noReviewContainElement = document.createElement('div');
+    noReviewContainElement.className = 'contant-page';
+
+    // const noReviewTextElement = document.createElement('p');
+    // noReviewTextElement.className = 'NoneText';
+    // noReviewTextElement.textContent = "리뷰가 없습니다.";
+
+    noReviewContainElement.appendChild(noReviewTextElement);
+    review_list.appendChild(noReviewContainElement);
+    return;
+  }
+
   review_response_json.forEach(element => {
 
     const get_img = element.review_image;
@@ -195,13 +209,16 @@ async function Eventreview() {
     const get_content = element.content;
     const get_review_id = element.id
     const reviewCardElement = document.createElement('div');
-    reviewCardElement.setAttribute("class", "review-card");
+    reviewCardElement.setAttribute("class", "new-review-card");
 
     const reviewImgElement = document.createElement('img');
     reviewImgElement.className = 'review-image';
     reviewImgElement.id = 'review-image';
+
     reviewImgElement.src = `${backend_base_url}${get_img}`;
     reviewImgElement.alt = '';
+
+
 
     const reviewTxtElement = document.createElement('div');
     reviewTxtElement.setAttribute("class", "review-txt")
@@ -246,18 +263,26 @@ async function Eventreview() {
 
     reviewGradeElement.textContent = "별점 : " + starNum + " ";
 
+
     const reviewContentElement = document.createElement('p');
     reviewContentElement.id = 'content';
     reviewContentElement.className = 'content';
     reviewContentElement.textContent = get_content;
 
+    const max_lenght = 20;
+    if (get_content.length > max_lenght) {
+      reviewContentElement.textContent = get_content.substr(0, max_lenght) + '...';
+    } else {
+      reviewContentElement.textContent = get_content;
+    }
+
     reviewCardElement.appendChild(reviewImgElement)
+
     reviewCardElement.appendChild(reviewTxtElement)
     reviewTxtElement.appendChild(reviewAuthorElement)
     reviewTxtElement.appendChild(reviewGradeElement)
     reviewTxtElement.appendChild(reviewContentElement)
     reviewTxtElement.appendChild(reviewButton)
-
     review_list.appendChild(reviewCardElement)
 
   });
@@ -291,7 +316,13 @@ async function HandleComment() {
   const in_img = document.getElementById('in_img').files[0];
   const com_txt = document.getElementById('com_txt').value;
   const grade = select_grade.split('')[0]
-  
+  const maxSixe = 2 * 1024 * 1024
+
+  // if (in_img.size >= maxSixe) {
+  //   alert("이미지가 너무 큽니다.")
+  //   window.location.reload()
+  // } else {
+
   const formdata = new FormData();
   formdata.append("grade", grade)
   formdata.append("review_image", in_img)
@@ -308,11 +339,12 @@ async function HandleComment() {
     alert("작성되었습니다.")
     window.location.reload()
 
-  } else if (response.status == 400) { 
+  } else if (response.status == 400) {
     alert("내용이 필요합니다.")
-    (response.status)
+      (response.status)
+
   }
-  else{
+  else {
     alert("로그인이 필요합니다.")
   }
 }

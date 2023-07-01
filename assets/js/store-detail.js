@@ -26,13 +26,15 @@ window.onload = async function HanbokStoreDetail() {
         const get_total_likes = response_json.Store.total_likes
         const get_bookmarks = response_json.Store.store_bookmarks
         const get_avgstar = response_json.Store.avg_stars.avg_stars
+        const get_cate = response_json.Store.tags[0]
 
         const comments = response_json.Comment
-        const store_name = document.getElementById('store_name');
-        const store_address = document.getElementById('store_address');
+        const store_cate = document.getElementById("hanbok_category")
+        const store_name = document.getElementById('store_name')
+        const store_address = document.getElementById('store_address')
 
-        const store_likes = document.getElementById('heart');
-        const store_bookmarks = document.getElementById('bookmark');
+        const store_likes = document.getElementById('heart')
+        const store_bookmarks = document.getElementById('bookmark')
 
         const newAvgGrade = document.createElement("span")
         const newHeartImg = document.createElement("img")
@@ -44,6 +46,13 @@ window.onload = async function HanbokStoreDetail() {
         store_name.innerText = get_name
         store_address.innerText = get_address
         newHeartNum.innerText = get_total_likes
+
+        // 카테고리가 있는 경우 | 없는 경우
+        if (get_cate == null) {
+            store_cate.innerText = "전통한복"
+        } else {
+            store_cate.innerText = get_cate
+        }
 
         // 평균 별점이 없는경우|있는경우
         if (get_avgstar == null) {
@@ -81,10 +90,10 @@ window.onload = async function HanbokStoreDetail() {
             const newFormBtn = document.getElementById("create-comment-btn")
             newFormBtn.setAttribute("onclick", `submitComment(${hanbokstore_id})`)
         } else {
-            //---ㅂㅣ로그인 사용자의 경우
+            //비로그인 사용자의 경우
             newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
-            document.getElementById("js_input").style.display = "none";
+            //document.getElementById("js_input").style.display = "none";
         }
         newHeartImg.setAttribute("onclick", `likeBtn(${likeOn})`)
         newBookImg.setAttribute("onclick", `bookBtn(${bookOn})`)
@@ -94,7 +103,7 @@ window.onload = async function HanbokStoreDetail() {
 
         response_json.HanbokList.forEach(hanboks => {
             const div = document.createElement("div")
-            div.setAttribute("class", "sub-card swiper-slide")
+            div.setAttribute("class", "sub-card swiper-slide sh_slide")
 
             const img = document.createElement("img")
             img.setAttribute("src", `${backend_base_url}${hanboks.hanbok_image}`)
@@ -122,87 +131,99 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
-
         KakaoMap(get_x, get_y, get_name)
 
-        //후기 생성
-        const comment = document.getElementById('content-list');
-        comments.forEach(comments => {
-            const newCard = document.createElement("div")
-            const newImage = document.createElement("img")
-            const newText = document.createElement("div")
-            const newUser = document.createElement("div")
-            const newGrade = document.createElement("p")
-            const newContent = document.createElement("p")
-            const review_button = document.createElement("div")
-            let starNum
+        const comment_input = document.getElementById('review')
+        if (comments.length == 0) {
+            const noReviewContainElement = document.createElement('div')
+            noReviewContainElement.className = 'contant-page'
 
-            newCard.setAttribute("class", "review-card")
-            newCard.setAttribute("id", `${comments.id}`)
-            newImage.setAttribute("class", "review_image")
+            const noReviewTextElement = document.createElement('p')
+            noReviewTextElement.className = 'NoneText'
+            noReviewTextElement.textContent = "리뷰가 없습니다."
 
-            newImage.setAttribute("src", `${backend_base_url}${comments.review_image}`)
-            newImage.setAttribute("alt", "")
-            newText.setAttribute("class", "review-txt")
-            newGrade.setAttribute("class", "grade")
-            switch (comments.grade) {
-                case 1:
-                    starNum = "⭐️"
-                    break
-                case 2:
-                    starNum = "⭐️⭐️"
-                    break
-                case 3:
-                    starNum = "⭐️⭐️⭐️"
-                    break
-                case 4:
-                    starNum = "⭐️⭐️⭐️⭐️"
-                    break
-                case 5:
-                    starNum = "⭐️⭐️⭐️⭐️⭐️"
-                    break
-            }
-            newGrade.innerText = "별점 : " + starNum
-            newUser.setAttribute("class", "content")
-            newUser.innerText = " 작성자 : " + comments.username
-            newContent.setAttribute("class", "content")
-            newContent.innerText = comments.content
-            review_button.setAttribute("class", "review-button")
+            noReviewContainElement.appendChild(noReviewTextElement)
+            comment_input.appendChild(noReviewContainElement)
+        } else {
+            //후기 생성
+            const comment = document.getElementById('content-list');
+            comments.forEach(comments => {
+                const newCard = document.createElement("div")
+                const newImage = document.createElement("img")
+                const newText = document.createElement("div")
+                const newUser = document.createElement("div")
+                const newGrade = document.createElement("p")
+                const newContent = document.createElement("p")
+                const review_button = document.createElement("div")
+                let starNum
 
-            comment.insertBefore(newCard, comment.firstChild);
-            newCard.appendChild(newImage)
-            newCard.appendChild(review_button)
-            newText.appendChild(newUser)
-            newText.appendChild(newGrade)
-            newText.appendChild(newContent)
+                newCard.setAttribute("class", "review-card")
+                newCard.setAttribute("id", `${comments.id}`)
+                newImage.setAttribute("class", "review_image")
 
-
-            review_button.appendChild(newText)
-
-            //로그인사용자와 후기 작성자가 같으면 수정버튼 활성화
-            if (payload) {
-                if (comments.user == payload_parse.user_id) {
-                    const newBtnCase = document.createElement("div")
-                    const newEditBtn = document.createElement("button")
-                    const newDelBtn = document.createElement("button")
-
-                    newBtnCase.setAttribute("class", "button-case")
-                    newEditBtn.setAttribute("type", "button")
-                    newEditBtn.setAttribute("class", "njs-button")
-                    newDelBtn.setAttribute("type", "button")
-                    newDelBtn.setAttribute("class", "njs-button")
-                    newEditBtn.setAttribute("onclick", `EditComment(${hanbokstore_id},${comments.id})`)
-                    newDelBtn.setAttribute("onclick", `DeleteComment(${hanbokstore_id},${comments.id})`)
-                    newBtnCase.setAttribute("style", "display: flex;")
-                    newEditBtn.innerText = "수정"
-                    newDelBtn.innerText = "삭제"
-
-                    review_button.appendChild(newBtnCase)
-                    newBtnCase.appendChild(newEditBtn)
-                    newBtnCase.appendChild(newDelBtn)
+                newImage.setAttribute("src", `${backend_base_url}${comments.review_image}`)
+                newImage.setAttribute("alt", "")
+                newText.setAttribute("class", "review-txt")
+                newGrade.setAttribute("class", "grade")
+                switch (comments.grade) {
+                    case 1:
+                        starNum = "⭐️"
+                        break
+                    case 2:
+                        starNum = "⭐️⭐️"
+                        break
+                    case 3:
+                        starNum = "⭐️⭐️⭐️"
+                        break
+                    case 4:
+                        starNum = "⭐️⭐️⭐️⭐️"
+                        break
+                    case 5:
+                        starNum = "⭐️⭐️⭐️⭐️⭐️"
+                        break
                 }
-            }
-        })
+                newGrade.innerText = "별점 : " + starNum
+                newUser.setAttribute("class", "content")
+                newUser.innerText = " 작성자 : " + comments.username
+                newContent.setAttribute("class", "content")
+                newContent.innerText = comments.content
+                review_button.setAttribute("class", "review-button")
+
+                comment.insertBefore(newCard, comment.firstChild);
+                newCard.appendChild(newImage)
+                newCard.appendChild(review_button)
+                newText.appendChild(newUser)
+                newText.appendChild(newGrade)
+                newText.appendChild(newContent)
+
+
+                review_button.appendChild(newText)
+
+                //로그인사용자와 후기 작성자가 같으면 수정버튼 활성화
+                if (payload) {
+                    if (comments.user == payload_parse.user_id) {
+                        const newBtnCase = document.createElement("div")
+                        const newEditBtn = document.createElement("button")
+                        const newDelBtn = document.createElement("button")
+
+                        newBtnCase.setAttribute("class", "button-case")
+                        newEditBtn.setAttribute("type", "button")
+                        newEditBtn.setAttribute("class", "njs-button")
+                        newDelBtn.setAttribute("type", "button")
+                        newDelBtn.setAttribute("class", "njs-button")
+                        newEditBtn.setAttribute("onclick", `EditComment(${comments.id})`)
+                        newDelBtn.setAttribute("onclick", `DeleteComment(${comments.id})`)
+                        newBtnCase.setAttribute("style", "display: flex;")
+                        newEditBtn.innerText = "수정"
+                        newDelBtn.innerText = "삭제"
+
+                        review_button.appendChild(newBtnCase)
+                        newBtnCase.appendChild(newEditBtn)
+                        newBtnCase.appendChild(newDelBtn)
+                    }
+                }
+            })
+        }
 
 
     } else if (response.status == 404) {
@@ -243,49 +264,62 @@ async function KakaoMap(lng, lat, name) {
 }
 
 async function submitComment(hanbokstore_id) {
+    if (payload) {
+        const newStar = document.getElementById("new-star")
+        const grade = newStar.options[newStar.selectedIndex].value
+        const content = document.getElementById("new-comment").value
+        const review_image = document.getElementById("image").files[0]
+        const maxSixe = 2 * 1024 * 1024
 
-    const newStar = document.getElementById("new-star")
-    const grade = newStar.options[newStar.selectedIndex].value
-    const content = document.getElementById("new-comment").value
-    const review_image = document.getElementById("image").files[0]
+        if (review_image.size >= maxSixe) {
+            alert("이미지가 너무 큽니다.")
+            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
-    const formdata = new FormData()
+        } else {
+            const formdata = new FormData()
 
-    formdata.append("grade", grade)
-    formdata.append("content", content)
-    formdata.append("review_image", review_image)
+            formdata.append("grade", grade)
+            formdata.append("content", content)
+            formdata.append("review_image", review_image)
 
-    if (token) {
-        const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
-            method: 'POST',
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            },
-            body: formdata
-        }
-        )
-        switch (response.status) {
-            case 200:
-                alert("후기작성 완료!")
-                location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-                break
-            case 400:
-                alert("빈칸을 모두 채워주세요.")
-                break
-            case 401:
+            if (token) {
+                const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
+                    method: 'POST',
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                    body: formdata
+                }
+                )
+                switch (response.status) {
+                    case 200:
+                        alert("후기작성 완료!")
+                        location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+                        break
+                    case 400:
+                        alert("빈칸을 모두 채워주세요.")
+                        break
+                    case 401:
+                        alert("로그인이 필요합니다")
+                        location.replace(`${frontend_base_url}/login.html`)
+                        break
+
+                }
+            } else {
                 alert("로그인이 필요합니다")
                 location.replace(`${frontend_base_url}/login.html`)
-                break
-
+            }
         }
+
     } else {
         alert("로그인이 필요합니다")
         location.replace(`${frontend_base_url}/login.html`)
     }
 
+
 }
 
-async function EditComment(hanbokstore_id, comments_id) {
+async function EditComment(comments_id) {
 
     const prevComment = document.getElementById(comments_id)
     const prevImg = prevComment.children[0].src
@@ -311,6 +345,7 @@ async function EditComment(hanbokstore_id, comments_id) {
     const newPreImg = document.createElement("img")
     const newFormBtn = document.createElement("button")
 
+    reviewCard.setAttribute("style", "width: 100%;")
     formCard.setAttribute("style", "width: 100%;")
     newFormReview1.setAttribute("class", "review-content")
     newFormReview2.setAttribute("class", "review-content")
@@ -348,11 +383,11 @@ async function EditComment(hanbokstore_id, comments_id) {
     newInputImg.setAttribute("class", "sh_input_img")
     newInputImg.setAttribute("onchange", "readURLEdit(this);")
     newPreImg.setAttribute("id", "preview-edit")
-    newPreImg.setAttribute("style", "width:200px; height:200px; object-fit:cover;")
+    // newPreImg.setAttribute("style", "width:200px; height:200px; object-fit:cover;")
     newPreImg.setAttribute("src", prevImg)
     newFormBtn.setAttribute("type", "button")
     newFormBtn.setAttribute("class", "njs-button")
-    newFormBtn.setAttribute("onclick", `saveEditComment(${hanbokstore_id},${comments_id},"${prevTxt}")`)
+    newFormBtn.setAttribute("onclick", `saveEditComment(${comments_id},"${prevTxt}","${prevImg}")`)
 
     prevComment.appendChild(reviewCard)
     reviewCard.appendChild(formCard)
@@ -379,7 +414,7 @@ async function EditComment(hanbokstore_id, comments_id) {
     newFormBtn.innerText = "수정완료"
 }
 
-async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
+async function saveEditComment(comments_id, prevTxt, prevImg) {
     const newStar = document.getElementById("new-star-edit")
     const grade = newStar.options[newStar.selectedIndex]
     const content = document.getElementById("new-comment-edit")
@@ -388,11 +423,24 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
     const formdata = new FormData()
 
     formdata.append("grade", grade.value)
-    formdata.append("content", content.value)
+
+    if (content.value == null) {
+        formdata.append("content", content.value)
+    } else {
+        formdata.append("content", prevTxt)
+    }
+
+    //이전 사진 넣기 도전중...
+    // if (review_image.files[0]==null){
+    //     formdata.append("review_image", prevImg)
+    // }else{
+    //     formdata.append("review_image", review_image.files[0])
+    // }
+
     formdata.append("review_image", review_image.files[0])
 
     if (token) {
-        const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments_id}/`, {
+        const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
             method: 'PUT',
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -420,8 +468,8 @@ async function saveEditComment(hanbokstore_id, comments_id, prevTxt) {
     }
 }
 
-async function DeleteComment(hanbokstore_id, comments_id) {
-    const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/${comments_id}`, {
+async function DeleteComment(comments_id) {
+    const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}`, {
         method: 'DELETE',
         headers: {
             "Authorization": `Bearer ${token}`

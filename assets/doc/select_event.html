@@ -37,20 +37,20 @@
                         </div>
                     </nav>
                 </header>
-                <div class="signup-wrap mb120px">
+                <div class="signup-wrap mb120px" style="height: 70%;">
                     <div class="sh-row2 start">
                         <h2 class="sh-title">예약하기</h2>
                         <button class="sh-btn2">
                             <i onclick="onClickReload()" class="xi-refresh"></i>
                         </button>
                     </div>
-                    <div class="login-page">
-                        <form action="">
-                            <div class="form-input gap2">
+                    <div class="login-page" style="height:100%;">
+                        <form action=""style="height:100%;">
+                            <div class="form-input">
                                 <div class="input-box email-box">
                                     <label>날짜</label>
                                     <div class="sh-row2">
-                                        <input id="rsrvt_date" type="date" class="event_date">
+                                        <input id="rsrvt_date" type="date" class="event_date" required pattern="\d{4}-\d{2}-\d{2}">
                                         <button id="select_date" onclick="SelectDate()" type="button"
                                             class="sh-btn">선택</button>
                                     </div>
@@ -69,11 +69,12 @@
                                     <label for="name">수량</label>
                                     <input id="quantity" type="number" min='0' disabled>
                                 </div>
+                                <button id="select" onclick="handleSelectEvent()" style="font-size:15px; padding:15px;" class="login-form-btn"
+                                    type="button">KakaoPAY 테스트 결제</button>
                             </div>
-                            <button id="select" onclick="handleSelectEvent()" class="login-form-btn"
-                                type="button">KakaoPAY 테스트 결제</button>
                         </form>
                     </div>
+                    <!-- <div class="foot-icon" style="position:unset;"></div> -->
                 </div>
                 <footer></footer>
             </div>

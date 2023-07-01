@@ -1,8 +1,6 @@
-const frontend_base_url = "https://gwolnadri.netlify.app/assets/doc"
+const frontend_base_url = "https://gwolnadri.com/assets/doc"
 const backend_base_url = "https://gwolnadri.online"
-const index_url = "https://gwolnadri.netlify.app/index.html"
-
-
+const index_url = "https://gwolnadri.com/index.html"
 
 const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload);
