@@ -20,7 +20,6 @@ window.onload = function () {
 async function RandomEventList() {
   const random_response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const random_response_json = await random_response.json();
-  console.log(random_response_json)
 
   // 랜덤한 인덱스 생성
   const randomIndex = Math.floor(Math.random() * random_response_json.length);
@@ -68,6 +67,7 @@ async function EventList() {
   const response = await fetch(`${backend_base_url}/events/`);
   const response_json = await response.json()
   const eventListContainer = document.getElementById('event_list');
+
   response_json.forEach(element => {
     const get_title = element.title;
     const get_event_start_date = element.event_start_date;
@@ -98,12 +98,14 @@ async function EventList() {
     reservationTag.classList.add('reservation');
     if (currentDate >= eventStart && currentDate <= (eventEnd - 2 * oneDay)) {
       reservationTag.innerText = '행사중';
+    } else if (eventEnd < currentDate) {
+      reservationTag.innerText = '행사종료';
     } else if (diffDaysStart > 0) {
       reservationTag.innerText = '행사예정';
     } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
       reservationTag.innerText = '마감임박';
     } else {
-      reservationTag.innerText = '행사종료';
+      reservationTag.innerText = '오류';
     }
 
     const eventCardTxt = document.createElement('div');
@@ -141,7 +143,6 @@ async function EventList() {
     }
     likeIconImage.alt = '';
     // likeIconImage.style.cursor = "default";
-
     const likeCount = document.createElement('span');
     likeCount.id = 'like_count';
     likeCount.innerText = String(get_like_count);
@@ -238,13 +239,10 @@ async function EventList() {
         alert("로그인이 필요합니다")
         location.replace(`${frontend_base_url}/login.html`)
       }
-
-
     });
-
   });
-
 };
+
 
 async function HandleSearch() {
   const search_bar = document.getElementById("search_bar");

@@ -47,7 +47,7 @@
                     </div>
                     <div class="contant-page">
                         <div class="store-title">
-                            <p class="hanbok_category">전통한복</p>
+                            <p id="hanbok_category" class="hanbok_category">전통한복</p>
                             <p id="store_name" class="hanbok_store">가게이름</p>
                         </div>
                         <p id="store_address" class="hanbok_address">가게주소</p>
@@ -60,11 +60,11 @@
                         <div id="hanbok_list" class="card-page swiper-wrapper"></div>
                         <div class="swiper-pagination"></div>
                     </div>
-                    <div class="review">
+                    <div id="review" class="review">
                         <p class="review-title">한복 예약 후기</p>
                         <div id="js_input" class="review-card">
                             <form style="width:100%">
-                                <div class="review-content">
+                                <div class="review-content sh_input">
                                     <select id="new-star">
                                         <option value=" ">별점선택</option>
                                         <option value=1>⭐️</option>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="review-content">
                                     <input type="file" id="image" class="sh_input_img" onchange="readURL(this);">
-                                    <img id="preview" style="width:200px; height:200px; object-fit:cover;">
+                                    <img id="preview">
                                 </div>
                                 <button type="button" id="create-comment-btn" class="njs-button"
                                     onclick="submitComment()">작성완료</button>

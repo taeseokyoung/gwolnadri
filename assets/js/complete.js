@@ -1,5 +1,3 @@
-
-
 window.onload = async function CompletePgtoken() {
     const urlParams = new URLSearchParams(window.location.search);
     const pg_token = urlParams.get('pg_token');
