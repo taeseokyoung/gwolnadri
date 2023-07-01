@@ -83,7 +83,6 @@ if (date == null || time == null) {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                         'content-type': 'application/json',
-                        "X-CSRFToken": '{{csrf_token}}'
                     },
                     method: 'POST',
                     body: JSON.stringify({
