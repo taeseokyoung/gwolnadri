@@ -116,6 +116,7 @@ button {
     }
 
     .sh {
+    display: none;
     position: absolute;
     top: 30px;
     /* right: 20px; */
@@ -164,7 +165,7 @@ button {
 }
 
 .reser_img {
-    height: 240px !important;
+    height: 180px !important;
 }
 
 .sh-sub {
