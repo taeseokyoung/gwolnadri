@@ -46,20 +46,27 @@
                     <div class="contant-page"></div>
                     <div class="review">
                         <p class="review-title">댓글</p>
-                        <div class="sub-content">
-                            <select id="grade" class="grade" style="font-size:15px; font-family: 'GmarketSansLight';">
-                                <option>1점</option>
-                                <option>2점</option>
-                                <option>3점</option>
-                                <option>4점</option>
-                                <option>5점</option>
-                            </select>
-                            <input id="in_img" class="in_img" type="file">
-                            <img id="com_image" class="comment_img">
-                            <input id="com_txt" type="txt">
-                            <button onClick="HandleComment()">등록</button>
+                        <div class="review-card">
+                            <div class="sub-content-top">
+                                <select id="grade" class="grade" style="font-size:13px; font-weight: bold; font-family: 'GmarketSansLight'; padding:3px; width:100px; height:35px; cursor: pointer;">
+                                    <option value=" ">별점선택</option>
+                                    <option>1점</option>
+                                    <option>2점</option>
+                                    <option>3점</option>
+                                    <option>4점</option>
+                                    <option>5점</option>
+                                </select>
+                                <input id="com_txt" type="txt" class="txt">
+                            </div>
+                            <div class="sub-content-bottom">                            
+                                <input id="in_img" class="in_img" type="file">
+                                <img id="com_image" class="comment_img">
+                            </div>
+                            <div class="btn_control" style="display: flex; justify-content: flex-end; width:100%">
+                                <button onClick="HandleComment()" class="ch_btn">작성완료</button>
+                            </div>
                         </div>
-                        <div id="review_list" class="sub-content"></div>
+                        <div id="review_list" class="sub-content mb120px"></div>
                     </div>
                 </div>
                 <footer></footer>
