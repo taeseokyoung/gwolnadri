@@ -22,6 +22,7 @@ window.onload = async function loadStores() {
             newTitle.setAttribute("class", "store-title")
             const newCate = document.createElement("p")
             newCate.setAttribute("class", "hanbok_category")
+            newCate.setAttribute("id", "hanbok_category")
             const newStore = document.createElement("p")
             newStore.setAttribute("class", "hanbok_store")
             newTitle.setAttribute("onclick", "storeLink(" + store.id + ")")
@@ -83,7 +84,12 @@ window.onload = async function loadStores() {
             newStore.innerText = store.store_name
             newAdd.innerText = store.store_address
             newHeartNum.innerText = store.total_likes
-            newCate.innerText = "전통한복"
+            if (store.tags[0]==null){
+                newCate.innerText = "전통한복"
+            }else{
+                newCate.innerText = store.tags[0]
+            }
+            
 
             positions.push({
                 title: store.store_name,
