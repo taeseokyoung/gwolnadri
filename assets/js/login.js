@@ -25,20 +25,12 @@ async function handleLogin() {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
-    window.location.replace("/");
+    window.location.replace(`${index_url}`);
 
   } else {
     alert("로그인에 실패하였습니다. 다시 시도해 주세요.")
   }
 }
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById('login-signup-btn').addEventListener('click', function () {
-    window.location.href = `${frontend_base_url}/signup.html`
-  })
-})
-
 
 // 에러로 주석처리
 // checkLogin()

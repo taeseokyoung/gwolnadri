@@ -207,9 +207,6 @@
 
 @media(max-width:1060px){
 
-html{
-    font-size: 8px !important;
-}
 
 .Gwolnadri-body .card-txt {
     position: absolute;
@@ -279,15 +276,6 @@ html{
 .contant-page .sub-card{
     position: relative;
     margin-bottom: 30px;
-}
-
-.contant-page .sub-card>img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    filter: brightness(0.5);
-    cursor: pointer;
 }
 
 .sub-card .reservation {

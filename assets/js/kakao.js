@@ -6,17 +6,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
-
   const response = await fetch(
     `${backend_base_url}/users/kakao/login/callback?code=${code}`
   );
-
   if (response.ok) {
     const response_json = await response.json();
-
     localStorage.setItem("access", response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
-
     const base64Url = response_json.access.split(".")[1];
     const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     const jsonPayload = decodeURIComponent(
@@ -27,12 +23,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
         .join("")
     );
-
     localStorage.setItem("payload", jsonPayload);
-    alert("궐나드리에 환영합니다_K.");
+    // alert("궐나드리에 오신 걸 환영합니다_K.");
     window.location.replace("/");
   } else if (response.status == 400) {
-    alert("이미 가입되어 있는 카카오 계정입니다. 다시 시도해 주세요._K");
+    alert("다시 시도해 주세요.");
     window.location.replace(`${frontend_base_url}/login.html`);
   } else {
     const response_json = await response.json();

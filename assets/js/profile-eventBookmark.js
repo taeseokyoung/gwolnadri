@@ -37,7 +37,7 @@ window.onload = async function ReservationDetail() {
         // event_img.setAttribute('src',`${backend_base_url}${events.image}`)
         event_img.setAttribute('src', "/assets/img/image-2.jpg")
 
-        
+
         // 기간한정 스티커 ----
         const get_event_start_date = events.event_start_date
         const get_event_end_date = events.event_end_date
@@ -45,8 +45,8 @@ window.onload = async function ReservationDetail() {
         const currentDate = new Date();
         currentDate.setHours(0, 0, 0, 0);
 
-        const eventStart = new Date(get_event_start_date); 
-        const eventEnd = new Date(get_event_end_date); 
+        const eventStart = new Date(get_event_start_date);
+        const eventEnd = new Date(get_event_end_date);
         eventStart.setHours(0, 0, 0, 0);
         eventEnd.setHours(0, 0, 0, 0);
         const oneDay = 24 * 60 * 60 * 1000;
@@ -54,18 +54,19 @@ window.onload = async function ReservationDetail() {
         const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
 
         const season = document.createElement('p')
-        season.setAttribute('class','reservation')
+        season.setAttribute('class', 'reservation')
         if (currentDate >= eventStart && currentDate <= (eventEnd - 2 * oneDay)) {
           season.innerText = '행사중';
-        } else if (diffDaysStart > 0 ) {
+        } else if (diffDaysStart > 0) {
           season.innerText = '행사예정';
+        } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
         } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
           season.innerText = '마감임박';
         } else {
-          season.innerText = '삑'; 
+          season.innerText = '행사종료';
         }
 
-        
+
         const txt_div = document.createElement('div')
         txt_div.setAttribute('class', 'sub-card-txt')
 

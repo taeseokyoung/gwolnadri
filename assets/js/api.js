@@ -2,8 +2,6 @@ const frontend_base_url = "http://127.0.0.1:5500/assets/doc"
 const backend_base_url = "http://127.0.0.1:8000"
 const index_url = "http://127.0.0.1:5500/index.html"
 
-
-
 const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload);
 const token = localStorage.getItem("access");
@@ -36,6 +34,22 @@ function getCookie(name) {
 function deleteCookie(name) {
     document.cookie = encodeURIComponent(name) + '=; expires=Thu, 01 JAN 1999 00:00:10 GMT';
 }
+
+// function getCookie(name) {
+//     let cookieValue = null;
+//     if (document.cookie && document.cookie !== '') {
+//         const cookies = document.cookie.split(';');
+//         for (let i = 0; i < cookies.length; i++) {
+//             const cookie = cookies[i].trim();
+//             if (cookie.substring(0, name.length + 1) === (name + '=')) {
+//                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                 break;
+//             }
+//         }
+//     }
+//     return cookieValue;
+// }
+// const csrftoken = getCookie('csrftoken');
 
 async function eventScrapList() {
     const response = await fetch(`${backend_base_url}/events/list/`)
