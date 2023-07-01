@@ -153,11 +153,6 @@
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
-
 .card-txt .title {
     font-size: 2.9rem;
     margin-bottom: 15px;

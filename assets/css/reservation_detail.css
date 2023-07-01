@@ -110,11 +110,7 @@ button {
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-
-    .event_img{
+.event_img{
     width: 100%;
     height: 250px;
     object-fit: contain;

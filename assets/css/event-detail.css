@@ -1,384 +1,135 @@
-.main-page .card-txt {
-position: absolute;
-bottom: 0;
-left: 0;
-padding: 40px;
-width: 300px;
-color: #fff;
-z-index: 1;
-}
+.main-page .card-txt {position: absolute;bottom: 0;left: 0;padding: 40px;width: 300px;color: #fff;z-index: 1; } 
 
-.event-wrap .sub-content {
-margin: 30px 0 0 5px;
-}
+.event-wrap .sub-content {margin: 30px 0 0 5px; } 
 
-.sub-content .content-title {
-font-size: 2.1rem;
-font-family: 'GmarketSansMedium';
-margin: 0 0 15px 0;
-cursor: default;
-}
+.sub-content .content-title {font-size: 2.1rem;font-family: 'GmarketSansMedium';margin: 0 0 15px 0;cursor: default; } 
 
-.sub-content .content-txt {
-font-size: 1.8rem;
-line-height: 1.45;
-}
+.sub-content .content-txt {font-size: 1.8rem;line-height: 1.45; } 
 
 /* 서브 카드 */
 
-.contant-page {
-z-index: -1;
-}
-.contant-page .sub-card{
-position: relative;
-margin: 30px;
-}
+.contant-page {z-index: -1; } 
+.contant-page .sub-card {position: relative;margin: 30px; } 
 
-.contant-page .sub-card img{
-width: 100%;
-height: 300px;
-object-fit: cover;
-border-radius: 10px;
-}
+.contant-page .sub-card img {width: 100%;height: 300px;object-fit: cover;border-radius: 10px; } 
 
-.sub-card .sub-card-txt {
-position: absolute;
-bottom: 0;
-left: 30px;
-width: 300px;
-margin-bottom: 30px;
-color: #fff;
-}
+.sub-card .sub-card-txt {position: absolute;bottom: 0;left: 30px;width: 300px;margin-bottom: 30px;color: #fff; } 
 
-.sub-card-txt .category {
-display: inline-block;
-font-size: 11px;
-font-weight: 300;
-width: auto;
-padding: 7px 12px;
-margin-bottom: 15px;
-border: 1px solid rgba(255,255,255,0.7);
-border-radius: 20px;
-color: #fff;
-}
+.sub-card-txt .category {display: inline-block;font-size: 11px;font-weight: 300;width: auto;padding: 7px 12px;margin-bottom: 15px;border: 1px solid rgba(255,255,255,0.7);border-radius: 20px;color: #fff; } 
 
-.sub-card-txt .title {
-font-size: 2.5rem;
-font-weight: 500;
-margin-bottom: 10px;
-}
+.sub-card-txt .title {font-size: 2.5rem;font-weight: 500;margin-bottom: 10px; } 
 
-.sub-card-txt .event-date {
-font-size: 1.7rem;
-font-weight: 300;
-margin: 0 2px 25px 5px;
-}
+.sub-card-txt .event-date {font-size: 1.7rem;font-weight: 300;margin: 0 2px 25px 5px; } 
 
-.sub-card-txt .card-icon {
-display: flex;
-gap: 30px;
-margin: 0 0 0 5px;
-}
+.sub-card-txt .card-icon {display: flex;gap: 30px;margin: 0 0 0 5px; } 
 
-.sub-card-txt .card-icon img {
-filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-width: 17px;
-height: 17px;
-margin-right: 5px;
-}
+.sub-card-txt .card-icon img {filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);width: 17px;height: 17px;margin-right: 5px; } 
 
-.sub-card-txt .card-icon span {
-font-size: 11px;
-}
+.sub-card-txt .card-icon span {font-size: 11px; } 
 
-.reservation-btn {
-background-color: #555;
-border-radius: 0;
-}
+.reservation-btn {background-color: #555;border-radius: 0; } 
 
 /* 리뷰 */
 
-.review {
-margin: 0 30px;
-border-top: 1px solid rgb(51, 51, 51, 0.1); 
-}
+.review {margin: 0 30px;border-top: 1px solid rgb(51, 51, 51, 0.1); } 
 
-.review-title {
-font-size: 2.1rem;
-font-family: 'GmarketSansMedium';
-margin: 30px 0 30px 5px;
-cursor: default;
-}
+.review-title {font-size: 2.1rem;font-family: 'GmarketSansMedium';margin: 30px 0 30px 5px;cursor: default; } 
 
-.review .review-image {
-width: 200px;
-height: 200px;
-object-fit: cover;
-border: 1px solid rgb(51, 51, 51, 0.1);
-}
+.review .review-image {width: 200px;height: 200px;object-fit: cover;border: 1px solid rgb(51, 51, 51, 0.1); } 
 
-.review .sub-content {
-display: flex;
-flex-direction: column;
-gap: 15px;
-}
+.review .sub-content {display: flex;flex-direction: column;gap: 15px; } 
 
-.review-card {
-position: relative;
-display: flex;
-gap: 30px;
-padding: 15px;
-border: 1px solid rgb(51, 51, 51, 0.1); 
-}
+.review-card { position: relative; display: flex; flex-direction: column; gap: 30px; padding: 15px; border: 1px solid rgb(51, 51, 51, 0.1); } 
 
-.new-review-card{
-    position: relative;
-    display: flex;
-    gap: 30px;
-    padding: 15px;
-    border: 1px solid rgb(51, 51, 51, 0.1);     
-}
+.new-review-card { position: relative; display: flex; gap: 30px; padding: 15px; border: 1px solid rgb(51, 51, 51, 0.1); } 
 
-.review-txt {
-line-height: 1.6;
-height: 200px;
-font-size: 1.8rem;
-}
+.review-txt {line-height: 1.6;height: 200px;font-size: 1.8rem; } 
 
-.comment_img {
-width: 200px;
-height: 200px;
-}
+.comment_img {width: 200px;height: 200px; } 
 
-#author {
-font-family: 'GmarketSansMedium';
-color: #555;
-}
+#author {font-family: 'GmarketSansMedium';color: #555; } 
 
-.deletebtn {
-display: none;
-position: absolute;
-bottom: 2px;
-right: 10px;
-width: 70px;
-height: 30px;
-padding: 0;
-margin-bottom: 13px;
-font-size: 1.4rem;
-border: 1px solid rgb(51, 51, 51, 0.1);
-transition: border 0.25s;
-}
+.deletebtn {display: none;position: absolute;bottom: 2px;right: 10px;width: 70px;height: 30px;padding: 0;margin-bottom: 13px;font-size: 1.4rem;border: 1px solid rgb(51, 51, 51, 0.1);transition: border 0.25s; } 
 
-.NoneText {
-    font-family: 'GmarketSansLight';
-    font-size: 4rem;
-    text-align: center;
-}
+.NoneText { font-family: 'GmarketSansLight'; font-size: 4rem; text-align: center; } 
 
-/* .in_img, .grade {
-cursor: pointer;
-} */
+/* .in_img, .grade {cursor: pointer; } */
 
-.sub-content-top {
-display: flex;
-flex-direction: row;
-align-items: flex-end;
-flex-wrap: nowrap;
-}
+.sub-content-top {display: flex;flex-direction: row;align-items: flex-end;flex-wrap: nowrap; } 
 
-.sub-content-bottom {
-display: flex;
-flex-direction: row;
-align-items: flex-end;
-justify-content: space-between;
-flex-wrap: wrap;
-margin-bottom: -15px;
-}
+.sub-content-bottom {display: flex;flex-direction: row;align-items: flex-end;justify-content: space-between;flex-wrap: wrap;margin-bottom: -15px; } 
 
-.in_img {
-width: 50%;
-}
+.in_img {width: 50%; } 
 
-.txt {
-width: 100%;
-}
+.txt {width: 100%; } 
 
-.ch_btn {
-width: fit-content;
-font-size: 1.3rem;
-padding: 10px;
-}
+.ch_btn {width: fit-content;font-size: 1.3rem;padding: 10px; } 
 
-@media(max-width:1060px){
+@media(max-width:1060px) {
+ .main-page .card-txt { position: absolute; bottom: 0; left: 0; padding: 40px; width: 300px; color: #fff; z-index: 1; } 
 
-    html{
-        font-size: 8px !important;
-    }
+ .event-wrap .sub-content { margin: 30px 0 0 5px; } 
 
-    .main-page .card-txt {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        padding: 40px;
-        width: 300px;
-        color: #fff;
-        z-index: 1;
-    }
+ .sub-content .content-title { font-size: 2.1rem; font-family: 'GmarketSansMedium'; margin: 0 0 15px 0; } 
 
-    .event-wrap .sub-content {
-        margin: 30px 0 0 5px;
-    }
+ .sub-content .content-txt { font-size: 1.8rem; line-height: 1.45; } 
 
-    .sub-content .content-title {
-        font-size: 2.1rem;
-        font-family: 'GmarketSansMedium';
-        margin: 0 0 15px 0;
-    }
+ /* 서브 카드 */
 
-    .sub-content .content-txt {
-        font-size: 1.8rem;
-        line-height: 1.45;
-    }
+ .contant-page { z-index: -1; } 
+ .contant-page .sub-card { position: relative; margin: 30px; } 
 
-    /* 서브 카드 */
+ .contant-page .sub-card img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; } 
 
-    .contant-page {
-        z-index: -1;
-    }
-    .contant-page .sub-card{
-        position: relative;
-        margin: 30px;
-    }
+ .sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
 
-    .contant-page .sub-card img{
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
+ .sub-card-txt .category { display: inline-block; font-size: 11px; font-weight: 300; width: auto; padding: 7px 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
 
-    .sub-card .sub-card-txt {
-        position: absolute;
-        bottom: 0;
-        left: 30px;
-        width: 300px;
-        margin-bottom: 30px;
-        color: #fff;
-    }
+ .sub-card-txt .title { font-size: 2.5rem; font-weight: 500; margin-bottom: 10px; } 
 
-    .sub-card-txt .category {
-        display: inline-block;
-        font-size: 11px;
-        font-weight: 300;
-        width: auto;
-        padding: 7px 12px;
-        margin-bottom: 15px;
-        border: 1px solid rgba(255,255,255,0.7);
-        border-radius: 20px;
-        color: #fff;
-    }
+ .sub-card-txt .event-date { font-size: 1.7rem; font-weight: 300; margin: 0 2px 25px 5px; } 
 
-    .sub-card-txt .title {
-        font-size: 2.5rem;
-        font-weight: 500;
-        margin-bottom: 10px;
-    }
+ .sub-card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
 
-    .sub-card-txt .event-date {
-        font-size: 1.7rem;
-        font-weight: 300;
-        margin: 0 2px 25px 5px;
-    }
+ .sub-card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 17px; height: 17px; margin-right: 5px; } 
 
-    .sub-card-txt .card-icon {
-        display: flex;
-        gap: 30px;
-        margin: 0 0 0 5px;
-    }
+ .sub-card-txt .card-icon span { font-size: 11px; } 
 
-    .sub-card-txt .card-icon img {
-        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-        width: 17px;
-        height: 17px;
-        margin-right: 5px;
-    }
+ .reservation-btn { background-color: #555; border-radius: 0; } 
 
-    .sub-card-txt .card-icon span {
-    font-size: 11px;
-    }
+ /* 리뷰 */
 
-    .reservation-btn {
-        background-color: #555;
-        border-radius: 0;
-    }
+ .review { margin: 0 30px; border-top: 1px solid rgb(51, 51, 51, 0.1); } 
 
-    /* 리뷰 */
+ .review-title { font-size: 2.1rem; font-family: 'GmarketSansMedium'; margin: 30px 0 30px 5px; } 
 
-    .review {
-        margin: 0 30px;
-        border-top: 1px solid rgb(51, 51, 51, 0.1); 
-    }
+ .review .review-image { width: 200px; height: 200px; object-fit: cover; border: 1px solid rgb(51, 51, 51, 0.1); } 
 
-    .review-title {
-        font-size: 2.1rem;
-        font-family: 'GmarketSansMedium';
-        margin: 30px 0 30px 5px;
-    }
+ .review .sub-content { display: flex; flex-direction: column; gap: 15px; } 
 
-    .review .review-image {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        border: 1px solid rgb(51, 51, 51, 0.1);
-    }
+ .review-card { position: relative; display: flex; gap: 30px; padding: 15px; border: 1px solid rgb(51, 51, 51, 0.1); } 
 
-    .review .sub-content {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
+ .review-txt { line-height: 1.6; height: 200px; font-size: 1.8rem; } 
 
-    .review-card {
-        position: relative;
-        display: flex;
-        gap: 30px;
-        padding: 15px;
-        border: 1px solid rgb(51, 51, 51, 0.1); 
-    }
+ .comment_img { width: 200px; height: 200px; } 
 
-    .review-txt {
-        line-height: 1.6;
-        height: 200px;
-        font-size: 1.8rem;
-    }
+ #author { font-family: 'GmarketSansMedium'; color: #555; } 
 
-    .comment_img {
-        width: 200px;
-        height: 200px;
-    }
+ .deletebtn { display: none; position: absolute; bottom: 2px; right: 10px; width: 70px; height: 30px; padding: 0; margin-bottom: 13px; font-size: 1.4rem; border: 1px solid rgb(51, 51, 51, 0.1); transition: border 0.25s; } 
 
-    #author {
-        font-family: 'GmarketSansMedium';
-        color: #555;
-    }
+ .NoneText { font-family: 'GmarketSansLight'; font-size: 4rem; text-align: center; } 
+ }
 
-    .deletebtn {
-        display: none;
-        position: absolute;
-        bottom: 2px;
-        right: 10px;
-        width: 70px;
-        height: 30px;
-        padding: 0;
-        margin-bottom: 13px;
-        font-size: 1.4rem;
-        border: 1px solid rgb(51, 51, 51, 0.1);
-        transition: border 0.25s;
-    }
-  
-  .NoneText {
-    font-family: 'GmarketSansLight';
-    font-size: 4rem;
-    text-align: center;
-  }
-} 
+@media(max-width:500px){
+ .review .review-image { width: 150px; height: 150px; object-fit: cover; border: 1px solid rgb(51, 51, 51, 0.1); } 
+ .comment_img { width: 150px; height:150px; } 
+ }
+
+@media(max-width:380px) {
+ header .nav-icon { display: none; } 
+ 
+ header h1 { text-align: left; } 
+
+ .review .review-image { width: 100px; height: 100px; object-fit: cover; } 
+ .comment_img { width: 100px; height:100px; } 
+ }

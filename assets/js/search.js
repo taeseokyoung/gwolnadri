@@ -63,7 +63,7 @@ window.onload = async function SelectTicket(search) {
       } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
         season.innerText = '마감임박';
       } else {
-        season.innerText = '삑';
+        season.innerText = '행사종료';
       }
       const txt_div = document.createElement('div')
       txt_div.setAttribute('class', 'sub-card-txt')
@@ -152,7 +152,7 @@ window.onload = async function SelectTicket(search) {
         } else {
           alert("로그인이 필요합니다")
           location.replace(`${frontend_base_url}/login.html`)
-        }        
+        }
       });
 
 

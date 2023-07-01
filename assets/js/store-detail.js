@@ -26,10 +26,10 @@ window.onload = async function HanbokStoreDetail() {
         const get_total_likes = response_json.Store.total_likes
         const get_bookmarks = response_json.Store.store_bookmarks
         const get_avgstar = response_json.Store.avg_stars.avg_stars
-        const get_cate =  response_json.Store.tags[0]
+        const get_cate = response_json.Store.tags[0]
 
         const comments = response_json.Comment
-        const store_cate =  document.getElementById("hanbok_category")
+        const store_cate = document.getElementById("hanbok_category")
         const store_name = document.getElementById('store_name')
         const store_address = document.getElementById('store_address')
 
@@ -90,10 +90,10 @@ window.onload = async function HanbokStoreDetail() {
             const newFormBtn = document.getElementById("create-comment-btn")
             newFormBtn.setAttribute("onclick", `submitComment(${hanbokstore_id})`)
         } else {
-            //---ㅂㅣ로그인 사용자의 경우
+            //비로그인 사용자의 경우
             newHeartImg.setAttribute("src", "/assets/img/Heart-outline.svg")
             newBookImg.setAttribute("src", "/assets/img/Bookmark-outline.svg")
-            // document.getElementById("js_input").style.display = "none";
+            //document.getElementById("js_input").style.display = "none";
         }
         newHeartImg.setAttribute("onclick", `likeBtn(${likeOn})`)
         newBookImg.setAttribute("onclick", `bookBtn(${bookOn})`)
@@ -134,7 +134,7 @@ window.onload = async function HanbokStoreDetail() {
         KakaoMap(get_x, get_y, get_name)
 
         const comment_input = document.getElementById('review')
-        if (comments.length == 0){
+        if (comments.length == 0) {
             const noReviewContainElement = document.createElement('div')
             noReviewContainElement.className = 'contant-page'
 
@@ -224,7 +224,6 @@ window.onload = async function HanbokStoreDetail() {
                 }
             })
         }
-        
 
 
     } else if (response.status == 404) {
@@ -265,18 +264,18 @@ async function KakaoMap(lng, lat, name) {
 }
 
 async function submitComment(hanbokstore_id) {
-    if (payload){
+    if (payload) {
         const newStar = document.getElementById("new-star")
         const grade = newStar.options[newStar.selectedIndex].value
         const content = document.getElementById("new-comment").value
         const review_image = document.getElementById("image").files[0]
         const maxSixe = 2 * 1024 * 1024
 
-        if (review_image.size >= maxSixe){
+        if (review_image.size >= maxSixe) {
             alert("이미지가 너무 큽니다.")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
-        }else{
+        } else {
             const formdata = new FormData()
 
             formdata.append("grade", grade)
@@ -311,12 +310,12 @@ async function submitComment(hanbokstore_id) {
                 location.replace(`${frontend_base_url}/login.html`)
             }
         }
-        
-    }else{
+
+    } else {
         alert("로그인이 필요합니다")
-            location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/login.html`)
     }
-    
+
 
 }
 
@@ -346,6 +345,7 @@ async function EditComment(comments_id) {
     const newPreImg = document.createElement("img")
     const newFormBtn = document.createElement("button")
 
+    reviewCard.setAttribute("style", "width: 100%;")
     formCard.setAttribute("style", "width: 100%;")
     newFormReview1.setAttribute("class", "review-content")
     newFormReview2.setAttribute("class", "review-content")
@@ -383,7 +383,7 @@ async function EditComment(comments_id) {
     newInputImg.setAttribute("class", "sh_input_img")
     newInputImg.setAttribute("onchange", "readURLEdit(this);")
     newPreImg.setAttribute("id", "preview-edit")
-    newPreImg.setAttribute("style", "width:200px; height:200px; object-fit:cover;")
+    // newPreImg.setAttribute("style", "width:200px; height:200px; object-fit:cover;")
     newPreImg.setAttribute("src", prevImg)
     newFormBtn.setAttribute("type", "button")
     newFormBtn.setAttribute("class", "njs-button")
@@ -424,9 +424,9 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
 
     formdata.append("grade", grade.value)
 
-    if (content.value==null){
+    if (content.value == null) {
         formdata.append("content", content.value)
-    }else{
+    } else {
         formdata.append("content", prevTxt)
     }
 

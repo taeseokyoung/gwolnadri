@@ -1,35 +1,15 @@
 /* 공통 */
 
-html {
-    font-size: 10px!important;
-    font-family: 'GmarketSansLight';
-}
+html { font-size: 11px !important; font-family: 'GmarketSansLight'; } 
 
 /* font */
-@font-face {
-    font-family: 'OKGUNG';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/OKGUNG.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+@font-face { font-family: 'OKGUNG'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/OKGUNG.woff2') format('woff2'); font-weight: normal; font-style: normal; } 
 
-@font-face {
-    font-family: 'GmarketSansLight';
-    src: url('/assets/font/GmarketSansTTFLight.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('/assets/font/GmarketSansTTFMedium.ttf') format('truetype');
-    font-weight: normal;
-}
-@font-face {
-    font-family: 'GmarketSansBold';
-    src: url('/assets/font/GmarketSansTTFBold.ttf') format('truetype');
-    font-weight: normal;
-}
+@font-face { font-family: 'GmarketSansLight'; src: url('/assets/font/GmarketSansTTFLight.ttf') format('truetype'); } 
+@font-face { font-family: 'GmarketSansMedium'; src: url('/assets/font/GmarketSansTTFMedium.ttf') format('truetype'); font-weight: normal; } 
+@font-face { font-family: 'GmarketSansBold'; src: url('/assets/font/GmarketSansTTFBold.ttf') format('truetype'); font-weight: normal; } 
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100; 300; 400; 500; 700; 900&display=swap');
 
 /* reset */
 html, body, div, span, applet, object, iframe,
@@ -44,627 +24,255 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
+time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline; } 
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
+footer, header, hgroup, menu, nav, section {display: block; } 
 
-body {
-	line-height: 1;
-    font-family: 'GmarketSansLight';
-    overflow: hidden;
-}
+body {line-height: 1; font-family: 'GmarketSansLight'; overflow: hidden; } 
 
-ol, ul {
-	list-style: none;
-}
+ol, ul {list-style: none; } 
 
-blockquote, q {
-	quotes: none;
-}
+blockquote, q {quotes: none; } 
 
 blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+q:before, q:after {content: '';content: none; } 
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+table {border-collapse: collapse;border-spacing: 0; } 
 
 /* a reset */
- a {text-decoration: none; outline: none; color: #000;}
- a:hover, a:active {text-decoration: none;}
+ a { text-decoration: none; outline: none; color: #000; } 
+ a:hover, a:active { text-decoration: none; } 
 
 
 /* 공통 css : nav, footicon */
 
-.Wrapper {
-    width: 1061px;
-    margin: 0 auto;  
-}
+.Wrapper { width: 1061px; margin: 0 auto; } 
 
-.flex {
-    display: flex;
-    justify-content: space-between;
-}
+.flex { display: flex; justify-content: space-between; } 
 
-.Gwolnadri {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto; 
-}
+.Gwolnadri { display: flex; justify-content: space-between; align-items: center; margin: 0 auto; } 
 
- .Gwolnadri-body .main-page {
-    position: relative;
-    z-index: -1;
-}
+ .Gwolnadri-body .main-page { position: relative; margin-bottom: 30px; } 
 
-.Gwolnadri-body .main-page img{
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-}
+.Gwolnadri-body .main-page img { width: 100%; height: 600px; object-fit: cover; } 
 
-.Gwolnadri-intro {
-    width: 400px;
-}
+.Gwolnadri-intro { width: 400px; } 
 
-h1 {
-    cursor: pointer;
-    white-space: nowrap;
-}
+h1 { cursor: pointer; white-space: nowrap; } 
 
-h2 {
-    margin: 0 0 30px 5px;
-    font-size: 2.1rem;
-    font-family: 'GmarketSansMedium';
-    white-space: nowrap;
-}
+h2 { margin: 0 0 30px 5px; font-size: 2.1rem; font-family: 'GmarketSansMedium'; white-space: nowrap; } 
 
-.Gwolnadri-intro h2 {
-    font-size: 65px;
-    font-family: 'OKGUNG';
-    margin: 0 0 25px 0;
-}
+.Gwolnadri-intro h2 { font-size: 65px; font-family: 'OKGUNG'; margin: 0 0 25px 0; } 
 
-.main-banner {
-    margin-bottom: 20px;
-}
+.main-banner { margin-bottom: 20px; } 
 
-.sub-banner-1 {
-    align-items: center;
-    padding: 15px 20px;
-    border: 1px solid rgb(51, 51, 51, 0.5);
-    /* box-shadow: 3px 3px 3px rgb(51, 51, 51, 0.2); */
-    border-radius: 5px;
-}
+.sub-banner-1 { align-items: center; padding: 15px 20px; border: 1px solid rgb(51, 51, 51, 0.5); /* box-shadow: 3px 3px 3px rgb(51, 51, 51, 0.2); */
+ border-radius: 5px; } 
 
-.sub-banner-1 a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+.sub-banner-1 a { display: flex; align-items: center; justify-content: space-between; } 
 
-.sub-title {
-    margin: 0 0 10px 5px;
-    font-size: 19.5px;
-    font-family: 'GmarketSansMedium';
-}
+.sub-title { margin: 0 0 10px 5px; font-size: 19.5px; font-family: 'GmarketSansMedium'; } 
 
-.main-content {
-    font-size: 18px;
-    font-family: 'GmarketSansLight';
-    margin: 0 0 0 5px;
-}
+.main-content { font-size: 18px; font-family: 'GmarketSansLight'; margin: 0 0 0 5px; } 
 
 /* ------ Gwolnadri-body Y 스크롤 생성 ------ */
 
 /* 크롬, 사파리, 오페라, 엣지 */
-.Gwolnadri-body::-webkit-scrollbar {
-    display: none;
-}
+.Gwolnadri-body::-webkit-scrollbar { display: none; } 
 
 /* 파이어폭스 */
-.Gwolnadri-body {
-    scrollbar-width: none; 
-    font-family: 'GmarketSansLight';
-}
+.Gwolnadri-body { scrollbar-width: none; font-family: 'GmarketSansLight'; } 
 
-.Gwolnadri-body {
-    position: relative;
-    width: 576px;
-    height: 100vh;
-    border: 1px solid rgb(51, 51, 51, 0.1);
-    overflow-y: scroll;
-}
+.Gwolnadri-body { position: relative; width: 576px; height: 100vh; border: 1px solid rgb(51, 51, 51, 0.1); overflow-y: scroll; } 
 
 /* ------ 네비바 ------ */
 
-.Gwolnadri-body .wrap {}
+.Gwolnadri-body .wrap { } 
 
-.contant-page {
-    margin: 30px;
-}
+.contant-page { margin: 30px; } 
 
-header {
-    position: fixed;
-    top: 0;
-    left: calc(50% - 47px);
-    width: 575px;
-    font-size: 17px;
-    border: 1px solid rgb(221, 221, 221,0.5);
-    transition-property: background-color;
-    transition-duration: 1s; 
-    z-index: 999;
-}
+header { position: fixed; top: 0; left: calc(50% - 47px); width: 575px; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); transition-property: background-color; transition-duration: 1s; z-index: 999; } 
 
-header nav {
-    margin: 20px;
-    z-index: 999;
-}
+header nav { margin: 20px; z-index: 999; } 
 
-nav .nav-logo{
-    line-height: 30px;
-    margin-top: 4px;
-}
+nav .nav-logo { line-height: 30px; margin-top: 4px; } 
 
-header h1 {
-    font-size: 3.1rem;
-    color: #fff;
-    font-family: 'OKGUNG';
-}
+header h1 { font-size: 3.1rem; color: #fff; font-family: 'OKGUNG'; } 
 
-.Gwolnadri-body .nav-icon{
-    display: flex;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-}
+.Gwolnadri-body .nav-icon { display: flex; filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); } 
 
-.Gwolnadri-body .nav-icon img {
-    cursor: pointer;
-}
+.Gwolnadri-body .nav-icon img { cursor: pointer; } 
 
 
 /* ------ 네비바 색상 변경 ------ */
 
-header.on {
-    position: fixed;
-    top: 0;
-    left: calc(50% - 47.5px);
-    width: 575.5px;
-    font-size: 17px;
-    border-bottom: 1px solid rgb(51, 51, 51, 0.1);
-    background-color:#fff;
-    transition-property: background-color;
-    transition-duration: 1s; 
-    z-index: 999;
-}
+header.on { position: fixed; top: 0; left: calc(50% - 47.5px); width: 575.5px; font-size: 17px; border-bottom: 1px solid rgb(51, 51, 51, 0.1); background-color:#fff; transition-property: background-color; transition-duration: 1s; z-index: 999; } 
 
-header.on h1 {
-    color: #000;
-}
+header.on h1 { color: #000; } 
 
-header.on .nav-icon{
-    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
-}
+header.on .nav-icon { filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%); } 
 
 
 /* ------ 왼쪽 화살표 네비바 ------ */
 
-header.left-arrow-header {
-    background-color:#fff;
-    transition-property: background-color;
-    transition-duration: 1s; 
-    z-index: 999;
-}
+header.left-arrow-header { background-color:#fff; transition-property: background-color; transition-duration: 1s; z-index: 999; } 
 
-header.left-arrow-header nav {
-    margin: 25px;
-}
+header.left-arrow-header nav { margin: 25px; } 
 
-header.left-arrow-header img {
-    width: 29px;
-}
+header.left-arrow-header img { width: 29px; } 
 
 /* ------ 하단 메뉴 아이콘 ------ */
 
-.foot-icon {
-    position: fixed;
-    bottom: 0;
-    left: calc(50% - 47.5px);
-    width: 575.5px;
-    font-size: 17px;
-    border: 1px solid rgb(221, 221, 221,0.5);
-    background: #fff;
-    z-index: 1;
-}
+.foot-icon { position: fixed; bottom: 0; left: calc(50% - 47.5px); width: 575.5px; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); background: #fff; z-index: 1; } 
 
-.foot-icon .flex{
-    margin: 25px 60px;
-}
+.foot-icon .flex { margin: 25px 60px; } 
 
-.foot-icon img {
-    cursor: pointer;
-}
+.foot-icon img { cursor: pointer; } 
 
 /* ------ 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 ------ */
 
-.mb120px {
-    padding-bottom: 120px;
-}
+.mb120px { padding-bottom: 120px; } 
 
 /* input-box */
 
-.form-input {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    margin: 0 5px 30px 5px;
-    font-family: 'GmarketSansMedium';
-}
+.form-input { display: flex; flex-direction: column; gap: 80px; margin: 0 5px 30px 5px; font-family: 'GmarketSansMedium'; } 
 
-label {
-    font-size: 17px;
-    font-weight: 500;
-    color: #555;
-    margin: 0 5px 20px 5px;
-    font-family: 'GmarketSansMedium';
-}
+label { font-size: 17px; font-weight: 500; color: #555; margin: 0 5px 20px 5px; font-family: 'GmarketSansMedium'; } 
 
-input {
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    font-family: 'GmarketSansMedium';
-}
+input { border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.3); padding: 10px; font-family: 'GmarketSansMedium'; } 
 
-input::placeholder {
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.3);
-}
+input::placeholder { font-size: 15px; color: rgba(0, 0, 0, 0.3); } 
 
-input:focus::placeholder {
-    color: #fff;
-}
+input:focus::placeholder { color: #fff; } 
 
-.input-box {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
+.input-box { display: flex; flex-direction: column; text-align: left; } 
 
 /* ------ 검정색 버튼 (default) ------ */
 
-button {
-    width: 100%;
-    border: inherit;
-    background: inherit;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #fff;
-    background-color: #333;
-    font-family: 'GmarketSansMedium';
-    cursor: pointer;
-}
+button { width: 100%; border: inherit; background: inherit; border-radius: 5px; padding: 20px; font-size: 18px; font-weight: 400; color: #fff; background-color: #333; font-family: 'GmarketSansMedium'; cursor: pointer; } 
 
 
 /* 좋아요, 북마크 아이콘 */
-.card-icon img {
-    cursor: pointer;
-}
+.card-icon img { cursor: pointer; } 
 
 /* 메인 배너 */
-.Gwolnadri-body .main-page .card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 40px;
-    width: 300px;
-    color: #fff;
-}
+.Gwolnadri-body .main-page .card-txt { position: absolute; bottom: 0; left: 0; padding: 40px; width: 300px; color: #fff; } 
 
-.main-page .card-txt .category {
-    display: inline-block;
-    font-size: 1.3rem;
-    font-weight: 300;
-    width: auto;
-    padding: 10px 14px 7px 14px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
+.main-page .card-txt .category { display: inline-block; font-size: 1.3rem; font-weight: 300; width: auto; padding: 10px 14px 7px 14px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
 
-.main-page .card-txt .title {
-    font-size: 2.9rem;
-    margin-bottom: 15px;
-    font-family: 'GmarketSansMedium';
-}
+.main-page .card-txt .title { font-size: 2.9rem; margin-bottom: 15px; font-family: 'GmarketSansMedium'; } 
 
-.main-page .card-txt .event-date {
-    font-size: 1.9rem;
-    margin: 0 0 35px 5px;
-    font-family: 'GmarketSansMedium';
-    color: 1px solid rgba(255,255,255,0.5);
-}
+.main-page .card-txt .event-date { font-size: 1.9rem; margin: 0 0 35px 5px; font-family: 'GmarketSansMedium'; color: 1px solid rgba(255,255,255,0.5); } 
 
-.main-page .card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
+.main-page .card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
 
-.main-page .card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 22px;
-    height: 22px;
-    margin-right: 5px;
-}
+.main-page .card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 22px; height: 22px; margin-right: 5px; } 
 
-.main-page .card-txt .card-icon span {
-   font-size: 1.3rem;
-}
+.main-page .card-txt .card-icon span { font-size: 1.3rem; } 
 
 /* 카드 */
 
-.main-page .card-txt .category {
-    display: inline-block;
-    font-size: 1.3rem;
-    font-weight: 300;
-    width: auto;
-    padding: 10px 14px 7px 14px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
+.main-page .card-txt .category { display: inline-block; font-size: 1.3rem; font-weight: 300; width: auto; padding: 10px 14px 7px 14px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
 
-.card-txt .title {
-    font-size: 2.9rem;
-    margin-bottom: 15px;
-    font-family: 'GmarketSansMedium';
-}
+.card-txt .title { font-size: 2.9rem; margin-bottom: 15px; font-family: 'GmarketSansMedium'; } 
 
-.card-txt .event-date {
-    font-size: 1.9rem;
-    margin: 0 0 35px 5px;
-    font-family: 'GmarketSansMedium';
-    color: 1px solid rgba(255,255,255,0.5);
-}
+.card-txt .event-date { font-size: 1.9rem; margin: 0 0 35px 5px; font-family: 'GmarketSansMedium'; color: 1px solid rgba(255,255,255,0.5); } 
 
-.card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
+.card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
 
-.card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 22px;
-    height: 22px;
-    margin-right: 5px;
-}
+.card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 22px; height: 22px; margin-right: 5px; } 
 
-.card-txt .card-icon span {
-   font-size: 1.3rem;
-}
+.card-txt .card-icon span { font-size: 1.3rem; } 
+
+.sub-card-txt { padding-bottom: 15px; } 
 
 /* 지도 */
 
-#map {
-   width:100%;
-   height:600px;
-}
+#map { width:100%; height:600px; } 
 
-@media(max-width:1060px){
+@media(max-width:1060px) {
+ .Wrapper { width: auto; margin: 0 0; } 
+ .Gwolnadri { display: block; }
+ .Gwolnadri .main-page img { object-fit: cover; } 
+ .Gwolnadri-intro { display: none; } 
 
-    .Wrapper {
-        width: auto;
-        margin: 0 0;
-    }
-    .Gwolnadri {
-        display: block;
-     
-    }
-    .Gwolnadri .main-page img{
-        object-fit: cover;
-    }
-    .Gwolnadri-intro {
-        display: none;
-    }
+ .Gwolnadri-body .main-page img { width: 100%; height: 500px; object-fit: cover; filter: brightness(0.5); } 
+ 
+ #map { width:auto; height:500px; } 
 
-    .Gwolnadri-body .main-page img{
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-        filter: brightness(0.5);
-    }
-       
-    #map {
-    width:auto;
-    height:500px;
-    }
+ .Gwolnadri-body { width: auto; } 
 
-    .Gwolnadri-body {
-        width: auto;
-    }
+ header { top: 0; left: 0; width: 100%; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); transition-property: background-color; transition-duration: 1s; z-index: 999; } 
 
-    header {
-        top: 0;
-        left: 0;
-        width: 100%;
-        font-size: 17px;
-        border: 1px solid rgb(221, 221, 221,0.5);
-        transition-property: background-color;
-        transition-duration: 1s;
-        z-index: 999;
-    }
+ header.on { top: 0; left: 0; width: 100%; font-size: 17px; z-index: 999; } 
 
-    header.on {
-        top: 0;
-        left: 0;
-        width: 100%;
-        font-size: 17px;
-        z-index: 999;
-    }
+ .foot-icon { bottom: 0; left: 0; width: 100%; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); background: #fff; z-index: 1; } 
+ 
 
-    .foot-icon {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-size: 17px;
-    border: 1px solid rgb(221, 221, 221,0.5);
-    background: #fff;
-    z-index: 1;
-    }
-    
+ .foot-icon .flex { margin: 25px 30px; } 
 
-    .foot-icon .flex{
-        margin: 25px 30px;
-    }
+ .foot-icon img { cursor: pointer; } 
+ }
 
-    .foot-icon img {
-        cursor: pointer;
-    }
-}
+@media(max-width:500px) { 
+ html { font-size: 9px !important; } 
 
-@media(max-width:500px){
+ .mb120px { padding-bottom: 90px; } 
 
-    .mb120px {
-    padding-bottom: 90px;
-    }
+ header h1 { font-size: 2.8rem; } 
 
-    header h1 {
-        font-size: 2.8rem;
-    }
+ header nav { line-height: 50px; margin: 15px 20px; } 
 
-    header nav {
-        line-height: 50px;
-        margin: 15px 20px;
-    }
+ header.left-arrow-header nav { margin: 17px; } 
 
-    .foot-icon {
-      height: 70px;
-    }
+ .foot-icon { height: 70px; } 
 
-    .foot-icon .flex{
-        align-items: center;
-        vertical-align: middle;
-        margin: 20px;
-    }
+ .foot-icon .flex { align-items: center; vertical-align: middle; margin: 20px; } 
 
-    .foot-icon img {
-        width: 30px;
-        height: 30px;
-    }
+ .foot-icon img { width: 30px; height: 30px; } 
 
-    header nav img {
-        width: 27px;
-    }
+ header nav img { width: 27px; } 
 
-    .Gwolnadri-body .main-page img{
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        filter: brightness(0.5);
-    }
-         
-    #map {
-        width:auto;
-        height:400px;
-    }
+ .Gwolnadri-body .main-page img { width: 100%; height: 400px; object-fit: cover; filter: brightness(0.5); } 
+ 
+ #map { width:auto; height:400px; } 
 
-    .nav-icon {
-        height: 30px;
-    }
+ .nav-icon { height: 30px; } 
 
-    .nav-icon>img {
-        width: 30px;
-        height: 30px;
-    }
+ .nav-icon>img { width: 30px; height: 30px; } 
+ 
+ .contant-page .sub-card>img { height: 200px; } 
 
-    .sh_btn {
-    padding: 5px;
-    width: 27px;
-    height: 27px;
-    background-color: transparent;
-    background-image: url(/assets/img/Search2.svg);
-    background-position: center;
-    background-size: contain;
-    }
+ .sh_btn { padding: 5px; width: 27px; height: 27px; background-color: transparent; background-image: url(/assets/img/Search2.svg); background-position: center; background-size: contain; } 
 
-    .sh_search {
-    width: 100px;
-    color: #000;
-    background-color: transparent;
-    margin-left: 8px;
-    border: none;
-    border-bottom: 1px solid #000;
-    padding: 5px 10px;
-    }
-}
+ .sh_search { width: 100px; color: #000; background-color: transparent; margin-left: 8px; border: none; border-bottom: 1px solid #000; padding: 5px 10px; } 
 
+ .contant-page, .review { margin: 0 20px}
+ }
 
-@media(max-width:380px){
-    h1{
-        text-align: center;
-    }
-    nav.flex {
-        flex-direction: column;    
-    }
+@media(max-width:380px) { 
+ html { font-size: 8px !important; } 
 
-    #nav-icon {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        gap: 5px;
-    }
+ h1 { text-align: center; } 
+ 
+ nav.flex { flex-direction: column; } 
 
-    #nav-icon li:nth-of-type(1) { 
-        order: 2; 
-    }
-    #nav-icon li:nth-of-type(2) { 
-        order: 1; 
-    }
+ #nav-icon { display: flex; flex-direction: row; justify-content: flex-end; gap: 5px; } 
 
-    #search_bar {
-        width: 200px;
-    }
+ #nav-icon li:nth-of-type(1) { order: 2; } 
+ #nav-icon li:nth-of-type(2) { order: 1; } 
 
-    header.on #search_bar {
-        color: #000;
-    }
+ header.left-arrow-header nav { margin: 15px; } 
 
-    .sh_search {
-    width: auto;
-    color: #000;
-    background-color: transparent;
-    border: none;
-    margin: 5px 10px 5px 20px;
-    }
+ #search_bar { width: 200px; } 
 
-    .Gwolnadri-body .main-page img{
-        height: 350px;
-    }   
+ header.on #search_bar { color: #000; } 
 
-    .contant-page .sub-card>img {
-        object-fit: cover;
-        width: auto;
-        height: 200px !important;
-    }
-}
+ .sh_search { width: auto; color: #000; background-color: transparent; border: none; margin: 5px 10px 5px 20px; } 
+
+ .Gwolnadri-body .main-page img { height: 350px; } 
+
+ .contant-page .sub-card>img { object-fit: cover; width: auto; height: 200px !important; } 
+ }

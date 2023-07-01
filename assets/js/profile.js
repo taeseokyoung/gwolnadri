@@ -50,3 +50,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+async function handleLogout() {
+  console.log("로그아웃");
+  const response = await fetch(`${backend_base_url}/users/logout/`, {
+    headers: {
+      "content-type": "application/json",
+    },
+    method: "POST",
+  });
+  localStorage.removeItem("payload");
+  localStorage.removeItem("access");
+  localStorage.removeItem("refresh");
+  alert("로그아웃 되었습니다.");
+  window.location.href = `${index_url}`;
+}

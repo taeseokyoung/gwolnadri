@@ -273,13 +273,6 @@
 
 @media(max-width:1060px){
 
-    html{
-        font-size: 8px !important;
-    }
-    .profile-wrap {
-    margin: 120px 30px 0 30px;
-}
-
 .left-arrow-header .nav-icon{
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%);
 }
