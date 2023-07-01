@@ -1,124 +1,24 @@
-.store-wrap h2 {
-    margin: 0 0 30px 5px;
-}
+.store-wrap h2 { margin: 0 0 30px 5px; } 
+.store-wrap .store-title { width: 100%; text-align: left; cursor: pointer; } 
+.store-wrap .contant-card { position: relative; display: block; width: auto; height: 150px; border: 1px solid rgb(51, 51, 51, 0.5); border-radius: 5px; padding: 20px; margin-bottom: 30px; cursor: pointer; } 
+.store-title .hanbok_store { font-size: 2.9rem; font-family: 'GmarketSansMedium'; margin: 0 0 15px 0; } 
+.store-title .hanbok_category { display: inline-block; font-size: 1.5rem; font-family: 'GmarketSansMedium'; width: auto; padding: 10px 10px 8px 10px; margin-bottom: 15px; border: 1px solid rgb(51, 51, 51, 0.9); border-radius: 20px; } 
+.store-title .hanbok_address { font-size: 1.9rem; cursor: pointer; } 
+.store-wrap .card-icon { display: flex; justify-content: flex-end; gap: 30px; } 
+.store-wrap .contant-page, .store-wrap .review { margin: 30px; cursor: default; } 
 
-.store-wrap .store-title {
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-}
+@media(max-width:1060px) {
+.store-wrap h2 { margin: 0 0 30px 5px; } 
+.store-wrap .store-title { width: 100%; text-align: left; cursor: pointer; } 
+.store-wrap .contant-card { position: relative; display: block; width: auto; height: 150px; border: 1px solid rgb(51, 51, 51, 0.5); border-radius: 5px; padding: 20px; margin-bottom: 30px; cursor: pointer; } 
+.store-title .hanbok_store { font-size: 2.9rem; font-family: 'GmarketSansMedium'; margin: 0 0 15px 0; } 
+.store-title .hanbok_category { display: inline-block; font-size: 1.5rem; font-family: 'GmarketSansMedium'; width: auto; padding: 10px 10px 8px 10px; margin-bottom: 15px; border: 1px solid rgb(51, 51, 51, 0.9); border-radius: 20px; } 
+.store-title .hanbok_address { font-size: 1.9rem; cursor: pointer; } 
+.store-wrap .card-icon { display: flex; justify-content: flex-end; gap: 30px; } 
+.store-wrap .contant-page, .store-wrap .review { margin: 30px; } 
+ }
 
-.store-wrap .contant-card {
-    position: relative;
-    display: block;
-    width: auto;
-    height: 150px;
-    border: 1px solid rgb(51, 51, 51, 0.5);
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 30px;
-    cursor: pointer;
-}
-
-.store-title .hanbok_store {
-    font-size: 2.9rem;
-    font-family: 'GmarketSansMedium';
-    margin: 0 0 15px 0;
-}
-
-
-.store-title .hanbok_category {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-family: 'GmarketSansMedium';
-    width: auto;
-    padding: 10px 10px 8px 10px;
-    margin-bottom: 15px;
-    border: 1px solid rgb(51, 51, 51, 0.9);
-    border-radius: 20px;
-}
-
-.store-title .hanbok_address {
-    font-size: 1.9rem;
-    cursor: pointer;
-}
-
-.store-wrap .card-icon {
-    display: flex;
-    justify-content: flex-end;
-    gap: 30px;
-}
-
-.store-wrap .contant-page, .store-wrap .review {
-    margin: 30px;
-    cursor: default;
-}
-
-@media(max-width:1060px){
-
-.store-wrap h2 {
-    margin: 0 0 30px 5px;
-}
-
-.store-wrap .store-title {
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-}
-
-.store-wrap .contant-card {
-    position: relative;
-    display: block;
-    width: auto;
-    height: 150px;
-    border: 1px solid rgb(51, 51, 51, 0.5);
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 30px;
-    cursor: pointer;
-}
-
-.store-title .hanbok_store {
-    font-size: 2.9rem;
-    font-family: 'GmarketSansMedium';
-    margin: 0 0 15px 0;
-}
-
-
-.store-title .hanbok_category {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-family: 'GmarketSansMedium';
-    width: auto;
-    padding: 10px 10px 8px 10px;
-    margin-bottom: 15px;
-    border: 1px solid rgb(51, 51, 51, 0.9);
-    border-radius: 20px;
-}
-
-.store-title .hanbok_address {
-    font-size: 1.9rem;
-    cursor: pointer;
-}
-
-.store-wrap .card-icon {
-    display: flex;
-    justify-content: flex-end;
-    gap: 30px;
-}
-
-.store-wrap .contant-page, .store-wrap .review {
-    margin: 30px;
-}
-}
-
-@media(max-width:380px){
-
-    header.on .nav-icon {
-        display: none;
-    }
-    
-    header.on h1 {
-        text-align: left;
-    }
-}
+@media(max-width:380px) {
+ header.on .nav-icon { display: none; } 
+ header.on h1 { text-align: left; } 
+ }
