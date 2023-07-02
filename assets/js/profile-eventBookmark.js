@@ -34,8 +34,8 @@ window.onload = async function ReservationDetail() {
         div.setAttribute('class', 'sub-card')
 
         const event_img = document.createElement('img')
-        // event_img.setAttribute('src',`${backend_base_url}${events.image}`)
-        event_img.setAttribute('src', "/assets/img/image-2.jpg")
+        event_img.setAttribute('src', `${backend_base_url}${events.image}`)
+        // event_img.setAttribute('src', "/assets/img/image-2.jpg")
 
 
         // 기간한정 스티커 ----
