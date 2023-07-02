@@ -1,7 +1,7 @@
 .sh-row { display:grid; grid-template-columns: repeat(5, 1fr); flex-direction: row; align-items: center; flex-wrap: nowrap; margin-bottom: 10px; row-gap: 10px; } 
 .form-input { margin: 70px 5px 80px 5px; } 
 .last { padding: 0px 108px 0px 71px; } 
-.sh-lable { font-family: 'GmarketSansMedium'; font-size: 1.7rem; font-weight: 500; color: #555; margin: 0px 20px; text-align: center; white-space : nowrap; grid-row: 1 / span 2; } 
+.sh-lable { font-family: 'GmarketSansMedium'; font-size: 1.7rem; font-weight: 500; color: #555; margin: 0px 32px; text-align: center; white-space : nowrap; grid-row: 1 / span 2; } 
 .in { display: inline-block; cursor: pointer; height: 24px; width: 90px; border: 1px solid #333; line-height: 24px; text-align: center; font-weight:bold; font-size:1.4rem; background-color: #fff; color: #333; border-radius: 5px; padding: 15px 20px; margin: 0px 8px; } 
 .in:focus-visible { background-color: #333; color: #fff}
 [type="radio"]:checked { background-color: #333; color: #fff}

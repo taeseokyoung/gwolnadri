@@ -271,53 +271,56 @@ async function submitComment(hanbokstore_id) {
         const review_image = document.getElementById("image").files[0]
         const maxSixe = 2 * 1024 * 1024
 
-        if (review_image.size >= maxSixe) {
-            alert("이미지가 너무 큽니다.")
+        if (content.value.length > 50) {
+            alert("제한 글자수 50자를 초과했습니다!")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-
         } else {
-            const formdata = new FormData()
 
-            formdata.append("grade", grade)
-            formdata.append("content", content)
-            formdata.append("review_image", review_image)
+            if (review_image.size >= maxSixe) {
+                alert("이미지가 너무 큽니다.")
+                location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
-            if (token) {
-                const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
-                    method: 'POST',
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                    },
-                    body: formdata
-                }
-                )
-                switch (response.status) {
-                    case 200:
-                        alert("후기작성 완료!")
-                        location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-                        break
-                    case 400:
-                        alert("빈칸을 모두 채워주세요.")
-                        break
-                    case 401:
-                        alert("로그인이 필요합니다")
-                        location.replace(`${frontend_base_url}/login.html`)
-                        break
-
-                }
             } else {
-                alert("로그인이 필요합니다")
-                location.replace(`${frontend_base_url}/login.html`)
+                const formdata = new FormData()
+
+                formdata.append("grade", grade)
+                formdata.append("content", content)
+                formdata.append("review_image", review_image)
+
+                if (token) {
+                    const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
+                        method: 'POST',
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                        },
+                        body: formdata
+                    }
+                    )
+                    switch (response.status) {
+                        case 200:
+                            alert("후기작성 완료!")
+                            location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+                            break
+                        case 400:
+                            alert("빈칸을 모두 채워주세요.")
+                            break
+                        case 401:
+                            alert("로그인이 필요합니다")
+                            location.replace(`${frontend_base_url}/login.html`)
+                            break
+                    }
+                } else {
+                    alert("로그인이 필요합니다")
+                    location.replace(`${frontend_base_url}/login.html`)
+                }
             }
         }
-
     } else {
         alert("로그인이 필요합니다")
         location.replace(`${frontend_base_url}/login.html`)
     }
-
-
 }
+
 
 async function EditComment(comments_id) {
 
@@ -422,49 +425,48 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
 
     const formdata = new FormData()
 
-    formdata.append("grade", grade.value)
-
-    if (content.value == null) {
-        formdata.append("content", content.value)
+    if (content.value.length > 50) {
+        alert("제한 글자수 50자를 초과했습니다!")
+        location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
     } else {
-        formdata.append("content", prevTxt)
-    }
 
-    //이전 사진 넣기 도전중...
-    // if (review_image.files[0]==null){
-    //     formdata.append("review_image", prevImg)
-    // }else{
-    //     formdata.append("review_image", review_image.files[0])
-    // }
+        formdata.append("grade", grade.value)
 
-    formdata.append("review_image", review_image.files[0])
-
-    if (token) {
-        const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
-            method: 'PUT',
-            headers: {
-                "Authorization": `Bearer ${token}`
-            },
-            body: formdata
+        if (content.value == null) {
+            formdata.append("content", content.value)
+        } else {
+            formdata.append("content", prevTxt)
         }
-        )
-        switch (response.status) {
-            case 200:
-                alert("후기 수정 완료!")
-                location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-                break
-            case 400:
-                alert("빈칸을 모두 채워주세요.")
-                break
-            case 401:
-                alert("로그인이 필요합니다")
-                location.replace(`${frontend_base_url}/login.html`)
-                break
 
+        formdata.append("review_image", review_image.files[0])
+
+        if (token) {
+            const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
+                method: 'PUT',
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: formdata
+            }
+            )
+            switch (response.status) {
+                case 200:
+                    alert("후기 수정 완료!")
+                    location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
+                    break
+                case 400:
+                    alert("빈칸을 모두 채워주세요.")
+                    break
+                case 401:
+                    alert("로그인이 필요합니다")
+                    location.replace(`${frontend_base_url}/login.html`)
+                    break
+
+            }
+        } else {
+            alert("로그인이 필요합니다")
+            location.replace(`${frontend_base_url}/login.html`)
         }
-    } else {
-        alert("로그인이 필요합니다")
-        location.replace(`${frontend_base_url}/login.html`)
     }
 }
 
