@@ -267,7 +267,7 @@ async function Eventreview() {
     reviewContentElement.className = 'content';
     reviewContentElement.textContent = get_content;
 
-    const max_lenght = 20;
+    const max_lenght = 50;
     if (get_content.length > max_lenght) {
       reviewContentElement.textContent = get_content.substr(0, max_lenght) + '...';
     } else {
