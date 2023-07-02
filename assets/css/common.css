@@ -85,7 +85,7 @@ h2 { margin: 0 0 30px 5px; font-size: 2.1rem; font-family: 'GmarketSansMedium'; 
 /* 파이어폭스 */
 .Gwolnadri-body { scrollbar-width: none; font-family: 'GmarketSansLight'; } 
 
-.Gwolnadri-body { position: relative; width: 576px; height: 100vh; border: 1px solid rgb(51, 51, 51, 0.1); overflow-y: scroll; } 
+.Gwolnadri-body { position: relative; width: 576px; height: 100vh; border: 1px solid rgb(51, 51, 51, 0.1); overflow-y: scroll; overflow-x: hidden; } 
 
 /* ------ 네비바 ------ */
 
