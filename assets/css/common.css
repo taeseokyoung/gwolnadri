@@ -36,6 +36,7 @@ table {border-collapse: collapse;border-spacing: 0; }
 .Wrapper { width: 1061px; margin: 0 auto; } 
 .flex { display: flex; justify-content: space-between; } 
 .Gwolnadri { display: flex; justify-content: space-between; align-items: center; margin: 0 auto; } 
+.Gwolnadri-body {overflow-x: hidden;}
 .Gwolnadri-body .main-page { position: relative; margin-bottom: 30px; } 
 .Gwolnadri-body .main-page img { width: 100%; height: 600px; object-fit: cover; object-position: top; filter: brightness(0.9);} 
 .Gwolnadri-intro { width: 400px; } 
