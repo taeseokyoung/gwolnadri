@@ -324,12 +324,15 @@ async function HandleComment() {
   const grade = select_grade.split('')[0]
   const maxSixe = 2 * 1024 * 1024
 
-  if (in_img.size >= maxSixe){
+  if (!in_img) {
+    alert("이미지를 넣어주세요.");
+  }  else if (in_img.size >= maxSixe){
     alert("이미지가 너무 큽니다.")
     window.location.reload()
   } else if (com_txt.length > 30) {
     alert("30자 이내로 작성해주세요.");
-    window.location.reload();
+  } else if (!com_txt){
+    alert("댓글 내용을 입력해주세요.")  
   }else{
     
   const formdata = new FormData();
@@ -349,7 +352,7 @@ async function HandleComment() {
     window.location.reload()
 
   } else if (response.status == 400) { 
-    alert("내용이 필요합니다.")
+    alert("별점을 선택해주세요.")
     (response.status)
     
   }
