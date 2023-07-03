@@ -6,14 +6,14 @@
 .login-option>li { position: relative; } 
 .login-option>li::after { content: "|"; position: absolute; right: -50%; transform: translateX(50%); color: rgba(0, 0, 0, 0.7); } 
 .login-option>li:last-child::after { display: none; } 
-.login-option>li a { cursor: pointer}
+.login-option>li a { cursor: pointer } 
 #login-signup-btn { margin-top: 20px; background-color: #cccccc; color: #333333; } 
 .login-btn { gap: 30px; } 
 .kakao { color: #000; background-color: #FEE500; margin-top: 20px; } 
 .naver { background-color: #2DB400; } 
 .google { background-color:#EA4335; } 
 
-@media(max-width:1060px) {
+@media(max-width:1060px){
  .login-wrap { margin: 20% 30px 0 30px; } 
 .left-arrow-header .nav-icon { filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%); } 
 .login-wrap h2 { font-size: 2.5rem; font-weight: 500; font-family: 'GmarketSansMedium'; margin: 0 0 40px 5px; } 
@@ -22,6 +22,10 @@
 .login-option>li { position: relative; } 
 .login-option>li::after { content: "|"; position: absolute; right: -50%; transform: translateX(50%); color: rgba(0, 0, 0, 0.7); } 
 .login-option>li:last-child::after { display: none; } 
-.login-option>li a { cursor: pointer}
-#login-signup-btn { margin-top: 20px; background-color: #cccccc; color: #333333; }
-}
+.login-option>li a { cursor: pointer } 
+#login-signup-btn { margin-top: 20px; background-color: #cccccc; color: #333333; } 
+ }
+
+@media(max-width:500px){
+ .mb120px { padding-bottom: 300px; } 
+ }
