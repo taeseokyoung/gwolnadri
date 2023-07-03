@@ -10,10 +10,11 @@
 .login-option>li { position: relative; } 
 .login-option>li::after { content: "|"; position: absolute; right: -50%; transform: translateX(50%); color: rgba(0, 0, 0, 0.7); } 
 .login-option>li:last-child::after { display: none; } 
+
 @media(max-width:1060px) {
- .home-wrap { margin: 20% 30px 0 30px; font-family: 'GmarketSansLight'; } 
+.home-wrap { margin: 20% 30px 0 30px; font-family: 'GmarketSansLight'; } 
 .left-arrow-header .nav-icon { filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(104%); } 
-.home-wrap h2 { font-size: 60px; font-weight: 500; font-family: 'OKGUNG'; margin: 0 0 40px 0; } 
+.home-wrap h2 { font-size: 6rem; font-weight: 500; font-family: 'OKGUNG'; margin: 0 0 40px 0; } 
 .home-wrap .sub-title { font-size: 1.8rem; font-weight: 400; margin: 0 0 15px 5px; } 
 .home-wrap .content { font-size: 1.7rem; line-height: 1.5; margin: 0 0 200px 5px; } 
 .home-wrap button { margin: 0 0 30px 0; } 
@@ -26,5 +27,6 @@
  }
  
 @media(max-width:500px){
- .home-wrap { margin: 80px 20px 0 20px; font-family: 'GmarketSansLight'; } 
+html { font-size: 9px !important; } 
+.home-wrap { margin: 80px 20px 0 20px; font-family: 'GmarketSansLight'; } 
  } 
