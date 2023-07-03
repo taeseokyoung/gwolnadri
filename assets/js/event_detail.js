@@ -16,10 +16,11 @@ window.onload = function () {
   EventDetail()
   Eventreview()
 }
-
 async function EventDetail() {
   const urlParams = new URLSearchParams(window.location.search);
   event_id = urlParams.get('event_id');
+  const eventDetailURL = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+
   const response = await fetch(`${backend_base_url}/events/${event_id}`, { method: 'GET' });
   const response_json = await response.json();
 
@@ -29,12 +30,14 @@ async function EventDetail() {
   const categoryElement = document.createElement('a');
   const eventTitleElement = document.createElement('h3');
   const eventDateElement = document.createElement('p');
+  const eventMoneyElement = document.createElement('p');
   const cardIconElement = document.createElement('div');
   const heartElement = document.createElement('div');
   const heartIconElement = document.createElement('img');
   const likeCountElement = document.createElement('span');
   const bookmarkElement = document.createElement('div');
   const bookmarkIconElement1 = document.createElement('img');
+  const get_money = response_json.money
 
   const get_image = response_json.image;
   const backend_image_url = `${backend_base_url}${get_image}`;
@@ -54,6 +57,10 @@ async function EventDetail() {
   eventDateElement.id = 'event_date';
   eventDateElement.className = 'event-date';
   eventDateElement.textContent = response_json.event_start_date + ' - ' + response_json.event_end_date;
+
+  eventMoneyElement.id = 'event_money'
+  eventMoneyElement.className = 'event-money';
+  eventMoneyElement.textContent = "관람료: 1인 "+get_money+"원"
 
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
@@ -94,6 +101,7 @@ async function EventDetail() {
   cardTxtElement.appendChild(categoryElement);
   cardTxtElement.appendChild(eventTitleElement);
   cardTxtElement.appendChild(eventDateElement);
+  cardTxtElement.appendChild(eventMoneyElement);
   cardTxtElement.appendChild(cardIconElement);
 
 
@@ -215,7 +223,7 @@ async function Eventreview() {
 
     reviewImgElement.src = `${backend_base_url}${get_img}`;
     reviewImgElement.alt = '';
-
+    
 
 
     const reviewTxtElement = document.createElement('div');
@@ -261,18 +269,18 @@ async function Eventreview() {
 
     reviewGradeElement.textContent = "별점 : " + starNum + " ";
 
-
+    
     const reviewContentElement = document.createElement('p');
     reviewContentElement.id = 'content';
     reviewContentElement.className = 'content';
     reviewContentElement.textContent = get_content;
 
-    const max_lenght = 50;
-    if (get_content.length > max_lenght) {
-      reviewContentElement.textContent = get_content.substr(0, max_lenght) + '...';
-    } else {
-      reviewContentElement.textContent = get_content;
-    }
+    // const max_lenght = 20;
+    // if (get_content.length > max_lenght) {
+    //   reviewContentElement.textContent = get_content.substr(0, max_lenght) + '...';
+    // } else {
+    //   reviewContentElement.textContent = get_content;
+    // }
 
     reviewCardElement.appendChild(reviewImgElement)
 
@@ -316,37 +324,40 @@ async function HandleComment() {
   const grade = select_grade.split('')[0]
   const maxSixe = 2 * 1024 * 1024
 
-  if (in_img.size >= maxSixe) {
+  if (in_img.size >= maxSixe){
     alert("이미지가 너무 큽니다.")
     window.location.reload()
-  } else {
+  } else if (com_txt.length > 30) {
+    alert("30자 이내로 작성해주세요.");
+    window.location.reload();
+  }else{
+    
+  const formdata = new FormData();
+  formdata.append("grade", grade)
+  formdata.append("review_image", in_img)
+  formdata.append("content", com_txt)
 
-    const formdata = new FormData();
-    formdata.append("grade", grade)
-    formdata.append("review_image", in_img)
-    formdata.append("content", com_txt)
+  const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+    method: 'POST',
+    body: formdata
+  })
+  if (response.status == 201) {
+    alert("작성되었습니다.")
+    window.location.reload()
 
-    const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
-      method: 'POST',
-      body: formdata
-    })
-    if (response.status == 201) {
-      alert("작성되었습니다.")
-      window.location.reload()
-
-    } else if (response.status == 400) {
-      alert("내용이 필요합니다.")
-        (response.status)
-
-    }
-    else {
-      alert("로그인이 필요합니다.")
-    }
+  } else if (response.status == 400) { 
+    alert("내용이 필요합니다.")
+    (response.status)
+    
   }
-}
+  else{
+    alert("로그인이 필요합니다.")
+  }
+}}
+
 
 document.querySelector("#in_img").addEventListener('change', function () {
   readURL(this)

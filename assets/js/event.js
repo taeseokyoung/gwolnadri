@@ -20,7 +20,6 @@ window.onload = function () {
 async function RandomEventList() {
   const random_response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const random_response_json = await random_response.json();
-
   // 랜덤한 인덱스 생성
   const randomIndex = Math.floor(Math.random() * random_response_json.length);
 
@@ -36,6 +35,7 @@ async function RandomEventList() {
   const R_categoryElement = document.createElement('a');
   const R_titleElement = document.createElement('h3');
   const R_eventDateElement = document.createElement('p');
+  const R_eventMoneyElement = document.createElement('h3');
   const get_event_start_date = randomData.event_start_date
   const get_event_end_date = randomData.event_end_date
 
@@ -57,6 +57,10 @@ async function RandomEventList() {
   R_eventDateElement.innerText = `${get_event_start_date} - ${get_event_end_date}`;
   R_cardTextElement.appendChild(R_eventDateElement)
 
+  R_eventMoneyElement.className = 'event-date';
+  R_eventMoneyElement.innerText = "관람료: 1인 "+randomData.money+"원"
+  R_cardTextElement.appendChild(R_eventMoneyElement)
+
   R_mainPageElement.appendChild(R_eventImgElement)
   R_mainPageElement.appendChild(R_reservationElement)
   R_mainPageElement.appendChild(R_cardTextElement)
@@ -76,6 +80,7 @@ async function EventList() {
     const get_like_count = element.likes_count;
     const get_bookmarker = element.event_bookmarks;
     const get_image = element.image
+    const get_money = element.money
 
     const eventCard = document.createElement('div');
     eventCard.classList.add('sub-card');
@@ -114,16 +119,25 @@ async function EventList() {
     const eventCategory = document.createElement('a');
     eventCategory.classList.add('category');
     eventCategory.innerText = '전시/행사';
+    eventCategory.style.cursor = 'pointer';
 
     const eventTitle = document.createElement('h3');
     eventTitle.id = 'event_title';
     eventTitle.classList.add('title');
     eventTitle.innerText = get_title;
+    eventTitle.style.cursor = 'pointer';
 
     const eventDate = document.createElement('p');
     eventDate.id = 'event_date';
     eventDate.classList.add('event-date');
     eventDate.innerText = `${get_event_start_date} - ${get_event_end_date}`;
+    eventDate.style.cursor = 'pointer';
+
+    const eventMoney = document.createElement('p');
+    eventMoney.id = 'event-money';
+    eventMoney.classList.add('event-money');
+    eventMoney.innerText = "관람료: 1인 "+get_money+"원"
+
 
     const cardIcon = document.createElement('div');
     cardIcon.classList.add('card-icon');
@@ -173,6 +187,8 @@ async function EventList() {
     eventCardTxt.appendChild(eventCategory);
     eventCardTxt.appendChild(eventTitle);
     eventCardTxt.appendChild(eventDate);
+    eventCardTxt.appendChild(eventMoney);
+
     eventCardTxt.appendChild(cardIcon);
 
     eventCard.appendChild(eventImage);
@@ -181,10 +197,24 @@ async function EventList() {
 
     eventListContainer.appendChild(eventCard);
 
+    
     eventImage.addEventListener('click', function () {
       const event_id = parseInt(element.id, 10);
       window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
     });
+    eventTitle.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });
+    eventDate.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });
+    eventCategory.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });    
+
 
 
     bookmarkIcon.addEventListener('click', async () => {

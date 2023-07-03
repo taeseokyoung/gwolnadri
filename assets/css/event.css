@@ -14,9 +14,10 @@
 .sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
 .sub-card-txt .category { display: inline-block; font-size: 1.1rem; font-weight: 300; width: auto; padding: 9px 12px 6px 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
 .sub-card-txt .title { font-size: 2.5rem; font-family: 'GmarketSansMedium'; line-height: 1.25; margin-bottom: 10px; } 
-.sub-card-txt .event-date { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; } 
+.sub-card-txt .event-date { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; }
+.sub-card-txt .event-money { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; }
 .sub-card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
-.sub-card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 17px; height: 17px; margin-right: 5px; } 
+.sub-card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 25px; height: 25px; margin-right: 5px; } 
 .sub-card-txt .card-icon span { font-size: 1.1rem; } 
 .sh_search_title { font-size: 25px; font-family: 'GmarketSansMedium'; margin-left: 10px; } 
 .sh_search_tbox { height: fit-content; display: flex; flex-direction: row; align-items: flex-start; margin: 20% 0 50px 35px; } 
@@ -44,6 +45,7 @@
 .sub-card-txt .category { display: inline-block; font-size: 1.1rem; font-weight: 300; width: auto; padding: 9px 12px 6px 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
 .sub-card-txt .title { font-size: 2.5rem; font-family: 'GmarketSansMedium'; line-height: 1.25; margin-bottom: 10px; } 
 .sub-card-txt .event-date { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; } 
+.sub-card-txt .event-money { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; }
 .sub-card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
 .sub-card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 17px; height: 17px; margin-right: 5px; } 
 .sub-card-txt .card-icon span { font-size: 1.1rem; } 
