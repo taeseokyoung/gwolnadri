@@ -91,23 +91,3 @@ async function updateProfile() {
     alert("프로필 사진을 확인해 주세요.");
   }
 }
-
-// async function UserDelete() {
-//   if (confirm("회원탈퇴 하시겠습니까?")) {
-//     const response = await fetch(`${backend_base_url}/users/me/delete/`, {
-//       method: "DELETE",
-//       headers: {
-//         Authorization: "Bearer " + localStorage.getItem("access"),
-//         "content-type": "application/json",
-//       },
-//     })
-
-//     if (response.status == 200) {
-//       handleLogout()
-//       alert("회원탈퇴가 완료되었습니다.");
-//       window.location.replace(`${frontend_base_url}/login.html`);
-//     } else {
-//       alert("권한이 없습니다.");
-//     }
-//   }
-// }

@@ -6,7 +6,7 @@ window.onload = async function SelectTicket(search) {
   const search_result = document.getElementById('search_result');
   search_result.innerText = "'" + `${search}` + "'" + " 검색 결과"
 
-  const title = await fetch(`${backend_base_url}/events/?search=${search}`, {
+  const title = await fetch(`${backend_base_url}/events/?title=${search}`, {
   })
   const title_json = await title.json()
   console.log(title_json)

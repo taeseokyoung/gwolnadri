@@ -1,408 +1,58 @@
-.Gwolnadri-body .card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 40px;
-    width: 300px;
-    color: #fff;
-}
+.Gwolnadri-body .card-txt { position: absolute; bottom: 0; left: 0; padding: 40px; width: 300px; color: #fff; } 
+.reservation { position: absolute; top: 140px; right: 30px; font-size: 1.7rem; color: #fff; padding: 10px 10px 8px 10px; background: rgb(230, 0, 45, 0.7); } 
+.card-txt .category { display: inline-block; font-size: 1.3rem; font-weight: 300; width: auto; padding: 10px 14px 7px 14px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
+.card-txt .title { font-size: 2.9rem; margin-bottom: 15px; font-family: 'GmarketSansMedium'; } 
+.card-txt .event-date { font-size: 2.1rem; margin: 0 0 35px 5px; font-family: 'GmarketSansMedium'; color: 1px solid rgba(255,255,255,0.5); } 
+.card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
+.card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 20px; height: 20px; margin-right: 5px; } 
+.card-txt .card-icon span { font-size: 1.1rem; }
+.contant-page { z-index: -1; } 
+.contant-page .sub-card { position: relative; margin-bottom: 30px; } 
+.contant-page .sub-card>img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; filter: brightness(0.5); cursor: pointer; } 
+.sub-card .reservation { top: 30px; right: 30px; } 
+.sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
+.sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
+.sub-card-txt .category { display: inline-block; font-size: 1.1rem; font-weight: 300; width: auto; padding: 9px 12px 6px 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
+.sub-card-txt .title { font-size: 2.5rem; font-family: 'GmarketSansMedium'; line-height: 1.25; margin-bottom: 10px; } 
+.sub-card-txt .event-date { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; } 
+.sub-card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
+.sub-card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 17px; height: 17px; margin-right: 5px; } 
+.sub-card-txt .card-icon span { font-size: 1.1rem; } 
+.sh_search_title { font-size: 25px; font-family: 'GmarketSansMedium'; margin-left: 10px; } 
+.sh_search_tbox { height: fit-content; display: flex; flex-direction: row; align-items: flex-start; margin: 20% 0 50px 35px; } 
+.sh_col { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 550px; } 
+.sh_small { font-family: 'GmarketSansLight'; font-size: 20px; margin-top: 20px; color: #353535; } 
+.xi-calendar-cancle { color: #353535; font-size: 50px; font-weight: 200; } 
+.sh_search { color: #000; background-color: transparent; width: 250px; margin-left: 8px; border: none; border-bottom: 1px solid #000; padding: 5px 10px; } 
+.sh_search:focus-visible { outline: none; } 
+.sh_btn { padding: 5px; width: 35px; height: 35px; background-color: transparent; background-image: url("/assets/img/Search2.svg"); background-position: center; background-size: contain; } 
 
-.reservation {
-    position: absolute;
-    top: 140px;
-    right: 30px;
-    font-size: 1.7rem;
-    color: #fff;
-    padding: 10px 10px 8px 10px;
-    background: rgb(230, 0, 45, 0.7);
-}
-
-.card-txt .category {
-    display: inline-block;
-    font-size: 1.3rem;
-    font-weight: 300;
-    width: auto;
-    padding: 10px 14px 7px 14px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
-
-.card-txt .title {
-    font-size: 2.9rem;
-    margin-bottom: 15px;
-    font-family: 'GmarketSansMedium';
-}
-
-.card-txt .event-date {
-    font-size: 2.1rem;
-    margin: 0 0 35px 5px;
-    font-family: 'GmarketSansMedium';
-    color: 1px solid rgba(255,255,255,0.5);
-}
-
-.card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
-
-.card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-
-.card-txt .card-icon span {
-   font-size: 1.1rem;
-}
-
-
-.contant-page {
-    z-index: -1;
-}
-.contant-page .sub-card{
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.contant-page .sub-card>img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    filter: brightness(0.5);
-    cursor: pointer;
-}
-
-.sub-card .reservation {
-    top: 30px;
-    right: 30px;
-}
-
-.sub-card .sub-card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    width: 300px;
-    margin-bottom: 30px;
-    color: #fff;
-}
-
-.sub-card .sub-card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    width: 300px;
-    margin-bottom: 30px;
-    color: #fff;
-}
-
-.sub-card-txt .category {
-    display: inline-block;
-    font-size: 1.1rem;
-    font-weight: 300;
-    width: auto;
-    padding: 9px 12px 6px 12px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
-
-.sub-card-txt .title {
-    font-size: 2.5rem;
-    font-family: 'GmarketSansMedium';
-    line-height: 1.25;
-    margin-bottom: 10px;
-}
-
-.sub-card-txt .event-date {
-    font-size: 1.7rem;
-    font-weight: 300;
-    font-family: 'GmarketSansMedium';
-    margin: 0 2px 25px 5px;
-}
-
-.sub-card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
-
-.sub-card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 17px;
-    height: 17px;
-    margin-right: 5px;
-}
-
-.sub-card-txt .card-icon span {
-   font-size: 1.1rem;
-}
-
-
-.sh_search_title {
-    font-size: 25px;
-    font-family: 'GmarketSansMedium';
-    margin-left: 10px;
-}
-
-.sh_search_tbox {
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin: 20% 0 50px 35px;
-}
-
-.sh_col {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 550px;
-    
-}
-
-.sh_small {
-    font-family: 'GmarketSansLight';
-    font-size: 20px;
-    margin-top: 20px;
-    color: #353535;
-}
-
-.xi-calendar-cancle {
-    color: #353535;
-    font-size: 50px;
-    font-weight: 200;
-}
-
-.sh_search {
-    color: #000;
-    background-color: transparent;
-    width: 250px;
-    margin-left: 8px;
-    border: none;
-    border-bottom: 1px solid #000;
-    padding: 5px 10px;
-}
-
-.sh_search:focus-visible {
-    outline: none;
-}
-
-.sh_btn {
-    padding: 5px;
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
-    background-image: url("/assets/img/Search2.svg");
-    background-position: center;
-    background-size: contain;
-}
-
-@media(max-width:1060px){
-
-
-.Gwolnadri-body .card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 40px;
-    width: 300px;
-    color: #fff;
-}
-
-.reservation {
-    position: absolute;
-    top: 140px;
-    right: 30px;
-    font-size: 1.7rem;
-    color: #fff;
-    padding: 10px 10px 8px 10px;
-    background: rgb(230, 0, 45, 0.7);
-}
-
-.card-txt .category {
-    display: inline-block;
-    font-size: 1.3rem;
-    font-weight: 300;
-    width: auto;
-    padding: 10px 14px 7px 14px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
-
-.card-txt .title {
-    font-size: 2.9rem;
-    margin-bottom: 15px;
-    font-family: 'GmarketSansMedium';
-}
-
-.card-txt .event-date {
-    font-size: 2.1rem;
-    margin: 0 0 35px 5px;
-    font-family: 'GmarketSansMedium';
-    color: 1px solid rgba(255,255,255,0.5);
-}
-
-.card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
-
-.card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-
-.card-txt .card-icon span {
-   font-size: 1.1rem;
-}
-
-
-.contant-page {
-    z-index: -1;
-}
-.contant-page .sub-card{
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.sub-card .reservation {
-    top: 30px;
-    right: 30px;
-}
-
-.sub-card .sub-card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    width: 300px;
-    margin-bottom: 30px;
-    color: #fff;
-}
-
-.sub-card .sub-card-txt {
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    width: 300px;
-    margin-bottom: 30px;
-    color: #fff;
-}
-
-.sub-card-txt .category {
-    display: inline-block;
-    font-size: 1.1rem;
-    font-weight: 300;
-    width: auto;
-    padding: 9px 12px 6px 12px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(255,255,255,0.7);
-    border-radius: 20px;
-    color: #fff;
-}
-
-.sub-card-txt .title {
-    font-size: 2.5rem;
-    font-family: 'GmarketSansMedium';
-    line-height: 1.25;
-    margin-bottom: 10px;
-}
-
-.sub-card-txt .event-date {
-    font-size: 1.7rem;
-    font-weight: 300;
-    font-family: 'GmarketSansMedium';
-    margin: 0 2px 25px 5px;
-}
-
-.sub-card-txt .card-icon {
-    display: flex;
-    gap: 30px;
-    margin: 0 0 0 5px;
-}
-
-.sub-card-txt .card-icon img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%);
-    width: 17px;
-    height: 17px;
-    margin-right: 5px;
-}
-
-.sub-card-txt .card-icon span {
-   font-size: 1.1rem;
-}
-
-
-.sh_search_title {
-    font-size: 25px;
-    font-family: 'GmarketSansMedium';
-    margin-left: 10px;
-}
-
-.sh_search_tbox {
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin: 20% 0 50px 35px;
-}
-
-.sh_col {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 550px;
-    
-}
-
-.sh_small {
-    font-family: 'GmarketSansLight';
-    font-size: 20px;
-    margin-top: 20px;
-    color: #353535;
-}
-
-.xi-calendar-cancle {
-    color: #353535;
-    font-size: 50px;
-    font-weight: 200;
-}
-
-.sh_search {
-    color: #000;
-    background-color: transparent;
-    width: 250px;
-    margin-left: 8px;
-    border: none;
-    border-bottom: 1px solid #000;
-    padding: 5px 10px;
-}
-
-.sh_search:focus-visible {
-    outline: none;
-}
-
-.sh_btn {
-    padding: 5px;
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
-    background-image: url("/assets/img/Search2.svg");
-    background-position: center;
-    background-size: contain;
-}
-}
+@media(max-width:1060px) {
+.Gwolnadri-body .card-txt { position: absolute; bottom: 0; left: 0; padding: 40px; width: 300px; color: #fff; } 
+.reservation { position: absolute; top: 140px; right: 30px; font-size: 1.7rem; color: #fff; padding: 10px 10px 8px 10px; background: rgb(230, 0, 45, 0.7); } 
+.card-txt .category { display: inline-block; font-size: 1.3rem; font-weight: 300; width: auto; padding: 10px 14px 7px 14px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
+.card-txt .title { font-size: 2.9rem; margin-bottom: 15px; font-family: 'GmarketSansMedium'; } 
+.card-txt .event-date { font-size: 2.1rem; margin: 0 0 35px 5px; font-family: 'GmarketSansMedium'; color: 1px solid rgba(255,255,255,0.5); } 
+.card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
+.card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 20px; height: 20px; margin-right: 5px; } 
+.card-txt .card-icon span { font-size: 1.1rem; } 
+.contant-page { z-index: -1; } 
+.contant-page .sub-card { position: relative; margin-bottom: 30px; } 
+.sub-card .reservation { top: 30px; right: 30px; } 
+.sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
+.sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
+.sub-card-txt .category { display: inline-block; font-size: 1.1rem; font-weight: 300; width: auto; padding: 9px 12px 6px 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
+.sub-card-txt .title { font-size: 2.5rem; font-family: 'GmarketSansMedium'; line-height: 1.25; margin-bottom: 10px; } 
+.sub-card-txt .event-date { font-size: 1.7rem; font-weight: 300; font-family: 'GmarketSansMedium'; margin: 0 2px 25px 5px; } 
+.sub-card-txt .card-icon { display: flex; gap: 30px; margin: 0 0 0 5px; } 
+.sub-card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 17px; height: 17px; margin-right: 5px; } 
+.sub-card-txt .card-icon span { font-size: 1.1rem; } 
+.sh_search_title { font-size: 25px; font-family: 'GmarketSansMedium'; margin-left: 10px; } 
+.sh_search_tbox { height: fit-content; display: flex; flex-direction: row; align-items: flex-start; margin: 20% 0 50px 35px; } 
+.sh_col { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 550px; } 
+.sh_small { font-family: 'GmarketSansLight'; font-size: 20px; margin-top: 20px; color: #353535; } 
+.xi-calendar-cancle { color: #353535; font-size: 50px; font-weight: 200; } 
+.sh_search { color: #000; background-color: transparent; width: 250px; margin-left: 8px; border: none; border-bottom: 1px solid #000; padding: 5px 10px; } 
+.sh_search:focus-visible { outline: none; } 
+.sh_btn { padding: 5px; width: 35px; height: 35px; background-color: transparent; background-image: url("/assets/img/Search2.svg"); background-position: center; background-size: contain; } 
+ }
