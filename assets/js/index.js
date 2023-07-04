@@ -186,11 +186,15 @@ async function HandleSearch() {
 
 async function enterkey(event) {
     if (event.keyCode == 13) {
-        // 엔터키가 눌렸을 때
         const word = document.getElementById("search_bar").value;
-        window.location.href = `${frontend_base_url}/search.html?search=${word}`;
-    }
-}
+        if (!word || word.includes('#')) {
+            event.preventDefault(); // 이벤트 기본 동작을 막음
+            alert("다시 입력해주세요");
+        } else {
+            window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+        }
+    }   
+};
 
 
 async function eventDetail(event_id) {
