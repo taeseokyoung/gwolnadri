@@ -460,9 +460,6 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
             }
 
             if (standby == 1) {
-                console.log(prevTxt)
-                console.log(grade)
-                console.log(review_image)
                 const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
                     method: 'PUT',
                     headers: {
