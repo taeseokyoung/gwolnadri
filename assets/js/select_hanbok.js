@@ -1,13 +1,50 @@
-window.onload = () => {
-    let now_utc = Date.now()
-    let timeOff = new Date().getTimezoneOffset() * 60000;
-    let tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
+window.onload = async function SelectHanbok(hanbok_id) {
+    const urlParams = new URLSearchParams(window.location.search);
+    hanbok_id = urlParams.get('hanbok_id');
 
-    const date = document.getElementById('rsrvt_date');
+    const response = await fetch(`${backend_base_url}/api/v1/stores/hanbok/${hanbok_id}`, {
+    })
 
-    date.setAttribute("min", `${tomorrow}`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        const item = response_json.hanbok_name
+        const price = response_json.hanbok_price
+
+        const e_title = document.getElementById("title")
+        e_title.innerText = item
+
+        const info_cost = document.getElementById("info_cost")
+        info_cost.innerText = "1인 : "+price+"원 (VAT별도)"
+    
+        let now_utc = Date.now()
+        let timeOff = new Date().getTimezoneOffset() * 60000;
+        let tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
+
+        const date = document.getElementById('rsrvt_date');
+
+        date.setAttribute("min", `${tomorrow}`)
+    } else {
+        alert("잘못된 요청입니다")
+        alert(response.status)
+        window.location.href = `${index_url}`
+    }
 }
 
+function printPrice() {
+    const quantity = document.getElementById('quantity').value;
+    const origin_price = document.getElementById('info_cost').innerText;
+
+    const original_price = origin_price.split(': ')[1].split('원')[0]
+    const int_quantity = Number(quantity)
+
+    const price = original_price * int_quantity
+    const vat = price * 0.1
+    const total = price + vat
+
+    document.getElementById("price").innerText = price;
+    document.getElementById("vat").innerText = vat;
+    document.getElementById("total").innerText = total;
+}
 
 async function handleSelectHanbok(hanbok_id) {
     const urlParams = new URLSearchParams(window.location.search);

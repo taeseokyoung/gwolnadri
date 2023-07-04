@@ -37,24 +37,32 @@
             </div>
             <div class="Gwolnadri-body">
                 <header class="left-arrow-header">
-                    <nav class="nav flex">
+                    <nav class="nav flex" style="flex-direction: row;">
                         <div class="nav-icon" onclick="goBack()">
                             <img src="/assets/img/left.svg" />
                         </div>
-                    </nav>
-                </header>
-                <div class="signup-wrap mb120px" style="height: 70%;">
-                    <div class="sh-row2 start">
-                        <h2 class="sh-title">예약하기</h2>
                         <button class="sh-btn2">
                             <i onclick="onClickReload()" class="xi-refresh"></i>
                         </button>
+                    </nav>
+                </header>
+                <div class="signup-wrap mb120px" style="height: 100vh;">
+                    <div class="sh-row_2">
+                        <div class="sh-row2 start">
+                            <h2 id="title" class="sh-title" style="margin:0 0 13px 5px;">행사 이름</h2>
+                            <p id="start_end" class="info_start">start_date - end_date</p>
+                            <p id="info_cost" class="info_start">1매 : </p>
+                        </div>
+                        <div id="time_slots" class="sh-row2 middle">
+                            <!-- <p>1회차 : </p>
+                                <p>회차 당 좌석 수 :</p> -->
+                            </div>
                     </div>
                     <div class="login-page" style="height:100%;">
                         <form action="" style="height:100%;">
                             <div class="form-input">
                                 <div class="input-box email-box">
-                                    <label>날짜</label>
+                                    <label>예매 날짜</label>
                                     <div class="sh-row2">
                                         <input id="rsrvt_date" type="date" class="event_date" required
                                             pattern="\d{4}-\d{2}-\d{2}">
@@ -63,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="input-box">
-                                    <label>시간</label>
+                                    <label>예매 시간</label>
                                     <div class="sh-row2">
                                         <select id="timeList" class="event_time" disabled>
                                             <option id="opt_title" selected>날짜를 먼저 선택해주세요</option>
@@ -74,11 +82,23 @@
                                 </div>
                                 <div class="input-box">
                                     <label for="name">수량</label>
-                                    <input id="quantity" type="number" min='0' disabled>
+                                    <input id="quantity" onkeyup='printPrice()' type="number" min='0' disabled>
                                 </div>
-                                <button id="select" onclick="handleSelectEvent()" style="font-size:15px; padding:15px;"
-                                    class="login-form-btn" type="button">KakaoPAY 테스트 결제</button>
                             </div>
+                            <div class="sh-box none">
+                                <p class="sh-small">공급가액</p>
+                                <p id="price" class="sh-right">10000</p>
+                            </div>
+                            <div class="sh-box to">
+                                <p class="sh-small">부가세액</p>
+                                <p id="vat" class="sh-right">1000</p>
+                            </div>
+                            <div class="sh-box total">
+                                <p>결제 금액</p>
+                                <p id="total" class="sh-right">11000</p>
+                            </div>
+                            <button id="select" onclick="handleSelectEvent()"
+                                class="login-form-btn test_btn" type="button">KakaoPAY 테스트 결제</button>
                         </form>
                     </div>
                     <!-- <div class="foot-icon" style="position:unset;"></div> -->
