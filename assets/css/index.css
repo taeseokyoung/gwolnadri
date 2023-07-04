@@ -7,8 +7,7 @@
 .card-txt .card-icon span { font-size: 11px; } 
 .contant-page { z-index: -1; } 
 .contant-page .sub-card { position: relative; } 
-.contant-page .sub-card>img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; filter:brightness(0.5); margin-bottom:30px; cursor: pointer
-}
+.contant-page .sub-card>img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; filter:brightness(0.5); margin-bottom:30px; cursor: pointer } 
 .sub-card .sub-card-txt { position: absolute; bottom: 0; left: 30px; width: 300px; margin-bottom: 30px; color: #fff; } 
 .sub-card-txt .category { display: inline-block; font-size: 1.1rem; font-weight: 300; width: auto; padding: 9px 12px 6px 12px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.7); border-radius: 20px; color: #fff; } 
 .sub-card-txt .title { font-size: 2.5rem; font-family: 'GmarketSansMedium'; line-height: 1.25; margin-bottom: 10px; } 
@@ -20,8 +19,17 @@
 .sh_search:focus-visible { outline: none; } 
 .sh_btn { padding: 5px; width: 35px; height: 35px; background-color: transparent; background-image: url("/assets/img/Search2.svg"); background-position: center; background-size: contain; } 
 
-@media(max-width:1060px) {
-.card-txt .title { font-size: 2.9rem; margin-bottom: 15px; font-family: 'GmarketSansMedium'; } 
+.swiper-wrapper figure { display: flex; flex-direction: column; justify-content: flex-end; } 
+.swiper-wrapper figure .swiper-text { margin: 0 0 60px 40px; color: #fff; } 
+.swiper-wrapper figure .swiper-text .content { margin: 0 0 15px 0; font-size: 1.9rem; } 
+.swiper-wrapper figure .swiper-text h2 { margin: 0 0 30px 0; font-size: 3.3rem; } 
+.swiper-wrapper figure .swiper-text a { font-size: 1.5rem; color: #fff; border-bottom:1px solid #fff; padding: 8px 8px 5px 8px; } 
+.main01 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main01.jpg) no-repeat center center/cover; width: 100%; height: 600px; } 
+.main02 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main02.jpg) no-repeat center center/cover; width: 100%; height: 600px; } 
+.main03 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main03.jpg) no-repeat center center/cover; width: 100%; height: 600px; } 
+
+@media(max-width:1060px){
+ .card-txt .title { font-size: 2.9rem; margin-bottom: 15px; font-family: 'GmarketSansMedium'; } 
 .card-txt .event-date { font-size: 2.1rem; margin: 0 0 35px 5px; font-family: 'GmarketSansMedium'; color: 1px solid rgba(255,255,255,0.5); } 
 .card-txt .card-icon img { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(140deg) brightness(104%) contrast(106%); width: 22px; height: 22px; margin-right: 5px; } 
 .contant-page { z-index: -1; } 
@@ -36,4 +44,35 @@
 .sh_search { color: #000; background-color: transparent; width: 250px; margin-left: 8px; border: none; border-bottom: 1px solid #000; padding: 5px 10px; } 
 .sh_search:focus-visible { outline: none; } 
 .sh_btn { padding: 5px; width: 35px; height: 35px; background-color: transparent; background-image: url("/assets/img/Search2.svg"); background-position: center; background-size: contain; } 
-}
+
+.swiper-wrapper figure { display: flex; flex-direction: column; justify-content: flex-end; } 
+.swiper-wrapper figure .swiper-text { margin: 0 0 60px 40px; color: #fff; } 
+.swiper-wrapper figure .swiper-text .content { margin: 0 0 15px 0; font-size: 1.9rem; } 
+.swiper-wrapper figure .swiper-text h2 { margin: 0 0 30px 0; font-size: 3.3rem; } 
+.swiper-wrapper figure .swiper-text a { font-size: 1.5rem; color: #fff; border-bottom:1px solid #fff; padding: 8px 8px 5px 8px; } 
+.main01 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main01.jpg) no-repeat center center/cover; width: 100%; height: 500px; } 
+.main02 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main02.jpg) no-repeat center center/cover; width: 100%; height: 500px; } 
+.main03 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main03.jpg) no-repeat center center/cover; width: 100%; height: 500px; } 
+ }
+
+@media(max-width:500px) { html { font-size: 9px !important; } 
+ .swiper-wrapper figure { display: flex; flex-direction: column; justify-content: flex-end; } 
+.swiper-wrapper figure .swiper-text { margin: 0 0 60px 40px; color: #fff; } 
+.swiper-wrapper figure .swiper-text .content { margin: 0 0 15px 0; font-size: 1.9rem; } 
+.swiper-wrapper figure .swiper-text h2 { margin: 0 0 30px 0; font-size: 3.3rem; } 
+.swiper-wrapper figure .swiper-text a { font-size: 1.5rem; color: #fff; border-bottom:1px solid #fff; padding: 8px 8px 5px 8px; } 
+.main01 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main01.jpg) no-repeat center center/cover; width: 100%; height: 400px; } 
+.main02 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main02.jpg) no-repeat center center/cover; width: 100%; height: 400px; } 
+.main03 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main03.jpg) no-repeat center center/cover; width: 100%; height: 400px; } 
+ }
+
+ @media(max-width:380px) { html { font-size: 8px !important; } 
+ .swiper-wrapper figure { display: flex; flex-direction: column; justify-content: flex-end; } 
+.swiper-wrapper figure .swiper-text { margin: 0 0 60px 40px; color: #fff; } 
+.swiper-wrapper figure .swiper-text .content { margin: 0 0 15px 0; font-size: 1.9rem; } 
+.swiper-wrapper figure .swiper-text h2 { margin: 0 0 30px 0; font-size: 3.3rem; } 
+.swiper-wrapper figure .swiper-text a { font-size: 1.5rem; color: #fff; border-bottom:1px solid #fff; padding: 8px 8px 5px 8px; } 
+.main01 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main01.jpg) no-repeat center center/cover; width: 100%; height: 350px; } 
+.main02 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main02.jpg) no-repeat center center/cover; width: 100%; height: 350px; } 
+.main03 { background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url(/assets/img/main03.jpg) no-repeat center center/cover; width: 100%; height: 350px; } 
+ }

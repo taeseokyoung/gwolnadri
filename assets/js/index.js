@@ -1,3 +1,13 @@
+const swiper = new Swiper(".mainSwiper", {
+    loop: true,
+    autoplay: {
+        delay: 3000,
+    },
+    pagination: {
+        el: '.swiper-pagination'
+    }
+});
+
 const scroll_body = document.querySelector("#Gwolnadri-body");
 
 document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
@@ -15,47 +25,7 @@ const kchf = "https://www.chf.or.kr"
 
 window.onload = function () {
     loadEvents()
-    RandomEventList()
-}
-async function RandomEventList() {
-    const random_response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
-    const random_response_json = await random_response.json();
-    const randomIndex = Math.floor(Math.random() * random_response_json.length);
 
-    const randomData = random_response_json[randomIndex];
-
-    const R_mainPageElement = document.querySelector('.main-page');
-    const R_eventImgElement = document.createElement('img');
-
-    const R_cardTextElement = document.createElement('div');
-
-    const R_categoryElement = document.createElement('a');
-    const R_titleElement = document.createElement('h3');
-    const R_eventDateElement = document.createElement('p');
-
-    const get_event_start_date = randomData.event_start_date
-    const get_event_end_date = randomData.event_end_date    
-
-    R_eventImgElement.className = 'img';
-    R_eventImgElement.src = `${backend_base_url}${randomData.image}`;
-    R_eventImgElement.alt = '';
-
-    R_cardTextElement.className = 'card-txt';
-
-    R_categoryElement.className = 'category';
-    R_categoryElement.innerText = '전시/행사';
-    R_cardTextElement.appendChild(R_categoryElement)
-
-    R_titleElement.className = 'title';
-    R_titleElement.innerText = randomData.title
-    R_cardTextElement.appendChild(R_titleElement)
-
-    R_eventDateElement.className = 'event-date';
-    R_eventDateElement.innerText = `${get_event_start_date} - ${get_event_end_date}`;
-    R_cardTextElement.appendChild(R_eventDateElement)    
-
-    R_mainPageElement.appendChild(R_eventImgElement)
-    R_mainPageElement.appendChild(R_cardTextElement)
 }
 
 async function loadEvents() {

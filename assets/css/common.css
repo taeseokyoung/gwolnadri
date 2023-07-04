@@ -74,8 +74,8 @@ header.left-arrow-header img { width: 29px; }
 .foot-icon { position: fixed; bottom: 0; left: calc(50% - 47.5px); width: 575.5px; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); background: #fff; z-index: 1; } 
 .foot-icon .flex { margin: 25px 60px; } 
 .foot-icon img { cursor: pointer; } 
-/* 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 */
-.mb120px { padding-bottom: 120px; } 
+/* 하단 메뉴 아이콘으로 인해 가려지는 공간 확보
+.marginbottom {padding-bottom:200px;} */
 /* input-box */
 .form-input { display: flex; flex-direction: column; gap: 65px; margin: 0 5px 30px 5px; font-family: 'GmarketSansMedium'; } 
 label { font-size: 1.7rem; font-weight: 500; color: #555; margin: 0 5px 20px 5px; font-family: 'GmarketSansMedium'; } 
@@ -112,7 +112,7 @@ button { width: 100%; border: inherit; background: inherit; border-radius: 5px; 
  .Gwolnadri-intro { display: none; } 
  .Gwolnadri-body .main-page img { width: 100%; height: 500px; object-fit: cover; } 
  #map { width:auto; height:500px; } 
- .Gwolnadri-body { width: auto; } 
+ .Gwolnadri-body { position: relative; width: auto; height: 100vh;}
  header { top: 0; left: 0; width: 100%; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); transition-property: background-color; transition-duration: 1s; z-index: 999; } 
  header.on { top: 0; left: 0; width: 100%; font-size: 17px; z-index: 999; } 
  header.on h1 { color: #000; } 
@@ -126,6 +126,8 @@ input::placeholder { font-size: 1.5rem; color: rgba(0, 0, 0, 0.3); }
  }
 
 @media(max-width:500px) { html { font-size: 9px !important; } 
+ /* 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 */
+.marginbottom {padding-bottom:150px;}
  header h1 { font-size: 2.8rem; } 
  header nav { line-height: 50px; margin: 15px 20px; } 
  header.left-arrow-header nav { margin: 17px; } 
