@@ -188,3 +188,16 @@ window.onload = async function SelectTicket(search) {
     }
   }
 }
+
+
+async function enterkey(event) {
+  if (event.keyCode == 13) {
+      const word = document.getElementById("search_bar").value;
+      if (!word || word.includes('#')) {
+          event.preventDefault(); // 이벤트 기본 동작을 막음
+          alert("다시 입력해주세요");
+      } else {
+          window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+      }
+  }   
+};
