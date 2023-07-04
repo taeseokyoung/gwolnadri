@@ -435,7 +435,6 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
 
         const formdata = new FormData()
         formdata.append("grade", grade)
-        console.log(grade)
 
         if (content.length > 50){
             alert("50자 이내로 작성해주세요.")
