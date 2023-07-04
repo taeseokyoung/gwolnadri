@@ -70,9 +70,6 @@ async function EventDetail() {
   heartElement.appendChild(heartIconElement);
   heartElement.appendChild(likeCountElement);
 
-
-
-
   bookmarkElement.className = 'bookmark';
   bookmarkIconElement1.id = 'bookmarkIcon';
   bookmarkIconElement1.src = '/assets/img/Bookmark-outline.svg';
@@ -109,9 +106,26 @@ async function EventDetail() {
   reservationButton.id = 'SelectItem';
   reservationButton.className = 'reservation-btn';
   reservationButton.type = 'button';
-  reservationButton.textContent = '예약하기';
   reservationButton.setAttribute('onClick', `bookingbtn(${event_id})`)
   subContentElement.className = 'sub-content';
+
+  const now_utc = Date.now()
+  const timeOff = new Date().getTimezoneOffset() * 60000;
+  const today = new Date(now_utc - timeOff).toISOString().split("T")[0];
+  const tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
+  const start_date = response_json.event_start_date
+  const end_date = response_json.event_end_date
+
+  console.log(today)
+  console.log(tomorrow)
+  
+  if (start_date == tomorrow || start_date <= today < end_date){
+    reservationButton.textContent = '예약하기';
+  } else if (start_date > today) {
+    reservationButton.textContent = '행사 예정';
+  } else if (end_date <= today) {
+    reservationButton.textContent = '행사 마감';
+  }
 
   subContentTitleElement.className = 'content-title';
   subContentTitleElement.textContent = '행사개요';
@@ -318,7 +332,6 @@ async function HandleComment() {
 
   if (in_img.size >= maxSixe) {
     alert("이미지가 너무 큽니다.")
-    window.location.reload()
   } else {
 
     const formdata = new FormData();
@@ -365,8 +378,15 @@ function readURL(input) {
 }
 
 async function bookingbtn(event_id) {
+  const SelectItem = document.getElementById('SelectItem').innerText;
   if (payload) {
-    window.location.href = `${frontend_base_url}/select_event.html?event_id=${event_id}`
+    if (SelectItem == "행사 예정") {
+      alert("오픈 예정인 행사입니다")
+    } else if (SelectItem == "행사 마감") {
+      alert("종료된 행사입니다")
+    } else {
+      window.location.href = `${frontend_base_url}/select_event.html?event_id=${event_id}`
+    }
   } else {
     alert('로그인이 필요합니다')
   }
