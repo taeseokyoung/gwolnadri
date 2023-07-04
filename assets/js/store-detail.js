@@ -271,7 +271,7 @@ async function submitComment(hanbokstore_id) {
         const review_image = document.getElementById("image").files[0]
         const maxSixe = 2 * 1024 * 1024
 
-        if (content.value.length > 50) {
+        if (content.length > 50) {
             alert("제한 글자수 50자를 초과했습니다!")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
         } else {
@@ -425,7 +425,7 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
 
     const formdata = new FormData()
 
-    if (content.value.length > 50) {
+    if (content.length > 50) {
         alert("제한 글자수 50자를 초과했습니다!")
         location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
     } else {
