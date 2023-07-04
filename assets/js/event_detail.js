@@ -115,14 +115,11 @@ async function EventDetail() {
   const tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
   const start_date = response_json.event_start_date
   const end_date = response_json.event_end_date
-
-  console.log(today)
-  console.log(tomorrow)
   
-  if (start_date == tomorrow || start_date <= today < end_date){
-    reservationButton.textContent = '예약하기';
-  } else if (start_date > today) {
+  if (start_date > today) {
     reservationButton.textContent = '행사 예정';
+  } else if (start_date == tomorrow || today < end_date){
+    reservationButton.textContent = '예약하기';
   } else if (end_date <= today) {
     reservationButton.textContent = '행사 마감';
   }
