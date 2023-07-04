@@ -41,6 +41,8 @@ async function RandomEventList() {
   R_eventImgElement.className = 'img';
   R_eventImgElement.src = `${backend_base_url}${randomData.image}`;
   R_eventImgElement.alt = '';
+  const R_eventImg = R_eventImgElement
+  R_eventImg.style.filter = 'brightness(0.6)';
 
   R_cardTextElement.className = 'card-txt';
 

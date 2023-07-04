@@ -45,6 +45,8 @@ async function EventDetail() {
 
   eventImgElement.className = 'event_img';
   eventImgElement.src = backend_image_url;
+  const eventImg = eventImgElement
+  eventImg.style.filter = 'brightness(0.6)';
   eventImgElement.alt = '';
 
   categoryElement.className = 'category';
