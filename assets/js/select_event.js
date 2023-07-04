@@ -6,16 +6,37 @@ window.onload = async function SelectTicket(event_id) {
     })
     if (eventData.status == 200) {
         const eventData_json = await eventData.json()
+        console.log(eventData_json)
 
-        // const origin_min_date = eventData_json.event_start_date
-        // const origin_max_date = eventData_json.event_end_date
-        // const min_date = origin_min_date.split('.')
-        // const max_date = origin_max_date.split('.')
-        // const start_date = "20" + min_date[0] + '-' + min_date[1] + '-' + min_date[2]
-        // const end_date = "20" + max_date[0] + '-' + max_date[1] + '-' + max_date[2]
-
+        const title = eventData_json.title
         const start_date = eventData_json.event_start_date
         const end_date = eventData_json.event_end_date
+        const info_cost_txt = eventData_json.money
+        const info_max = eventData_json.max_booking
+
+        const e_title = document.getElementById("title")
+        e_title.innerText = title
+
+        const start_end = document.getElementById("start_end")
+        start_end.innerText = start_date +" ~ "+end_date
+
+        const info_cost = document.getElementById("info_cost")
+        info_cost.innerText = "1매 : "+info_cost_txt+"원 (VAT별도)"
+
+        let time_slots = document.getElementById('time_slots')
+        
+        const time_slot_txt = eventData_json.time_slots
+        for(var turn in time_slot_txt) {
+            let e_turn = document.createElement("p")
+            e_turn.setAttribute("class","info_start")          
+            e_turn.innerText = turn+"회차 : "+time_slot_txt[turn]
+            time_slots.append(e_turn)
+        }
+
+        const e_max = document.createElement("p")
+        e_max.setAttribute("class","info_start")
+        e_max.innerText = "회차 당 좌석 수 : "+info_max
+        time_slots.append(e_max)
 
         let now_utc = Date.now()
         let timeOff = new Date().getTimezoneOffset() * 60000;
@@ -130,11 +151,29 @@ async function SelectTime() {
     }
 }
 
+function printPrice() {
+    const quantity = document.getElementById('quantity').value;
+    const origin_price = document.getElementById('info_cost').innerText;
+    console.log(origin_price)
+
+    const original_price = origin_price.split(': ')[1].split('원')[0]
+    console.log(original_price)
+    const int_quantity = Number(quantity)
+
+    const price = original_price * int_quantity
+    const vat = price * 0.1
+    const total = price + vat
+
+    document.getElementById("price").innerText = price;
+    document.getElementById("vat").innerText = vat;
+    document.getElementById("total").innerText = total;
+}
 
 async function handleSelectEvent(ticket_id) {
 
     const quantity = document.getElementById('quantity').value;
     const int_quantity = Number(quantity)
+
 
     if (int_quantity == 0) {
         alert("다시 선택해주세요")
@@ -181,35 +220,10 @@ async function handleSelectEvent(ticket_id) {
                     const vat = price * 0.1
                     const total = price + vat
 
-                    const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/ready", {
-                        headers: {
-                            "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        method: 'POST',
-                        body: new URLSearchParams({
-                            "cid": "TC0ONETIME",
-                            "partner_order_id": order_id,
-                            "partner_user_id": order_stf_id,
-                            "item_name": item,
-                            "quantity": int_quantity,
-                            "total_amount": total,
-                            "vat_amount": vat,
-                            "tax_free_amount": 0,
-                            "approval_url": `${frontend_base_url}/complete.html`,
-                            "fail_url": `${frontend_base_url}`,
-                            "cancel_url": `${frontend_base_url}`
-                        })
-                    });
+                    if (total == 0) {
 
-
-                    if (kakao_pay.status == 200) {
-
-                        const kakao_json = await kakao_pay.json()
-                        const tid = kakao_json.tid
-                        const created_at = kakao_json.created_at
-                        const next_url_m = kakao_json.next_redirect_mobile_url
-                        const next_url_p = kakao_json.next_redirect_pc_url
+                        // const tid = kakao_json.tid
+                        // const created_at = created_at
 
                         setCookie("tid", tid, 2);
 
@@ -235,25 +249,92 @@ async function handleSelectEvent(ticket_id) {
                                 "rsrvt_time": r_time
                             })
                         })
-                        console.log(send)
+                        const send_json = await send.json()
 
                         if (send.status == 200) {
-                            
-                            if (matchMedia("screen and (max-width: 431px)").matches) {
-                                // 1060px 미만에서 사용할 JavaScript
-                                window.location.href = `${next_url_m}`
-                              } else {
-                                // 1060px 이상에서 사용할 JavaScript
-                                window.location.href = `${next_url_p}`
-                              }
+                            window.location.href = `${frontend_base_url}/complete.html`
+
                         } else {
-                            // alert("db 저장실패", send.status)
-                            // window.location.href = `${index_url}`
+                            alert(send_json.message)
+                            window.location.href = `${index_url}`
                         }
 
                     } else {
-                        console.log(kakao_pay.status)
-                        // alert("결제요청 실패", kakao_pay.status)
+
+                        const kakao_pay = await fetch("https://kapi.kakao.com/v1/payment/ready", {
+                            headers: {
+                                "Authorization": "KakaoAK c852f123396eb62c459e2f8c0ddf1a30",
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                            method: 'POST',
+                            body: new URLSearchParams({
+                                "cid": "TC0ONETIME",
+                                "partner_order_id": order_id,
+                                "partner_user_id": order_stf_id,
+                                "item_name": item,
+                                "quantity": int_quantity,
+                                "total_amount": total,
+                                "vat_amount": vat,
+                                "tax_free_amount": 0,
+                                "approval_url": `${frontend_base_url}/complete.html`,
+                                "fail_url": `${frontend_base_url}`,
+                                "cancel_url": `${frontend_base_url}`
+                            })
+                        });
+
+
+                        if (kakao_pay.status == 200) {
+
+                            const kakao_json = await kakao_pay.json()
+                            const tid = kakao_json.tid
+                            const created_at = kakao_json.created_at
+                            const next_url_m = kakao_json.next_redirect_mobile_url
+                            const next_url_p = kakao_json.next_redirect_pc_url
+
+                            setCookie("tid", tid, 2);
+
+                            // DB에 결제요청건 저장
+                            const send = await fetch(`${backend_base_url}/api/v1/stores/payment/`, {
+
+                                headers: {
+                                    "Authorization": `Bearer ${token}`,
+                                    'content-type': 'application/json',
+                                },
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    "tid": tid,
+                                    "type": "event",
+                                    "created_at": created_at,
+                                    "partner_order_id": order_id,
+                                    "partner_user_id": order_stf_id,
+                                    "item_name": item,
+                                    "quantity": int_quantity,
+                                    "total_amount": total,
+                                    "vat_amount": vat,
+                                    "rsrvt_date": date,
+                                    "rsrvt_time": r_time
+                                })
+                            })
+                            console.log(send)
+
+                            if (send.status == 200) {
+                                
+                                if (matchMedia("screen and (max-width: 431px)").matches) {
+                                    // 1060px 미만에서 사용할 JavaScript
+                                    window.location.href = `${next_url_m}`
+                                } else {
+                                    // 1060px 이상에서 사용할 JavaScript
+                                    window.location.href = `${next_url_p}`
+                                }
+                            } else {
+                                // alert("db 저장실패", send.status)
+                                // window.location.href = `${index_url}`
+                            }
+
+                        } else {
+                            console.log(kakao_pay.status)
+                            // alert("결제요청 실패", kakao_pay.status)
+                        }
                     }
 
                 } else {
