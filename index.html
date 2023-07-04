@@ -11,6 +11,8 @@
     <meta property="og:description" content="궁궐 관람 예약 및 큐레이션, 한복 대여 서비스까지!">
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
     <link rel="stylesheet" href="/assets/css/common.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/assets/css/index.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
 </head>
@@ -39,13 +41,39 @@
                         </div>
                         <ul class="nav-icon" id="nav-icon">
                             <li><button onclick="HandleSearch()" class="sh_btn"></button></li>
-                            <li><input id="search_bar" class="sh_search" style="display:none" type="txt"
+                            <li><input id="search_bar" class="sh_search" style="display:none" type="text"
                                     onkeyup="enterkey(event)" placeholder="행사 제목을 입력해주세요"></li>
                         </ul>
                     </nav>
                 </header>
-                <div class="main-page">
+                <div class="swiper-container main-page">
+                    <div class="swiper mainSwiper">
+                        <div class="swiper-wrapper">
+                            <figure class="swiper-slide main01">
+                                <div class="swiper-text">
+                                    <p class="content">궁궐 관람 및 한복 예약 서비스</p>
+                                    <h2 class="title">궐나드리</h2>
+                                    <a href="/assets/doc/home.html">가입하고 이용하기 <i class="xi-angle-right-min"></i></a>
+                                </div>
+                            </figure>
+                            <figure class="swiper-slide main02">
+                                <div class="swiper-text">
+                                    <p class="content">낭만적인 궁궐여행</p>
+                                    <h2 class="title">궁궐 행사 소개 및 예약</h2>
+                                    <a href="/assets/doc/event.html">행사 더보기 <i class="xi-angle-right-min"></i></a>
+                                </div>
+                            </figure>
+                            <figure class="swiper-slide main03">
+                                <div class="swiper-text">
+                                    <p class="content">우리의 멋, 한복체험</p>
+                                    <h2 class="title">한복 대여 서비스</h2>
+                                    <a href="/assets/doc/store.html">한복점 구경하기 <i class="xi-angle-right-min"></i></a>
+                                </div>
+                            </figure>
+                        </div>
 
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
                 <div class="main-contents marginbottom">
                     <div class="contant-page nonscrap">
@@ -61,6 +89,7 @@
     </div>
     <script src="/assets/js/api.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="/assets/js/index.js"></script>
 </body>
 
