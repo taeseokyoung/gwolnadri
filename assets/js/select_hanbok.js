@@ -32,18 +32,21 @@ window.onload = async function SelectHanbok(hanbok_id) {
 
 function printPrice() {
     const quantity = document.getElementById('quantity').value;
+    const cleanedquantity = quantity.replace(/[^0-9]/g, '');
+    const int_quantity = Number(cleanedquantity)
     const origin_price = document.getElementById('info_cost').innerText;
 
     const original_price = origin_price.split(': ')[1].split('원')[0]
-    const int_quantity = Number(quantity)
 
-    const price = original_price * int_quantity
-    const vat = price * 0.1
-    const total = price + vat
-
-    document.getElementById("price").innerText = price;
-    document.getElementById("vat").innerText = vat;
-    document.getElementById("total").innerText = total;
+    if (int_quantity <= 10) {
+        const price = original_price * int_quantity
+        const vat = price * 0.1
+        const total = price + vat
+    
+        document.getElementById("price").innerText = price;
+        document.getElementById("vat").innerText = vat;
+        document.getElementById("total").innerText = total;
+    }
 }
 
 async function handleSelectHanbok(hanbok_id) {
@@ -54,12 +57,14 @@ async function handleSelectHanbok(hanbok_id) {
     const time = document.querySelector('input[type=radio][name=time]:checked').value;
     let quantity = document.getElementById('quantity').value;
 
-if (date == null || time == null) {
-        alert("다시 선택해주세요")
-    
-    } else {
+    const cleanedquantity = quantity.replace(/[^0-9]/g, '');
+    const int_quantity = Number(cleanedquantity)
 
-        let int_quantity = Number(quantity)
+    if (date == null || time == null || quantity == 0) {
+        alert("다시 선택해주세요")
+    } else if (quantity > 10) {
+        alert("한복 예약 수량은 10개 이하만 가능합니다")
+    } else {
 
         first = date.split('-')
         first1 = first[2].split('')

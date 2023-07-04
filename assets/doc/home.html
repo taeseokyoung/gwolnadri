@@ -10,6 +10,7 @@
     <meta property="og:image" content="https://gwolnadri.com/assets/img/gwolnadri.jpg">
     <meta property="og:description" content="궁궐 관람 예약 및 큐레이션, 한복 대여 서비스까지!">
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="/assets/css/home.css">
     <title>궐나드리 : 궁궐 관람 및 한복 예약</title>
@@ -35,7 +36,7 @@
                 </div>
             </div>
             <div class="Gwolnadri-body">
-                <div class="home-wrap mb120px">
+                <div class="home-wrap marginbottom">
                     <p class="sub-title">가장 편리한 궁궐 관람 서비스</p>
                     <a href="">
                         <h2>궐나드리</h2>
@@ -47,6 +48,8 @@
                                 onclick="location.href = 'login.html'">로그인</button>
                             <button class="login-form-btn" type="button"
                                 onclick="location.href = 'signup.html'">회원가입</button>
+                            <button class="kakao" onclick="kakaoLogin()" type="button" style="color: #191919; background-color: #FEE500"><i class="xi-kakaotalk"></i> 카카오
+                                    로그인</button>
                         </form>
                     </div>
                     <!-- <ul class="login-option flex">
@@ -61,6 +64,7 @@
     </div>
     <script src="/assets/js/api.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/social.js"></script>
 </body>
 
 </html>

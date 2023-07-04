@@ -37,16 +37,21 @@
             <div class="Gwolnadri-body">
                 <header class="left-arrow-header">
                     <nav class="nav flex">
-                        <div class="nav-icon" onclick="goBack()">
+                        <div class="nav-icon" style="filter:none;" onclick="goBack()">
                             <img src="/assets/img/left.svg" />
                         </div>
+                        <ul class="nav-icon" style="filter:none; align-items:center;" id="nav-icon">
+                            <li><button onclick="HandleSearch()" class="sh_btn"></button></li>
+                            <li><input id="search_bar" class="sh_search" type="txt"
+                                    onkeyup="enterkey(event)" placeholder="행사 제목을 입력해주세요"></li>
+                        </ul>
                     </nav>
                 </header>
                 <div class="sh_search_tbox">
-                    <img src="/assets/img/Search2.svg" />
+                    <img class="search_img" src="/assets/img/Search2.svg" />
                     <h2 id="search_result" class="sh_search_title">검색 결과</h2>
                 </div>
-                <div class="search-wrap mb120px">
+                <div class="search-wrap marginbottom">
                     <div id="event_list" class="contant-page">
                         <!-- 검색결과 없음 -->
                         <!-- <div class="sh_col">

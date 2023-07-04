@@ -20,7 +20,6 @@ window.onload = function () {
 async function RandomEventList() {
   const random_response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const random_response_json = await random_response.json();
-
   // 랜덤한 인덱스 생성
   const randomIndex = Math.floor(Math.random() * random_response_json.length);
 
@@ -42,6 +41,8 @@ async function RandomEventList() {
   R_eventImgElement.className = 'img';
   R_eventImgElement.src = `${backend_base_url}${randomData.image}`;
   R_eventImgElement.alt = '';
+  const R_eventImg = R_eventImgElement
+  R_eventImg.style.filter = 'brightness(0.6)';
 
   R_cardTextElement.className = 'card-txt';
 
@@ -91,20 +92,19 @@ async function EventList() {
     eventEnd.setHours(0, 0, 0, 0);
 
     const oneDay = 24 * 60 * 60 * 1000;
-    const diffDaysStart = Math.round(Math.abs((currentDate - eventStart) / oneDay));
-    const diffDaysEnd = Math.round(Math.abs((currentDate - eventEnd) / oneDay));
 
     const reservationTag = document.createElement('p');
     reservationTag.classList.add('reservation');
-    if (currentDate >= eventStart && currentDate <= (eventEnd - 2 * oneDay)) {
-      reservationTag.innerText = '행사중';
-    } else if (eventEnd < currentDate) {
-      reservationTag.innerText = '행사종료';
-    } else if (diffDaysStart > 0) {
-      reservationTag.innerText = '행사예정';
-    } else if (diffDaysEnd <= 2 && diffDaysEnd > 0) {
-      reservationTag.innerText = '마감임박';
-    } else {
+    if (currentDate >= (eventStart - oneDay) && currentDate <= (eventEnd - oneDay)) {
+      reservationTag.innerText = '티켓오픈';
+    } 
+    else if (currentDate >= eventStart && currentDate >= eventEnd) {
+      reservationTag.innerText = '티켓마감';
+    } 
+    else if (eventStart > currentDate) {
+      reservationTag.innerText = '오픈예정';
+    } 
+    else {
       reservationTag.innerText = '오류';
     }
 
@@ -114,16 +114,19 @@ async function EventList() {
     const eventCategory = document.createElement('a');
     eventCategory.classList.add('category');
     eventCategory.innerText = '전시/행사';
+    eventCategory.style.cursor = 'pointer';
 
     const eventTitle = document.createElement('h3');
     eventTitle.id = 'event_title';
     eventTitle.classList.add('title');
     eventTitle.innerText = get_title;
+    eventTitle.style.cursor = 'pointer';
 
     const eventDate = document.createElement('p');
     eventDate.id = 'event_date';
     eventDate.classList.add('event-date');
     eventDate.innerText = `${get_event_start_date} - ${get_event_end_date}`;
+    eventDate.style.cursor = 'pointer';
 
     const cardIcon = document.createElement('div');
     cardIcon.classList.add('card-icon');
@@ -173,6 +176,7 @@ async function EventList() {
     eventCardTxt.appendChild(eventCategory);
     eventCardTxt.appendChild(eventTitle);
     eventCardTxt.appendChild(eventDate);
+
     eventCardTxt.appendChild(cardIcon);
 
     eventCard.appendChild(eventImage);
@@ -181,10 +185,24 @@ async function EventList() {
 
     eventListContainer.appendChild(eventCard);
 
+    
     eventImage.addEventListener('click', function () {
       const event_id = parseInt(element.id, 10);
       window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
     });
+    eventTitle.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });
+    eventDate.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });
+    eventCategory.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });    
+
 
 
     bookmarkIcon.addEventListener('click', async () => {
@@ -257,8 +275,12 @@ async function HandleSearch() {
 
 async function enterkey(event) {
   if (event.keyCode == 13) {
-    // 엔터키가 눌렸을 때
     const word = document.getElementById("search_bar").value;
-    window.location.href = `${frontend_base_url}/search.html?search=${word}`;
-  }
+    if (!word || word.includes('#')) {
+        event.preventDefault(); // 이벤트 기본 동작을 막음
+        alert("다시 입력해주세요");
+    } else {
+      window.location.href = `${frontend_base_url}/search.html?search=${word}`;
+    }
+  }   
 };

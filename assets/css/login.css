@@ -25,7 +25,3 @@
 .login-option>li a { cursor: pointer } 
 #login-signup-btn { margin-top: 20px; background-color: #cccccc; color: #333333; } 
  }
-
-@media(max-width:500px){
- .mb120px { padding-bottom: 240px; } 
- }
