@@ -20,7 +20,6 @@ window.onload = function () {
 async function RandomEventList() {
   const random_response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
   const random_response_json = await random_response.json();
-
   // 랜덤한 인덱스 생성
   const randomIndex = Math.floor(Math.random() * random_response_json.length);
 
@@ -114,16 +113,19 @@ async function EventList() {
     const eventCategory = document.createElement('a');
     eventCategory.classList.add('category');
     eventCategory.innerText = '전시/행사';
+    eventCategory.style.cursor = 'pointer';
 
     const eventTitle = document.createElement('h3');
     eventTitle.id = 'event_title';
     eventTitle.classList.add('title');
     eventTitle.innerText = get_title;
+    eventTitle.style.cursor = 'pointer';
 
     const eventDate = document.createElement('p');
     eventDate.id = 'event_date';
     eventDate.classList.add('event-date');
     eventDate.innerText = `${get_event_start_date} - ${get_event_end_date}`;
+    eventDate.style.cursor = 'pointer';
 
     const cardIcon = document.createElement('div');
     cardIcon.classList.add('card-icon');
@@ -173,6 +175,7 @@ async function EventList() {
     eventCardTxt.appendChild(eventCategory);
     eventCardTxt.appendChild(eventTitle);
     eventCardTxt.appendChild(eventDate);
+
     eventCardTxt.appendChild(cardIcon);
 
     eventCard.appendChild(eventImage);
@@ -181,10 +184,24 @@ async function EventList() {
 
     eventListContainer.appendChild(eventCard);
 
+    
     eventImage.addEventListener('click', function () {
       const event_id = parseInt(element.id, 10);
       window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
     });
+    eventTitle.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });
+    eventDate.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });
+    eventCategory.addEventListener('click', function () {
+      const event_id = parseInt(element.id, 10);
+      window.location.href = `${frontend_base_url}/event-detail.html?event_id=${event_id}`;
+    });    
+
 
 
     bookmarkIcon.addEventListener('click', async () => {
