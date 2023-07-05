@@ -32,18 +32,21 @@ window.onload = async function SelectHanbok(hanbok_id) {
 
 function printPrice() {
     const quantity = document.getElementById('quantity').value;
+    const cleanedquantity = quantity.replace(/[^0-9]/g, '');
+    const int_quantity = Number(cleanedquantity)
     const origin_price = document.getElementById('info_cost').innerText;
 
     const original_price = origin_price.split(': ')[1].split('원')[0]
-    const int_quantity = Number(quantity)
 
-    const price = original_price * int_quantity
-    const vat = price * 0.1
-    const total = price + vat
-
-    document.getElementById("price").innerText = price;
-    document.getElementById("vat").innerText = vat;
-    document.getElementById("total").innerText = total;
+    if (int_quantity <= 10) {
+        const price = original_price * int_quantity
+        const vat = price * 0.1
+        const total = price + vat
+    
+        document.getElementById("price").innerText = price;
+        document.getElementById("vat").innerText = vat;
+        document.getElementById("total").innerText = total;
+    }
 }
 
 async function handleSelectHanbok(hanbok_id) {
@@ -51,16 +54,23 @@ async function handleSelectHanbok(hanbok_id) {
     hanbok_id = urlParams.get('hanbok_id');
 
     const date = document.getElementById('rsrvt_date').value;
-    const time = document.querySelector('input[type=radio][name=time]:checked').value;
-    let quantity = document.getElementById('quantity').value;
+    const e_time = document.querySelector('input[type=radio][name=time]:checked');
 
-if (date == null || time == null) {
-        alert("다시 선택해주세요")
-    
+    let quantity = document.getElementById('quantity').value;
+    const cleanedquantity = quantity.replace(/[^0-9]/g, '');
+    const int_quantity = Number(cleanedquantity)
+
+    if (!date) {
+        alert("예약 날짜를 입력해주세요")
+    } else if (!e_time) {
+        alert("예약 시간을 선택해주세요")
+    } else if (!quantity || quantity == 0) {
+        alert("수량을 입력해주세요")
+    } else if (quantity > 10) {
+        alert("한 번에 10벌 이하의 예약만 가능합니다")
     } else {
 
-        let int_quantity = Number(quantity)
-
+        const time = e_time.value;
         first = date.split('-')
         first1 = first[2].split('')
         middle = time.split(':')
@@ -100,8 +110,8 @@ if (date == null || time == null) {
                     "vat_amount": vat,
                     "tax_free_amount": 0,
                     "approval_url": `${frontend_base_url}/complete.html`,
-                    "fail_url": `${frontend_base_url}`,
-                    "cancel_url": `${frontend_base_url}`
+                    "fail_url": `${index_url}`,
+                    "cancel_url": `${index_url}`
                 })
             });
 
@@ -147,17 +157,20 @@ if (date == null || time == null) {
                         window.location.href = `${next_url_p}`
                     }
                 } else {
-                    alert("db 저장실패", send.status)
+                    alert("db 저장실패")
+                    alert(send.status)
                     window.location.href = `${index_url}`
                 }
 
             } else {
-                alert(kakao_pay.status, "결제요청 실패")
+                alert("결제요청 실패")
+                alert(kakao_pay.status)
                 window.location.href = `${index_url}`
             }
 
         } else {
-            alert(response.status, "잘못된 상품 정보입니다")
+            alert("잘못된 상품 정보입니다")
+            alert(response.status)
             window.location.href = `${index_url}`
         }
     }

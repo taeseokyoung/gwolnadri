@@ -17,6 +17,7 @@ window.onload = async function ReservationDetail() {
         const quantity = response_json.quantity
         const total = response_json.total_amount
         const order_id = String(response_json.partner_order_id).split('2023')[1]
+        const r_date = response_json.rsrvt_date
 
         const origin_create = response_json.created_at.split("T")[0].split('-')
         const origin_date = response_json.rsrvt_date.split("T")[0].split('-')
@@ -54,6 +55,10 @@ window.onload = async function ReservationDetail() {
         total_in.innerText = total
         receipt.setAttribute("onClick", `Receipt("${tid}")`)
 
+        const now_utc = Date.now()
+        const timeOff = new Date().getTimezoneOffset() * 60000;
+        const today = new Date(now_utc - timeOff).toISOString().split("T")[0];
+        const tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
 
         if (type == "hanbok") {
 
@@ -84,8 +89,13 @@ window.onload = async function ReservationDetail() {
                 people.innerText = `${quantity}` + "명"
                 people2.innerText = `${quantity}` + "명"
                 created.innerText = "예약일"
-                status.innerText = "예약"
                 hanbok_delete.setAttribute("onClick", `HanbokDelete("${tid}")`)
+                
+                if (r_date >= today) {
+                    status.innerText = "예약"
+                } else {
+                    status.innerText = "만료"
+                }
 
             } else {
                 (hanbok.status)
@@ -128,6 +138,12 @@ window.onload = async function ReservationDetail() {
                     people2.innerText = `${quantity}` + "매"
                     created.innerText = "예매일"
                     status.innerText = "예매"
+
+                    if (r_date >= today) {
+                        status.innerText = "예매"
+                    } else {
+                        status.innerText = "만료"
+                    }
 
                 } else {
                     alert("잘못된 티켓 정보입니다. 관리자에게 문의하세요",detail.status)

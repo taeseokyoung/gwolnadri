@@ -6,7 +6,6 @@ window.onload = async function SelectTicket(event_id) {
     })
     if (eventData.status == 200) {
         const eventData_json = await eventData.json()
-        console.log(eventData_json)
 
         const title = eventData_json.title
         const start_date = eventData_json.event_start_date
@@ -35,8 +34,9 @@ window.onload = async function SelectTicket(event_id) {
 
         const e_max = document.createElement("p")
         e_max.setAttribute("class","info_start")
+        e_max.setAttribute("id","e_max")
         e_max.innerText = "회차 당 좌석 수 : "+info_max
-        time_slots.append(e_max)
+        start_end.after(e_max)
 
         let now_utc = Date.now()
         let timeOff = new Date().getTimezoneOffset() * 60000;
@@ -153,32 +153,34 @@ async function SelectTime() {
 
 function printPrice() {
     const quantity = document.getElementById('quantity').value;
+    const cleanedquantity = quantity.replace(/[^0-9]/g, '');
+    const int_quantity = Number(cleanedquantity)
     const origin_price = document.getElementById('info_cost').innerText;
-    console.log(origin_price)
+    const e_max = document.getElementById('e_max').innerText;
 
+    const max = e_max.split(': ')[1]
     const original_price = origin_price.split(': ')[1].split('원')[0]
-    console.log(original_price)
-    const int_quantity = Number(quantity)
 
-    const price = original_price * int_quantity
-    const vat = price * 0.1
-    const total = price + vat
-
-    document.getElementById("price").innerText = price;
-    document.getElementById("vat").innerText = vat;
-    document.getElementById("total").innerText = total;
+    if (int_quantity <= max) {
+        const price = original_price * int_quantity
+        const vat = price * 0.1
+        const total = price + vat
+    
+        document.getElementById("price").innerText = price;
+        document.getElementById("vat").innerText = vat;
+        document.getElementById("total").innerText = total;
+    }
 }
 
 async function handleSelectEvent(ticket_id) {
 
     const quantity = document.getElementById('quantity').value;
-    const int_quantity = Number(quantity)
-
+    const cleanedquantity = quantity.replace(/[^0-9]/g, '');
+    const int_quantity = Number(cleanedquantity)
 
     if (int_quantity == 0) {
         alert("다시 선택해주세요")
-        location.reload()
-
+        
     } else {
         const eventticket = await fetch(`${backend_base_url}/events/${ticket_id}/ticket/`, {
         })
@@ -189,8 +191,7 @@ async function handleSelectEvent(ticket_id) {
             const current = eventticket_json.current_booking
 
             if (int_quantity + current > max_booking) {
-                alert("티켓의 잔여 수량이 모자랍니다")
-                location.reload()
+                alert("티켓의 수량을 재입력해주세요")
 
             } else if (int_quantity + current <= max_booking) {
 
@@ -277,11 +278,10 @@ async function handleSelectEvent(ticket_id) {
                                 "vat_amount": vat,
                                 "tax_free_amount": 0,
                                 "approval_url": `${frontend_base_url}/complete.html`,
-                                "fail_url": `${frontend_base_url}`,
-                                "cancel_url": `${frontend_base_url}`
+                                "fail_url": `${index_url}`,
+                                "cancel_url": `${index_url}`
                             })
                         });
-
 
                         if (kakao_pay.status == 200) {
 
@@ -315,7 +315,6 @@ async function handleSelectEvent(ticket_id) {
                                     "rsrvt_time": r_time
                                 })
                             })
-                            console.log(send)
 
                             if (send.status == 200) {
                                 
@@ -327,25 +326,27 @@ async function handleSelectEvent(ticket_id) {
                                     window.location.href = `${next_url_p}`
                                 }
                             } else {
-                                // alert("db 저장실패", send.status)
-                                // window.location.href = `${index_url}`
+                                alert("db 저장실패")
+                                alert(send.status)
+                                window.location.href = `${index_url}`
                             }
 
-                        } else {
-                            console.log(kakao_pay.status)
-                            // alert("결제요청 실패", kakao_pay.status)
+                        } else {                            
+                            alert("결제요청 실패")
+                            alert(kakao_pay.status)
+                            window.location.href = `${index_url}`
                         }
                     }
 
                 } else {
-                    console.log(response_json)
-                    alert(response.status, "잘못된 상품 정보입니다")
+                    alert("잘못된 상품 정보입니다")
+                    alert(response.status)
                     window.location.href = `${index_url}`
                 }
             }
         } else {
-            console.log(eventticket_json)
-            alert(eventticket.status, "잘못된 상품 정보입니다")
+            alert("잘못된 상품 정보입니다")
+            alert(eventticket.status)
             window.location.href = `${index_url}`
         }
     }

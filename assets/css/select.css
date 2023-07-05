@@ -26,7 +26,7 @@ select:disabled { cursor: not-allowed; }
 .xi-refresh { font-size: 30px; font-weight: 600; color: #333; transition: text-shadow 0.3s ease-in-out; } 
 .xi-refresh:hover { color: rgb(71, 71, 71); text-shadow: 3px 3px 2px rgb(180, 180, 180); } 
 .sh_form { gap: 50px; }
-.middle {flex-direction: column; font-size:1.5rem; align-items: normal; padding-top: 9px; margin-right: 40px;}
+.middle {flex-direction: column; font-size:1.5rem; align-items: normal; margin-right: 70px;}
 .info_start {margin: 7px 0px 9px 5px; font-size: 1.5rem;}
 .sh-row_2 {display: flex; align-items: flex-start; justify-content: space-between;}
 .sh-box { position: relative; display: flex; flex-direction: row; justify-content: space-between; padding: 25px 0; border-bottom: 1px solid rgb(221, 221, 221,0.5); font-size: 1.9rem; color: #9f9f9f; margin: 0 0 0 5px; } 
