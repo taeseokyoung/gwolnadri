@@ -342,8 +342,8 @@ async function HandleComment() {
   } else if (in_img.size >= maxSixe) {
     alert("이미지가 너무 큽니다.")
     window.location.reload()
-  } else if (com_txt.length > 30) {
-    alert("30자 이내로 작성해주세요.");
+  } else if (com_txt.length > 50) {
+    alert("50자 이내로 작성해주세요.");
   } else if (!com_txt) {
     alert("댓글 내용을 입력해주세요.")
   } else {
