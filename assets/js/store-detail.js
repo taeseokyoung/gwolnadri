@@ -271,33 +271,33 @@ async function submitComment(hanbokstore_id) {
         const review_image = document.getElementById("image").files[0]
         const maxSixe = 2 * 1024 * 1024
 
-        if (!content){
+        if (!content) {
             alert("댓글 내용을 입력해주세요.")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
-        }else{
+        } else {
             if (content.length > 50) {
                 alert("50자 이내로 작성해주세요.")
                 location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
-            } else if (grade == " "){
+            } else if (grade == " ") {
                 alert("별점을 선택해주세요.")
                 location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-    
-            } else if (!review_image){
+
+            } else if (!review_image) {
                 alert("이미지를 넣어주세요.")
                 location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
             } else {
                 if (review_image.size >= maxSixe) {
                     alert("이미지가 너무 큽니다.")
                     location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-                }else{
+                } else {
                     const formdata = new FormData()
-    
+
                     formdata.append("grade", grade)
                     formdata.append("content", content)
                     formdata.append("review_image", review_image)
-    
+
                     if (token) {
                         const response = await fetch(`${backend_base_url}/api/v1/stores/${hanbokstore_id}/comments/`, {
                             method: 'POST',
@@ -323,9 +323,9 @@ async function submitComment(hanbokstore_id) {
                         alert("로그인이 필요합니다.")
                         location.replace(`${frontend_base_url}/login.html`)
                     }
-                }     
+                }
             }
-        } 
+        }
     }
 }
 
@@ -435,12 +435,11 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
 
         const formdata = new FormData()
         formdata.append("grade", grade)
-        console.log(grade)
 
-        if (content.length > 50){
+        if (content.length > 50) {
             alert("50자 이내로 작성해주세요.")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
-        
+
         } else {
             if (!content) {
                 formdata.append("content", prevTxt)
@@ -448,22 +447,19 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
             } else {
                 formdata.append("content", content)
             }
-    
+
             if (!review_image) {
                 alert("이미지를 넣어주세요.")
 
             } else if (review_image >= maxSixe) {
                 alert("이미지가 너무 큽니다. 다른 이미지를 넣어주세요.")
-           
+
             } else {
                 formdata.append("review_image", review_image)
                 standby = 1
             }
 
             if (standby == 1) {
-                console.log(prevTxt)
-                console.log(grade)
-                console.log(review_image)
                 const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
                     method: 'PUT',
                     headers: {
@@ -484,13 +480,13 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
                         alert("로그인이 필요합니다")
                         location.replace(`${frontend_base_url}/login.html`)
                         break
-    
+
                 }
             }
 
-        
+
+        }
     }
-}
 }
 
 async function DeleteComment(comments_id) {
