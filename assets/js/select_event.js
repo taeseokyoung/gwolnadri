@@ -6,7 +6,6 @@ window.onload = async function SelectTicket(event_id) {
     })
     if (eventData.status == 200) {
         const eventData_json = await eventData.json()
-        console.log(eventData_json)
 
         const title = eventData_json.title
         const start_date = eventData_json.event_start_date
@@ -181,8 +180,7 @@ async function handleSelectEvent(ticket_id) {
 
     if (int_quantity == 0) {
         alert("다시 선택해주세요")
-        location.reload()
-
+        
     } else {
         const eventticket = await fetch(`${backend_base_url}/events/${ticket_id}/ticket/`, {
         })
@@ -280,11 +278,10 @@ async function handleSelectEvent(ticket_id) {
                                 "vat_amount": vat,
                                 "tax_free_amount": 0,
                                 "approval_url": `${frontend_base_url}/complete.html`,
-                                "fail_url": `${frontend_base_url}`,
-                                "cancel_url": `${frontend_base_url}`
+                                "fail_url": `${index_url}`,
+                                "cancel_url": `${index_url}`
                             })
                         });
-
 
                         if (kakao_pay.status == 200) {
 
@@ -318,7 +315,6 @@ async function handleSelectEvent(ticket_id) {
                                     "rsrvt_time": r_time
                                 })
                             })
-                            console.log(send)
 
                             if (send.status == 200) {
                                 
@@ -330,25 +326,27 @@ async function handleSelectEvent(ticket_id) {
                                     window.location.href = `${next_url_p}`
                                 }
                             } else {
-                                // alert("db 저장실패", send.status)
-                                // window.location.href = `${index_url}`
+                                alert("db 저장실패")
+                                alert(send.status)
+                                window.location.href = `${index_url}`
                             }
 
-                        } else {
-                            console.log(kakao_pay.status)
-                            // alert("결제요청 실패", kakao_pay.status)
+                        } else {                            
+                            alert("결제요청 실패")
+                            alert(kakao_pay.status)
+                            window.location.href = `${index_url}`
                         }
                     }
 
                 } else {
-                    console.log(response_json)
-                    alert(response.status, "잘못된 상품 정보입니다")
+                    alert("잘못된 상품 정보입니다")
+                    alert(response.status)
                     window.location.href = `${index_url}`
                 }
             }
         } else {
-            console.log(eventticket_json)
-            alert(eventticket.status, "잘못된 상품 정보입니다")
+            alert("잘못된 상품 정보입니다")
+            alert(eventticket.status)
             window.location.href = `${index_url}`
         }
     }

@@ -72,8 +72,9 @@ header.left-arrow-header nav { margin: 25px; }
 header.left-arrow-header img { width: 29px; } 
 /* 하단 메뉴 아이콘 */
 .foot-icon { position: fixed; bottom: 0; left: calc(50% - 47.5px); width: 575.5px; font-size: 17px; border: 1px solid rgb(221, 221, 221,0.5); background: #fff; z-index: 1; } 
-.foot-icon .flex { margin: 25px 60px; } 
+.foot-icon .flex { margin: 25px 60px; align-items: center;} 
 .foot-icon img { cursor: pointer; } 
+.hanbok-icon { width: 58px; height: 58px;}
 /* 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 */
  .marginbottom { padding-bottom:150px; } 
 /* input-box */
@@ -126,12 +127,12 @@ input::placeholder { font-size: 1.5rem; color: rgba(0, 0, 0, 0.3); }
  }
 
 @media(max-width:500px) { html { font-size: 9px !important; } 
- /* 하단 메뉴 아이콘으로 인해 가려지는 공간 확보 */
+.hanbok-icon { width: 48px !important; height: 48px !important;}
  header h1 { font-size: 2.8rem; } 
  header nav { line-height: 50px; margin: 15px 20px; } 
  header.left-arrow-header nav { margin: 17px; } 
- .foot-icon { height: 70px; } 
- .foot-icon .flex { align-items: center; vertical-align: middle; margin: 20px; } 
+ .foot-icon { height: 70px;} 
+ .foot-icon .flex { vertical-align: middle; margin: 10px 20px;} 
  .foot-icon img { width: 30px; height: 30px; } 
  header nav img { width: 27px; } 
  .Gwolnadri-body .main-page img { width: 100%; height: 400px; object-fit: cover; } 

@@ -62,7 +62,7 @@ async function EventDetail() {
 
   eventMoneyElement.id = 'event_money'
   eventMoneyElement.className = 'event-money';
-  eventMoneyElement.textContent = "관람료: 1인 "+get_money+"원"
+  eventMoneyElement.textContent = "관람료: 1인 " + get_money + "원"
 
   heartElement.className = 'heart';
   heartIconElement.src = '/assets/img/Heart-outline.svg';
@@ -125,10 +125,10 @@ async function EventDetail() {
   const tomorrow = new Date(now_utc - timeOff + 86400000).toISOString().split("T")[0];
   const start_date = response_json.event_start_date
   const end_date = response_json.event_end_date
-  
+
   if (start_date > today) {
     reservationButton.textContent = '행사 예정';
-  } else if (start_date == tomorrow || today < end_date){
+  } else if (start_date == tomorrow || today < end_date) {
     reservationButton.textContent = '예약하기';
   } else if (end_date <= today) {
     reservationButton.textContent = '행사 마감';
@@ -148,7 +148,6 @@ async function EventDetail() {
 
   contant_pageElement.appendChild(reservationButton);
   contant_pageElement.appendChild(subContentElement);
-
 
   bookmarkElement.addEventListener('click', async () => {
     const token = localStorage.getItem("access");
@@ -237,7 +236,7 @@ async function Eventreview() {
 
     reviewImgElement.src = `${backend_base_url}${get_img}`;
     reviewImgElement.alt = '';
-    
+
 
 
     const reviewTxtElement = document.createElement('div');
@@ -283,7 +282,7 @@ async function Eventreview() {
 
     reviewGradeElement.textContent = "별점 : " + starNum + " ";
 
-    
+
     const reviewContentElement = document.createElement('p');
     reviewContentElement.id = 'content';
     reviewContentElement.className = 'content';
@@ -340,40 +339,41 @@ async function HandleComment() {
 
   if (!in_img) {
     alert("이미지를 넣어주세요.");
-  }  else if (in_img.size >= maxSixe){
+  } else if (in_img.size >= maxSixe) {
     alert("이미지가 너무 큽니다.")
     window.location.reload()
   } else if (com_txt.length > 30) {
     alert("30자 이내로 작성해주세요.");
-  } else if (!com_txt){
-    alert("댓글 내용을 입력해주세요.")  
-  }else{
-    
-  const formdata = new FormData();
-  formdata.append("grade", grade)
-  formdata.append("review_image", in_img)
-  formdata.append("content", com_txt)
+  } else if (!com_txt) {
+    alert("댓글 내용을 입력해주세요.")
+  } else {
 
-  const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
-    headers: {
-      "Authorization": `Bearer ${token}`,
-    },
-    method: 'POST',
-    body: formdata
-  })
-  if (response.status == 201) {
-    alert("작성되었습니다.")
-    window.location.reload()
+    const formdata = new FormData();
+    formdata.append("grade", grade)
+    formdata.append("review_image", in_img)
+    formdata.append("content", com_txt)
 
-  } else if (response.status == 400) { 
-    alert("별점을 선택해주세요.")
-    (response.status)
-    
+    const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+      method: 'POST',
+      body: formdata
+    })
+    if (response.status == 201) {
+      alert("작성되었습니다.")
+      window.location.reload()
+
+    } else if (response.status == 400) {
+      alert("별점을 선택해주세요.")
+        (response.status)
+
+    }
+    else {
+      alert("로그인이 필요합니다.")
+    }
   }
-  else{
-    alert("로그인이 필요합니다.")
-  }
-}}
+}
 
 
 document.querySelector("#in_img").addEventListener('change', function () {
