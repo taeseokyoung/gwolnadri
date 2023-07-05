@@ -6,6 +6,7 @@
 .store-title .hanbok_address { font-size: 1.9rem; cursor: pointer; } 
 .store-wrap .card-icon { display: flex; justify-content: flex-end; gap: 30px; } 
 .store-wrap .contant-page, .store-wrap .review { margin: 30px; cursor: default; } 
+.category-button{font-size: 14px; width: 80%; margin-left: 3px; margin-bottom: 5px;}
 
 @media(max-width:1060px) {.store-wrap h2 { margin: 0 0 30px 5px; } 
 .store-wrap .store-title { width: 100%; text-align: left; cursor: pointer; } 
@@ -23,4 +24,4 @@
 @media(max-width:380px) { header.on .nav-icon { display: none; } 
  header.on h1 { text-align: left; } 
 .card-icon img { width: 20px; height: 20px; margin-top: 15px; } 
- }
+ }   
