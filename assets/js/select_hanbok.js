@@ -54,18 +54,23 @@ async function handleSelectHanbok(hanbok_id) {
     hanbok_id = urlParams.get('hanbok_id');
 
     const date = document.getElementById('rsrvt_date').value;
-    const time = document.querySelector('input[type=radio][name=time]:checked').value;
-    let quantity = document.getElementById('quantity').value;
+    const e_time = document.querySelector('input[type=radio][name=time]:checked');
 
+    let quantity = document.getElementById('quantity').value;
     const cleanedquantity = quantity.replace(/[^0-9]/g, '');
     const int_quantity = Number(cleanedquantity)
 
-    if (date == null || time == null || quantity == 0) {
-        alert("다시 선택해주세요")
+    if (!date) {
+        alert("예약 날짜를 입력해주세요")
+    } else if (!e_time) {
+        alert("예약 시간을 선택해주세요")
+    } else if (!quantity || quantity == 0) {
+        alert("수량을 입력해주세요")
     } else if (quantity > 10) {
-        alert("한복 예약 수량은 10개 이하만 가능합니다")
+        alert("한 번에 10벌 이하의 예약만 가능합니다")
     } else {
 
+        const time = e_time.value;
         first = date.split('-')
         first1 = first[2].split('')
         middle = time.split(':')
@@ -105,8 +110,8 @@ async function handleSelectHanbok(hanbok_id) {
                     "vat_amount": vat,
                     "tax_free_amount": 0,
                     "approval_url": `${frontend_base_url}/complete.html`,
-                    "fail_url": `${frontend_base_url}`,
-                    "cancel_url": `${frontend_base_url}`
+                    "fail_url": `${index_url}`,
+                    "cancel_url": `${index_url}`
                 })
             });
 
@@ -152,17 +157,20 @@ async function handleSelectHanbok(hanbok_id) {
                         window.location.href = `${next_url_p}`
                     }
                 } else {
-                    alert("db 저장실패", send.status)
+                    alert("db 저장실패")
+                    alert(send.status)
                     window.location.href = `${index_url}`
                 }
 
             } else {
-                alert(kakao_pay.status, "결제요청 실패")
+                alert("결제요청 실패")
+                alert(kakao_pay.status)
                 window.location.href = `${index_url}`
             }
 
         } else {
-            alert(response.status, "잘못된 상품 정보입니다")
+            alert("잘못된 상품 정보입니다")
+            alert(response.status)
             window.location.href = `${index_url}`
         }
     }
