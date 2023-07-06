@@ -19,7 +19,7 @@
 .card-page .sub-card-txt .event-price { font-size: 1.9rem; font-weight: 300; margin-bottom: 30px; } 
 .card-page button { width: 90px; padding: 5px 10px; font-size: 1.5rem; background-color: rgb(30, 30, 77, 0.7); border: 1px solid rgb(255, 255, 255,0.7); } 
 .njs-button { width: fit-content; float: right; padding: 5px; font-size: 1.5rem; } 
-.review-content { display: flex; align-items: flex-end; margin-bottom: 30px; } 
+.review-content { display: flex; flex-direction: row;flex-wrap: nowrap; margin-bottom: 30px; } 
 .review-button { display: flex; flex: 1; flex-direction: column; justify-content: space-between; width: 100%; height: 200px; } 
 .review-button>.button-case { display: flex; gap: 10px; justify-content: flex-end; } 
 .review-button>.button-case>button { padding: 3px 13px; } 
@@ -60,7 +60,7 @@ select { padding: 10px 5px; }
  .review-button>.button-case>button { padding: 3px 13px; } 
  .sh_input_img { width:55%; } 
  select { padding: 10px 5px; } 
- .sh_slide { flex-shrink:unset; min-width: 220px; } 
+ .sh_slide { flex-shrink:unset; min-width: 220px; }
  }
 
 @media(max-width:500px) {

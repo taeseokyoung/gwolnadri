@@ -225,7 +225,6 @@ window.onload = async function HanbokStoreDetail() {
             })
         }
 
-
     } else if (response.status == 404) {
         alert("존재하지 않는 페이지 입니다.")
         window.location.href = `${index_url}`
@@ -435,7 +434,6 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
 
         const formdata = new FormData()
         formdata.append("grade", grade)
-        console.log(grade)
 
         if (content.length > 50){
             alert("50자 이내로 작성해주세요.")
@@ -461,9 +459,6 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
             }
 
             if (standby == 1) {
-                console.log(prevTxt)
-                console.log(grade)
-                console.log(review_image)
                 const response = await fetch(`${backend_base_url}/api/v1/stores/comments/${comments_id}/`, {
                     method: 'PUT',
                     headers: {
