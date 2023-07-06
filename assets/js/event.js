@@ -12,10 +12,6 @@ document.querySelector('#Gwolnadri-body').addEventListener('scroll', (e) => {
   }
 });
 
-window.onload = function () {
-  RandomEventList()
-  EventList()
-}
 
 async function RandomEventList() {
   const random_response = await fetch(`${backend_base_url}/events/`, { method: 'GET' });
@@ -259,8 +255,19 @@ async function EventList() {
       }
     });
   });
+  setCategoryForEvents();
+
 };
 
+window.onload = function () {
+  RandomEventList()
+  EventList()
+  // const categoryButtons = document.querySelectorAll('.category-btn button');
+
+  // categoryButtons.forEach((button) => {
+  //   button.addEventListener('click', () => handleCategoryButtonClick(button.id));
+  // });
+};
 
 async function HandleSearch() {
   const search_bar = document.getElementById("search_bar");
@@ -284,3 +291,69 @@ async function enterkey(event) {
     }
   }   
 };
+
+function extractCategoryFromTitle(title) {
+  const pattern = /\[(.*?)\]/; 
+  const matches = title.match(pattern);
+  return matches ? matches[1] : null; 
+}
+
+function setCategoryForEvents() {
+  const eventItems = document.querySelectorAll('.sub-card');
+  eventItems.forEach((item) => {
+    const title = item.querySelector('.title').innerText; 
+    const category = extractCategoryFromTitle(title);
+    if (category) {
+      item.setAttribute('data-category', category);
+      // console.log(item.getAttribute('data-category'));
+    }
+  });
+}
+const categorySelect = document.getElementById('categorySelect');
+
+categorySelect.addEventListener('change', () => {
+  const selectedValue = categorySelect.value;
+  handleCategorySelectChange(selectedValue);
+});
+
+function handleCategorySelectChange(selectedValue) {
+  const eventItems = document.querySelectorAll('.sub-card');
+
+  if (selectedValue === 'btn_all') {
+    eventItems.forEach((item) => {
+      item.style.display = 'block';
+    });
+  } else {
+    const selectedCategory = selectedValue.replace('btn_category_', '');
+    eventItems.forEach((item) => {
+      const category = item.getAttribute('data-category');
+      if (category === selectedCategory) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+}
+
+// function handleCategoryButtonClick(selectId) {
+//   const eventItems = document.querySelectorAll('.sub-card');
+
+//   if (selectId === 'btn_all') {
+//     eventItems.forEach((item) => {
+//       item.style.display = 'block';
+//     });
+//   } else {
+//     const selectedCategory = selectId.replace('btn_category_', '');
+//     // console.log(selectedCategory)
+//     eventItems.forEach((item) => {
+//       const category = item.getAttribute('data-category');
+//       // console.log(item)
+//       if (category === selectedCategory) {
+//         item.style.display = 'block';
+//       } else {
+//         item.style.display = 'none';
+//       }
+//     });
+//   }
+// }

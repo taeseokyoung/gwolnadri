@@ -63,10 +63,13 @@
                                     <option value=4점>⭐️⭐️⭐️⭐️</option>
                                     <option value=5점>⭐️⭐️⭐️⭐️⭐️</option>
                                 </select>
-                                <input id="com_txt" type="text" class="txt" placeholder="내용을 입력해주세요">
+                                <input id="com_txt" type="text" class="txt" placeholder="내용은 50자 이내로 입력해주세요">
                             </div>
-                            <div class="sub-content-bottom">
-                                <input id="in_img" class="in_img" type="file">
+                            <div class="sub-content-bottom" style="display:flex;flex-direction: row;flex-wrap: nowrap;">
+                                <div style="display:row;">
+                                    <input id="in_img" class="in_img" type="file">
+                                    <p style="margin-top: 5px;">2mb 이하 용량의 파일만 업로드 가능합니다</p>
+                                </div>
                                 <img id="com_image" class="comment_img">
                             </div>
                             <div class="btn_control" style="display: flex; justify-content: flex-end; width:100%">

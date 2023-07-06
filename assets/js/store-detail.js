@@ -225,7 +225,6 @@ window.onload = async function HanbokStoreDetail() {
             })
         }
 
-
     } else if (response.status == 404) {
         alert("존재하지 않는 페이지 입니다.")
         window.location.href = `${index_url}`
@@ -270,7 +269,6 @@ async function submitComment(hanbokstore_id) {
         const content = document.getElementById("new-comment").value
         const review_image = document.getElementById("image").files[0]
         const maxSixe = 2 * 1024 * 1024
-
         if (!content) {
             alert("댓글 내용을 입력해주세요.")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
@@ -325,7 +323,10 @@ async function submitComment(hanbokstore_id) {
                     }
                 }
             }
-        }
+        } 
+    } else {
+        alert("로그인이 필요합니다.")
+        location.replace(`${frontend_base_url}/login.html`)
     }
 }
 

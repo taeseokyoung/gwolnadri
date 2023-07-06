@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="Gwolnadri-body" id="Gwolnadri-body">
-                <div class="store-wrap marginbottom">
+                <div class="store-wrap marginbottom" id="map-container">
                     <header class="header on">
                         <nav class="nav flex">
                             <div class="nav-logo">
@@ -52,8 +52,22 @@
                     <div class="store-page">
                         <div id="map"></div>
                     </div>
-                    <div class="contant-page" id="store-list-body">
-                        <h2>한복점 리스트</h2>
+                    <div class="contant-page" id="store-container">
+                        <h2 >한복점 리스트</h2>
+                        <div style="display: flex; text-align:center; margin-bottom:13px;">
+                            <p style= "font-size:13px; width:55px; height:50px; margin-right:15px; margin-left:15px; padding-top:20px;">카테고리</p>
+                                                   
+                            <select id="categorySelect" size="1" style="width:400px; height:50px;" onchange="palaceView(this.value)">
+                                <option value="0">전체</option>
+                                <option value="1">경복궁</option>
+                                <option value="2">창덕궁</option>
+                                <option value="3">창경궁</option>
+                                <option value="4">덕수궁</option>
+                                <option value="5">경희궁</option>
+                            </select>
+                        </div>
+                        <div id="store-list-body"></div>
+                       
                     </div>
                 </div>
                 <footer></footer>

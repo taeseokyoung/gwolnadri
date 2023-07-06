@@ -2,16 +2,21 @@ const frontend_base_url = "https://gwolnadri.com/assets/doc"
 const backend_base_url = "https://gwolnadri.online"
 const index_url = "https://gwolnadri.com/index.html"
 
-
-
 const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload);
 const token = localStorage.getItem("access");
 
 function checkLogin() {
     if (payload) {
-        window.location.replace(`${frontend_base_url}/`)
+        window.location.replace(`${index_url}`)
     }
+}
+
+function DeleteToken() {
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+    window.location.replace(`${index_url}`)
 }
 
 function goBack() {

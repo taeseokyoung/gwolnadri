@@ -323,6 +323,7 @@ async function HandleCommentDelete(get_review_id) {
   }
   else if (response.status == 401) {
     alert("로그인이 필요합니다.")
+    location.replace(`${frontend_base_url}/login.html`)
   }
   else {
     alert("잘못된 접근입니다.")
@@ -336,42 +337,48 @@ async function HandleComment() {
   const com_txt = document.getElementById('com_txt').value;
   const grade = select_grade.split('')[0]
   const maxSixe = 2 * 1024 * 1024
-
-  if (!in_img) {
-    alert("이미지를 넣어주세요.");
-  } else if (in_img.size >= maxSixe) {
-    alert("이미지가 너무 큽니다.")
-    window.location.reload()
-  } else if (com_txt.length > 30) {
-    alert("30자 이내로 작성해주세요.");
-  } else if (!com_txt) {
-    alert("댓글 내용을 입력해주세요.")
-  } else {
-
-    const formdata = new FormData();
-    formdata.append("grade", grade)
-    formdata.append("review_image", in_img)
-    formdata.append("content", com_txt)
-
-    const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
-      method: 'POST',
-      body: formdata
-    })
-    if (response.status == 201) {
-      alert("작성되었습니다.")
+  if (payload) {
+    if (!in_img) {
+      alert("이미지를 넣어주세요.");
+    } else if (in_img.size >= maxSixe) {
+      alert("이미지가 너무 큽니다.")
       window.location.reload()
+    } else if (com_txt.length > 50) {
+      alert("50자 이내로 작성해주세요.");
+    } else if (!com_txt) {
+      alert("댓글 내용을 입력해주세요.")
+    } else {
 
-    } else if (response.status == 400) {
-      alert("별점을 선택해주세요.")
-        (response.status)
+      const formdata = new FormData();
+      formdata.append("grade", grade)
+      formdata.append("review_image", in_img)
+      formdata.append("content", com_txt)
 
+      const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+        method: 'POST',
+        body: formdata
+      })
+      if (response.status == 201) {
+        alert("작성되었습니다.")
+        window.location.reload()
+
+      } else if (response.status == 400) {
+        alert("별점을 선택해주세요.")
+          (response.status)
+
+      }
+      else {
+        alert("로그인이 필요합니다.")
+        location.replace(`${frontend_base_url}/login.html`)
+      }
     }
-    else {
-      alert("로그인이 필요합니다.")
-    }
+  }
+  else {
+    alert("로그인이 필요합니다.")
+    location.replace(`${frontend_base_url}/login.html`)
   }
 }
 
@@ -393,7 +400,6 @@ function readURL(input) {
 }
 
 function convertNewlinesToBreaks(text) {
-  // \n/g는 정규 표현식(regular expression)
   return text.replace(/\n/g, '<br>');
 }
 
@@ -409,5 +415,6 @@ async function bookingbtn(event_id) {
     }
   } else {
     alert('로그인이 필요합니다')
+    location.replace(`${frontend_base_url}/login.html`)
   }
 }
