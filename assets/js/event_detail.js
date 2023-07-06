@@ -337,7 +337,7 @@ async function HandleComment() {
   const com_txt = document.getElementById('com_txt').value;
   const grade = select_grade.split('')[0]
   const maxSixe = 2 * 1024 * 1024
-  if (payload){
+  if (payload) {
     if (!in_img) {
       alert("이미지를 넣어주세요.");
     } else if (in_img.size >= maxSixe) {
@@ -348,12 +348,12 @@ async function HandleComment() {
     } else if (!com_txt) {
       alert("댓글 내용을 입력해주세요.")
     } else {
-  
+
       const formdata = new FormData();
       formdata.append("grade", grade)
       formdata.append("review_image", in_img)
       formdata.append("content", com_txt)
-  
+
       const response = await fetch(`${backend_base_url}/events/${event_id}/review/`, {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -364,18 +364,18 @@ async function HandleComment() {
       if (response.status == 201) {
         alert("작성되었습니다.")
         window.location.reload()
-  
+
       } else if (response.status == 400) {
         alert("별점을 선택해주세요.")
           (response.status)
-  
+
       }
       else {
         alert("로그인이 필요합니다.")
         location.replace(`${frontend_base_url}/login.html`)
       }
     }
-  } 
+  }
   else {
     alert("로그인이 필요합니다.")
     location.replace(`${frontend_base_url}/login.html`)
@@ -400,7 +400,6 @@ function readURL(input) {
 }
 
 function convertNewlinesToBreaks(text) {
-  // \n/g는 정규 표현식(regular expression)
   return text.replace(/\n/g, '<br>');
 }
 
