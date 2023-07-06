@@ -160,7 +160,6 @@ async function likeBtn(store_id, likeOn) {
     }
 }
 
-// const grade = newStar.options[newStar.selectedIndex].value
 async function palaceView(palace_num){
     const newcard =  document.getElementById("store-list-body-new")
     const prevcard =  document.getElementById("store-list-body")

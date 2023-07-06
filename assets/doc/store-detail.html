@@ -70,7 +70,7 @@
                         <p class="review-title">한복 예약 후기</p>
                         <div id="js_input" class="review-card">
                             <form style="width:100%">
-                                <div class="review-content sh_input">
+                                <div class="review-content sh_input" style="flex-wrap: nowrap">
                                     <select id="new-star">
                                         <option value=" ">별점선택</option>
                                         <option value=1>⭐️</option>
@@ -79,11 +79,14 @@
                                         <option value=4>⭐️⭐️⭐️⭐️</option>
                                         <option value=5>⭐️⭐️⭐️⭐️⭐️</option>
                                     </select>
-                                    <input type="text" id="new-comment" style="width:90%" placeholder="후기를 작성해주세요.">
+                                    <input type="text" id="new-comment" style="width:90%" placeholder="내용은 50자 이내로 입력해주세요.">
                                 </div>
-                                <div class="review-content">
-                                    <input type="file" id="image" class="sh_input_img" onchange="readURL(this);">
-                                    <img id="preview">
+                                <div class="review-content" style="flex-wrap: nowrap">
+                                    <div style="display:row; width:50%;">
+                                        <input type="file" id="image" class="sh_input_img" onchange="readURL(this);">
+                                        <p style="margin-top: 5px">2mb 이하 용량의 파일만 업로드 가능합니다</p>
+                                    </div>
+                                    <img id="preview" class="review_image">
                                 </div>
                                 <button type="button" id="create-comment-btn" class="njs-button"
                                     onclick="submitComment()">작성완료</button>
