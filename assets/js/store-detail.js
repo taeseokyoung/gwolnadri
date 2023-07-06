@@ -131,7 +131,7 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
-        KakaoMap(get_x, get_y, get_name)
+        KakaoMap(get_x, get_y, get_name, get_address)
 
         const comment_input = document.getElementById('review')
         if (comments.length == 0) {
@@ -242,7 +242,7 @@ async function SelectItem(hanbok_id) {
     }
 }
 
-async function KakaoMap(lng, lat, name) {
+async function KakaoMap(lng, lat, name, address) {
     var Position = new kakao.maps.LatLng(lat, lng);
     var mapContainer = document.getElementById('map')
     var mapOptions = {
@@ -260,6 +260,41 @@ async function KakaoMap(lng, lat, name) {
         image: markerImage,
         clickable: true
     })
+    // 검색가져오기 
+    const response = await fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query={${name}})`,{
+        method: 'GET',
+        headers: {"Authorization": "KakaoAK 83de1fa3ec91220bae862b8bbc767162"}   
+    })
+    const response_json = await response.json()
+
+    for (i of response_json['documents']) {
+        if (i["road_address_name"] == address) {
+            if (i["place_url"]) {
+                link = i["place_url"]
+            } else {
+                link = ""
+            }
+            if(i["phone"]) {
+                phone = i["phone"]
+            } else {
+                phone = ""
+            }
+        }
+    }
+    //링크와 전화번호 추가
+    const store_title = document.getElementById("contant-page")
+    const store_icon = document.getElementById("card-icon")
+
+    const store_link = document.createElement("div")
+    store_link.setAttribute("OnClick", `location.href ='${link}'`)
+    store_link.setAttribute("style", "cursor:pointer;")
+    store_link.innerText = "링크"
+    store_title.append(store_link)
+
+    const store_phone = document.createElement("div")
+    store_phone.innerText = `전화번호 : ${phone}`
+    store_title.append(store_phone)
+
 }
 
 async function submitComment(hanbokstore_id) {
