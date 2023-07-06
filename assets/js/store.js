@@ -160,7 +160,7 @@ async function likeBtn(store_id, likeOn) {
     }
 }
 
-
+// const grade = newStar.options[newStar.selectedIndex].value
 async function palaceView(palace_num){
     const newcard =  document.getElementById("store-list-body-new")
     const prevcard =  document.getElementById("store-list-body")
@@ -173,22 +173,22 @@ async function palaceView(palace_num){
     }
         
     switch (palace_num) {
-        case 0:
+        case "0":
             loadNewStore(0)
             break
-        case 1:
+        case "1":
             loadNewStore(1)
             break
-        case 2:
+        case "2":
             loadNewStore(2)
             break
-        case 3:
+        case "3":
             loadNewStore(3)
             break
-        case 4:
+        case "4":
             loadNewStore(4)
             break
-        case 5:
+        case "5":
             loadNewStore(5)
             break
     }
