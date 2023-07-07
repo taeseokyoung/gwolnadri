@@ -368,6 +368,10 @@ async function HandleComment() {
       alert("별점을 선택해주세요.")
         (response.status)
 
+    } else if (response.status == 403) {
+      alert("상품을 예약한 사용자만 작성 가능합니다.")
+        (response.status)
+
     }
     else {
       alert("로그인이 필요합니다.")
