@@ -261,6 +261,9 @@ async function KakaoMap(lng, lat, name, address) {
         clickable: true
     })
     // 검색가져오기 
+    const store_name = document.getElementById('store_name')
+    const store_icon = document.getElementById("card-icon")
+
     const response = await fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query={${name}})`,{
         method: 'GET',
         headers: {"Authorization": "KakaoAK 83de1fa3ec91220bae862b8bbc767162"}   
@@ -271,29 +274,18 @@ async function KakaoMap(lng, lat, name, address) {
         if (i["road_address_name"] == address) {
             if (i["place_url"]) {
                 link = i["place_url"]
-            } else {
-                link = ""
-            }
+                store_name.setAttribute("OnClick", `location.href ='${link}'`)
+                store_name.setAttribute("class", "hanbok_store_link")
+            } 
             if(i["phone"]) {
                 phone = i["phone"]
-            } else {
-                phone = ""
+                const store_phone = document.createElement("div")
+                store_phone.setAttribute("class", "hanbok_phone")
+                store_phone.innerText = `전화번호 : ${phone}`
+                store_icon.before(store_phone)
             }
         }
-    }
-    //링크와 전화번호 추가
-    const store_title = document.getElementById("contant-page")
-    const store_icon = document.getElementById("card-icon")
-
-    const store_link = document.createElement("div")
-    store_link.setAttribute("OnClick", `location.href ='${link}'`)
-    store_link.setAttribute("style", "cursor:pointer;")
-    store_link.innerText = "링크"
-    store_title.append(store_link)
-
-    const store_phone = document.createElement("div")
-    store_phone.innerText = `전화번호 : ${phone}`
-    store_title.append(store_phone)
+    } 
 
 }
 
