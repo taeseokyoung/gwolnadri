@@ -153,7 +153,7 @@ window.onload = async function SelectTicket(search) {
           }
         } else {
           alert("로그인이 필요합니다")
-          location.replace(`${frontend_base_url}/login.html`)
+          location.replace(`${frontend_base_url}/home.html`)
         }
       });
 
@@ -181,7 +181,7 @@ window.onload = async function SelectTicket(search) {
         }
         else {
           alert("로그인이 필요합니다")
-          location.replace(`${frontend_base_url}/login.html`)
+          location.replace(`${frontend_base_url}/home.html`)
         }
 
       });

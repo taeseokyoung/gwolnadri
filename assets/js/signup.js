@@ -30,7 +30,7 @@ async function handleSignup() {
 
   if (response.status == 201) {
     alert("회원가입에 성공했습니다.");
-    window.location.replace(`${frontend_base_url}/login.html`);
+    window.location.replace(`${frontend_base_url}/home.html`);
   } else if (response.status == 400) {
     if (response_json.email) {
       const email_error = document.createElement("p");

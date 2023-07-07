@@ -238,7 +238,7 @@ async function SelectItem(hanbok_id) {
         window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
     } else {
         alert('로그인이 필요합니다')
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
     }
 }
 
@@ -341,7 +341,7 @@ async function submitComment(hanbokstore_id) {
                                 break
                             case 401:
                                 alert("로그인이 필요합니다.")
-                                location.replace(`${frontend_base_url}/login.html`)
+                                location.replace(`${frontend_base_url}/home.html`)
                                 break
                             case 403:
                                 alert("상품을 예약한 사용자만 작성 가능합니다.")
@@ -349,14 +349,14 @@ async function submitComment(hanbokstore_id) {
                     }
                     } else {
                         alert("로그인이 필요합니다.")
-                        location.replace(`${frontend_base_url}/login.html`)
+                        location.replace(`${frontend_base_url}/home.html`)
                     }
                 }     
             }
         } 
     } else {
         alert("로그인이 필요합니다.")
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
     }
 }
 
@@ -509,7 +509,7 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
                         break
                     case 401:
                         alert("로그인이 필요합니다")
-                        location.replace(`${frontend_base_url}/login.html`)
+                        location.replace(`${frontend_base_url}/home.html`)
                         break
     
                 }
@@ -535,7 +535,7 @@ async function DeleteComment(comments_id) {
             break
         case 401:
             alert("로그인이 필요합니다")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
     }
 }
@@ -588,7 +588,7 @@ async function likeBtn(likeOn) {
             break
         case 401:
             alert("로그인이 필요합니다.")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
 
     }
@@ -618,7 +618,7 @@ async function bookBtn(bookOn) {
             break
         case 401:
             alert("로그인이 필요합니다")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
 
     }
