@@ -1,3 +1,8 @@
+if (!localStorage.getItem("access")) {
+    alert("로그인 후 이용해주세요");
+    window.location.replace(`${frontend_base_url}/home.html`);
+}
+
 function goProfile() {
     window.location.href = `${frontend_base_url}/profile.html`
 }

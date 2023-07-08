@@ -1,3 +1,8 @@
+if (!localStorage.getItem("access")) {
+  alert("로그인 후 이용해주세요");
+  window.location.replace(`${frontend_base_url}/home.html`);
+}
+
 window.onload = async function ReservationDetail() {
   const event_list = document.getElementById('event_list')
 
