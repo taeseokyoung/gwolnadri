@@ -1,3 +1,8 @@
+if (!localStorage.getItem("access")) {
+  alert("로그인 후 이용해주세요");
+  window.location.replace(`${frontend_base_url}/home.html`);
+}
+
 const user_id = parseInt(new URLSearchParams(window.location.search).get("user_id"));
 const logined_token = localStorage.getItem("access");
 const logined_account = payload_parse.account;
