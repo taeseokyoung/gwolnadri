@@ -205,7 +205,7 @@ async function handleSelectEvent(ticket_id) {
                 middle1 = time.split(':')[0].split('')
                 middle2 = time.split(':')[1].split('~')[1].split('')
 
-                const order_id = first2[1] + middle1[1] + middle2[1] + first2[0] + first[0] + `${ticket_id}`
+                const order_id = payload_parse.user_id + middle1[1] + first2[0] + first[0] + `${ticket_id}`
 
                 const response = await fetch(`${backend_base_url}/events/${event_id}/`, {
                 })
