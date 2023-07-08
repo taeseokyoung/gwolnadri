@@ -143,7 +143,7 @@ async function bookBtn(store_id, bookOn) {
             break
         case 401:
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
 
     }
@@ -174,7 +174,7 @@ async function likeBtn(store_id, likeOn) {
             break
         case 401:
             alert("로그인 권한이 만료되었습니다. 다시 로그인해주세요.")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
 
     }

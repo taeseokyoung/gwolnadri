@@ -131,7 +131,7 @@ window.onload = async function HanbokStoreDetail() {
             div2.appendChild(btn)
             hanbok.insertBefore(div, hanbok.firstChild);
         })
-        KakaoMap(get_x, get_y, get_name)
+        KakaoMap(get_x, get_y, get_name, get_address)
 
         const comment_input = document.getElementById('review')
         if (comments.length == 0) {
@@ -238,11 +238,11 @@ async function SelectItem(hanbok_id) {
         window.location.href = `${frontend_base_url}/select_hanbok.html?hanbok_id=${hanbok_id}`
     } else {
         alert('로그인이 필요합니다')
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
     }
 }
 
-async function KakaoMap(lng, lat, name) {
+async function KakaoMap(lng, lat, name, address) {
     var Position = new kakao.maps.LatLng(lat, lng);
     var mapContainer = document.getElementById('map')
     var mapOptions = {
@@ -260,6 +260,33 @@ async function KakaoMap(lng, lat, name) {
         image: markerImage,
         clickable: true
     })
+    // 검색가져오기 
+    const store_name = document.getElementById('store_name')
+    const store_icon = document.getElementById("card-icon")
+
+    const response = await fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query={${name}})`,{
+        method: 'GET',
+        headers: {"Authorization": "KakaoAK 83de1fa3ec91220bae862b8bbc767162"}   
+    })
+    const response_json = await response.json()
+
+    for (i of response_json['documents']) {
+        if (i["road_address_name"] == address) {
+            if (i["place_url"]) {
+                link = i["place_url"]
+                store_name.setAttribute("OnClick", `location.href ='${link}'`)
+                store_name.setAttribute("class", "hanbok_store_link")
+            } 
+            if(i["phone"]) {
+                phone = i["phone"]
+                const store_phone = document.createElement("div")
+                store_phone.setAttribute("class", "hanbok_phone")
+                store_phone.innerText = `전화번호 : ${phone}`
+                store_icon.before(store_phone)
+            }
+        }
+    } 
+
 }
 
 async function submitComment(hanbokstore_id) {
@@ -269,9 +296,7 @@ async function submitComment(hanbokstore_id) {
         const content = document.getElementById("new-comment").value
         const review_image = document.getElementById("image").files[0]
         const maxSixe = 2 * 1024 * 1024
-        console.log("hi")
         if (!content){
-            // console.log("hi")
             alert("댓글 내용을 입력해주세요.")
             location.replace(`${frontend_base_url}/store-detail.html?hanbokstore_id=${hanbokstore_id}`)
 
@@ -316,19 +341,22 @@ async function submitComment(hanbokstore_id) {
                                 break
                             case 401:
                                 alert("로그인이 필요합니다.")
-                                location.replace(`${frontend_base_url}/login.html`)
+                                location.replace(`${frontend_base_url}/home.html`)
                                 break
-                        }
+                            case 403:
+                                alert("상품을 예약한 사용자만 작성 가능합니다.")
+                                break
+                    }
                     } else {
                         alert("로그인이 필요합니다.")
-                        location.replace(`${frontend_base_url}/login.html`)
+                        location.replace(`${frontend_base_url}/home.html`)
                     }
                 }     
             }
         } 
     } else {
         alert("로그인이 필요합니다.")
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
     }
 }
 
@@ -481,7 +509,7 @@ async function saveEditComment(comments_id, prevTxt, prevImg) {
                         break
                     case 401:
                         alert("로그인이 필요합니다")
-                        location.replace(`${frontend_base_url}/login.html`)
+                        location.replace(`${frontend_base_url}/home.html`)
                         break
     
                 }
@@ -507,7 +535,7 @@ async function DeleteComment(comments_id) {
             break
         case 401:
             alert("로그인이 필요합니다")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
     }
 }
@@ -560,7 +588,7 @@ async function likeBtn(likeOn) {
             break
         case 401:
             alert("로그인이 필요합니다.")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
 
     }
@@ -590,7 +618,7 @@ async function bookBtn(bookOn) {
             break
         case 401:
             alert("로그인이 필요합니다")
-            location.replace(`${frontend_base_url}/login.html`)
+            location.replace(`${frontend_base_url}/home.html`)
             break
 
     }

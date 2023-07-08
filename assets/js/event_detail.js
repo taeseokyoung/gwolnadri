@@ -169,7 +169,7 @@ async function EventDetail() {
       }
     } else {
       alert("로그인이 필요합니다.")
-      location.replace(`${frontend_base_url}/login.html`)
+      location.replace(`${frontend_base_url}/home.html`)
     }
 
   });
@@ -195,7 +195,7 @@ async function EventDetail() {
     }
     else {
       alert("로그인이 필요합니다")
-      location.replace(`${frontend_base_url}/login.html`)
+      location.replace(`${frontend_base_url}/home.html`)
     }
 
 
@@ -323,7 +323,7 @@ async function HandleCommentDelete(get_review_id) {
   }
   else if (response.status == 401) {
     alert("로그인이 필요합니다.")
-    location.replace(`${frontend_base_url}/login.html`)
+    location.replace(`${frontend_base_url}/home.html`)
   }
   else {
     alert("잘못된 접근입니다.")
@@ -372,13 +372,13 @@ async function HandleComment() {
       }
       else {
         alert("로그인이 필요합니다.")
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
       }
     }
   } 
   else {
     alert("로그인이 필요합니다.")
-    location.replace(`${frontend_base_url}/login.html`)
+    location.replace(`${frontend_base_url}/home.html`)
   }
 }
 
@@ -416,6 +416,6 @@ async function bookingbtn(event_id) {
     }
   } else {
     alert('로그인이 필요합니다')
-    location.replace(`${frontend_base_url}/login.html`)
+    location.replace(`${frontend_base_url}/home.html`)
   }
 }

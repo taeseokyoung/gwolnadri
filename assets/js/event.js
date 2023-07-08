@@ -223,7 +223,7 @@ async function EventList() {
         }
       } else {
         alert("로그인이 필요합니다")
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
 
       }
 
@@ -251,7 +251,7 @@ async function EventList() {
       }
       else {
         alert("로그인이 필요합니다")
-        location.replace(`${frontend_base_url}/login.html`)
+        location.replace(`${frontend_base_url}/home.html`)
       }
     });
   });

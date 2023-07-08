@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.replace("/");
   } else if (response.status == 400) {
     alert("다시 시도해 주세요.");
-    window.location.replace(`${frontend_base_url}/login.html`);
+    window.location.replace(`${frontend_base_url}/home.html`);
   } else {
     const response_json = await response.json();
     alert(response_json.err_msg);
